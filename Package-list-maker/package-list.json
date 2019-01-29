@@ -1,0 +1,51 @@
+{
+   "package-id": "hl7.org.fhir.us.meds ",
+   "title": "US Meds Implementation Guide",
+   "canonical": "http://hl7.org/fhir/us/meds",
+   "introduction": "The US-Medication FHIR Implementation Guide promotes consistent use of the FHIR pharmacy resources in the US for providing patient and provider access to patient medications.",
+   "list": [
+      {
+         "version": "current",
+         "desc": "Continuous Integration Build (latest in version control)",
+         "path": "http://build.fhir.org/ig/HL7/FHIR-ONC-Meds",
+         "status": "ci-build",
+         "current": true
+      },
+      {
+         "version": "1.1.0",
+         "date": "2019-01-31",
+         "desc": "STU 2",
+         "changes": "n/a",
+         "path": "us/meds/STU2",
+         "status": "trial-use",
+         "sequence": "STU2"
+      },
+      {
+         "version": "1.1.0",
+         "date": "2018-06-14",
+         "desc": "STU 2 Ballot",
+         "changes": "n/a",
+         "path": "us/meds/2018May",
+         "status": "ballot",
+         "sequence": "STU2"
+      },
+      {
+         "version": "1.0.0",
+         "date": "2017-06-14",
+         "desc": "STU 1 (Permanent Home - v1.0.0)",
+         "changes": "n/a",
+         "path": "us/meds/STU1",
+         "status": "trial-use",
+         "sequence": "STU1"
+      },
+      {
+         "version": "n/a",
+         "date": "2016-12-06",
+         "desc": "1st Draft",
+         "changes": "n/a",
+         "path": "us/meds/2017Jan",
+         "status": "draft",
+         "sequence": "STU1"
+      }
+   ]
+}
