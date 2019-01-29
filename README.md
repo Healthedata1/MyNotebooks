@@ -2,4 +2,4 @@
 Python Notebooks to share
 
 - [Proof of Concept Using OperationDefinition to generate Observation instances](OD/obsdef.ipynb)
-- [Generate Quick Start, SearchParameters Pages and CapabilityStatement content from SearchParameter]()
+- [Create FHIRSTU3 SearchParameter Resource, CababilityStatement and Quick start text, and Searchparameter list. Using the Python FHIRClient Module and SearchParameter CSV file with source data.]()
