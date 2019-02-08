@@ -1,0 +1,27 @@
+code_0_code,asq3
+code_0_display,Ages and Stages Questionnaire (ASQ-3) 16 Month Questionnaire
+code_0_system,http://acme.org/codes
+contact_0_telecom_0_system,url
+contact_0_telecom_0_value,http://argonautwiki.hl7.org
+copyright,Ages &amp; Stages Questionnaires®, Third Edition (ASQ-3™), Squires &amp; Bricker © 2009 Paul H. Brookes Publishing Co. All rights reserved.
+date,2018-07-26
+id,questionnaire-example-asq3
+identifier_0_system,http://acme.org/q-identifiers
+identifier_0_value,business-identifier5
+jurisdiction_0_coding_0_code,US
+jurisdiction_0_coding_0_display,United States of America
+jurisdiction_0_coding_0_system,urn:iso:std:iso:3166
+meta_profile_0,http://fhir.org/guides/argonaut-questionnaire/StructureDefinition/q
+publisher,Argonaut Project
+resourceType,Questionnaire
+status,draft
+subjectType_0,Patient
+title,Ages and Stages Questionnaire (ASQ-3) Sample 16 Month Questionnaire
+url,http://fhir.org/guides/argonaut-questionnaire/Questionnaire/questionnaire-example-asq3
+useContext_0_code_code,task
+useContext_0_code_display,Workflow Task
+useContext_0_code_system,http://hl7.org/fhir/usage-context-type
+useContext_0_valueCodeableConcept_coding_0_code,example
+useContext_0_valueCodeableConcept_coding_0_display,Example of Use
+useContext_0_valueCodeableConcept_coding_0_system,http://acme.org
+version,0.0.0
