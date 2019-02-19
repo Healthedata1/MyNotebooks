@@ -1,0 +1,3 @@
+Resource,Conformance Server,Parameter,Exists,Type,Expression,ands,ors,Modifiers,Comparators,Reference,Chains,Description,Example Query,foo
+HealthcareService,SHALL,active,TRUE,token,HealthcareService.active,TRUE,TRUE,n/a,n/a,n/a,n/a,The Healthcare Service is currently marked as active,GET [base]/HealthcareService?active=[code],
+Questionnaire,SHALL,status,TRUE,token,Questionnaire.status,TRUE,TRUE,n/a,n/a,n/a,n/a,The current status of the questionnaire,GET [base]/Questionnaire?active=[code],
