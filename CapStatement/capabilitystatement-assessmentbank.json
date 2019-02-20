@@ -1,0 +1,310 @@
+{
+   "id": "assessmentbank",
+   "acceptUnknown": "both",
+   "contact": [
+      {
+         "telecom": [
+            {
+               "system": "url",
+               "value": "https://github.com/argonautproject/questionnaire/issues"
+            }
+         ]
+      }
+   ],
+   "date": "2019-02-19T17:27:44.433292Z",
+   "description": "This section outlines conformance requirements for the Argonaut Questionnaire Assessment-Bank Server which is responsible for storing Questionnaires and providing responses to the requests submitted by the  Form Author/Editor and Provider EHRs. The Argonaut Questionnaire Profile and the various interactions outlined in this guide are the RESTful artifacts and interactions that need to be supported. Note that the Argonaut Profiles identify the structural constraints, terminology bindings and invariants and the individual Argonaut SearchParameter resources define the definitions, comparators, modifiers and usage constraints.",
+   "experimental": false,
+   "fhirVersion": "3.0.1",
+   "format": [
+      "application/fhir+xml",
+      "application/fhir+json"
+   ],
+   "implementationGuide": [
+      "http://fhir.org/guides/argonaut-questionnaire/ImplementationGuide/ig",
+      "http://hl7.org/fhir/us/core/ImplementationGuide/ig"
+   ],
+   "jurisdiction": [
+      {
+         "coding": [
+            {
+               "code": "US",
+               "system": "urn:iso:std:iso:3166"
+            }
+         ]
+      }
+   ],
+   "kind": "requirements",
+   "name": "assessmentbank",
+   "patchFormat": [
+      "application/json-patch+json"
+   ],
+   "profile": [
+      {
+         "extension": [
+            {
+               "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+               "valueCode": "SHALL"
+            }
+         ],
+         "reference": "http://fhir.org/guides/argonaut-questionnaire/StructureDefinition/argo-questionnaire-valueset"
+      },
+      {
+         "extension": [
+            {
+               "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+               "valueCode": "SHALL"
+            }
+         ],
+         "reference": "http://fhir.org/guides/argonaut-questionnaire/StructureDefinition/argo-questionnaire"
+      },
+      {
+         "extension": [
+            {
+               "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+               "valueCode": "SHALL"
+            }
+         ],
+         "reference": "http://fhir.org/guides/argonaut-questionnaire/StructureDefinition/argo-questionnaireresponse"
+      },
+      {
+         "extension": [
+            {
+               "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+               "valueCode": "SHALL"
+            }
+         ],
+         "reference": "http://fhir.org/guides/argonaut-questionnaire/StructureDefinition/extension-multipleAnd"
+      },
+      {
+         "extension": [
+            {
+               "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+               "valueCode": "SHALL"
+            }
+         ],
+         "reference": "http://fhir.org/guides/argonaut-questionnaire/StructureDefinition/extension-multipleOr"
+      },
+      {
+         "extension": [
+            {
+               "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+               "valueCode": "SHALL"
+            }
+         ],
+         "reference": "http://fhir.org/guides/argonaut-questionnaire/StructureDefinition/extension-itemOrder"
+      },
+      {
+         "extension": [
+            {
+               "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+               "valueCode": "SHALL"
+            }
+         ],
+         "reference": "http://fhir.org/guides/argonaut-questionnaire/StructureDefinition/extension-responsePeriod"
+      },
+      {
+         "extension": [
+            {
+               "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+               "valueCode": "SHALL"
+            }
+         ],
+         "reference": "http://fhir.org/guides/argonaut-questionnaire/StructureDefinition/extension-timeLimit"
+      }
+   ],
+   "publisher": "The Argonaut Project",
+   "rest": [
+      {
+         "documentation": "The Argonaut questionnaire Assessment-Bank **SHALL**:\n\n1. Implement the RESTful behavior according to the FHIR specification including returning the appropriate response classes as described in the FHIR specification for [FHIR RESTful API](http://hl7.org/fhir/STU3/http.html).\n1. Support json resource formats for all Argonaut Questionnaire interactions.\n1. Declare a CapabilityStatement identifying the list of profiles, operations, search parameter supported.\n\nThe Argonaut questionnaire Assessment-Bank **SHOULD**:\n\n1. Support xml resource formats for all Argonaut questionnaire interactions.",
+         "mode": "server",
+         "resource": [
+            {
+               "extension": [
+                  {
+                     "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                     "valueCode": "SHALL"
+                  }
+               ],
+               "documentation": "\u2026todo\u2026",
+               "interaction": [
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHALL"
+                        }
+                     ],
+                     "code": "create"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHALL"
+                        }
+                     ],
+                     "code": "search-type"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHALL"
+                        }
+                     ],
+                     "code": "read"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHALL"
+                        }
+                     ],
+                     "code": "vread"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHOULD"
+                        }
+                     ],
+                     "code": "update"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "MAY"
+                        }
+                     ],
+                     "code": "patch"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHALL"
+                        }
+                     ],
+                     "code": "delete"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHALL"
+                        }
+                     ],
+                     "code": "history-instance"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "MAY"
+                        }
+                     ],
+                     "code": "history-type"
+                  }
+               ],
+               "readHistory": false,
+               "referencePolicy": [
+                  "resolves"
+               ],
+               "searchParam": [
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHALL"
+                        }
+                     ],
+                     "definition": "http://hl7.org/fhir/SearchParameter/Resource-_id",
+                     "name": "_id",
+                     "type": "token"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHALL"
+                        }
+                     ],
+                     "definition": "http://hl7.org/fhir/SearchParameter/Questionnaire-url",
+                     "name": "url",
+                     "type": "uri"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHALL"
+                        }
+                     ],
+                     "definition": "http://fhir.org/guides/argonaut-questionnaire/SearchParameter/Questionnaire-status",
+                     "name": "status",
+                     "type": "token"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHALL"
+                        }
+                     ],
+                     "definition": "http://fhir.org/guides/argonaut-questionnaire/SearchParameter/Questionnaire-title",
+                     "name": "title",
+                     "type": "string"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHALL"
+                        }
+                     ],
+                     "definition": "http://fhir.org/guides/argonaut-questionnaire/SearchParameter/Questionnaire-publisher",
+                     "name": "publisher",
+                     "type": "string"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHOULD"
+                        }
+                     ],
+                     "definition": "http://fhir.org/guides/argonaut-questionnaire/SearchParameter/Questionnaire-version",
+                     "name": "version",
+                     "type": "token"
+                  },
+                  {
+                     "extension": [
+                        {
+                           "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                           "valueCode": "SHOULD"
+                        }
+                     ],
+                     "definition": "http://fhir.org/guides/argonaut-questionnaire/SearchParameter/Questionnaire-context-type-value",
+                     "name": "context-type-value",
+                     "type": "composite"
+                  }
+               ],
+               "type": "Questionnaire",
+               "updateCreate": false,
+               "versioning": "versioned"
+            }
+         ],
+         "security": {
+            "description": "For general security consideration refer to the [Security and Privacy Considerations](https://argonautproject.github.io/questionnaire/index.html#security-and-privacy-considerations) in the US Core Implementation Guide.'"
+         }
+      }
+   ],
+   "status": "active",
+   "title": "Argonaut Assessmentbank CapabilityStatement",
+   "url": "http://fhir.org/guides/argonaut-questionnaire/assessmentbank",
+   "version": "0.0.0",
+   "resourceType": "CapabilityStatement"
+}
