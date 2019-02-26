@@ -59,7 +59,7 @@
 							{%- endfor %}
 							{%- for s in r.extension %}
 							{%- if s.url == "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination" %}
-							{%- for combo in s.extension -%}
+							{%- for combo in s.extension if combo.url == 'required' or combo.url == 'optional'-%}
 							{{ combo.valueString }}
 							{%- if not loop.last %}+{% endif %}
 							{%- endfor %}
@@ -79,13 +79,19 @@
 			{% for r in cs.rest[0].resource %}
 			<h4 class="no_toc" id="{{r.type | lower }}">{{r.type}}</h4>
 
-			{{ r.documentation | markdown | safe }}
-
 			<p>Supported Profiles:
 			{{ p_map[r.type] | join(', ')| markdown | safe  }}
 				</p>
 
-				<p>Profile Interaction Summary:</p>
+			{{ r.documentation | markdown | safe }}
+
+			{% if r.referencePolicy %}<p>Reference Policy: {% for rf in r.referencePolicy %}<code>{{rf}}</code>
+			{%- if not loop.last %}, {% endif %}{%- endfor %}</p>{% endif %}
+			{% if r.versioning %}<p>Versioning Policy: <code>{{r.versioning}}</code></p>{% endif %}
+			{% if r.readHistory %}<p>Server returns past versions as part of the vRead operation.</p>{% endif %}
+			{% if r.updateCreate %}<p>Server allows the client to create new identities on the server</p>{% endif %}
+
+			<p>Profile Interaction Summary:</p>
 				{% set ns = namespace(shall=false,should=false,may=false) %}
 				{%for i in r.interaction %}
     		{% if i.extension[0].valueCode == 'SHALL' %}
@@ -163,7 +169,7 @@
 						<td>
 							<code class="highlighter-rouge">GET [base]/{{r.type}}?{{s.name}}={%- if s.name == '_id' %}[id]
 																																						 {%- elif s.name == 'status' %}[status]
-																																						 {%- elif s.name == 'context-type-value' %}[code]&amp;[value]
+																																						 {%- elif s.name == 'context-type-value' %}[code]|[value]
 																																						 {%- elif s.type == 'uri' %}[uri]
 																																						 {%- elif s.type == 'string' %}[{{s.name}}]
 																																						 {%- elif s.type == 'token' %}[system]|[code]
@@ -174,6 +180,48 @@
 					{%- endfor %}
 				</tbody>
 			</table>
+
+
+			<p>Search Parameter Combination Summary:</p>
+			<table class="grid">
+				<thead>
+					<tr>
+						<th>Conformance</th>
+						<th>Parameter Combination</th>
+						<th>Example</th>
+					</tr>
+				</thead>
+				<tbody>
+					{%- for s in r.extension if s.url == "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination" %}
+					<tr>
+						<td>
+							{%- for combo in s.extension if combo.url == 'http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation'-%}
+							<strong>{{ combo.valueCode }}</strong>
+							{%- endfor %}
+						</td>
+						<td>
+							{%- for combo in s.extension if combo.url == 'required' or combo.url == 'optional'-%}
+							{{ combo.valueString }}
+							{%- if not loop.last %}+{% endif %}
+							{%- endfor %}
+						</td>
+						<td>
+							<code class="highlighter-rouge">GET [base]/{{r.type}}?
+								{%- for combo in s.extension if combo.url == 'required' or combo.url == 'optional'-%}
+																																							{{combo.valueString}}={%- if combo.valueString == '_id' %}[id]
+																																						 {%- elif combo.valueString == 'status' %}[status]
+																																						 {%- elif combo.valueString == 'context-type-value' %}[code]|[value]
+																																						 {%- elif combo.valueString == 'url' %}[uri]
+																																						 {%- else %}[{{combo.valueString}}]
+																																						 {%- endif %}{%- if not loop.last %}&amp;{%- endif %}
+								{%- endfor -%}
+							</code>
+						 </td>
+					</tr>
+					{%- endfor %}
+				</tbody>
+			</table>
+
 			{% endif %}
 			{% endfor %}
 			<br />
