@@ -25,9 +25,8 @@
 
 			{% if cs.rest[0].operation %}
 	<p><strong>Summary of Operations</strong></p>
-	<br />
 			{% for r in cs.rest[0].operation %}
-				<li><strong>{{r.extension[0].valueCode}}</strong> support the	<a href="#{{r.definition}}">{{r.name}}</a> operation.</li>
+				<li><strong>{{r.extension[0].valueCode}}</strong> support the	<a href="{{r.definition.reference}}"><code>${{r.name}}</code></a> operation.</li>
 			{% endfor %}
 			{% endif %}
 
@@ -169,7 +168,7 @@
 						<td>
 							<code class="highlighter-rouge">GET [base]/{{r.type}}?{{s.name}}={%- if s.name == '_id' %}[id]
 																																						 {%- elif s.name == 'status' %}[status]
-																																						 {%- elif s.name == 'context-type-value' %}[code]|[value]
+																																						 {%- elif s.type == 'composite' %}[code]&amp;[value]
 																																						 {%- elif s.type == 'uri' %}[uri]
 																																						 {%- elif s.type == 'string' %}[{{s.name}}]
 																																						 {%- elif s.type == 'token' %}[system]|[code]
@@ -192,28 +191,33 @@
 					</tr>
 				</thead>
 				<tbody>
-					{%- for s in r.extension if s.url == "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination" %}
+					{%- for combos in r.extension if combos.url == "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination" %}
 					<tr>
 						<td>
-							{%- for combo in s.extension if combo.url == 'http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation'-%}
+							{%- for combo in combos.extension if combo.url == 'http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation'-%}
 							<strong>{{ combo.valueCode }}</strong>
 							{%- endfor %}
 						</td>
 						<td>
-							{%- for combo in s.extension if combo.url == 'required' or combo.url == 'optional'-%}
+							{%- for combo in combos.extension if combo.url == 'required' or combo.url == 'optional'-%}
 							{{ combo.valueString }}
 							{%- if not loop.last %}+{% endif %}
 							{%- endfor %}
 						</td>
 						<td>
 							<code class="highlighter-rouge">GET [base]/{{r.type}}?
-								{%- for combo in s.extension if combo.url == 'required' or combo.url == 'optional'-%}
+								{%- for combo in combos.extension if combo.url == 'required' or combo.url == 'optional'-%}
+								{%- for s in r.searchParam if combo.valueString == s.name -%}
 																																							{{combo.valueString}}={%- if combo.valueString == '_id' %}[id]
-																																						 {%- elif combo.valueString == 'status' %}[status]
-																																						 {%- elif combo.valueString == 'context-type-value' %}[code]|[value]
-																																						 {%- elif combo.valueString == 'url' %}[uri]
-																																						 {%- else %}[{{combo.valueString}}]
-																																						 {%- endif %}{%- if not loop.last %}&amp;{%- endif %}
+																																							{%- elif s.name == 'status' %}[status]
+																																							{%- elif s.type == 'composite' %}[code]&amp;[value]
+																																							{%- elif s.type == 'uri' %}[uri]
+																																							{%- elif s.type == 'string' %}[{{s.name}}]
+																																							{%- elif s.type == 'token' %}[system]|[code]
+																																							{%- else %}[{{s.name}}]
+																																							{%- endif %}
+								{%- endfor -%}
+								{%- if not loop.last %}&amp;{%- endif %}
 								{%- endfor -%}
 							</code>
 						 </td>
