@@ -81,8 +81,7 @@
 			<p>Supported Profiles:
 			{{ p_map[r.type] | join(', ')| markdown | safe  }}
 				</p>
-
-			{{ r.documentation | markdown | safe }}
+			{% if r.documentation %}{{ r.documentation | markdown | safe }}{% endif %}
 
 			{% if r.referencePolicy %}<p>Reference Policy: {% for rf in r.referencePolicy %}<code>{{rf}}</code>
 			{%- if not loop.last %}, {% endif %}{%- endfor %}</p>{% endif %}
