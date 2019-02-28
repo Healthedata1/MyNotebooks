@@ -1,0 +1,12 @@
+﻿Resource,Conformance,Parameter,Exists,Update,Base,Type,Expression,ands,ors,Modifiers,Comparators,References,Chains,Description,Example Query,combo_pairs
+Binary,SHALL,_id,Y,N,Resource,token,Binary.id,N,N,n/a,n/a,n/a,n/a,n/a,n/a,
+DocumentReference,SHALL,_id,Y,N,Resource,token,DocumentReference.id,N,N,n/a,n/a,n/a,n/a,n/a,n/a,
+DocumentReference,SHALL,class,Y,N,DocumentReference,token,DocumentReference.class,Y,N,n/a,n/a,n/a,n/a,n/a,n/a,patient
+DocumentReference,SHALL,created,Y,N,DocumentReference,token,DocumentReference.created,Y,N,n/a,n/a,n/a,n/a,n/a,n/a,patient
+DocumentReference,SHALL,patient,Y,N,DocumentReference,reference,DocumentReference.patient,Y,N,n/a,n/a,n/a,n/a,n/a,n/a,
+DocumentReference,SHALL,type,Y,Y,DocumentReference,token,DocumentReference.type,Y,N,n/a,n/a,n/a,n/a,n/a,n/a,patient
+DiagnosticReport,SHALL,_id,Y,N,Resource,token,DiagnosticReport.id,N,N,n/a,n/a,n/a,n/a,n/a,n/a,
+DiagnosticReport,SHOULD,category,Y,N,DiagnosticReport,token,DiagnosticReport.category,Y,N,n/a,n/a,n/a,n/a,n/a,n/a,patient
+DiagnosticReport,SHALL,code,Y,N,DiagnosticReport,token,DiagnosticReport.code,Y,N,n/a,n/a,n/a,n/a,n/a,n/a,patient
+DiagnosticReport,SHALL,patient,Y,N,DiagnosticReport,reference,DiagnosticReport.patient,Y,N,n/a,n/a,n/a,n/a,n/a,n/a,
+DiagnosticReport,SHOULD,date,Y,N,DiagnosticReport,date,DiagnosticReport.date,Y,N,n/a,"le,ge",n/a,n/a,n/a,n/a,"patient,code,category"
