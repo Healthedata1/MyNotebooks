@@ -128,14 +128,14 @@
 			<ul>
 				{%for i in r.interaction if i.code == "read" %}
 				<li>
-					A server <strong>{{ i.extension[0].valueCode }}</strong> be capable of returning a {{r.type}} resource using:
+					A {{ cs.rest[0].mode | capitalize }} <strong>{{ i.extension[0].valueCode }}</strong> be capable of {% if cs.rest[0].mode == 'server' %}returning{% else %}fetching{% endif %} a {{r.type}} resource using:
 					<br />
 						<code class="highlighter-rouge">GET [base]/{{r.type}}/[id]</code>
 				</li><br />
 				{%endfor %}
 				{%if r.searchInclude %}
 				<li>
-					A server <strong>SHOULD</strong> be capable of supporting the returning the following _includes:
+					A {{ cs.rest[0].mode | capitalize }} <strong>SHOULD</strong> be capable of supporting the following _includes:
 					<br />
 					{% for include in r.searchInclude %}
 						{{include}} - <code class="highlighter-rouge">GET [base]/{{r.type}}?[parameter=value]&amp;_include={{include}}</code>
