@@ -1,0 +1,24 @@
+{
+   "resourceType": "MeasureReport",
+   "id": "67260024-a938-53c2-f085-472ab641ded9",
+   "meta": {
+      "versionId": "1",
+      "lastUpdated": "2018-12-11T00:30:19.000+00:00",
+      "profile": [
+         "http://hl7.org/fhir/us/davinci-deqm/STU3/StructureDefinition/measurereport-deqm"
+      ]
+   },
+   "status": "complete",
+   "type": "individual",
+   "measure": {
+      "reference": "https://ncqa.org/fhir/ig/Measure/measure-mrp"
+   },
+   "patient": {
+      "reference": "Patient/patient01"
+   },
+   "date": "2018-12-11T00:30:15.232Z",
+   "period": {
+      "start": "2018-12-11T00:30:15.232Z",
+      "end": "2018-12-11T00:30:15.232Z"
+   }
+}
