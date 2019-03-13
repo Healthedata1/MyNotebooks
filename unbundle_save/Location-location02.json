@@ -1,0 +1,21 @@
+{
+   "resourceType": "Location",
+   "id": "location02",
+   "meta": {
+      "versionId": "2",
+      "lastUpdated": "2019-03-11T22:31:44.000+00:00",
+      "profile": [
+         "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-location"
+      ]
+   },
+   "name": "DaVinciClinic02",
+   "address": {
+      "line": [
+         "21 W. Atlantic Street"
+      ],
+      "city": "Burlington",
+      "state": "NJ",
+      "postalCode": "08873",
+      "country": "USA"
+   }
+}

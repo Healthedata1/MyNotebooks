@@ -1,0 +1,47 @@
+{
+   "resourceType": "Encounter",
+   "id": "Encounter-62912",
+   "meta": {
+      "versionId": "18",
+      "lastUpdated": "2018-11-06T20:16:56.000+00:00",
+      "profile": [
+         "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+      ]
+   },
+   "status": "finished",
+   "class": {
+      "system": "http://hl7.org/fhir/v3/ActCode",
+      "code": "IMP",
+      "display": "inpatient encounter"
+   },
+   "type": [
+      {
+         "coding": [
+            {
+               "system": "http://snomed.info/sct",
+               "code": "56876005",
+               "display": "Drug rehabilitation and detoxification"
+            }
+         ]
+      }
+   ],
+   "subject": {
+      "reference": "Patient/Patient-2178",
+      "display": "Natalie Huff Walter"
+   },
+   "period": {
+      "start": "2018-05-29T11:00:00-04:00",
+      "end": "2018-05-29T11:00:00-04:00"
+   },
+   "hospitalization": {
+      "dischargeDisposition": {
+         "coding": [
+            {
+               "system": "http://hl7.org/fhir/discharge-disposition",
+               "code": "home",
+               "display": "Home"
+            }
+         ]
+      }
+   }
+}

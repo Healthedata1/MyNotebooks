@@ -1,0 +1,62 @@
+{
+   "resourceType": "Observation",
+   "id": "Observation-4123",
+   "meta": {
+      "versionId": "27",
+      "lastUpdated": "2018-11-06T17:52:27.000+00:00",
+      "profile": [
+         "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+      ]
+   },
+   "status": "final",
+   "category": [
+      {
+         "coding": [
+            {
+               "system": "http://hl7.org/fhir/observation-category",
+               "code": "vital-signs",
+               "display": "Vital Signs"
+            }
+         ]
+      }
+   ],
+   "code": {
+      "coding": [
+         {
+            "system": "http://loinc.org",
+            "code": "29463-7",
+            "display": "Body Weight"
+         },
+         {
+            "system": "http://loinc.org",
+            "code": "3141-9",
+            "display": "Body weight Measured"
+         },
+         {
+            "system": "http://snomed.info/sct",
+            "code": "27113001",
+            "display": "Body weight"
+         },
+         {
+            "system": "http://acme.org/devices/clinical-codes",
+            "code": "body-weight",
+            "display": "Body Weight"
+         }
+      ]
+   },
+   "subject": {
+      "reference": "Patient/Patient-2178"
+   },
+   "effectiveDateTime": "2017-12-31T00:00:00+00:00",
+   "performer": [
+      {
+         "reference": "Practitioner/Practitioner-76952"
+      }
+   ],
+   "valueQuantity": {
+      "value": 185,
+      "unit": "lbs",
+      "system": "http://unitsofmeasure.org",
+      "code": "[lb_av]"
+   }
+}

@@ -1,0 +1,12 @@
+{
+   "resourceType": "Location",
+   "id": "2636b2e2-7776-4f3b-b3c6-094c3ceb517c",
+   "meta": {
+      "versionId": "1",
+      "lastUpdated": "2018-09-22T18:30:45.000+00:00",
+      "profile": [
+         "http://hl7.org/fhir/us/core/StructureDefinition/us-core-location"
+      ]
+   },
+   "name": "Yellow building, second floor"
+}
