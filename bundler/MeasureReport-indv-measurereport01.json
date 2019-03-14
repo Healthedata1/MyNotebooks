@@ -14,7 +14,7 @@
         "reference": "Organization/organization02"
       }}
   ],
-  "id": "indv-measurereport02",
+  "id": "indv-measurereport01",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/us/davinci-deqm/STU3/StructureDefinition/indv-measurereport-deqm"
@@ -67,7 +67,7 @@
       {
         "url": "http://hl7.org/fhir/us/davinci-deqm/STU3/StructureDefinition/extension-referenceAny",
         "valueReference": {
-          "reference": "Observation/observation01"
+          "reference": "Task/Task01"
         }
       }
     ]
