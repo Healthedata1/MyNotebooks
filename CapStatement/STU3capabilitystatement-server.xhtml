@@ -15,6 +15,14 @@
 				<li>Published: {{cs.date.as_json()}}</li>
 				<li>Published by: {{cs.publisher}}</li>
 			</ul>
+
+			{% if cs.implementationGuide|length > 2 %}
+	    <h3 class="no_toc" id="igs">Implementation guides that SHOULD be supported:</h3>
+			{% for ig in cs.implementationGuide[1:] %}
+			<li>{{ig}}</li>
+			{% endfor %}
+			{% endif %}
+
 			<h3 id="behavior">FHIR RESTful Capabilities</h3>
 
 			{{ cs.rest[0].documentation | markdown | safe }}
