@@ -1,0 +1,77 @@
+## Sample Summary Markdown Template...
+
+### All Required Coded Elements:
+
+{% for i in elements %}
+1. **[{{i[0].path}}]({{i[2]}})** 
+   {%- if i[0].binding.strength == 'required' %}
+   - **{{i[0].binding.strength}}**
+   {%- else %}
+   - {{i[0].binding.strength}}
+   {%- endif %}
+  {%- if i[0].binding.extension %}
+    {%- for x in i[0].binding.extension if x.url == "http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet" %}
+   - max binding = true
+    {%- endfor %}
+  {%- endif %}
+   - {{i[0].binding.valueSet}}
+  {%- if i[1] %}
+     ({%- for j in i[1].expansion.contains -%}
+   {%- if j.code == 'unknown' %}
+     **{{ j.code }}**
+   {%- else %}
+     {{ j.code }}
+   {%- endif %}
+   {%- if not loop.last %}, {% endif %}
+    {%- endfor %})
+    {%- endif %}
+{#-
+  - label = {{i.label}}
+  - short = {{i.short}}
+  - min = {{i.min}}
+  - max = {{i.max}}
+  - {% if i.type %} type = {{i.type[0].code}}{% endif %}
+  - fixedCode = {{i.fixedCode}}
+  - fixedString = {{i.fixedString}}
+  - fixedUri = {{i.fixedUri}}
+-#}
+{% endfor %}
+
+### All Max Bindings for Required Coded Elements:
+
+{% for i in elements %}
+{%- if i[0].binding.extension %}
+{%- for x in i[0].binding.extension if x.url == "http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet" %}
+1. **[{{i[0].path}}]({{i[2]}})**  
+    - {{i[0].binding.valueSet}}
+  {%- if i[1] %}
+    ({%- for j in i[1].expansion.contains -%}
+   {%- if j.code == 'unknown' %}
+     **{{ j.code }}**
+   {%- else %}
+     {{ j.code }}
+   {%- endif %}
+   {%- if not loop.last %}, {% endif %}
+    {%- endfor %})
+    {%- endif %}
+    {%- endfor %}
+{%- endif %}
+{%- endfor %}
+
+
+### All Required Bindings for Required Coded Elements:
+
+{% for i in elements if i[0].binding.strength == 'required' %}
+1. **[{{i[0].path}}]({{i[2]}})**  
+    - {{i[0].binding.valueSet}}
+  {%- if i[1] %}
+    ({%- for j in i[1].expansion.contains -%}
+   {%- if j.code == 'unknown' %}
+     **{{ j.code }}**
+   {%- else %}
+     {{ j.code }}
+   {%- endif %}
+   {%- if not loop.last %}, {% endif %}
+    {%- endfor %})
+    {%- endif %}
+ {%- endfor %}
