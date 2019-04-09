@@ -1,0 +1,36 @@
+{
+    "resourceType": "Procedure",
+    "id": "aa9933aa-6769-457e-a9c2-dc6f9b7dce9d",
+    "status": "completed",
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "268556000",
+                "display": "Urine screening for glucose"
+            }
+        ],
+        "text": "Urine screening for glucose"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/cbf6a541-a8ff-4d2a-b619-fa683b65782b"
+    },
+    "performedPeriod": {
+        "start": "1997-12-27T14:47:28-05:00",
+        "end": "1997-12-27T15:02:28-05:00"
+    },
+    "reasonReference": [
+        {
+            "reference": "Condition/f999d351-d08d-496d-84d4-9ed54e8aa91a",
+            "display": "Normal pregnancy"
+        }
+    ],
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure"
+        ]
+    }
+}

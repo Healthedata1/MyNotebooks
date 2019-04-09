@@ -1,0 +1,46 @@
+{
+    "resourceType": "DiagnosticReport",
+    "id": "be5cd066-2625-45b9-8362-7f38f1e963ee",
+    "status": "final",
+    "code": {
+        "coding": [
+            {
+                "system": "http://loinc.org",
+                "code": "57698-3",
+                "display": "Lipid Panel"
+            }
+        ],
+        "text": "Lipid Panel"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/cc6cc4ba-0925-49ab-b81d-cdaa7400e566"
+    },
+    "effectiveDateTime": "1991-01-05T14:47:28-05:00",
+    "issued": "1991-01-05T14:47:28.652-05:00",
+    "result": [
+        {
+            "reference": "Observation/763afad8-beb7-4a47-a1de-d3bd9cf9bd96",
+            "display": "Total Cholesterol"
+        },
+        {
+            "reference": "Observation/f2f70215-133d-48ce-b15a-7b2c128ffed9",
+            "display": "Triglycerides"
+        },
+        {
+            "reference": "Observation/09fccaa2-a0d7-4924-aa87-b31e8a6718d4",
+            "display": "Low Density Lipoprotein Cholesterol"
+        },
+        {
+            "reference": "Observation/0ca6d3be-42ce-4b37-8e31-2ddafac2928b",
+            "display": "High Density Lipoprotein Cholesterol"
+        }
+    ],
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport"
+        ]
+    }
+}

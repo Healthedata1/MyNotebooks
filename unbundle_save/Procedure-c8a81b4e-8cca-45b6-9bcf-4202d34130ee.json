@@ -1,0 +1,36 @@
+{
+    "resourceType": "Procedure",
+    "id": "c8a81b4e-8cca-45b6-9bcf-4202d34130ee",
+    "status": "completed",
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "274804006",
+                "display": "Evaluation of uterine fundal height"
+            }
+        ],
+        "text": "Evaluation of uterine fundal height"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/bf581134-6522-4894-8b97-a8363da3fe0a"
+    },
+    "performedPeriod": {
+        "start": "1997-09-06T15:47:28-04:00",
+        "end": "1997-09-06T16:02:28-04:00"
+    },
+    "reasonReference": [
+        {
+            "reference": "Condition/f999d351-d08d-496d-84d4-9ed54e8aa91a",
+            "display": "Normal pregnancy"
+        }
+    ],
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure"
+        ]
+    }
+}

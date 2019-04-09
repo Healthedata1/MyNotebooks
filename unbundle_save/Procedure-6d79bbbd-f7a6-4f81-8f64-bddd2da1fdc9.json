@@ -1,0 +1,30 @@
+{
+    "resourceType": "Procedure",
+    "id": "6d79bbbd-f7a6-4f81-8f64-bddd2da1fdc9",
+    "status": "completed",
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "76601001",
+                "display": "Intramuscular injection"
+            }
+        ],
+        "text": "Intramuscular injection"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/3969f4c3-c23e-421d-b88b-6f2d538ceaf1"
+    },
+    "performedPeriod": {
+        "start": "1999-07-24T15:47:28-04:00",
+        "end": "1999-07-24T15:58:28-04:00"
+    },
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure"
+        ]
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "resourceType": "Immunization",
+    "id": "e916fd95-f698-4fa2-8b05-df23b97cd4ff",
+    "status": "completed",
+    "vaccineCode": {
+        "coding": [
+            {
+                "system": "http://hl7.org/fhir/sid/cvx",
+                "code": "113",
+                "display": "Td (adult) preservative free"
+            }
+        ],
+        "text": "Td (adult) preservative free"
+    },
+    "patient": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/cdfd02b2-95fb-471a-95fd-4a0d05d5282e"
+    },
+    "occurrenceDateTime": "1993-09-11T15:47:28-04:00",
+    "primarySource": true,
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization"
+        ]
+    }
+}

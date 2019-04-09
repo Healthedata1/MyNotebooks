@@ -1,0 +1,43 @@
+{
+    "resourceType": "Condition",
+    "id": "12488ebe-820f-4c70-ac79-8f553d846775",
+    "clinicalStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                "code": "active"
+            }
+        ]
+    },
+    "verificationStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                "code": "confirmed"
+            }
+        ]
+    },
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "15777000",
+                "display": "Prediabetes"
+            }
+        ],
+        "text": "Prediabetes"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/af729e9f-ab61-4300-8536-7ca1601b25e1"
+    },
+    "onsetDateTime": "1975-05-10T15:47:28-04:00",
+    "recordedDate": "1975-05-10T15:47:28-04:00",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-dondition"
+        ]
+    }
+}

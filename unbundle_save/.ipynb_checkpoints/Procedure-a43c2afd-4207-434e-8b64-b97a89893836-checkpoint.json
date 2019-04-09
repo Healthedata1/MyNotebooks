@@ -1,0 +1,31 @@
+{
+    "resourceType": "Procedure",
+    "id": "a43c2afd-4207-434e-8b64-b97a89893836",
+    "status": "completed",
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "104375008",
+                "display": "Hepatitis C antibody test"
+            }
+        ],
+        "text": "Hepatitis C antibody test"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/a29cf80e-f50f-4fd7-bf43-6f1f803875be"
+    },
+    "performedPeriod": {
+        "start": "1997-08-09T15:47:28-04:00",
+        "end": "1997-08-09T16:02:28-04:00"
+    },
+    "reasonReference": [
+        {
+            "reference": "Condition/f999d351-d08d-496d-84d4-9ed54e8aa91a",
+            "display": "Normal pregnancy"
+        }
+    ]
+}

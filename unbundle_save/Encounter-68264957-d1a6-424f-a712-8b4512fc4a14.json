@@ -1,0 +1,35 @@
+{
+    "resourceType": "Encounter",
+    "id": "68264957-d1a6-424f-a712-8b4512fc4a14",
+    "status": "finished",
+    "class": {
+        "code": "ambulatory"
+    },
+    "type": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "308646001",
+                    "display": "Death Certification"
+                }
+            ],
+            "text": "Death Certification"
+        }
+    ],
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "period": {
+        "start": "2000-10-21T15:47:28-04:00",
+        "end": "2000-10-21T16:02:28-04:00"
+    },
+    "serviceProvider": {
+        "reference": "Organization/3bd5eda0-16da-3ba5-8500-4dfd6ae118b8"
+    },
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"
+        ]
+    }
+}

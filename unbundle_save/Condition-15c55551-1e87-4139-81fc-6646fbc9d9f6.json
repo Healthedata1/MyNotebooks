@@ -1,0 +1,43 @@
+{
+    "resourceType": "Condition",
+    "id": "15c55551-1e87-4139-81fc-6646fbc9d9f6",
+    "clinicalStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                "code": "active"
+            }
+        ]
+    },
+    "verificationStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                "code": "confirmed"
+            }
+        ]
+    },
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "19169002",
+                "display": "Miscarriage in first trimester"
+            }
+        ],
+        "text": "Miscarriage in first trimester"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/c0c973b2-e137-47a9-935c-48259b655988"
+    },
+    "onsetDateTime": "1981-05-02T15:47:28-04:00",
+    "recordedDate": "1981-05-02T15:47:28-04:00",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-dondition"
+        ]
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "resourceType": "Procedure",
+    "id": "73f0390e-2236-45ed-a279-0a97f199fbe0",
+    "status": "completed",
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "399014008",
+                "display": "Vaccination for diphtheria, pertussis, and tetanus"
+            }
+        ],
+        "text": "Vaccination for diphtheria, pertussis, and tetanus"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/cbf6a541-a8ff-4d2a-b619-fa683b65782b"
+    },
+    "performedPeriod": {
+        "start": "1997-12-27T14:47:28-05:00",
+        "end": "1997-12-27T15:02:28-05:00"
+    },
+    "reasonReference": [
+        {
+            "reference": "Condition/f999d351-d08d-496d-84d4-9ed54e8aa91a",
+            "display": "Normal pregnancy"
+        }
+    ],
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure"
+        ]
+    }
+}

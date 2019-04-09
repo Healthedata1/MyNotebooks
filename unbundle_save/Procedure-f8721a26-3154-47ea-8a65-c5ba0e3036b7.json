@@ -1,0 +1,30 @@
+{
+    "resourceType": "Procedure",
+    "id": "f8721a26-3154-47ea-8a65-c5ba0e3036b7",
+    "status": "completed",
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "46706006",
+                "display": "Replacement of contraceptive intrauterine device"
+            }
+        ],
+        "text": "Replacement of contraceptive intrauterine device"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/d8893188-e4bf-47fa-86be-830b24bbcf88"
+    },
+    "performedPeriod": {
+        "start": "1994-03-05T14:47:28-05:00",
+        "end": "1994-03-05T15:38:28-05:00"
+    },
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure"
+        ]
+    }
+}

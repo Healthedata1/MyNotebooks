@@ -1,0 +1,43 @@
+{
+    "resourceType": "Condition",
+    "id": "1d41df9f-05ca-4051-9339-4b109d3a9acd",
+    "clinicalStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                "code": "active"
+            }
+        ]
+    },
+    "verificationStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                "code": "confirmed"
+            }
+        ]
+    },
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "429007001",
+                "display": "History of cardiac arrest (situation)"
+            }
+        ],
+        "text": "History of cardiac arrest (situation)"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/f234546c-4bd7-4ca4-8a15-7b3ef9dacf32"
+    },
+    "onsetDateTime": "2000-10-14T15:47:28-04:00",
+    "recordedDate": "2000-10-14T15:47:28-04:00",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-dondition"
+        ]
+    }
+}

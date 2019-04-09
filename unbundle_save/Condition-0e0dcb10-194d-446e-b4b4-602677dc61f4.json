@@ -1,0 +1,44 @@
+{
+    "resourceType": "Condition",
+    "id": "0e0dcb10-194d-446e-b4b4-602677dc61f4",
+    "clinicalStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                "code": "resolved"
+            }
+        ]
+    },
+    "verificationStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                "code": "confirmed"
+            }
+        ]
+    },
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "195662009",
+                "display": "Acute viral pharyngitis (disorder)"
+            }
+        ],
+        "text": "Acute viral pharyngitis (disorder)"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/273356f5-1f89-4483-b084-7b885f307ada"
+    },
+    "onsetDateTime": "1990-10-21T15:47:28-04:00",
+    "abatementDateTime": "1990-10-29T14:47:28-05:00",
+    "recordedDate": "1990-10-21T15:47:28-04:00",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-dondition"
+        ]
+    }
+}

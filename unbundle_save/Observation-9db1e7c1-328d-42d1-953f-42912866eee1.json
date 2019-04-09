@@ -1,0 +1,45 @@
+{
+    "resourceType": "Observation",
+    "id": "9db1e7c1-328d-42d1-953f-42912866eee1",
+    "status": "final",
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                    "code": "vital-signs",
+                    "display": "vital-signs"
+                }
+            ]
+        }
+    ],
+    "code": {
+        "coding": [
+            {
+                "system": "http://loinc.org",
+                "code": "8302-2",
+                "display": "Body Height"
+            }
+        ],
+        "text": "Body Height"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/f0513c58-a077-4ee0-a7bd-9be128a84cf7"
+    },
+    "effectiveDateTime": "1991-09-07T15:47:28-04:00",
+    "issued": "1991-09-07T15:47:28.652-04:00",
+    "valueQuantity": {
+        "value": 162.16579716927896,
+        "unit": "cm",
+        "system": "http://unitsofmeasure.org",
+        "code": "cm"
+    },
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/vitalsigns"
+        ]
+    }
+}

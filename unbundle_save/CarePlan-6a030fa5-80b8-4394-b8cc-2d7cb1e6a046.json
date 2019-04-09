@@ -1,0 +1,85 @@
+{
+    "resourceType": "CarePlan",
+    "id": "6a030fa5-80b8-4394-b8cc-2d7cb1e6a046",
+    "status": "completed",
+    "intent": "order",
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "134435003",
+                    "display": "Routine antenatal care"
+                }
+            ],
+            "text": "Routine antenatal care"
+        }
+    ],
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/a29cf80e-f50f-4fd7-bf43-6f1f803875be"
+    },
+    "period": {
+        "start": "1997-08-09T15:47:28-04:00",
+        "end": "1998-03-14T14:47:28-05:00"
+    },
+    "addresses": [
+        {
+            "reference": "Condition/f999d351-d08d-496d-84d4-9ed54e8aa91a"
+        }
+    ],
+    "activity": [
+        {
+            "detail": {
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "135892000",
+                            "display": "Antenatal education"
+                        }
+                    ],
+                    "text": "Antenatal education"
+                },
+                "status": "completed"
+            }
+        },
+        {
+            "detail": {
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "713076009",
+                            "display": "Antenatal risk assessment"
+                        }
+                    ],
+                    "text": "Antenatal risk assessment"
+                },
+                "status": "completed"
+            }
+        },
+        {
+            "detail": {
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "312404004",
+                            "display": "Antenatal blood tests"
+                        }
+                    ],
+                    "text": "Antenatal blood tests"
+                },
+                "status": "completed"
+            }
+        }
+    ],
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan"
+        ]
+    }
+}

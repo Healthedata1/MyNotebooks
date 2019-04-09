@@ -1,0 +1,31 @@
+{
+    "resourceType": "MedicationRequest",
+    "id": "debed8e1-a893-4715-a587-ecb9e7400740",
+    "status": "active",
+    "intent": "order",
+    "medicationCodeableConcept": {
+        "coding": [
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "749882",
+                "display": "Norinyl 1+50 28 Day Pack"
+            }
+        ],
+        "text": "Norinyl 1+50 28 Day Pack"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/980a4454-f671-477e-953a-3a67bfcefaaf"
+    },
+    "authoredOn": "2000-04-14T15:47:28-04:00",
+    "requester": {
+        "reference": "Practitioner/7a720384-0885-4bd7-8496-492f55ca5cc7"
+    },
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest"
+        ]
+    }
+}

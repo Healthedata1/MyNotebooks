@@ -1,0 +1,44 @@
+{
+    "resourceType": "Condition",
+    "id": "5ab0ff68-657f-4eda-942d-ae5628274eff",
+    "clinicalStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                "code": "resolved"
+            }
+        ]
+    },
+    "verificationStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                "code": "confirmed"
+            }
+        ]
+    },
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "444814009",
+                "display": "Viral sinusitis (disorder)"
+            }
+        ],
+        "text": "Viral sinusitis (disorder)"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/38f0df80-340e-4953-bb94-8029269b4487"
+    },
+    "onsetDateTime": "1997-10-11T15:47:28-04:00",
+    "abatementDateTime": "1997-10-18T15:47:28-04:00",
+    "recordedDate": "1997-10-11T15:47:28-04:00",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-dondition"
+        ]
+    }
+}

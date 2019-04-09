@@ -1,0 +1,45 @@
+{
+    "resourceType": "Observation",
+    "id": "4e0526c9-988c-4eff-8154-ff3bc69eff0d",
+    "status": "final",
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                    "code": "laboratory",
+                    "display": "laboratory"
+                }
+            ]
+        }
+    ],
+    "code": {
+        "coding": [
+            {
+                "system": "http://loinc.org",
+                "code": "38483-4",
+                "display": "Creatinine"
+            }
+        ],
+        "text": "Creatinine"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/cdfd02b2-95fb-471a-95fd-4a0d05d5282e"
+    },
+    "effectiveDateTime": "1993-09-11T15:47:28-04:00",
+    "issued": "1993-09-11T15:47:28.652-04:00",
+    "valueQuantity": {
+        "value": 1.1813028689544116,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org",
+        "code": "mg/dL"
+    },
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observationresults"
+        ]
+    }
+}

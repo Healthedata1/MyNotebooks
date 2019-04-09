@@ -1,0 +1,7 @@
+## Alphabetical List of search parameters urls by Type and code
+|Row|Type|code|url|
+|---|---|---|---|
+{% for i in sps -%}
+|{{loop.index}}.|{{ i[0] }}|`{{ i[1] }}`|{{ i[2] }}|
+{% endfor -%}
+ 

@@ -1,0 +1,62 @@
+{
+    "resourceType": "DiagnosticReport",
+    "id": "d28d7d52-9c9d-4ab6-b7f8-4a2e7332e41f",
+    "status": "final",
+    "code": {
+        "coding": [
+            {
+                "system": "http://loinc.org",
+                "code": "51990-0",
+                "display": "Basic Metabolic Panel"
+            }
+        ],
+        "text": "Basic Metabolic Panel"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/f0513c58-a077-4ee0-a7bd-9be128a84cf7"
+    },
+    "effectiveDateTime": "1991-09-07T15:47:28-04:00",
+    "issued": "1991-09-07T15:47:28.652-04:00",
+    "result": [
+        {
+            "reference": "Observation/de0e7c70-2392-4ddf-8e55-7fa35899cd56",
+            "display": "Glucose"
+        },
+        {
+            "reference": "Observation/d5762ac6-b661-47dd-90a2-bd01c052a65e",
+            "display": "Urea Nitrogen"
+        },
+        {
+            "reference": "Observation/9f28cb07-a4fe-45e5-9f76-577f0c733994",
+            "display": "Creatinine"
+        },
+        {
+            "reference": "Observation/b56f04bf-9291-4c50-8e53-4980b8110f7b",
+            "display": "Calcium"
+        },
+        {
+            "reference": "Observation/d7e516d5-a84e-4d33-ac4c-a8a1071d34dd",
+            "display": "Sodium"
+        },
+        {
+            "reference": "Observation/2997945d-4f82-42e0-8380-e98afb2a67f3",
+            "display": "Potassium"
+        },
+        {
+            "reference": "Observation/e1224806-927c-4e59-a538-80beb61f26d5",
+            "display": "Chloride"
+        },
+        {
+            "reference": "Observation/892e5217-6da2-4cef-bf3a-3fa6157635e2",
+            "display": "Carbon Dioxide"
+        }
+    ],
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport"
+        ]
+    }
+}

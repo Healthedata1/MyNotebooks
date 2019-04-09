@@ -1,0 +1,75 @@
+{#-
+### All Required Bindings for Coded Elements:
+
+{% for i in elements %}
+1. **[{{i[0].path}}]({{i[2]|replace("StructureDefinition-","")}})**
+    - {{i[0].min}}..{{i[0].max}}
+    - {{i[0].binding.valueSet}}
+  {%- if i[1] %}
+    ({%- for j in i[1].expansion.contains -%}
+   {%- if j.code == 'unknown' %}
+     **{{ j.code }}**
+   {%- else %}
+     {{ j.code }}
+   {%- endif %}
+   {%- if not loop.last %}, {% endif %}
+    {%- endfor %})
+    {%- endif %}
+ {%- endfor %}
+ 
+ 
+ 
+
+### All Required Bindings for Coded Elements with an 'other' or 'unknown' code:
+
+{%- for i in elements if i[3]%}
+1. **[{{i[0].path}}]({{i[2]|replace("StructureDefinition-","")}})**
+    - {{i[0].min}}..{{i[0].max}}
+    - {{i[0].binding.valueSet}}
+    - {{i[3]}}
+ {%- endfor %}
+ 
+ 
+ 
+ 
+### All Required Bindings for Coded Elements without an 'other' or 'unknown' code:
+ 
+
+{%- for i in elements if not i[3]%}
+1. **[{{i[0].path}}]({{i[2]|replace("StructureDefinition-","")}})**
+    - {{i[0].min}}..{{i[0].max}}
+    - {{i[0].binding.valueSet}}
+      {%- if i[1] %}
+    ({%- for j in i[1].expansion.contains -%}
+   {%- if j.code == 'unknown' %}
+     **{{ j.code }}**
+   {%- else %}
+     {{ j.code }}
+   {%- endif %}
+   {%- if not loop.last %}, {% endif %}
+    {%- endfor %})
+    {%- endif %}
+ {%- endfor %}
+ 
+-#}
+ 
+### All Required Status Bindings for Coded Elements without an 'other' or 'unknown' code:
+ 
+
+{%- for i in elements if not i[3] %}
+{%- if i[0].path.endswith('status') %}
+1. **[{{i[0].path}}]({{i[2]|replace("StructureDefinition-","")}})**
+    - {{i[0].min}}..{{i[0].max}}
+    - {{i[0].binding.valueSet}}
+      {%- if i[1] %}
+    ({%- for j in i[1].expansion.contains -%}
+   {%- if j.code == 'unknown' %}
+     **{{ j.code }}**
+   {%- else %}
+     {{ j.code }}
+   {%- endif %}
+   {%- if not loop.last %}, {% endif %}
+    {%- endfor %})
+    {%- endif %}
+  {%- endif %}   
+ {%- endfor %}

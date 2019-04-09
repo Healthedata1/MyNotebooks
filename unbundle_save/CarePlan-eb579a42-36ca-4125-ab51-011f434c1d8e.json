@@ -1,0 +1,86 @@
+{
+    "resourceType": "CarePlan",
+    "id": "eb579a42-36ca-4125-ab51-011f434c1d8e",
+    "status": "active",
+    "intent": "order",
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "698360004",
+                    "display": "Diabetes self management plan"
+                }
+            ],
+            "text": "Diabetes self management plan"
+        }
+    ],
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/af729e9f-ab61-4300-8536-7ca1601b25e1"
+    },
+    "period": {
+        "start": "1975-05-10T15:47:28-04:00"
+    },
+    "addresses": [
+        {
+            "reference": "Condition/12488ebe-820f-4c70-ac79-8f553d846775"
+        }
+    ],
+    "goal": [
+        {
+            "reference": "Goal/bb9f7d33-b0c4-4159-a939-aebcf61c7bba"
+        },
+        {
+            "reference": "Goal/5746e003-6d9c-477d-88ae-0ef30d09891a"
+        },
+        {
+            "reference": "Goal/2db5a192-213d-40e5-a46a-9d77c083e288"
+        },
+        {
+            "reference": "Goal/ed858521-9d90-471f-87ae-09f49a3f5251"
+        },
+        {
+            "reference": "Goal/a8aca83a-267f-4b9d-ae22-7ea4fb858929"
+        }
+    ],
+    "activity": [
+        {
+            "detail": {
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "160670007",
+                            "display": "Diabetic diet"
+                        }
+                    ],
+                    "text": "Diabetic diet"
+                },
+                "status": "in-progress"
+            }
+        },
+        {
+            "detail": {
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "229065009",
+                            "display": "Exercise therapy"
+                        }
+                    ],
+                    "text": "Exercise therapy"
+                },
+                "status": "in-progress"
+            }
+        }
+    ],
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan"
+        ]
+    }
+}

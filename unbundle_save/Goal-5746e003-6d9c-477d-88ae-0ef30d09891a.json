@@ -1,0 +1,24 @@
+{
+    "resourceType": "Goal",
+    "id": "5746e003-6d9c-477d-88ae-0ef30d09891a",
+    "lifecycleStatus": "accepted",
+    "achievementStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/goal-achievement",
+                "code": "in-progress"
+            }
+        ]
+    },
+    "description": {
+        "text": "Glucose [Mass/volume] in Blood < 108"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-goal"
+        ]
+    }
+}

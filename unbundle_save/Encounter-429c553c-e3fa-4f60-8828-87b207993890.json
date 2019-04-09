@@ -1,0 +1,53 @@
+{
+    "resourceType": "Encounter",
+    "id": "429c553c-e3fa-4f60-8828-87b207993890",
+    "status": "finished",
+    "class": {
+        "code": "ambulatory"
+    },
+    "type": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "424619006",
+                    "display": "Prenatal visit"
+                }
+            ],
+            "text": "Prenatal visit"
+        }
+    ],
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "participant": [
+        {
+            "individual": {
+                "reference": "Practitioner/7a720384-0885-4bd7-8496-492f55ca5cc7"
+            }
+        }
+    ],
+    "period": {
+        "start": "1998-01-24T14:47:28-05:00",
+        "end": "1998-01-24T15:32:28-05:00"
+    },
+    "reasonCode": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "72892002",
+                    "display": "Normal pregnancy"
+                }
+            ]
+        }
+    ],
+    "serviceProvider": {
+        "reference": "Organization/3bd5eda0-16da-3ba5-8500-4dfd6ae118b8"
+    },
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"
+        ]
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "resourceType": "Encounter",
+    "id": "4f0dc7ae-9c9b-46c0-a3b9-2fee022a19ed",
+    "status": "finished",
+    "class": {
+        "code": "emergency"
+    },
+    "type": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "183460006",
+                    "display": "Obstetric emergency hospital admission"
+                }
+            ],
+            "text": "Obstetric emergency hospital admission"
+        }
+    ],
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "participant": [
+        {
+            "individual": {
+                "reference": "Practitioner/7a720384-0885-4bd7-8496-492f55ca5cc7"
+            }
+        }
+    ],
+    "period": {
+        "start": "1998-03-14T14:47:28-05:00",
+        "end": "1998-03-14T16:17:28-05:00"
+    },
+    "reasonCode": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "72892002",
+                    "display": "Normal pregnancy"
+                }
+            ]
+        }
+    ],
+    "serviceProvider": {
+        "reference": "Organization/3bd5eda0-16da-3ba5-8500-4dfd6ae118b8"
+    },
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"
+        ]
+    }
+}

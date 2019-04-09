@@ -1,0 +1,42 @@
+{
+    "resourceType": "Encounter",
+    "id": "9495faa5-4dfc-4d02-bc6a-7c89e76f61f1",
+    "status": "finished",
+    "class": {
+        "code": "wellness"
+    },
+    "type": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "185349003",
+                    "display": "Encounter for check up (procedure)"
+                }
+            ],
+            "text": "Encounter for check up (procedure)"
+        }
+    ],
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "participant": [
+        {
+            "individual": {
+                "reference": "Practitioner/7a720384-0885-4bd7-8496-492f55ca5cc7"
+            }
+        }
+    ],
+    "period": {
+        "start": "1987-05-23T15:47:28-04:00",
+        "end": "1987-05-23T16:17:28-04:00"
+    },
+    "serviceProvider": {
+        "reference": "Organization/3bd5eda0-16da-3ba5-8500-4dfd6ae118b8"
+    },
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"
+        ]
+    }
+}

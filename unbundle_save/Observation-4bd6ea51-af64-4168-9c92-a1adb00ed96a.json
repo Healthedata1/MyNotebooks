@@ -1,0 +1,45 @@
+{
+    "resourceType": "Observation",
+    "id": "4bd6ea51-af64-4168-9c92-a1adb00ed96a",
+    "status": "final",
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                    "code": "laboratory",
+                    "display": "laboratory"
+                }
+            ]
+        }
+    ],
+    "code": {
+        "coding": [
+            {
+                "system": "http://loinc.org",
+                "code": "718-7",
+                "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+        ],
+        "text": "Hemoglobin [Mass/volume] in Blood"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/6e8ad728-371e-49cf-9508-ba5038b7254a"
+    },
+    "effectiveDateTime": "1997-09-20T15:47:28-04:00",
+    "issued": "1997-09-20T15:47:28.652-04:00",
+    "valueQuantity": {
+        "value": 12.785665638125145,
+        "unit": "g/dL",
+        "system": "http://unitsofmeasure.org",
+        "code": "g/dL"
+    },
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observationresults"
+        ]
+    }
+}

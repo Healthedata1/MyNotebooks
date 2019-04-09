@@ -1,0 +1,36 @@
+{
+    "resourceType": "Procedure",
+    "id": "a618d343-248a-493e-b32f-75a4e07e439b",
+    "status": "completed",
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "225158009",
+                "display": "Auscultation of the fetal heart"
+            }
+        ],
+        "text": "Auscultation of the fetal heart"
+    },
+    "subject": {
+        "reference": "Patient/42a853f4-73ea-4958-afb5-6809221ff231"
+    },
+    "encounter": {
+        "reference": "Encounter/429c553c-e3fa-4f60-8828-87b207993890"
+    },
+    "performedPeriod": {
+        "start": "1998-01-24T14:47:28-05:00",
+        "end": "1998-01-24T15:02:28-05:00"
+    },
+    "reasonReference": [
+        {
+            "reference": "Condition/f999d351-d08d-496d-84d4-9ed54e8aa91a",
+            "display": "Normal pregnancy"
+        }
+    ],
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure"
+        ]
+    }
+}
