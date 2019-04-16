@@ -2,29 +2,25 @@
 {%- if i.sliceName and i.type[0].code == 'Extension' %}[{{i.sliceName.title()}}]({{i.type[0].profile}}){% endif %}
 {%- endmacro -%}
 
-{%- macro article(i) -%}
-{%- if i.sliceName %}
-{%- if i.sliceName[0].lower() in ['a','e','i','o','u',] -%}
-An{% else %}A{% endif -%}
-{%- else -%}
-{%- if i.type[0].code[0].lower() in ['a','e','i','o','u',] -%}
-An{% else %}A{% endif -%}
-{%- endif -%}
+{%- macro article(word) -%}
+{%- if word.lower()[0] in ['a','e','i','o','u',] -%}
+an{% else %}a{% endif -%}
 {%- endmacro -%}
 
 {%- macro binding(i) -%}
-with a [{{i.binding.strength}}]({{bindings[i.binding.strength]}})
+with {{article(i.binding.strength)}} [{{i.binding.strength}}]({{bindings[i.binding.strength]}})
 {%- if i.binding.extension %}
 {%- for k in i.binding.extension if k.url =="http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet" -%}
  \+ [MaxValueSet](general-guidance.html#max-binding)
 {%- endfor %}
 {%- endif %}
- binding to [{{title_map[i.binding.valueSet]}}]({{i.binding.valueSet}})
+ binding to [{{title_map[i.binding.valueSet.split('|')[0]]}}]({{i.binding.valueSet}})
 {%- endmacro -%}
 
 {%- macro root_element(i) -%}
-{%- if i.max == '1' %} {{article(i)}} {{ext(i)}} {{i.type[0].code}} {% else %}One or more {{ext(i)}}{{i.type[0].code}}{{'es' if i.type[0].code.endswith('s') else 's'}} {% endif %} in `{{i.path}}`
+{%- if i.max == '1' %} {{article(reference_name(i)).title()}} {{reference_name(i)}}{{ext(i)}} {{type_name(i)}} {% else %}One or more {{reference_name(i)}}{{ext(i)}}{{type_name(i)}}{{'es' if type_name(i).endswith('s') else 's'}} {% endif %} in `{{i.path}}`
 {% if i.binding.strength %}{{ binding(i) }}{% endif %}
+{%- if i.path in constraints %} with the following constraints: *{{constraints[i.path] | join(', ') }}*{% endif %}
 {%- endmacro -%}
 
 {%- macro sub_element(i) -%}
@@ -32,44 +28,74 @@ which {% if i.min == 1 %}must {% else %}should {% endif %}have
 {%- if i.fixedUri %} a fixed `{{i.path}}` = `{{i.fixedUri}}`
 {%- elif i.fixedCode %} a fixed `{{i.path}}` = `{{i.fixedCode}}`
 {%- else %}
-{%- if i.max == '1' %} {{article(i).lower()}} {{ext(i)}} {{i.type[0].code}} value {% else %} one or more {{ext(i)}}{{i.type[0].code}} values {% endif %} in `{{i.path}}`
-{%- if i.binding.strength %}{{ binding(i) }}{% endif %}
+{%- if i.max == '1' %} {{article(reference_name(i))}} {{reference_name(i)}}{{ext(i)}} {{type_name(i)}} value {% else %} one or more {{reference_name(i)}}{{ext(i)}}{{type_name(i)}} values {% endif %} in `{{i.path}}`
+{% if i.binding.strength %}{{ binding(i) }}{% endif %}
 {%- endif %}
 {%- endmacro -%}
 
-{% set ns = namespace(mandatory=false) %}
+{%- macro reference_name(i) -%}
+{%- if i.type[0].code == 'Reference' %}
+{%-set r_name = i.path.split('.')[-1] -%}
+{{ 'Patient' if r_name == 'subject' else r_name.title() }}
+{%- endif %}
+{%- endmacro -%}
+
+{%- macro type_name(i) -%}
+{%-set r_name = i.path.split('.')[-1] -%}
+{{ r_name.title() if i.type[0].code == 'BackboneElement' else i.type[0].code }}
+{%- endmacro -%}
+
+{%- set ns = namespace(mandatory=false) %}
+{%- set ns = namespace(mustsupport=false) %}
+{%- set ns = namespace(constraint=false) %}
+
+## {{elements[0].path}}
+
+{%- for i in elements if i.min == 1 and i.path.count('.') == 1 %}
+{%- set ns.mandatory = true %}
+{%- endfor %}
+{%- if ns.mandatory %}
 ### Summary of the Mandatory Requirements
+{%- endif %}
 
 {% for i in elements %}
-
 {%- if i.min == 1 and i.path.count('.') == 1 %}
 {%- set ns.mandatory = true %}
-
 1. {{root_element(i)}}
-
 {%- elif ns.mandatory and i.path.count('.') > 1 %}
-    - {{sub_element(i)}}
-
+   - {{sub_element(i)}}
 {%- elif i.min == 0 and i.path.count('.') == 1 %}
 {%- set ns.mandatory = false %}
 {%- endif %}
-
 {%- endfor %}
 
-{% if ns.mandatory == false %}### Summary of the Must Support Requirements{% endif %}
-
-{% for i in elements %}
-
-{%- if i.min == 0 and i.path.count('.') == 1 %}
-{%- set ns.mandatory = false %}
-
-1. {{root_element(i)}}
-
-{%- elif not ns.mandatory and i.path.count('.') > 1 %}
-   - {{sub_element(i)}}
-
-{%- elif i.min == 1 and i.path.count('.') == 1 %}
-{%- set ns.mandatory = true %}
+{%- for i in elements if i.min == 0 and i.path.count('.') == 1 %}
+{%- set ns.mustsupport = true %}
+{%- endfor %}
+{%- if ns.mustsupport %}
+### Summary of the Must Support Requirements
 {%- endif %}
 
+{% for i in elements %}
+{%- if i.min == 0 and i.path.count('.') == 1 %}
+{%- set ns.mustsupport = true %}
+1. {{root_element(i)}}
+{%- elif ns.mustsupport and i.path.count('.') > 1 %}
+   - {{sub_element(i)}}
+{%- elif i.min == 1 and i.path.count('.') == 1 %}
+{%- set ns.mustsupport = false %}
+{%- endif %}
 {%- endfor %}
+
+{%- for i in constraints if i.split('.')[0] ==  elements[0].path %}
+{%- set ns.constraint=true %}
+{%- endfor %}
+{%- if ns.constraint %}
+### Summary of Constraints
+
+{%- for i in constraints if i.split('.')[0] ==  elements[0].path %}
+{%- for j in constraints[i] %}
+1. {{j}}
+{%- endfor %}
+{%- endfor %}
+{%- endif %}

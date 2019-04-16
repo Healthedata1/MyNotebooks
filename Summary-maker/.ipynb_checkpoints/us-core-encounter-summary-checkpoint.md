@@ -1,5 +1,3 @@
-## Encounter
-
 ### Summary of the Mandatory Requirements
 1.  A  code  in `Encounter.status`
 with a [required](http://hl7.org/fhir/R4/terminologies.html#required)
@@ -26,7 +24,7 @@ with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
 1. One or more CodeableConcepts  in `Encounter.reasonCode`
 with a [preferred](http://hl7.org/fhir/R4/terminologies.html#preferred)
  binding to [Encounter Reason Codes](http://hl7.org/fhir/ValueSet/encounter-reason)
-1. One or more Diagnosises  in `Encounter.diagnosis`
+1. One or more Diagnosiss  in `Encounter.diagnosis`
    - which must have a Condition Reference value  in `Encounter.diagnosis.condition`
    - which should have a  positiveInt value  in `Encounter.diagnosis.rank`
 1.  A  Hospitalization  in `Encounter.hospitalization`

@@ -9,3 +9,5 @@ with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)\+ [Ma
  binding to [US Core Procedure Codes](http://hl7.org/fhir/us/core/ValueSet/us-core-procedure-code)
 1.  A Patient Reference  in `Procedure.subject`
 1.  A  dateTime  in `Procedure.performed[x]`
+
+### Summary of Constraints

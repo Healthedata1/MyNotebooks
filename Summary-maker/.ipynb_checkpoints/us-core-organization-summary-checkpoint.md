@@ -21,5 +21,3 @@ with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
 
 ### Summary of Constraints
 1. The organization SHALL at least have a name or an identifier, and possibly more than one
-1. The telecom of an organization can never be of use &#39;home&#39;
-1. An address of an organization can never be of use &#39;home&#39;

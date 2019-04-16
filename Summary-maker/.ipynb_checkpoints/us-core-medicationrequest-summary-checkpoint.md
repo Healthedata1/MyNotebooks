@@ -10,7 +10,7 @@ with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
 1.  A Patient Reference  in `MedicationRequest.subject`
 1.  A  dateTime  in `MedicationRequest.authoredOn`
 1.  A Requester Reference  in `MedicationRequest.requester`
+   - which should have a  string value  in `MedicationRequest.dosageInstruction.text`
 
 ### Summary of the Must Support Requirements
 1. One or more Dosages  in `MedicationRequest.dosageInstruction`
-   - which should have a  string value  in `MedicationRequest.dosageInstruction.text`

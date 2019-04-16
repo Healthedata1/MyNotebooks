@@ -13,6 +13,14 @@ with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
    - which must have a  string value  in `Observation.valueQuantity.unit`
    - which must have a fixed `Observation.valueQuantity.system` = `http://unitsofmeasure.org`
    - which must have a fixed `Observation.valueQuantity.code` = `%`
+   - which should have one or more Coding values  in `Observation.code.coding`
+   - which must have a  Coding value  in `Observation.code.coding`
+   - which must have a fixed `Observation.code.coding.system` = `http://loinc.org`
+   - which must have a fixed `Observation.code.coding.code` = `77606-2`
+   - which must have a  decimal value  in `Observation.valueQuantity.value`
+   - which must have a  string value  in `Observation.valueQuantity.unit`
+   - which must have a fixed `Observation.valueQuantity.system` = `http://unitsofmeasure.org`
+   - which must have a fixed `Observation.valueQuantity.code` = `%`
 
 ### Summary of Constraints
 1. If Observation.code is the same as an Observation.component.code then the value element associated with the code SHALL NOT be present
