@@ -1,50 +1,37 @@
 {%- macro ext(i) -%}
-{%- if i.sliceName %}
-[{{i.sliceName.title()}}]({{i.type[0].profile}})
-{%- endif %}
+{%- if i.sliceName %}[{{i.sliceName.title()}}]({{i.type[0].profile}}){% endif %}
 {%- endmacro -%}
 
 {%- macro article(i) -%}
 {%- if i.sliceName %}
-{%- if i.sliceName[0].lower() in ['a','e','i','o','u',] %}
-An
-{%- else %}
-A
-{%- endif %}
-{%- else %}
-{%- if i.type[0].code[0].lower() in ['a','e','i','o','u',] %}
-An
-{%- else %}
-A
-{%- endif %}
-{%- endif %}
+{%- if i.sliceName[0].lower() in ['a','e','i','o','u',] -%}
+An{% else %}A{% endif -%}
+{%- else -%}
+{%- if i.type[0].code[0].lower() in ['a','e','i','o','u',] -%}
+An{% else %}A{% endif -%}
+{%- endif -%}
 {%- endmacro -%}
 
 {%- macro binding(i) -%}
 with a [{{i.binding.strength}}]({{bindings[i.binding.strength]}})
 {%- if i.binding.extension %}
-{%- for k in i.binding.extension if k.url =="http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet" %}
+{%- for k in i.binding.extension if k.url =="http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet" -%}
  \+ [MaxValueSet](general-guidance.html#max-binding)
 {%- endfor %}
 {%- endif %}
-binding to [{{title_map[i.binding.valueSet]}}]({{i.binding.valueSet}})
+ binding to [{{title_map[i.binding.valueSet]}}]({{i.binding.valueSet}})
 {%- endmacro -%}
 
-{% macro root_element(i) %}
-{% if i.max == '1' %}{{article(i)}} {{ext(i)}} {{i.type[0].code}} {% else %}One or more  {{ext(i)}} {{i.type[0].code}}{{'es' if i.type[0].code.endswith('s') else 's'}}{% endif %}
- in `{{i.path}}`
-{%- if i.binding.strength %}
-{{ binding(i) }}
-{%- endif %}
-{% endmacro %}
+{%- macro root_element(i) -%}
+{%- if i.max == '1' %} {{article(i)}} {{ext(i)}} {{i.type[0].code}} {% else %}One or more {{ext(i)}}{{i.type[0].code}}{{'es' if i.type[0].code.endswith('s') else 's'}} {% endif %} in `{{i.path}}`
+{% if i.binding.strength %}{{ binding(i) }}{% endif %}
+{%- endmacro -%}
 
-{% macro sub_element(i) %}
-which {% if i.min == 1 %}must {% else %}should {% endif %} have
-{%- if i.max == '1' %}{{article(i).lower()}}  {{ext(i)}} {{i.type[0].code}} value {% else %} one or more {{ext(i)}} {{i.type[0].code}} values {% endif -%} in `{{i.path}}`
-{%- if i.binding.strength %}
-{{ binding(i) }}
-{%- endif %}
-{% endmacro %}
+{%- macro sub_element(i) -%}
+which {% if i.min == 1 %}must {% else %}should {% endif %}have
+{%- if i.max == '1' %} {{article(i).lower()}} {{ext(i)}} {{i.type[0].code}} value {% else %} one or more {{ext(i)}}{{i.type[0].code}} values {% endif %} in `{{i.path}}`
+{% if i.binding.strength %}{{ binding(i) }}{% endif %}
+{%- endmacro -%}
 
 ## Sample Summary Markdown Template...
 {% set ns = namespace(mandatory=false) %}
