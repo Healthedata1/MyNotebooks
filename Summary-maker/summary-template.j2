@@ -1,0 +1,85 @@
+{%- macro ext(i) -%}
+{%- if i.sliceName %}
+[{{i.sliceName.title()}}]({{i.type[0].profile}})
+{%- endif %}
+{%- endmacro -%}
+
+{%- macro article(i) -%}
+{%- if i.sliceName %}
+{%- if i.sliceName[0].lower() in ['a','e','i','o','u',] %}
+An
+{%- else %}
+A
+{%- endif %}
+{%- else %}
+{%- if i.type[0].code[0].lower() in ['a','e','i','o','u',] %}
+An
+{%- else %}
+A
+{%- endif %}
+{%- endif %}
+{%- endmacro -%}
+
+{%- macro binding(i) -%}
+with a [{{i.binding.strength}}]({{bindings[i.binding.strength]}})
+{%- if i.binding.extension %}
+{%- for k in i.binding.extension if k.url =="http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet" %}
+ \+ [MaxValueSet](general-guidance.html#max-binding)
+{%- endfor %}
+{%- endif %}
+binding to [{{title_map[i.binding.valueSet]}}]({{i.binding.valueSet}})
+{%- endmacro -%}
+
+{% macro root_element(i) %}
+{% if i.max == '1' %}{{article(i)}} {{ext(i)}} {{i.type[0].code}} {% else %}One or more  {{ext(i)}} {{i.type[0].code}}{{'es' if i.type[0].code.endswith('s') else 's'}}{% endif %}
+ in `{{i.path}}`
+{%- if i.binding.strength %}
+{{ binding(i) }}
+{%- endif %}
+{% endmacro %}
+
+{% macro sub_element(i) %}
+which {% if i.min == 1 %}must {% else %}should {% endif %} have
+{%- if i.max == '1' %}{{article(i).lower()}}  {{ext(i)}} {{i.type[0].code}} value {% else %} one or more {{ext(i)}} {{i.type[0].code}} values {% endif -%} in `{{i.path}}`
+{%- if i.binding.strength %}
+{{ binding(i) }}
+{%- endif %}
+{% endmacro %}
+
+## Sample Summary Markdown Template...
+{% set ns = namespace(mandatory=false) %}
+### Summary of the Mandatory Requirements
+
+{% for i in elements %}
+
+{%- if i.min == 1 and i.path.count('.') == 1 %}
+{%- set ns.mandatory = true %}
+
+1. {{root_element(i)}}
+
+{%- elif ns.mandatory and i.path.count('.') > 1 %}
+    - {{sub_element(i)}}
+
+{%- elif i.min == 0 and i.path.count('.') == 1 %}
+{%- set ns.mandatory = false %}
+{%- endif %}
+
+{%- endfor %}
+
+### Summary of the Must Support Requirements
+
+{% for i in elements %}
+
+{%- if i.min == 0 and i.path.count('.') == 1 %}
+{%- set ns.mandatory = false %}
+
+1. {{root_element(i)}}
+
+{%- elif not ns.mandatory and i.path.count('.') > 1 %}
+   - {{sub_element(i)}}
+
+{%- elif i.min == 1 and i.path.count('.') == 1 %}
+{%- set ns.mandatory = true %}
+{%- endif %}
+
+{%- endfor %}
