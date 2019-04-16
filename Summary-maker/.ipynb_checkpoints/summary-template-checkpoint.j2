@@ -1,5 +1,5 @@
 {%- macro ext(i) -%}
-{%- if i.sliceName %}[{{i.sliceName.title()}}]({{i.type[0].profile}}){% endif %}
+{%- if i.sliceName and i.type[0].code == 'Extension' %}[{{i.sliceName.title()}}]({{i.type[0].profile}}){% endif %}
 {%- endmacro -%}
 
 {%- macro article(i) -%}
@@ -29,11 +29,14 @@ with a [{{i.binding.strength}}]({{bindings[i.binding.strength]}})
 
 {%- macro sub_element(i) -%}
 which {% if i.min == 1 %}must {% else %}should {% endif %}have
+{%- if i.fixedUri %} a fixed `{{i.path}}` = `{{i.fixedUri}}`
+{%- elif i.fixedCode %} a fixed `{{i.path}}` = `{{i.fixedCode}}`
+{%- else %}
 {%- if i.max == '1' %} {{article(i).lower()}} {{ext(i)}} {{i.type[0].code}} value {% else %} one or more {{ext(i)}}{{i.type[0].code}} values {% endif %} in `{{i.path}}`
-{% if i.binding.strength %}{{ binding(i) }}{% endif %}
+{%- if i.binding.strength %}{{ binding(i) }}{% endif %}
+{%- endif %}
 {%- endmacro -%}
 
-## Sample Summary Markdown Template...
 {% set ns = namespace(mandatory=false) %}
 ### Summary of the Mandatory Requirements
 
@@ -53,7 +56,7 @@ which {% if i.min == 1 %}must {% else %}should {% endif %}have
 
 {%- endfor %}
 
-### Summary of the Must Support Requirements
+{% if ns.mandatory == false %}### Summary of the Must Support Requirements{% endif %}
 
 {% for i in elements %}
 
