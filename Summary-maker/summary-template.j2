@@ -1,14 +1,26 @@
 {%- macro ext(i) -%}
-{%- if i.sliceName and i.type[0].code == 'Extension' %}[{{i.sliceName.title()}}]({{i.type[0].profile}}){% endif %}
+{%- if i.sliceName and i.type[0].code == 'Extension' %}
+[{{i.sliceName.title()}}]({{i.type[0].profile}})
+{%- endif %}
 {%- endmacro -%}
 
-{%- macro article(word) -%}
-{%- if word.lower()[0] in ['a','e','i','o','u',] -%}
+{%- macro first_letter(i) -%}
+{%- if i.sliceName and i.type[0].code == 'Extension' -%}
+{{i.sliceName[0]}}
+{%- elif reference_name(i) -%}
+{{reference_name(i)[0]}}
+{%- else  -%}
+{{type_name(i)[0]}}
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro article(letter) -%}
+{%- if letter in ['a','e','i','o','u',] -%}
 an{% else %}a{% endif -%}
 {%- endmacro -%}
 
 {%- macro binding(i) -%}
-with {{article(i.binding.strength)}} [{{i.binding.strength}}]({{bindings[i.binding.strength]}})
+with {{article(i.binding.strength[0])}} [{{i.binding.strength}}]({{bindings[i.binding.strength]}})
 {%- if i.binding.extension %}
 {%- for k in i.binding.extension if k.url =="http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet" -%}
  \+ [MaxValueSet](general-guidance.html#max-binding)
@@ -18,7 +30,7 @@ with {{article(i.binding.strength)}} [{{i.binding.strength}}]({{bindings[i.bindi
 {%- endmacro -%}
 
 {%- macro root_element(i) -%}
-{%- if i.max == '1' %} {{article(reference_name(i)).title()}} {{reference_name(i)}}{{ext(i)}} {{type_name(i)}} {% else %}One or more {{reference_name(i)}}{{ext(i)}}{{type_name(i)}}{{'es' if type_name(i).endswith('s') else 's'}} {% endif %} in `{{i.path}}`
+{%- if i.max == '1' %} {{article(first_letter(i)).title()}} {{reference_name(i)}}{{ext(i)}} {{type_name(i)}} {% else %}One or more {{reference_name(i)}}{{ext(i)}} {{type_name(i)}}{{'es' if type_name(i).endswith('s') else 's'}} {% endif %} in `{{i.path}}`
 {% if i.binding.strength %}{{ binding(i) }}{% endif %}
 {%- if i.path in constraints %} with the following constraints: *{{constraints[i.path] | join(', ') }}*{% endif %}
 {%- endmacro -%}
@@ -28,7 +40,7 @@ which {% if i.min == 1 %}must {% else %}should {% endif %}have
 {%- if i.fixedUri %} a fixed `{{i.path}}` = `{{i.fixedUri}}`
 {%- elif i.fixedCode %} a fixed `{{i.path}}` = `{{i.fixedCode}}`
 {%- else %}
-{%- if i.max == '1' %} {{article(reference_name(i))}} {{reference_name(i)}}{{ext(i)}} {{type_name(i)}} value {% else %} one or more {{reference_name(i)}}{{ext(i)}}{{type_name(i)}} values {% endif %} in `{{i.path}}`
+{%- if i.max == '1' %} {{article(first_letter(i))}} {{reference_name(i)}}{{ext(i)}} {{type_name(i)}} value {% else %} one or more {{reference_name(i)}}{{ext(i)}} {{type_name(i)}} values {% endif %} in `{{i.path}}`
 {% if i.binding.strength %}{{ binding(i) }}{% endif %}
 {%- endif %}
 {%- endmacro -%}

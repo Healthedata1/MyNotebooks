@@ -1,7 +1,7 @@
 ## Condition
 
 ### Summary of the Mandatory Requirements
-1. One or more CodeableConcepts  in `Condition.category`
+1. One or more  CodeableConcepts  in `Condition.category`
 with a [preferred](http://hl7.org/fhir/R4/terminologies.html#preferred)
  binding to [US Core Condition Category Codes](http://hl7.org/fhir/us/core/ValueSet/us-core-condition-category)
 1.  A  CodeableConcept  in `Condition.code`

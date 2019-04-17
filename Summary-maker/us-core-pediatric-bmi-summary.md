@@ -4,7 +4,7 @@
 1.  A  CodeableConcept  in `Observation.code`
 with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
  binding to [Vital Signs](http://hl7.org/fhir/ValueSet/observation-vitalsignresult)
-   - which must have one or more Coding values  in `Observation.code.coding`
+   - which must have one or more  Coding values  in `Observation.code.coding`
    - which must have a  Coding value  in `Observation.code.coding`
    - which must have a fixed `Observation.code.coding.system` = `http://loinc.org`
    - which must have a fixed `Observation.code.coding.code` = `59576-9`
@@ -18,7 +18,3 @@ with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
 1. If Observation.code is the same as an Observation.component.code then the value element associated with the code SHALL NOT be present
 1. dataAbsentReason SHALL only be present if Observation.value[x] is not present
 1. If there is no component or hasMember element then either a value[x] or a data absent reason must be present.
-1. Must have a category of &#39;laboratory&#39; and a code system &#39;http://hl7.org/fhir/observation-category&#39;
-1. Datetime must be at least to day.
-1. SHOULD use Snomed CT for coded Results
-1. SHALL use UCUM for coded quantity units.

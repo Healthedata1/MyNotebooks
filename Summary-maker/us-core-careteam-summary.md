@@ -2,7 +2,7 @@
 
 ### Summary of the Mandatory Requirements
 1.  A Patient Reference  in `CareTeam.subject`
-1. One or more Participants  in `CareTeam.participant`
+1. One or more  Participants  in `CareTeam.participant`
  with the following constraints: *CareTeam.participant.onBehalfOf can only be populated when CareTeam.participant.member is a Practitioner*
    - which must have a  CodeableConcept value  in `CareTeam.participant.role`
 with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)\+ [MaxValueSet](general-guidance.html#max-binding)

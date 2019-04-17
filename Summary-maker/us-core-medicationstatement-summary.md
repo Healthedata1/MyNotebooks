@@ -12,4 +12,4 @@ with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
 
 ### Summary of the Must Support Requirements
 1.  A  dateTime  in `MedicationStatement.effective[x]`
-1. One or more DerivedfromReferences  in `MedicationStatement.derivedFrom`
+1. One or more Derivedfrom References  in `MedicationStatement.derivedFrom`

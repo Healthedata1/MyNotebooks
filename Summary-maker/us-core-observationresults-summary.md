@@ -4,7 +4,7 @@
 1.  A  code  in `Observation.status`
 with a [required](http://hl7.org/fhir/R4/terminologies.html#required)
  binding to [ObservationStatus](http://hl7.org/fhir/ValueSet/observation-status)
-1. One or more CodeableConcepts  in `Observation.category`
+1. One or more  CodeableConcepts  in `Observation.category`
 with a [preferred](http://hl7.org/fhir/R4/terminologies.html#preferred)
  binding to [Observation Category Codes](http://hl7.org/fhir/ValueSet/observation-category) with the following constraints: *Must have a category of &#39;laboratory&#39; and a code system &#39;http://hl7.org/fhir/observation-category&#39;*
 1.  A  CodeableConcept  in `Observation.code`

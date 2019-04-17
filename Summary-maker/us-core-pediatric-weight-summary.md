@@ -4,7 +4,7 @@
 1.  A  CodeableConcept  in `Observation.code`
 with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
  binding to [Vital Signs](http://hl7.org/fhir/ValueSet/observation-vitalsignresult)
-   - which should have one or more Coding values  in `Observation.code.coding`
+   - which should have one or more  Coding values  in `Observation.code.coding`
    - which must have a  Coding value  in `Observation.code.coding`
    - which must have a fixed `Observation.code.coding.system` = `http://loinc.org`
    - which must have a fixed `Observation.code.coding.code` = `77606-2`
