@@ -1,6 +1,6 @@
-## Device
+**Device**
 
-### Summary of the Mandatory Requirements
+#### Summary of the Mandatory Requirements
 1.  A  Udicarrier  in `Device.udiCarrier`
    - which should have a  base64Binary value  in `Device.udiCarrier.carrierAIDC`
    - which should have a  string value  in `Device.udiCarrier.carrierHRF`

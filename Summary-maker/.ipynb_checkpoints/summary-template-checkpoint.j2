@@ -1,6 +1,10 @@
 {%- macro ext(i) -%}
 {%- if i.sliceName and i.type[0].code == 'Extension' %}
-[{{i.sliceName.title()}}]({{i.type[0].profile}})
+{%- if i.type[0].profile -%}
+[{{i.sliceName.title()}}]({{path_map[i.type[0].profile[0]]|default(i.type[0].profile[0])}})
+{%- else -%}
+*{{i.sliceName.title()}}*
+{%- endif %}
 {%- endif %}
 {%- endmacro -%}
 
@@ -26,7 +30,7 @@ with {{article(i.binding.strength[0])}} [{{i.binding.strength}}]({{bindings[i.bi
  \+ [MaxValueSet](general-guidance.html#max-binding)
 {%- endfor %}
 {%- endif %}
- binding to [{{title_map[i.binding.valueSet.split('|')[0]]}}]({{i.binding.valueSet}})
+ binding to [{{title_map[i.binding.valueSet.split('|')[0]]}}]({{path_map[i.binding.valueSet]|default(i.binding.valueSet)}})
 {%- endmacro -%}
 
 {%- macro root_element(i) -%}
@@ -61,13 +65,13 @@ which {% if i.min == 1 %}must {% else %}should {% endif %}have
 {%- set ns = namespace(mustsupport=false) %}
 {%- set ns = namespace(constraint=false) %}
 
-## {{elements[0].path}}
+**{{elements[0].path}}**
 
 {%- for i in elements if i.min == 1 and i.path.count('.') == 1 %}
 {%- set ns.mandatory = true %}
 {%- endfor %}
 {%- if ns.mandatory %}
-### Summary of the Mandatory Requirements
+#### Summary of the Mandatory Requirements
 {%- endif %}
 
 {% for i in elements %}
@@ -85,7 +89,7 @@ which {% if i.min == 1 %}must {% else %}should {% endif %}have
 {%- set ns.mustsupport = true %}
 {%- endfor %}
 {%- if ns.mustsupport %}
-### Summary of the Must Support Requirements
+#### Summary of the Must Support Requirements
 {%- endif %}
 
 {% for i in elements %}
@@ -103,7 +107,7 @@ which {% if i.min == 1 %}must {% else %}should {% endif %}have
 {%- set ns.constraint=true %}
 {%- endfor %}
 {%- if ns.constraint %}
-### Summary of Constraints
+#### Summary of Constraints
 
 {%- for i in constraints if i.split('.')[0] ==  elements[0].path %}
 {%- for j in constraints[i] %}

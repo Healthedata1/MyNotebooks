@@ -1,15 +1,15 @@
-## DocumentReference
+**DocumentReference**
 
-### Summary of the Mandatory Requirements
+#### Summary of the Mandatory Requirements
 1.  A  code  in `DocumentReference.status`
 with a [required](http://hl7.org/fhir/R4/terminologies.html#required)
  binding to [DocumentReferenceStatus](http://hl7.org/fhir/ValueSet/document-reference-status)
 1.  A  CodeableConcept  in `DocumentReference.type`
 with a [required](http://hl7.org/fhir/R4/terminologies.html#required)
- binding to [US Core DocumentReference Type Value Set](http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-type)
+ binding to [US Core DocumentReference Type Value Set](ValueSet-us-core-documentreference-type.html)
 1. One or more  CodeableConcepts  in `DocumentReference.category`
 with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
- binding to [US Core DocumentReference Category Value Set](http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-category)
+ binding to [US Core DocumentReference Category Value Set](ValueSet-us-core-documentreference-category.html)
 1.  A Patient Reference  in `DocumentReference.subject`
 1.  A  Content  in `DocumentReference.content`
    - which must have a  Attachment value  in `DocumentReference.content.attachment`
@@ -22,7 +22,7 @@ with a [required](http://hl7.org/fhir/R4/terminologies.html#required)
 with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
  binding to [DocumentReference Format Code Set](http://hl7.org/fhir/ValueSet/formatcodes)
 
-### Summary of the Must Support Requirements
+#### Summary of the Must Support Requirements
 1.  A  Identifier  in `DocumentReference.identifier`
 1.  An  instant  in `DocumentReference.date`
 1. One or more Author References  in `DocumentReference.author`
@@ -30,5 +30,5 @@ with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
 1.  A  Context  in `DocumentReference.context`
    - which should have a Encounter Reference value  in `DocumentReference.context.encounter`
 
-### Summary of Constraints
-1. There shall be a url referencing the data or inline content.
+#### Summary of Constraints
+1. DocumentReference.content.attachment.url or  DocumentReference.content.attachment.data or both SHALL be present.

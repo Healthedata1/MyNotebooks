@@ -1,15 +1,15 @@
-## Condition
+**Condition**
 
-### Summary of the Mandatory Requirements
+#### Summary of the Mandatory Requirements
 1. One or more  CodeableConcepts  in `Condition.category`
 with a [preferred](http://hl7.org/fhir/R4/terminologies.html#preferred)
- binding to [US Core Condition Category Codes](http://hl7.org/fhir/us/core/ValueSet/us-core-condition-category)
+ binding to [US Core Condition Category Codes](ValueSet-us-core-condition-category.html)
 1.  A  CodeableConcept  in `Condition.code`
 with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
- binding to [Problem Value Set](http://hl7.org/fhir/us/core/ValueSet/us-core-problem)
+ binding to [Problem Value Set](ValueSet-us-core-problem.html)
 1.  A Patient Reference  in `Condition.subject`
 
-### Summary of the Must Support Requirements
+#### Summary of the Must Support Requirements
 1.  A  CodeableConcept  in `Condition.clinicalStatus`
 with a [required](http://hl7.org/fhir/R4/terminologies.html#required)
  binding to [Condition Clinical Status Codes](http://hl7.org/fhir/ValueSet/condition-clinical)
@@ -17,7 +17,7 @@ with a [required](http://hl7.org/fhir/R4/terminologies.html#required)
 with a [required](http://hl7.org/fhir/R4/terminologies.html#required)
  binding to [ConditionVerificationStatus](http://hl7.org/fhir/ValueSet/condition-ver-status)
 
-### Summary of Constraints
+#### Summary of Constraints
 1. Condition.clinicalStatus SHALL NOT be present if verification Status is entered-in-error
 1. If condition is abated, then clinicalStatus must be either inactive, resolved, or remission
 1. Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error and category is problem-list-item

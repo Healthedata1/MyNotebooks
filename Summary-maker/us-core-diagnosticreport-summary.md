@@ -1,6 +1,6 @@
-## DiagnosticReport
+**DiagnosticReport**
 
-### Summary of the Mandatory Requirements
+#### Summary of the Mandatory Requirements
 1.  A  code  in `DiagnosticReport.status`
 with a [required](http://hl7.org/fhir/R4/terminologies.html#required)
  binding to [DiagnosticReportStatus](http://hl7.org/fhir/ValueSet/diagnostic-report-status)
@@ -14,7 +14,7 @@ with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
 1.  A  dateTime  in `DiagnosticReport.effective[x]`
 1.  An  instant  in `DiagnosticReport.issued`
 
-### Summary of the Must Support Requirements
+#### Summary of the Must Support Requirements
 1. One or more Performer References  in `DiagnosticReport.performer`
 1. One or more Result References  in `DiagnosticReport.result`
 1. One or more  Medias  in `DiagnosticReport.media`

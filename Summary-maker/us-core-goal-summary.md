@@ -1,6 +1,6 @@
-## Goal
+**Goal**
 
-### Summary of the Mandatory Requirements
+#### Summary of the Mandatory Requirements
 1.  A  code  in `Goal.lifecycleStatus`
 with a [required](http://hl7.org/fhir/R4/terminologies.html#required)
  binding to [GoalLifecycleStatus](http://hl7.org/fhir/ValueSet/goal-status)

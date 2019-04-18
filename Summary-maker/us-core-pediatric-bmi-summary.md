@@ -1,6 +1,6 @@
-## Observation
+**Observation**
 
-### Summary of the Mandatory Requirements
+#### Summary of the Mandatory Requirements
 1.  A  CodeableConcept  in `Observation.code`
 with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
  binding to [Vital Signs](http://hl7.org/fhir/ValueSet/observation-vitalsignresult)
@@ -14,7 +14,7 @@ with an [extensible](http://hl7.org/fhir/R4/terminologies.html#extensible)
    - which must have a fixed `Observation.valueQuantity.system` = `http://unitsofmeasure.org`
    - which must have a fixed `Observation.valueQuantity.code` = `%`
 
-### Summary of Constraints
+#### Summary of Constraints
 1. If Observation.code is the same as an Observation.component.code then the value element associated with the code SHALL NOT be present
 1. dataAbsentReason SHALL only be present if Observation.value[x] is not present
 1. If there is no component or hasMember element then either a value[x] or a data absent reason must be present.
