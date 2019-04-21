@@ -3,36 +3,74 @@ Below is an overview of the required set of RESTful FHIR interactions - for
 example, search and read operations - for this profile. See the [Conformance requirements]
 for a complete list of supported RESTful interactions for this IG.
 
-#### Supported Searches
-{%- for sp in sp_bytype %}
-1. **{{sp.conformance}}** support search by the **`{{sp.code}}`** parameter:
-  `GET [base]/{{sp.base[0]}}?{{sp.code}}={{search_type[sp.type]}}`
-    {% if sp.target %}
-    - for reference target types: `{{ sp.target | join('`, `')}}`
-    {%- endif %}
-    {%- if sp.chain %}
-    - with support for these [chained search parameters]:
-      {%- for i in sp.target -%}
-        {%- for j in sp.chain -%}
-        `{{sp.code}}:{{i}}.{{j}}`
-          {%- if not loop.last %}, {% endif %}
-        {%- endfor %}
-      {%- endfor %}
-    {% endif %}
-    {%- if sp.modifier %}
-    - with support for these [search modifiers]: `{{ sp.modifier | join('`, `') }}`
-    {% endif %}
-    {%- if sp.comparator %}
-    - with support for these []search comparators: `{{ sp.comparator | join('`, `')}}`
-    {% endif %}
-    {%- if sp.multipleOr %}
-    - with support for [*OR* searching]
-    {% endif %}
-    {%- if sp.multipleAnd %}
-    - with support for [*AND* searching]
-    {% endif %}
-  *Implementation Notes:* {{sp.description}}. ([how to search by {{sp.type}}]).
-  <br />
-  {% endfor %}
+#### Mandatory Search Parameters:
+
+The following search parameters including the mandatory [modifiers](#.html), [comparators](#.html) and [chained parameters](#.html) SHALL be supported. The optional [modifiers](#.html), [comparators](#.html) and [chained parameters](#.html) listed below SHOULD be supported.:
+{%- set ns = namespace(shall=false) %}
+{%- set ns = namespace(should=false) %}
+{% for i in sp  if i.base_conf == "SHALL" %}
+{%- set p = i.base %}
+{%- set nulls = [None,'','n/a'] %}
+1. **{{i.base_conf}}** support the **`{{i.code}}`** search parameter:
+
+  `GET [base]/{{i.base}}?{{i.code}}={{search_type[i.type]}}`
+  - {{p}}
+  - CONF = {{i.base_conf}}
+  - parameter = {{i.code}}
+  - type = {{i.type}}
+{%- if i.modifier not in nulls %}
+{%- set x = (i.modifier.split(','),i.modifier_conf.split(',')) %}
+{%- if 'SHALL in '%}
+{%- for j in i.modifier_conf.split(',') if j == "SHALL" -%}{%- set ns.shall = true -%}{%- endfor -%}
+{%- if ns.shall %}
+{%- set x = (i.modifier.split(','),i.modifier_conf.split(',')) %}
+  - and SHALL support these mandatory modifiers:
+{%- for j in i.modifier.split(',') %}
+({{i.modifier_conf.split(',')[loop.index0]}})
+`{{j}}` ({{i.modifier_conf.split(',')[loop.index0]}})
+{%- endif %}
+{%- endfor -%}
+{%- endif %}
+{%- if i.comparator not in nulls %}
+  - {% for j in i.comparator.split(',') -%}
+{{j}} ({{i.comparator_conf.split(',')[loop.index0]}})
+{%- endfor -%}
+{%- endif %}
+{%- if i.chain not in nulls %}
+  - {% for j in i.chain.split(',') -%}
+{{j}} ({{i.chain_conf.split(',')[loop.index0]}}), {% endfor %}
+{%- endif %}
+
+  *Implementation Notes:* {{imp_note}}
+{%- endfor %}
+
+#### Optional Search Parameters:
+SHOULD support the following search parameters:
+
+{% for i in sp  if i.base_conf == "SHOULD" %}
+{% set p = i.base %}
+{% set nulls = [None,'','n/a'] %}
+- {{p}}
+- CONF = {{i.base_conf}}
+- parameter = {{i.code}}
+- type = {{i.type}}
+{%- if i.modifier not in nulls %}
+- {% for j in i.modifier.split(',') -%}
+{{j}} ({{i.modifier_conf.split(',')[loop.index0]}})
+{%- endfor -%}
+{%- endif %}
+{%- if i.comparator not in nulls %}
+- {% for j in i.comparator.split(',') -%}
+{{j}} ({{i.comparator_conf.split(',')[loop.index0]}})
+{%- endfor -%}
+{%- endif %}
+{%- if i.chain not in nulls %}
+- {% for j in i.chain.split(',') -%}
+{{j}} ({{i.chain_conf.split(',')[loop.index0]}}), {% endfor %}
+{%- endif %}
+- imp note = {{imp_note}}
+1. **{{i.base_conf}}** support search by the **`{{i.code}}`** parameter:
+  `GET [base]/{{i.base[0]}}?{{i.code}}={{search_type[i.type]}}`
+{%- endfor %}
 
 {%raw %}{% include link-list.md %}{% endraw %}

@@ -1,0 +1,41 @@
+### Quick Start
+Below is an overview of the required set of RESTful FHIR interactions - for
+example, search and read operations - for this profile. See the [Conformance requirements]
+for a complete list of supported RESTful interactions for this IG.
+
+#### Supported Searches
+{%- for i in sp %}
+1. **{{i.conformance}}** support search by the **`{{i.code}}`** parameter:
+  `GET [base]/{{i.base[0]}}?{{i.code}}={{search_type[i.type]}}`
+    {% if i.target %}
+    - for reference target types: `{{ i.target | join('`, `')}}`
+    {%- endif %}
+    {%- if i.chain %}
+    - with support for these [chained search parameters]:
+      {%- for i in i.target -%}
+        {%- for j in i.chain -%}
+        `{{i.code}}:{{i}}.{{j}}`
+          {%- if not loop.last %}, {% endif %}
+        {%- endfor %}
+      {%- endfor %}
+    {% endif %}
+
+{% for j in i.modifier.split(',') %}
+    - These search modifiers SHALL be supported: {{J}}
+
+
+{% endfor%}
+    {%- if i.comparator %}
+    - with support for these [search comparators]: `{{ i.comparator | join('`, `')}}`
+    {% endif %}
+    {%- if i.multipleOr %}
+    - with support for [*OR* searching]
+    {% endif %}
+    {%- if i.multipleAnd %}
+    - with support for [*AND* searching]
+    {% endif %}
+  *Implementation Notes:* {{i.description}}. ([how to search by {{i.type}}]).
+  <br />
+  {% endfor %}
+
+{%raw %}{% include link-list.md %}{% endraw %}
