@@ -5,72 +5,92 @@ for a complete list of supported RESTful interactions for this IG.
 
 #### Mandatory Search Parameters:
 
-The following search parameters including the mandatory [modifiers](#.html), [comparators](#.html) and [chained parameters](#.html) SHALL be supported. The optional [modifiers](#.html), [comparators](#.html) and [chained parameters](#.html) listed below SHOULD be supported.:
-{%- set ns = namespace(shall=false) %}
-{%- set ns = namespace(should=false) %}
+The following search parameters, search parameter combinations and search parameter [modifiers], [comparators] and [chained parameters] SHALL be supported.  the  modifiers, comparators and chained parameters that are listed as optional SHOULD be supported.:
+
 {% for i in sp  if i.base_conf == "SHALL" %}
-{%- set p = i.base %}
 {%- set nulls = [None,'','n/a'] %}
 1. **{{i.base_conf}}** support the **`{{i.code}}`** search parameter:
 
   `GET [base]/{{i.base}}?{{i.code}}={{search_type[i.type]}}`
-  - {{p}}
-  - CONF = {{i.base_conf}}
-  - parameter = {{i.code}}
-  - type = {{i.type}}
-{%- if i.modifier not in nulls %}
-{%- set x = (i.modifier.split(','),i.modifier_conf.split(',')) %}
-{%- if 'SHALL in '%}
-{%- for j in i.modifier_conf.split(',') if j == "SHALL" -%}{%- set ns.shall = true -%}{%- endfor -%}
-{%- if ns.shall %}
-{%- set x = (i.modifier.split(','),i.modifier_conf.split(',')) %}
-  - and SHALL support these mandatory modifiers:
-{%- for j in i.modifier.split(',') %}
-({{i.modifier_conf.split(',')[loop.index0]}})
-`{{j}}` ({{i.modifier_conf.split(',')[loop.index0]}})
+{%- if i.shall_modifier not in nulls %}
+  - including support for these modifiers: `{{ i.shall_modifier.split(',')|join(', ') }}`
 {%- endif %}
-{%- endfor -%}
+{%- if i.should_modifier not in nulls %}
+{%- if i.shall_modifier not in nulls %}
+    - and optioinal support these modifiers: `{{ i.should_modifier.split(',')|join(', ') }}
+{%- else %}
+  - including optional support these modifiers: `{{ i.should_modifier.split(',')|join(', ') }}`
 {%- endif %}
-{%- if i.comparator not in nulls %}
-  - {% for j in i.comparator.split(',') -%}
-{{j}} ({{i.comparator_conf.split(',')[loop.index0]}})
-{%- endfor -%}
 {%- endif %}
-{%- if i.chain not in nulls %}
-  - {% for j in i.chain.split(',') -%}
-{{j}} ({{i.chain_conf.split(',')[loop.index0]}}), {% endfor %}
+{%- if i.shall_comparator not in nulls %}
+  - including support for these comparators: `{{ i.shall_comparator.split(',')|join(', ') }}`
+{%- endif %}
+{%- if i.should_comparator not in nulls %}
+{%- if i.shall_comparator not in nulls %}
+    - and optional support these comparators: `{{ i.should_comparator.split(',')|join(', ') }}`
+{%- else %}
+  - including optional support these comparators: `{{ i.should_comparator.split(',')|join(', ') }}`
+{%- endif %}
+{%- endif %}
+{%- if i.shall_chain not in nulls %}
+  - including support for these chained parameters: `{{ i.shall_chain.split(',')|join(', ') }}`
+{%- endif %}
+{%- if i.should_chain not in nulls %}
+{%- if i.shall_chain not in nulls %}
+    - and optional support these chained parameter: `{{ i.should_chain.split(',')|join(', ') }}`
+{%- else %}
+  - including optional support these chained parameter: `{{ i.should_chain.split(',')|join(', ') }}`
+{%- endif %}
+{%- endif %}
+{%if i.example not in nulls %}
+  Example: {{i.example}}
 {%- endif %}
 
-  *Implementation Notes:* {{imp_note}}
+  *Implementation Notes:* {{imp_note}}. Search by [i.type]
 {%- endfor %}
 
 #### Optional Search Parameters:
-SHOULD support the following search parameters:
+
+The following search parameters, search parameter combinations and search parameter [modifiers], [comparators] and [chained parameters] SHOULD be supported.
 
 {% for i in sp  if i.base_conf == "SHOULD" %}
-{% set p = i.base %}
-{% set nulls = [None,'','n/a'] %}
-- {{p}}
-- CONF = {{i.base_conf}}
-- parameter = {{i.code}}
-- type = {{i.type}}
-{%- if i.modifier not in nulls %}
-- {% for j in i.modifier.split(',') -%}
-{{j}} ({{i.modifier_conf.split(',')[loop.index0]}})
-{%- endfor -%}
-{%- endif %}
-{%- if i.comparator not in nulls %}
-- {% for j in i.comparator.split(',') -%}
-{{j}} ({{i.comparator_conf.split(',')[loop.index0]}})
-{%- endfor -%}
-{%- endif %}
-{%- if i.chain not in nulls %}
-- {% for j in i.chain.split(',') -%}
-{{j}} ({{i.chain_conf.split(',')[loop.index0]}}), {% endfor %}
-{%- endif %}
-- imp note = {{imp_note}}
-1. **{{i.base_conf}}** support search by the **`{{i.code}}`** parameter:
-  `GET [base]/{{i.base[0]}}?{{i.code}}={{search_type[i.type]}}`
-{%- endfor %}
+1. **{{i.base_conf}}** support the **`{{i.code}}`** search parameter:
 
+  `GET [base]/{{i.base}}?{{i.code}}={{search_type[i.type]}}`
+{%- if i.shall_modifier not in nulls %}
+  - including support for these modifiers: `{{ i.shall_modifier.split(',')|join(', ') }}`
+{%- endif %}
+{%- if i.should_modifier not in nulls %}
+{%- if i.shall_modifier not in nulls %}
+    - and optioinal support these modifiers: `{{ i.should_modifier.split(',')|join(', ') }}
+{%- else %}
+  - including optional support these modifiers: `{{ i.should_modifier.split(',')|join(', ') }}`
+{%- endif %}
+{%- endif %}
+{%- if i.shall_comparator not in nulls %}
+  - including support for these comparators: `{{ i.shall_comparator.split(',')|join(', ') }}`
+{%- endif %}
+{%- if i.should_comparator not in nulls %}
+{%- if i.shall_comparator not in nulls %}
+    - and optional support these comparators: `{{ i.should_comparator.split(',')|join(', ') }}`
+{%- else %}
+  - including optional support these comparators: `{{ i.should_comparator.split(',')|join(', ') }}`
+{%- endif %}
+{%- endif %}
+{%- if i.shall_chain not in nulls %}
+  - including support for these chained parameters: `{{ i.shall_chain.split(',')|join(', ') }}`
+{%- endif %}
+{%- if i.should_chain not in nulls %}
+{%- if i.shall_chain not in nulls %}
+    - and optional support these chained parameter: `{{ i.should_chain.split(',')|join(', ') }}`
+{%- else %}
+  - including optional support these chained parameter: `{{ i.should_chain.split(',')|join(', ') }}`
+{%- endif %}
+{%- endif %}
+{%if i.example not in nulls %}
+  Example: {{i.example}}
+{%- endif %}
+
+  *Implementation Notes:* {{imp_note}}. Search by [i.type]
+{%- endfor %}
 {%raw %}{% include link-list.md %}{% endraw %}
