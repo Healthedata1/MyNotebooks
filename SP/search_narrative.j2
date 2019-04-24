@@ -1,53 +1,37 @@
 {%- macro get_type(j) -%}
-{%- for i in sp if i.code == j %}[{{i.type}}]{%- endfor %}
+{%- for i in sp if i.base == r_type and i.code == j %}[{{i.type}}]{%- endfor %}
 {%- endmacro-%}
 
 {%- macro get_mods(j) -%}
-{%- set nulls = [None,'','n/a'] %}
-{%- set ns.mods = [] %}
-{%- for i in sp if i.code == j %}
-{%- if i.shall_modifier not in nulls %}
-{%- set ns.mods = i.shall_modifier.split(',')  %}
-{%- endif %}
-{%- if i.should_modifier not in nulls %}
-{%- set ns.mods = ns.mods + i.should_modifier.split(',')  %}
-{%- endif %}
-{%- endfor %}
-{%- if ns.mods %}
-{%- raw %}{:{% endraw %}{{ ns.mods |join('|') }}{% raw %}}{% endraw %}
-{%- endif %}
+{%- if mods[j][0] %}
+{%- raw %}{:{% endraw %}{{ mods[j][0] |join('|') }}{% raw %}}{% endraw %}
+{%- endif -%}
 {%- endmacro-%}
 
 {%- macro get_comps(j) -%}
-{%- set nulls = [None,'','n/a'] %}
-{%- set ns.comps = [] %}
-{%- for i in sp if i.code == j %}
-{%- if i.shall_comparator not in nulls %}
-{%- set ns.comps = i.shall_comparator.split(',')  %}
-{%- endif %}
-{%- if i.should_comparator not in nulls %}
-{%- set ns.comps = ns.comps + i.should_comparator.split(',')  %}
-{%- endif %}
-{%- endfor %}
-{%- if ns.comps %}
-{%- raw %}{:{% endraw %}{{ ns.comps |join('|') }}{% raw %}}{% endraw %}
-{%- endif %}
+{%- if mods[j][1] %}
+{%- raw %}{{% endraw %}{{ mods[j][1] |join('|') }}{% raw %}}{% endraw %}
+{%- endif -%}
 {%- endmacro-%}
 
-
+{#
 ### Quick Start
 Below is an overview of the required set of RESTful FHIR interactions - for
 example, search and read operations - for this profile. See the [Conformance requirements]
-for a complete list of supported RESTgetful interactions for this IG.
+for a complete list of supported RESTful interactions for this IG.
+#}
 
+{%- if shalls %}
 #### Mandatory Search Parameters:
 
 The following search parameters, search parameter combinations and search parameter [modifiers], [comparators] and [chained parameters] SHALL be supported.  the  modifiers, comparators and chained parameters that are listed as optional SHOULD be supported.:
+{%- endif %}
 {%- set nulls = [None,'','n/a'] %}
-{% set ns = namespace(mods=[]) %}
+{%- set ns = namespace(mods=[]) %}
+{%- set ns = namespace(comps=[]) %}
 
-{% for i in sp  if i.base_conf == "SHALL" %}
-1. **{{i.base_conf}}** support searching using the **`{{i.code}}`** search parameter:
+{% for i in sp if i.base == r_type and i.base_conf == "SHALL" %}
+1. **{{i.base_conf}}** {% if i.description not in nulls %}{{i.description}}{% else %}support searching{% endif %} using the **`{{i.code}}`** search parameter:
 {%- if i.shall_modifier not in nulls %}
   - including support for these modifiers: `{{ i.shall_modifier.split(',')|join(', ') }}`
 {%- endif %}
@@ -77,31 +61,29 @@ The following search parameters, search parameter combinations and search parame
 {%- else %}
   - including optional support these chained parameter: `{{ i.should_chain.split(',')|join(', ') }}`
 {%- endif %}
-{%- endif %}
-
+{% endif %}
   `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}`
 {% if i.example not in nulls %}
   Example: {{i.example}}
-{%- endif %}
-
-  *Implementation Notes:* {{imp_note}}. Search by [{{i.type}}]
-{%- endfor %}
-{% for i in combos if i[1] == 'SHALL' %}
-1. **SHALL** support searching using the combination of the  **`{{ i[0] | join(' and ')}}`** search parameters:
+{% endif %}
+  *Implementation Notes:* {{i.imp_note}}. (how to search by [{{i.type}}])
+{% endfor %}
+{%- for i in combos if i[1] == 'SHALL' %}
+1. **SHALL** {{i.description}} using the combination of the  **`{{ i[0] | join(' and ')}}`** search parameters:
 
   `GET [base]/{{r_type}}?{%- for j in i[0] %}{{j + get_mods(j) + '=' + get_comps(j) + get_type(j)}}{%- if not loop.last %}&{% endif %}{%  endfor  %}`
 {% if i.example not in nulls %}
   Example: {{i.example}}
-{%- endif %}
+{% endif %}
+  *Implementation Notes:* {{imp_note}}. (how to search by [{{i[2] | join('] and [')}}])
+{% endfor %}
 
-  *Implementation Notes:* {{imp_note}}. Search by [{{i[2] | join('] and [')}}]
-{%- endfor %}
-
+{% if shoulds %}
 #### Optional Search Parameters:
 
 The following search parameters, search parameter combinations and search parameter [modifiers], [comparators] and [chained parameters] SHOULD be supported.
-
-{% for i in sp  if i.base_conf == "SHOULD" %}
+{%- endif %}
+{% for i in sp  if i.base == r_type and i.base_conf == "SHOULD" %}
 1. **{{i.base_conf}}** support searching using the **`{{i.code}}`** search parameter:
 {%- if i.shall_modifier not in nulls %}
   - including support for these modifiers: `{{ i.shall_modifier.split(',')|join(', ') }}`
@@ -133,23 +115,19 @@ The following search parameters, search parameter combinations and search parame
   - including optional support these chained parameter: `{{ i.should_chain.split(',')|join(', ') }}`
 {%- endif %}
 {%- endif %}
-
   `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}`
 {%if i.example not in nulls %}
   Example: {{i.example}}
 {%- endif %}
-
-  *Implementation Notes:* {{imp_note}}. Search by [{{i.type}}]
-{%- endfor %}
+  *Implementation Notes:* {{imp_note}}. (how to search by [{{i[2] | join('] and [')}}])
+{% endfor %}
 {% for i in combos if i[1] == 'SHOULD' %}
 1. **SHOULD** support searching using the combination of the  **`{{ i[0] | join(' and ')}}`** search parameters:
-
   `GET [base]/{{r_type}}?{%- for j in i[0] %}{{j + get_mods(j) + '=' + get_comps(j) + get_type(j)}}{%- if not loop.last %}&{% endif %}{%  endfor  %}`
 {% if i.example not in nulls %}
   Example: {{i.example}}
 {%- endif %}
-
-  *Implementation Notes:* {{imp_note}}. Search by [{{i[2] | join('] and [')}}]
+  *Implementation Notes:* {{imp_note}}. (how to search by [{{i[2] | join('] and [')}}])
 {%- endfor %}
 
 {% raw %}{% include link-list.md %}{% endraw %}
