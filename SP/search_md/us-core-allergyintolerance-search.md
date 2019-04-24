@@ -5,12 +5,12 @@ The following search parameters, search parameter combinations and search parame
 
 
 1. **SHALL** support searching for all allergies for a patient using the **`_id`** search parameter:
-  `GET [base]/AllergyIntolerance?_id={[system]}|[code]`
+
+  `GET [base]/AllergyIntolerance[id]`
 
   Example: GET [base]/AllergyIntolerance?patient=1137192
 
-  *Implementation Notes:* Fetches a bundle of all AllergyIntolerance resources for the specified patient. (how to search by [token])
-
+  *Implementation Notes:* Fetches a bundle of all AllergyIntolerance resources for the specified patient (how to search by the [logical id] of the resource)
 
 
 

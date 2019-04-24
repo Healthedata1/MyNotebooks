@@ -1,15 +1,11 @@
-### Quick Start
-Below is an overview of the required set of RESTful FHIR interactions - for
-example, search and read operations - for this profile. See the [Conformance requirements]
-for a complete list of supported RESTful interactions for this IG.
 
+#### Mandatory Search Parameters:
 
-
-
+The following search parameters, search parameter combinations and search parameter [modifiers], [comparators] and [chained parameters] SHALL be supported.  the  modifiers, comparators and chained parameters that are listed as optional SHOULD be supported.:
 
 
 1. **SHALL** support searching for all allergies for a patient using the **`_id`** search parameter:
-
+  
   `GET [base]/AllergyIntolerance?_id={[system]}|[code]`
 
   Example: GET [base]/AllergyIntolerance?patient=1137192

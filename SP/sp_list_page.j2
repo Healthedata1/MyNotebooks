@@ -20,11 +20,9 @@ Search Parameter
 {% for i in r_list %}
 **{{i}}**
   {%- for j in sp_list %}
-    {%-  if j.base[0] == i %}
-  - [{{j.code}}](SearchParameter-{{j.id}}.html)
+    {%-  if i in j[1].base %}
+  - [{{j[1].code}}](SearchParameter-{{j[0]}}.html)
     {%- endif %}
   {%- endfor %}
 {% endfor %}
 {% raw %}{% include link_list.md %}{% endraw %}
-
-

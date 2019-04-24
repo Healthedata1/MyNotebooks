@@ -1,0 +1,108 @@
+{
+    "id": "us-core-questionnaire-title",
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+            "valueCode": "trial-use"
+        }
+    ],
+    "base": [
+        "Questionnaire"
+    ],
+    "code": "title",
+    "contact": [
+        {
+            "telecom": [
+                {
+                    "system": "url",
+                    "value": "http://www.hl7.org/Special/committees/structure/index.cfm"
+                }
+            ]
+        }
+    ],
+    "date": "2019-04-24T05:32:24.698490Z",
+    "derivedFrom": "http://hl7.org/fhir/SearchParameter/Questionnaire-title",
+    "description": "The human-friendly name of the questionnaire",
+    "experimental": false,
+    "expression": "Questionnaire.title",
+    "modifier": [
+        "missing",
+        "exact",
+        "contains"
+    ],
+    "multipleAnd": true,
+    "multipleOr": true,
+    "name": "UsCoreQuestionnaireTitle",
+    "publisher": "HL7 International - Structured Documents Work Group",
+    "status": "active",
+    "type": "string",
+    "url": "http://hl7.org/fhir/us/core/SearchParameter/us-core-questionnaire-title",
+    "version": "4.1.0",
+    "xpath": "f:Questionnaire/f:title",
+    "xpathUsage": "normal",
+    "resourceType": "SearchParameter",
+    "_multipleOr": {
+        "extension": [
+            {
+                "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                "valueCode": "MAY"
+            }
+        ]
+    },
+    "_multipleAnd": {
+        "extension": [
+            {
+                "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                "valueCode": "MAY"
+            }
+        ]
+    },
+    "_modifier": [
+        {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                    "valueCode": "MAY"
+                }
+            ]
+        },
+        {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                    "valueCode": "MAY"
+                }
+            ]
+        },
+        {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                    "valueCode": "MAY"
+                }
+            ]
+        }
+    ],
+    "chain": [
+        "foo",
+        "bar2"
+    ],
+    "_chain": [
+        {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                    "valueCode": "SHALL"
+                }
+            ]
+        },
+        {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                    "valueCode": "SHALL"
+                }
+            ]
+        }
+    ]
+}

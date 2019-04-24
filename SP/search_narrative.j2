@@ -61,12 +61,13 @@ The following search parameters, search parameter combinations and search parame
 {%- else %}
   - including optional support these chained parameter: `{{ i.should_chain.split(',')|join(', ') }}`
 {%- endif %}
-{% endif %}
-  `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}`
+{%- endif %}
+
+{% if i.code == '_id'%}  `GET [base]/{{i.base}}[id]`{% else %}  `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}`{% endif %}
 {% if i.example not in nulls %}
   Example: {{i.example}}
 {% endif %}
-  *Implementation Notes:* {{i.imp_note}}. (how to search by [{{i.type}}])
+  *Implementation Notes:* {{i.imp_note}} (how to search by {% if i.code == '_id' %}the [logical id] of the resource{% else %}[{{i.type}}]{% endif %})
 {% endfor %}
 {%- for i in combos if i[1] == 'SHALL' %}
 1. **SHALL** {{i.description}} using the combination of the  **`{{ i[0] | join(' and ')}}`** search parameters:
@@ -75,7 +76,7 @@ The following search parameters, search parameter combinations and search parame
 {% if i.example not in nulls %}
   Example: {{i.example}}
 {% endif %}
-  *Implementation Notes:* {{imp_note}}. (how to search by [{{i[2] | join('] and [')}}])
+  *Implementation Notes:* {{imp_note}} (how to search by [{{i[2] | join('] and [')}}])
 {% endfor %}
 
 {% if shoulds %}
@@ -115,19 +116,21 @@ The following search parameters, search parameter combinations and search parame
   - including optional support these chained parameter: `{{ i.should_chain.split(',')|join(', ') }}`
 {%- endif %}
 {%- endif %}
+
   `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}`
 {%if i.example not in nulls %}
   Example: {{i.example}}
-{%- endif %}
-  *Implementation Notes:* {{imp_note}}. (how to search by [{{i[2] | join('] and [')}}])
+{% endif %}
+  *Implementation Notes:* {{i.imp_note}} (how to search by [{{i.type}}])
 {% endfor %}
-{% for i in combos if i[1] == 'SHOULD' %}
+{%- for i in combos if i[1] == 'SHOULD' %}
 1. **SHOULD** support searching using the combination of the  **`{{ i[0] | join(' and ')}}`** search parameters:
+
   `GET [base]/{{r_type}}?{%- for j in i[0] %}{{j + get_mods(j) + '=' + get_comps(j) + get_type(j)}}{%- if not loop.last %}&{% endif %}{%  endfor  %}`
 {% if i.example not in nulls %}
   Example: {{i.example}}
-{%- endif %}
+{% endif %}
   *Implementation Notes:* {{imp_note}}. (how to search by [{{i[2] | join('] and [')}}])
-{%- endfor %}
+{% endfor %}
 
 {% raw %}{% include link-list.md %}{% endraw %}
