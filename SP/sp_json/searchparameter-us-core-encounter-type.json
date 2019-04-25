@@ -1,18 +1,9 @@
 {
-    "id": "us-core-individual-gender",
-    "extension": [
-        {
-            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
-            "valueCode": "trial-use"
-        }
-    ],
+    "id": "us-core-encounter-type",
     "base": [
-        "Patient",
-        "Person",
-        "Practitioner",
-        "RelatedPerson"
+        "Encounter"
     ],
-    "code": "gender",
+    "code": "type",
     "contact": [
         {
             "telecom": [
@@ -23,11 +14,11 @@
             ]
         }
     ],
-    "date": "2019-04-24T05:32:24.867061Z",
-    "derivedFrom": "http://hl7.org/fhir/SearchParameter/individual-gender",
-    "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): Gender of the patient\r\n* [Person](person.html): The gender of the person\r\n* [Practitioner](practitioner.html): Gender of the practitioner\r\n* [RelatedPerson](relatedperson.html): Gender of the related person\r\n",
+    "date": "2019-04-25T00:02:29.646077Z",
+    "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-type",
+    "description": "Specific type of encounter",
     "experimental": false,
-    "expression": "Patient.gender | Person.gender | Practitioner.gender | RelatedPerson.gender",
+    "expression": "Encounter.type",
     "modifier": [
         "missing",
         "text",
@@ -38,15 +29,15 @@
         "above",
         "ofType"
     ],
-    "multipleAnd": false,
+    "multipleAnd": true,
     "multipleOr": true,
-    "name": "UsCoreIndividualGender",
+    "name": "USCoreEncounterType",
     "publisher": "HL7 International - Structured Documents Work Group",
     "status": "active",
     "type": "token",
-    "url": "http://hl7.org/fhir/us/core/SearchParameter/us-core-individual-gender",
+    "url": "http://hl7.org/fhir/us/core/SearchParameter/us-core-encounter-type",
     "version": "4.1.0",
-    "xpath": "f:Patient/f:gender | f:Person/f:gender | f:Practitioner/f:gender | f:RelatedPerson/f:gender",
+    "xpath": "f:Encounter/f:type",
     "xpathUsage": "normal",
     "resourceType": "SearchParameter",
     "_multipleOr": {
@@ -130,5 +121,9 @@
                 }
             ]
         }
-    ]
+    ],
+    "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b> Generated Narrative with Details</b></p><p><b> id</b> us-core-encounter-type</p><p><b> url</b> : <b> http://hl7.org/fhir/us/core/SearchParameter/us-core-encounter-type</b></p><p><b> version</b> : 4.1.0</p><p><b> name</b> : USCoreEncounterType</p><p><b> derivedFrom</b> : <a> http://hl7.org/fhir/SearchParameter/clinical-type</a></p><p><b> status</b> : active</p><p><b> experimental</b>  False</p><p><b> date</b> : 2019-04-25</p><p><b> publisher</b> : HL7 International - Structured Documents Work Group</p><p><b> contact</b> : http://www.hl7.org/Special/committees/structure/index.cfm</p><p><b> description</b> : Specific type of encounter</p><p><b> useContext</b> : </p><p><b> jurisdiction</b> : United States of America (the) <span> (Details : {urn:iso:std:iso:3166 code 'US' = 'United States of America', given as 'United\n           States of America (the)'})</span></p><!--\n\t<p>\n\t\t<b> purpose</b> : Need to search by identifier for various infrastructural cases - mainly retrieving packages,\n         and matching as part of a chain</p>\n  --><p><b> code</b> : <code>type</code></p><p><b> base</b> :Encounter</p><p><b> type</b> : token</p><p><b> expression</b> : <code>Encounter.type</code></p><p><b> xpath</b> : <code>f:Encounter/f:type</code></p><p><b> xpathUsage</b> : normal</p><p><b> mulitpleOr</b> : True   (Conformance Expectation = MAY)</p><p><b> mulitpleAnd</b> : True  ( Conformance Expectation = MAY)</p>\n    \n    \n    \n    <p><b> modifier</b> : <code>missing</code>  (Conformance Expectation =  MAY)</p>\n    \n    <p><b> modifier</b> : <code>text</code>  (Conformance Expectation =  MAY)</p>\n    \n    <p><b> modifier</b> : <code>not</code>  (Conformance Expectation =  MAY)</p>\n    \n    <p><b> modifier</b> : <code>in</code>  (Conformance Expectation =  MAY)</p>\n    \n    <p><b> modifier</b> : <code>not-in</code>  (Conformance Expectation =  MAY)</p>\n    \n    <p><b> modifier</b> : <code>below</code>  (Conformance Expectation =  MAY)</p>\n    \n    <p><b> modifier</b> : <code>above</code>  (Conformance Expectation =  MAY)</p>\n    \n    <p><b> modifier</b> : <code>ofType</code>  (Conformance Expectation =  MAY)</p>\n    \n    \n    \n\t\t</div>"
+    }
 }

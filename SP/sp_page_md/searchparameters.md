@@ -5,21 +5,30 @@ topofpage: true
 sectionnumbering: true
 ---
 
-The following search parameters have been defined for the {{site.data.fhir.igName}} Implementation Guide.  For more information on the [FHIR RESTful search api]and the standard [Search Param Registry] see the FHIR specification.
+The following operations and search parameters have been defined for the US Core Implementation Guide.  For more information on the [FHIR RESTful operations], [FHIR RESTful search api] and the standard [Search Param Registry] see the FHIR specification.
 
-<!-- Operations
+### Operations
 
 
   { % include list-simple-operationdefinitions.xhtml % }
 
 
--->
+<br />
 
-Search Parameter
+### Search Parameters
 
 
 **AllergyIntolerance**
   - [_id](SearchParameter-None.html)
+
+**Encounter**
+  - [_id](SearchParameter-None.html)
+  - [patient](SearchParameter-us-core-encounter-patient.html)
+  - [date](SearchParameter-us-core-encounter-date.html)
+  - [identifier](SearchParameter-us-core-encounter-identifier.html)
+  - [status](SearchParameter-us-core-encounter-status.html)
+  - [class](SearchParameter-us-core-encounter-class.html)
+  - [type](SearchParameter-us-core-encounter-type.html)
 
 **Questionnaire**
   - [_id](SearchParameter-None.html)
@@ -34,16 +43,10 @@ Search Parameter
   - [_id](SearchParameter-None.html)
   - [identifier](SearchParameter-us-core-patient-identifier.html)
   - [name](SearchParameter-us-core-patient-name.html)
-  - [birthdate](SearchParameter-us-core-individual-birthdate.html)
-  - [gender](SearchParameter-us-core-individual-gender.html)
-  - [family](SearchParameter-us-core-individual-family.html)
-  - [given](SearchParameter-us-core-individual-given.html)
-  - [address](SearchParameter-us-core-individual-address.html)
-  - [telecom](SearchParameter-us-core-individual-telecom.html)
+  - [birthdate](SearchParameter-us-core-patient-birthdate.html)
+  - [gender](SearchParameter-us-core-patient-gender.html)
+  - [family](SearchParameter-us-core-patient-family.html)
+  - [given](SearchParameter-us-core-patient-given.html)
 
-**Encounter**
-  - [_id](SearchParameter-None.html)
-  - [patient](SearchParameter-us-core-clinical-patient.html)
-  - [date](SearchParameter-us-core-clinical-date.html)
 
 {% include link_list.md %}

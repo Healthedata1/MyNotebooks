@@ -1,17 +1,9 @@
 {
-    "id": "us-core-individual-birthdate",
-    "extension": [
-        {
-            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
-            "valueCode": "trial-use"
-        }
-    ],
+    "id": "us-core-encounter-date",
     "base": [
-        "Patient",
-        "Person",
-        "RelatedPerson"
+        "Encounter"
     ],
-    "code": "birthdate",
+    "code": "date",
     "comparator": [
         "eq",
         "ne",
@@ -32,23 +24,23 @@
             ]
         }
     ],
-    "date": "2019-04-24T05:32:24.838150Z",
-    "derivedFrom": "http://hl7.org/fhir/SearchParameter/individual-birthdate",
-    "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): The patient's date of birth\r\n* [Person](person.html): The person's date of birth\r\n* [RelatedPerson](relatedperson.html): The Related Person's date of birth\r\n",
+    "date": "2019-04-25T00:02:29.598163Z",
+    "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-date",
+    "description": "A date within the period the Encounter lasted",
     "experimental": false,
-    "expression": "Patient.birthDate | Person.birthDate | RelatedPerson.birthDate",
+    "expression": "Encounter.period",
     "modifier": [
         "missing"
     ],
-    "multipleAnd": false,
+    "multipleAnd": true,
     "multipleOr": true,
-    "name": "UsCoreIndividualBirthdate",
+    "name": "USCoreEncounterDate",
     "publisher": "HL7 International - Structured Documents Work Group",
     "status": "active",
     "type": "date",
-    "url": "http://hl7.org/fhir/us/core/SearchParameter/us-core-individual-birthdate",
+    "url": "http://hl7.org/fhir/us/core/SearchParameter/us-core-encounter-date",
     "version": "4.1.0",
-    "xpath": "f:Patient/f:birthDate | f:Person/f:birthDate | f:RelatedPerson/f:birthDate",
+    "xpath": "f:Encounter/f:period",
     "xpathUsage": "normal",
     "resourceType": "SearchParameter",
     "_multipleOr": {
@@ -98,7 +90,7 @@
             "extension": [
                 {
                     "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
-                    "valueCode": "MAY"
+                    "valueCode": "SHALL"
                 }
             ]
         },
@@ -106,7 +98,7 @@
             "extension": [
                 {
                     "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
-                    "valueCode": "MAY"
+                    "valueCode": "SHALL"
                 }
             ]
         },
@@ -114,7 +106,7 @@
             "extension": [
                 {
                     "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
-                    "valueCode": "MAY"
+                    "valueCode": "SHALL"
                 }
             ]
         },
@@ -142,5 +134,9 @@
                 }
             ]
         }
-    ]
+    ],
+    "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b> Generated Narrative with Details</b></p><p><b> id</b> us-core-encounter-date</p><p><b> url</b> : <b> http://hl7.org/fhir/us/core/SearchParameter/us-core-encounter-date</b></p><p><b> version</b> : 4.1.0</p><p><b> name</b> : USCoreEncounterDate</p><p><b> derivedFrom</b> : <a> http://hl7.org/fhir/SearchParameter/clinical-date</a></p><p><b> status</b> : active</p><p><b> experimental</b>  False</p><p><b> date</b> : 2019-04-25</p><p><b> publisher</b> : HL7 International - Structured Documents Work Group</p><p><b> contact</b> : http://www.hl7.org/Special/committees/structure/index.cfm</p><p><b> description</b> : A date within the period the Encounter lasted</p><p><b> useContext</b> : </p><p><b> jurisdiction</b> : United States of America (the) <span> (Details : {urn:iso:std:iso:3166 code 'US' = 'United States of America', given as 'United\n           States of America (the)'})</span></p><!--\n\t<p>\n\t\t<b> purpose</b> : Need to search by identifier for various infrastructural cases - mainly retrieving packages,\n         and matching as part of a chain</p>\n  --><p><b> code</b> : <code>date</code></p><p><b> base</b> :Encounter</p><p><b> type</b> : date</p><p><b> expression</b> : <code>Encounter.period</code></p><p><b> xpath</b> : <code>f:Encounter/f:period</code></p><p><b> xpathUsage</b> : normal</p><p><b> mulitpleOr</b> : True   (Conformance Expectation = MAY)</p><p><b> mulitpleAnd</b> : True  ( Conformance Expectation = MAY)</p>\n    \n    \n    <p><b> comparator</b> : <code>eq</code> ( Conformance Expectation = MAY)</p>\n    \n    <p><b> comparator</b> : <code>ne</code> ( Conformance Expectation = MAY)</p>\n    \n    <p><b> comparator</b> : <code>gt</code> ( Conformance Expectation = SHALL)</p>\n    \n    <p><b> comparator</b> : <code>lt</code> ( Conformance Expectation = SHALL)</p>\n    \n    <p><b> comparator</b> : <code>le</code> ( Conformance Expectation = SHALL)</p>\n    \n    <p><b> comparator</b> : <code>sa</code> ( Conformance Expectation = MAY)</p>\n    \n    <p><b> comparator</b> : <code>eb</code> ( Conformance Expectation = MAY)</p>\n    \n    <p><b> comparator</b> : <code>ap</code> ( Conformance Expectation = MAY)</p>\n    \n    \n    \n    \n    <p><b> modifier</b> : <code>missing</code>  (Conformance Expectation =  MAY)</p>\n    \n    \n    \n\t\t</div>"
+    }
 }

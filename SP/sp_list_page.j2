@@ -5,17 +5,17 @@ topofpage: true
 sectionnumbering: true
 ---
 
-The following search parameters have been defined for the {% raw %}{{site.data.fhir.igName}}{% endraw %} Implementation Guide.  For more information on the [FHIR RESTful search api]and the standard [Search Param Registry] see the FHIR specification.
+The following operations and search parameters have been defined for the US Core Implementation Guide.  For more information on the [FHIR RESTful operations], [FHIR RESTful search api] and the standard [Search Param Registry] see the FHIR specification.
 
-<!-- Operations
+### Operations
 
 {% raw %}
   { % include list-simple-operationdefinitions.xhtml % }
 {% endraw %}
 
--->
+<br />
 
-Search Parameter
+### Search Parameters
 
 {% for i in r_list %}
 **{{i}}**
@@ -25,4 +25,5 @@ Search Parameter
     {%- endif %}
   {%- endfor %}
 {% endfor %}
+
 {% raw %}{% include link_list.md %}{% endraw %}
