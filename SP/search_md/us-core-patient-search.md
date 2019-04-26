@@ -28,21 +28,15 @@ The following search parameters, search parameter combinations and search parame
 
   *Implementation Notes:* Search based on at least name and another patient element  (how to search by [string])
 
-1. **SHALL**  using the combination of the  **`birthdate and name`** search parameters:
-
+1. **SHALL**  using the combination of the  **`birthdate`** and **`name`** search parameters:
   `GET [base]/Patient?birthdate=[date]&name=[string]`
 
-  Example: 
+  *Implementation Notes:*  (how to search by [birthdate] and [name])
 
-  *Implementation Notes:*  (how to search by [date] and [string])
-
-1. **SHALL**  using the combination of the  **`gender and name`** search parameters:
-
+1. **SHALL**  using the combination of the  **`gender`** and **`name`** search parameters:
   `GET [base]/Patient?gender=[token]&name=[string]`
 
-  Example: 
-
-  *Implementation Notes:*  (how to search by [string] and [token])
+  *Implementation Notes:*  (how to search by [gender] and [name])
 
 
 
@@ -50,21 +44,17 @@ The following search parameters, search parameter combinations and search parame
 
 The following search parameters, search parameter combinations and search parameter [modifiers], [comparators] and [chained parameters] SHOULD be supported.
 
-1. **SHOULD** support searching using the combination of the  **`birthdate and family`** search parameters:
+1. **SHOULD** support searching using the combination of the **`birthdate`** and **`family`** search parameters:
 
   `GET [base]/Patient?birthdate=[date]&family=[string]`
 
-  Example: 
+  *Implementation Notes:*  (how to search by [date] and [string])
 
-  *Implementation Notes:* . (how to search by [date] and [string])
-
-1. **SHOULD** support searching using the combination of the  **`family and gender`** search parameters:
+1. **SHOULD** support searching using the combination of the **`family`** and **`gender`** search parameters:
 
   `GET [base]/Patient?family=[string]&gender=[token]`
 
-  Example: 
-
-  *Implementation Notes:* . (how to search by [string] and [token])
+  *Implementation Notes:*  (how to search by [string] and [token])
 
 
 {% include link-list.md %}

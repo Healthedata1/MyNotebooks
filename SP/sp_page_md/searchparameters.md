@@ -10,7 +10,7 @@ The following operations and search parameters have been defined for the US Core
 ### Operations
 
 
-  { % include list-simple-operationdefinitions.xhtml % }
+  {% include list-simple-operationdefinitions.xhtml %}
 
 
 <br />
@@ -19,34 +19,42 @@ The following operations and search parameters have been defined for the US Core
 
 
 **AllergyIntolerance**
-  - [_id](SearchParameter-None.html)
-
-**Encounter**
-  - [_id](SearchParameter-None.html)
-  - [patient](SearchParameter-us-core-encounter-patient.html)
-  - [date](SearchParameter-us-core-encounter-date.html)
-  - [identifier](SearchParameter-us-core-encounter-identifier.html)
-  - [status](SearchParameter-us-core-encounter-status.html)
-  - [class](SearchParameter-us-core-encounter-class.html)
-  - [type](SearchParameter-us-core-encounter-type.html)
+  - [clinical-status](SearchParameter-us-core-allergyintolerance-clinical-status.html)
+  - [patient](SearchParameter-us-core-allergyintolerance-patient.html)
 
 **Questionnaire**
   - [_id](SearchParameter-None.html)
-  - [url](SearchParameter-us-core-questionnaire-url.html)
+  - [context-type-value](SearchParameter-us-core-questionnaire-context-type-value.html)
+  - [publisher](SearchParameter-us-core-questionnaire-publisher.html)
   - [status](SearchParameter-us-core-questionnaire-status.html)
   - [title](SearchParameter-us-core-questionnaire-title.html)
-  - [publisher](SearchParameter-us-core-questionnaire-publisher.html)
+  - [url](SearchParameter-us-core-questionnaire-url.html)
   - [version](SearchParameter-us-core-questionnaire-version.html)
-  - [context-type-value](SearchParameter-us-core-questionnaire-context-type-value.html)
 
 **Patient**
   - [_id](SearchParameter-None.html)
+  - [birthdate](SearchParameter-us-core-patient-birthdate.html)
+  - [family](SearchParameter-us-core-patient-family.html)
+  - [gender](SearchParameter-us-core-patient-gender.html)
+  - [given](SearchParameter-us-core-patient-given.html)
   - [identifier](SearchParameter-us-core-patient-identifier.html)
   - [name](SearchParameter-us-core-patient-name.html)
-  - [birthdate](SearchParameter-us-core-patient-birthdate.html)
-  - [gender](SearchParameter-us-core-patient-gender.html)
-  - [family](SearchParameter-us-core-patient-family.html)
-  - [given](SearchParameter-us-core-patient-given.html)
+
+**Encounter**
+  - [_id](SearchParameter-None.html)
+  - [class](SearchParameter-us-core-encounter-class.html)
+  - [date](SearchParameter-us-core-encounter-date.html)
+  - [identifier](SearchParameter-us-core-encounter-identifier.html)
+  - [patient](SearchParameter-None.html)
+  - [status](SearchParameter-us-core-encounter-status.html)
+  - [type](SearchParameter-us-core-encounter-type.html)
+
+**Condition**
+  - [category](SearchParameter-us-core-condition-category.html)
+  - [clinical-status](SearchParameter-us-core-condition-clinical-status.html)
+  - [patient](SearchParameter-None.html)
+  - [onset-date](SearchParameter-us-core-condition-onset-date.html)
+  - [code](SearchParameter-us-core-condition-code.html)
 
 
 {% include link_list.md %}
