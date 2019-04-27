@@ -8,9 +8,9 @@ The following search parameters, search parameter combinations and search parame
 
   `GET [base]/AllergyIntolerance?patient=[reference]`
 
-  Example: GET [base]/AllergyIntolerance?patient=1137192
+    Example: GET [base]/AllergyIntolerance?patient=1137192
 
-  *Implementation Notes:* Fetches a bundle of all AllergyIntolerance resources for the specified patient (how to search by [reference])
+    *Implementation Notes:* Fetches a bundle of all AllergyIntolerance resources for the specified patient (how to search by [reference])
 
 
 
@@ -20,11 +20,11 @@ The following search parameters, search parameter combinations and search parame
 
 1. **SHOULD** support searching using the combination of the **`patient`** and **`clinical-status`** search parameters:
 
-  `GET [base]/AllergyIntolerance?patient=[reference]&clinical-status=[token]`
+    `GET [base]/AllergyIntolerance?patient=[reference]&clinical-status=[token]`
 
-  Example: GET [base]/AllergyIntolerance?patient=[id]&amp;clinical-status=active
+    Example: GET [base]/AllergyIntolerance?patient=[id]&amp;clinical-status=active
 
-  *Implementation Notes:* Fetches a bundle of all Condition resources for the specified patient and status code.  This will not return any “entered in error” resources because of the conditional presence of the clinicalStatus element. (how to search by [reference] and [token])
+    *Implementation Notes:* Fetches a bundle of all Condition resources for the specified patient and status code.  This will not return any “entered in error” resources because of the conditional presence of the clinicalStatus element. (how to search by [reference] and [token])
 
 
 {% include link-list.md %}

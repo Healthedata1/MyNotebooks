@@ -7,6 +7,11 @@ sectionnumbering: true
 
 The following operations and search parameters have been defined for the US Core Implementation Guide.  For more information on the [FHIR RESTful operations], [FHIR RESTful search api] and the standard [Search Param Registry] see the FHIR specification.
 
+The search parameters **SHALL NOT** be interpreted on their own as requirements for server"
+
+This page is not a list of search requirements for the client or server. These search parameters definitions are used within the Capability Statement to define the search capabilities of the server.
+
+
 ### Operations
 
 
@@ -17,19 +22,9 @@ The following operations and search parameters have been defined for the US Core
 
 ### Search Parameters
 
+NOTE: These search parameters **SHALL NOT** be interpreted on their own as requirements for server:
+This section lists the search parameters definitions that are used within the capability statement to define the search capabilities expectations for US Core Server.  This is not a list of search requirements for the client or server.
 
-**AllergyIntolerance**
-  - [clinical-status](SearchParameter-us-core-allergyintolerance-clinical-status.html)
-  - [patient](SearchParameter-us-core-allergyintolerance-patient.html)
-
-**Questionnaire**
-  - [_id](SearchParameter-None.html)
-  - [context-type-value](SearchParameter-us-core-questionnaire-context-type-value.html)
-  - [publisher](SearchParameter-us-core-questionnaire-publisher.html)
-  - [status](SearchParameter-us-core-questionnaire-status.html)
-  - [title](SearchParameter-us-core-questionnaire-title.html)
-  - [url](SearchParameter-us-core-questionnaire-url.html)
-  - [version](SearchParameter-us-core-questionnaire-version.html)
 
 **Patient**
   - [_id](SearchParameter-None.html)
@@ -39,6 +34,10 @@ The following operations and search parameters have been defined for the US Core
   - [given](SearchParameter-us-core-patient-given.html)
   - [identifier](SearchParameter-us-core-patient-identifier.html)
   - [name](SearchParameter-us-core-patient-name.html)
+
+**AllergyIntolerance**
+  - [clinical-status](SearchParameter-us-core-allergyintolerance-clinical-status.html)
+  - [patient](SearchParameter-us-core-allergyintolerance-patient.html)
 
 **Encounter**
   - [_id](SearchParameter-None.html)

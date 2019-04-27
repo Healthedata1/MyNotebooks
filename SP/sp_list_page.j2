@@ -7,6 +7,11 @@ sectionnumbering: true
 
 The following operations and search parameters have been defined for the US Core Implementation Guide.  For more information on the [FHIR RESTful operations], [FHIR RESTful search api] and the standard [Search Param Registry] see the FHIR specification.
 
+The search parameters **SHALL NOT** be interpreted on their own as requirements for server"
+
+This page is not a list of search requirements for the client or server. These search parameters definitions are used within the Capability Statement to define the search capabilities of the server.
+
+
 ### Operations
 
 {% raw %}
@@ -17,6 +22,9 @@ The following operations and search parameters have been defined for the US Core
 
 ### Search Parameters
 
+NOTE: These search parameters **SHALL NOT** be interpreted on their own as requirements for server:
+This section lists the search parameters definitions that are used within the capability statement to define the search capabilities expectations for the US Core Server.  This is not a list of search requirements for the client or server.
+
 {% for i in r_list %}
 **{{i}}**
   {%- for j in sp_list %}
@@ -25,5 +33,10 @@ The following operations and search parameters have been defined for the US Core
     {%- endif %}
   {%- endfor %}
 {% endfor %}
+
+
+Editors note : append these to Patient
+  - [us-core-race]
+  - [us-core-ethnicity]
 
 {% raw %}{% include link_list.md %}{% endraw %}

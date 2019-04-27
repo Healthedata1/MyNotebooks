@@ -6,37 +6,37 @@ The following search parameters, search parameter combinations and search parame
 
 1. **SHALL** support fetching a Patient using the **`_id`** search parameter:
 
-  `GET [base]/Patient[id]`
+    `GET [base]/Patient[id]`
 
-  Example: GET [base]/Patient/1032702
+    Example: GET [base]/Patient/1032702
 
-  *Implementation Notes:*  (how to search by the [logical id] of the resource)
+    *Implementation Notes:*  (how to search by the [logical id] of the resource)
 
 1. **SHALL** support searching a Patient by an identifier such as a MPI using the **`identifier`** search parameter:
 
   `GET [base]/Patient?identifier={[system]}|[code]`
 
-  Example: GET [base]/Patient?identifier=http://hospital.smarthealthit.org|1032702
+    Example: GET [base]/Patient?identifier=http://hospital.smarthealthit.org|1032702
 
-  *Implementation Notes:*  (how to search by [token])
+    *Implementation Notes:*  (how to search by [token])
 
 1. **SHALL** support searching using the **`name`** search parameter:
 
   `GET [base]/Patient?name=[string]`
 
-  Example: See combination searches below
+    Example: See combination searches below
 
-  *Implementation Notes:* Search based on at least name and another patient element  (how to search by [string])
+    *Implementation Notes:* Search based on at least name and another patient element  (how to search by [string])
 
 1. **SHALL**  using the combination of the  **`birthdate`** and **`name`** search parameters:
-  `GET [base]/Patient?birthdate=[date]&name=[string]`
+    `GET [base]/Patient?birthdate=[date]&name=[string]`
 
-  *Implementation Notes:*  (how to search by [birthdate] and [name])
+    *Implementation Notes:*  (how to search by [birthdate] and [name])
 
 1. **SHALL**  using the combination of the  **`gender`** and **`name`** search parameters:
-  `GET [base]/Patient?gender=[token]&name=[string]`
+    `GET [base]/Patient?gender=[token]&name=[string]`
 
-  *Implementation Notes:*  (how to search by [gender] and [name])
+    *Implementation Notes:*  (how to search by [gender] and [name])
 
 
 
@@ -46,15 +46,15 @@ The following search parameters, search parameter combinations and search parame
 
 1. **SHOULD** support searching using the combination of the **`birthdate`** and **`family`** search parameters:
 
-  `GET [base]/Patient?birthdate=[date]&family=[string]`
+    `GET [base]/Patient?birthdate=[date]&family=[string]`
 
-  *Implementation Notes:*  (how to search by [date] and [string])
+    *Implementation Notes:*  (how to search by [date] and [string])
 
 1. **SHOULD** support searching using the combination of the **`family`** and **`gender`** search parameters:
 
-  `GET [base]/Patient?family=[string]&gender=[token]`
+    `GET [base]/Patient?family=[string]&gender=[token]`
 
-  *Implementation Notes:*  (how to search by [string] and [token])
+    *Implementation Notes:*  (how to search by [string] and [token])
 
 
 {% include link-list.md %}
