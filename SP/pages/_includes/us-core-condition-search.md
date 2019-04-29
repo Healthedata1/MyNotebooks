@@ -4,7 +4,7 @@
 The following search parameters, search parameter combinations and search parameter [modifiers], [comparators] and [chained parameters] SHALL be supported.  the  modifiers, comparators and chained parameters that are listed as optional SHOULD be supported.:
 
 
-1. **SHALL** support searching for all conditions including problems, health concerns, and encounter diagnosis for a patient using the **`patient`** search parameter:
+1. **SHALL** support searching for all conditions including problems, health concerns, and encounter diagnosis for a patient using the **[`patient`](i.rel_url)** search parameter:
 
   `GET [base]/Condition?patient=[reference]`
 
@@ -18,7 +18,7 @@ The following search parameters, search parameter combinations and search parame
 
 The following search parameters, search parameter combinations and search parameter [modifiers], [comparators] and [chained parameters] SHOULD be supported.
 
-1. **SHOULD** support searching using the combination of the **`patient`** and **`clinical-status`** search parameters:
+1. **SHOULD** support searching using the combination of the **[`patient`](SearchParameter-us-core-condition-patient.html)** and **[`clinical-status`](SearchParameter-us-core-condition-clinical-status.html)** search parameters:
 
     `GET [base]/Condition?patient=[reference]&clinical-status=[token]`
 
@@ -26,7 +26,7 @@ The following search parameters, search parameter combinations and search parame
 
     *Implementation Notes:* Fetches a bundle of all Condition resources for the specified patient and all “active” statuses (active,relapse,remission). This will not return any “entered in error” resources because of the conditional presence of the clinicalStatus element. (how to search by [reference] and [token])
 
-1. **SHOULD** support searching using the combination of the **`patient`** and **`category`** search parameters:
+1. **SHOULD** support searching using the combination of the **[`patient`](SearchParameter-us-core-condition-patient.html)** and **[`category`](SearchParameter-us-core-condition-category.html)** search parameters:
 
     `GET [base]/Condition?patient=[reference]&category=[token]`
 
@@ -34,15 +34,15 @@ The following search parameters, search parameter combinations and search parame
 
     *Implementation Notes:* Fetches a bundle of all Condition resources for the specified patient and category. (how to search by [reference] and [token])
 
-1. **SHOULD** support searching using the combination of the **`patient`** and **`code`** search parameters:
+1. **SHOULD** support searching using the combination of the **[`patient`](SearchParameter-us-core-condition-patient.html)** and **[`code`](SearchParameter-us-core-condition-code.html)** search parameters:
 
     `GET [base]/Condition?patient=[reference]&code=[token]`
 
-    Example: GET [base]/Condition?patient=[id]&amp;code=[system|code]
+    Example: GET [base]/Condition?patient=[id]&amp;code=[system\|code]
 
     *Implementation Notes:* Fetches a bundle of all Condition resources for the specified patient and code. (how to search by [reference] and [token])
 
-1. **SHOULD** support searching using the combination of the **`patient`** and **`onset-date`** search parameters:
+1. **SHOULD** support searching using the combination of the **[`patient`](SearchParameter-us-core-condition-patient.html)** and **[`onset-date`](SearchParameter-us-core-condition-onset-date.html)** search parameters:
 
     `GET [base]/Condition?patient=[reference]&onset-date={gt|lt|ge|le}[date]`
 
