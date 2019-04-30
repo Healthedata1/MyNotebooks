@@ -31,7 +31,7 @@ The following search parameters, search parameter combinations and search parame
 {%- set ns = namespace(comps=[]) %}
 
 {% for i in sp if i.display and i.base_conf == "SHALL" %}
-1. **{{i.base_conf}}** {% if i.description not in nulls %}{{i.description}}{% else %}support searching{% endif %} using the **[`{{i.code}}`](i.rel_url)** search parameter:
+1. **{{i.base_conf}}** {% if i.description not in nulls %}{{i.description}}{% else %}support searching{% endif %} using the **[`{{i.code}}`]({{i.rel_url}})** search parameter:
 {%- if i.shall_modifier not in nulls %}
   - including support for these modifiers: `{{ i.shall_modifier.split(',')|join(', ') }}`
 {%- endif %}
@@ -63,7 +63,7 @@ The following search parameters, search parameter combinations and search parame
 {%- endif %}
 {%- endif %}
 
-{% if i.code == '_id'%}    `GET [base]/{{i.base}}[id]`{% else %}  `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}`{% endif %}
+{% if i.code == '_id'%}    `GET [base]/{{i.base}}[id]`{% else %}    `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}`{% endif %}
 {% if i.example not in nulls %}
     Example: {{i.example}}
 {% endif %}
