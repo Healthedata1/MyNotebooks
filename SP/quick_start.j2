@@ -14,6 +14,49 @@
 {%- endif -%}
 {%- endmacro-%}
 
+{%- macro get_conf_mods(j) -%}
+{%- if mods[j][2] %}
+  - including support for these modifiers: `{{ mods[j][2]|join(', ') }}`
+{%- endif %}
+{%- if mods[j][3] %}
+{%- if mods[j][2] %}
+    - and optional support these modifiers: `{{ mods[j][3]|join(', ') }}
+{%- else %}
+  - including optional support these modifiers: `{{ mods[j][3]|join(', ') }}`
+{%- endif %}
+{%- endif %}
+{%- if mods[j][4] %}
+  - including support for these comparators: `{{ mods[j][4]|join(', ') }}`
+{%- endif %}
+{%- if mods[j][5] %}
+{%- if mods[j][4] %}
+    - and optional support these comparators: `{{ mods[j][5]|join(', ') }}`
+{%- else %}
+  - including optional support these comparators: `{{ mods[j][5]|join(', ') }}`
+{%- endif %}
+{%- endif %}
+{%- if mods[j][6] %}
+  - including support for these chained parameters: `{{ mods[j][6]|join(', ') }}`
+{%- endif %}
+{%- if mods[j][7] %}
+{%- if mods[j][6] %}
+    - and optional support these chained parameter: `{{ mods[j][7]|join(', ') }}`
+{%- else %}
+  - including optional support these chained parameter: `{{ mods[j][7]|join(', ') }}`
+{%- endif %}
+{%- endif %}
+{%- if mods[j][8] %}
+  - support the use the `_include` parameter to indicate that these resources be included in the results: `{{ mods[j][8]|join(', ') }}`
+{%- endif %}
+{%- if mods[j][9] %}
+{%- if mods[j][8] %}
+    - and optional support of the `_include` parameter to indicate that these resources be included in the results: `{{ mods[j][9]|join(', ') }}`
+{%- else %}
+  - including optional support of the `_include` parameter to indicate that these resources be included in the results: `{{ mods[j][9]|join(', ') }}`
+{%- endif %}
+{% endif %}
+{%- endmacro %}
+
 {#
 ### Quick Start
 Below is an overview of the required set of RESTful FHIR interactions - for
@@ -32,51 +75,22 @@ The following search parameters, search parameter combinations and search parame
 
 {% for i in sp if i.display and i.base_conf == "SHALL" %}
 1. **{{i.base_conf}}** {% if i.description not in nulls %}{{i.description}}{% else %}support searching{% endif %} using the **[`{{i.code}}`]({{i.rel_url}})** search parameter:
-{%- if i.shall_modifier not in nulls %}
-  - including support for these modifiers: `{{ i.shall_modifier.split(',')|join(', ') }}`
-{%- endif %}
-{%- if i.should_modifier not in nulls %}
-{%- if i.shall_modifier not in nulls %}
-    - and optional support these modifiers: `{{ i.should_modifier.split(',')|join(', ') }}
-{%- else %}
-  - including optional support these modifiers: `{{ i.should_modifier.split(',')|join(', ') }}`
-{%- endif %}
-{%- endif %}
-{%- if i.shall_comparator not in nulls %}
-  - including support for these comparators: `{{ i.shall_comparator.split(',')|join(', ') }}`
-{%- endif %}
-{%- if i.should_comparator not in nulls %}
-{%- if i.shall_comparator not in nulls %}
-    - and optional support these comparators: `{{ i.should_comparator.split(',')|join(', ') }}`
-{%- else %}
-  - including optional support these comparators: `{{ i.should_comparator.split(',')|join(', ') }}`
-{%- endif %}
-{%- endif %}
-{%- if i.shall_chain not in nulls %}
-  - including support for these chained parameters: `{{ i.shall_chain.split(',')|join(', ') }}`
-{%- endif %}
-{%- if i.should_chain not in nulls %}
-{%- if i.shall_chain not in nulls %}
-    - and optional support these chained parameter: `{{ i.should_chain.split(',')|join(', ') }}`
-{%- else %}
-  - including optional support these chained parameter: `{{ i.should_chain.split(',')|join(', ') }}`
-{%- endif %}
-{%- endif %}
-
-{% if i.code == '_id'%}    `GET [base]/{{i.base}}[id]`{% else %}    `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}`{% endif %}
+{{get_conf_mods(i.code)}}
+{% if i.code == '_id'%}  `GET [base]/{{i.base}}[id]`{% else %}    `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}`{% endif %}
 {% if i.example not in nulls %}
-    Example: {{i.example}}
+  Example: {{i.example}}
 {% endif %}
-    *Implementation Notes:* {{i.imp_note}} (how to search by {% if i.code == '_id' %}the [logical id] of the resource{% else %}[{{i.type}}]{% endif %})
+  *Implementation Notes:* {{i.imp_note}} ([how to search by {% if i.code == '_id' %}the logical id] of the resource{% else %}{{i.type}}]{% endif %})
 {% endfor %}
 {%- for i in combos if i.combo_conf == 'SHALL' %}
-1. **SHOULD** support searching using the combination of the {% for j in i.combo.split(',') %}{{'**[`' + j + '`](' + rels[j] + ')**'}}{% if not loop.last %} and {% endif %}{%  endfor  %} search parameters:
+1. **SHALL** support searching using the combination of the {% for j in i.combo.split(',') %}{{'**[`' + j + '`](' + rels[j] + ')**'}}{% if not loop.last %} and {% endif %}{%  endfor  %} search parameters:
+{%- for j in i.combo.split(',') %}{{get_conf_mods(j)}}{%  endfor  %}
 
-    `GET [base]/{{r_type}}?{%- for j in i.combo.split(',') %}{{j + get_mods(j) + '=' + get_comps(j) + get_type(j)}}{%- if not loop.last %}&{% endif %}{%  endfor  %}`
+  `GET [base]/{{r_type}}?{%- for j in i.combo.split(',') %}{% if j in i.fixed_kv.split('=') %}{{i.fixed_kv}}{% else %}{{j + get_mods(j) + '=' + get_comps(j) + get_type(j)}}{%- if not loop.last %}&{% endif %}{% endif %}{%  endfor  %}`
 {% if i.example not in nulls %}
     Example: {{i.example}}
 {% endif %}
-    *Implementation Notes:* {{i.imp_note}} (how to search by [{{ i.combo.split(',') | join('] and [')}}])
+  *Implementation Notes:* {{i.imp_note}} ([how to search by {{ i.combo.split(',') | join('] and [how to search by ')}}])
 {% endfor %}
 
 {% if shoulds %}
@@ -86,51 +100,22 @@ The following search parameters, search parameter combinations and search parame
 {%- endif %}
 {% for i in sp  if i.display and i.base_conf == "SHOULD" %}
 1. **{{i.base_conf}}** support searching using the **[`{{i.code}}`](i.rel_url)** search parameter:
-{%- if i.shall_modifier not in nulls %}
-  - including support for these modifiers: `{{ i.shall_modifier.split(',')|join(', ') }}`
-{%- endif %}
-{%- if i.should_modifier not in nulls %}
-{%- if i.shall_modifier not in nulls %}
-    - and optional support these modifiers: `{{ i.should_modifier.split(',')|join(', ') }}
-{%- else %}
-  - including optional support these modifiers: `{{ i.should_modifier.split(',')|join(', ') }}`
-{%- endif %}
-{%- endif %}
-{%- if i.shall_comparator not in nulls %}
-  - including support for these comparators: `{{ i.shall_comparator.split(',')|join(', ') }}`
-{%- endif %}
-{%- if i.should_comparator not in nulls %}
-{%- if i.shall_comparator not in nulls %}
-    - and optional support these comparators: `{{ i.should_comparator.split(',')|join(', ') }}`
-{%- else %}
-  - including optional support these comparators: `{{ i.should_comparator.split(',')|join(', ') }}`
-{%- endif %}
-{%- endif %}
-{%- if i.shall_chain not in nulls %}
-  - including support for these chained parameters: `{{ i.shall_chain.split(',')|join(', ') }}`
-{%- endif %}
-{%- if i.should_chain not in nulls %}
-{%- if i.shall_chain not in nulls %}
-    - and optional support these chained parameter: `{{ i.should_chain.split(',')|join(', ') }}`
-{%- else %}
-  - including optional support these chained parameter: `{{ i.should_chain.split(',')|join(', ') }}`
-{%- endif %}
-{%- endif %}
-
-    `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}`
+{{get_conf_mods(i.code)}}
+   `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}`
 {%if i.example not in nulls %}
-    Example: {{i.example}}
+   Example: {{i.example}}
 {% endif %}
-    *Implementation Notes:* {{i.imp_note}} (how to search by [{{i.type}}])
+   *Implementation Notes:* {{i.imp_note}} ([how to search by {{i.type}}])
 {% endfor %}
 {%- for i in combos if i.combo_conf == 'SHOULD' %}
 1. **SHOULD** support searching using the combination of the {% for j in i.combo.split(',') %}{{'**[`' + j + '`](' + rels[j] + ')**'}}{% if not loop.last %} and {% endif %}{%  endfor  %} search parameters:
+{%- for j in i.combo.split(',') %}{{get_conf_mods(j)}}{%  endfor  %}
 
-    `GET [base]/{{r_type}}?{%- for j in i.combo.split(',') %}{{j + get_mods(j) + '=' + get_comps(j) + get_type(j)}}{%- if not loop.last %}&{% endif %}{%  endfor  %}`
+  `GET [base]/{{r_type}}?{%- for j in i.combo.split(',') %}{{j + get_mods(j) + '=' + get_comps(j) + get_type(j)}}{%- if not loop.last %}&{% endif %}{%  endfor  %}`
 {% if i.example not in nulls %}
-    Example: {{i.example}}
+   Example: {{i.example}}
 {% endif %}
-    *Implementation Notes:* {{i.imp_note}} (how to search by [{{i.types.split(',') | join('] and [')}}])
+   *Implementation Notes:* {{i.imp_note}} ([how to search by {{i.types.split(',') | join('] and [how to search by ')}}])
 {% endfor %}
 
 {% raw %}{% include link-list.md %}{% endraw %}
