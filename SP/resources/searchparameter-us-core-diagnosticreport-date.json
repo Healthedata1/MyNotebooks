@@ -24,7 +24,7 @@
             ]
         }
     ],
-    "date": "2019-04-30T20:33:27.745061Z",
+    "date": "2019-04-30T21:49:13.262023Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-date",
     "description": "The clinically relevant time of the report",
     "experimental": false,

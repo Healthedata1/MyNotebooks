@@ -24,7 +24,7 @@
             ]
         }
     ],
-    "date": "2019-04-30T20:33:27.888679Z",
+    "date": "2019-04-30T21:49:13.422590Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-date",
     "description": "When the procedure occurred or is occurring",
     "experimental": false,

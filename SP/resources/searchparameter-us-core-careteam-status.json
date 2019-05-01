@@ -14,7 +14,7 @@
             ]
         }
     ],
-    "date": "2019-04-30T20:33:28.014340Z",
+    "date": "2019-04-30T21:49:13.582163Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/CareTeam-status",
     "description": "proposed | active | suspended | inactive | entered-in-error",
     "experimental": false,

@@ -14,7 +14,7 @@
             ]
         }
     ],
-    "date": "2019-04-30T20:33:27.422927Z",
+    "date": "2019-04-30T21:49:12.905979Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-type",
     "description": "Specific type of encounter",
     "experimental": false,

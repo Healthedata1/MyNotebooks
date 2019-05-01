@@ -14,7 +14,7 @@
             ]
         }
     ],
-    "date": "2019-04-30T20:33:27.398987Z",
+    "date": "2019-04-30T21:49:12.879045Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-patient",
     "description": "The patient or group present at the encounter",
     "experimental": false,

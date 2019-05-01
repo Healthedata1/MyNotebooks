@@ -24,7 +24,7 @@
             ]
         }
     ],
-    "date": "2019-04-30T20:33:27.686219Z",
+    "date": "2019-04-30T21:49:13.185223Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/DocumentReference-period",
     "description": "Time of service that is being documented",
     "experimental": false,

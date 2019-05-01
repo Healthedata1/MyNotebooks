@@ -14,7 +14,7 @@
             ]
         }
     ],
-    "date": "2019-04-30T20:33:27.410955Z",
+    "date": "2019-04-30T21:49:12.892009Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/Encounter-status",
     "description": "planned | in-progress | onhold | completed | cancelled | entered-in-error | unknown",
     "experimental": false,

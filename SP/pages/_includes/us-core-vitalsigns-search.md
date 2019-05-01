@@ -20,7 +20,7 @@ The following search parameters, search parameter combinations and search parame
 
     Example: GET [base]/Observation?patient=1186747&amp;code=http://loinc.org\|8867-4,http://loinc.org\|9279-1,http://loinc.org\|85354-9
 
-  *Implementation Notes:* Fetches a bundle of all Observation resources for the specified patient and observation code(s).  SHOULD support search by multiple codes. The Observation “code” parameter searches `Observation.code only. ([how to search by patient] and [how to search by code])
+  *Implementation Notes:* Fetches a bundle of all Observation resources for the specified patient and observation code(s).  SHOULD support search by multiple codes. The Observation `code` parameter searches `Observation.code only. ([how to search by patient] and [how to search by code])
 
 1. **SHALL** support searching using the combination of the **[`patient`](SearchParameter-us-core-observation-patient.html)** and **[`category`](SearchParameter-us-core-observation-category.html)** and **[`date`](SearchParameter-us-core-observation-date.html)** search parameters:
   - including support for these comparators: `gt, lt, ge, le`

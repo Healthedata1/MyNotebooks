@@ -24,7 +24,7 @@
             ]
         }
     ],
-    "date": "2019-04-30T20:33:27.603460Z",
+    "date": "2019-04-30T21:49:13.088495Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-date",
     "description": "Vaccination  (non)-Administration Date",
     "experimental": false,

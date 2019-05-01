@@ -24,7 +24,7 @@
             ]
         }
     ],
-    "date": "2019-04-30T20:33:27.375051Z",
+    "date": "2019-04-30T21:49:12.849123Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-date",
     "description": "A date within the period the Encounter lasted",
     "experimental": false,

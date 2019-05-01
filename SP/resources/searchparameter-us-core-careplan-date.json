@@ -24,7 +24,7 @@
             ]
         }
     ],
-    "date": "2019-04-30T20:33:27.974447Z",
+    "date": "2019-04-30T21:49:13.527309Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-date",
     "description": "Time period plan covers",
     "experimental": false,

@@ -14,7 +14,7 @@
             ]
         }
     ],
-    "date": "2019-04-30T20:33:28.141003Z",
+    "date": "2019-04-30T21:49:13.739742Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/PractitionerRole-specialty",
     "description": "The practitioner has this specialty at an organization",
     "experimental": false,

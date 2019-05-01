@@ -14,7 +14,7 @@
             ]
         }
     ],
-    "date": "2019-04-30T20:33:28.082160Z",
+    "date": "2019-04-30T21:49:13.657960Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/Location-address-postalcode",
     "description": "A postal code specified in an address",
     "experimental": false,

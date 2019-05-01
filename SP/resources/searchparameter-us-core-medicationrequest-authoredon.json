@@ -24,7 +24,7 @@
             ]
         }
     ],
-    "date": "2019-04-30T20:33:27.818864Z",
+    "date": "2019-04-30T21:49:13.346792Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/MedicationRequest-authoredon",
     "description": "Return prescriptions written on this date",
     "experimental": false,
