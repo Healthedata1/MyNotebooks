@@ -10,18 +10,48 @@ The following search parameters, search parameter combinations and search parame
 
     `GET [base]/Procedure?patient=[reference]`
 
-  Example: GET [base]/Procedure?patient=1291938
+    Example:
+    
+    1. GET [base]/Procedure?patient=1291938
 
-  *Implementation Notes:* Fetches a bundle of all Procedure resources for the specified patient ([how to search by reference])
+    *Implementation Notes:* Fetches a bundle of all Procedure resources for the specified patient ([how to search by reference])
+
+1. **SHALL** support searching practitioner role by specialty using the **[`specialty`](SearchParameter-us-core-practitionerrole-specialty.html)** search parameter:
+
+  - including optional support of the `_include` parameter to indicate that these resources be included in the results: `PractitionerRole:endpoint, PractitionerRole:practitioner`
+
+    `GET [base]/PractitionerRole?specialty={[system]}|[code]`
+
+    Example:
+    
+    1. GET [base]/PractitionerRole?specialty=http://nucc.org/provider-taxonomy\|208D0000X
+
+    *Implementation Notes:* Fetches a bundle containing  PractitionerRole resources matching the specialty ([how to search by token])
+
+1. **SHALL** support searching practitioner role by practitioner name and identifier using chained parameters using the **[`practitioner`](SearchParameter-us-core-practitionerrole-practitioner.html)** search parameter:
+
+  - including support for these chained parameters: `identifier, name`
+  - including optional support of the `_include` parameter to indicate that these resources be included in the results: `PractitionerRole:endpoint, PractitionerRole:practitioner`
+
+    `GET [base]/PractitionerRole?practitioner=[reference]`
+
+    Example:
+    
+    1. GET [base]/PractitionerRole?practitioner.identifier=http://hl7.org/fhir/sid/us-npi\|97860456&amp;_include=PractitionerRole:practitioner&amp;_include=PractitionerRole?endpoint
+    1. GET [base]/PractitionerRole?practitioner.name=Henry&amp;_include=PractitionerRole:practitioner&amp;_include=PractitionerRole?endpoint
+
+    *Implementation Notes:* Fetches a bundle containing  PractitionerRole resources matching the chained parameter practitioner.name or practitioner.identifier. SHOULD support the _include for PractionerRole.practitioner and PractitionerRole.endpoint. ([how to search by reference])
 
 1. **SHALL** support searching using the combination of the **[`patient`](SearchParameter-us-core-procedure-patient.html)** and **[`date`](SearchParameter-us-core-procedure-date.html)** search parameters:
   - including support for these comparators: `gt, lt, ge, le`
 
-  `GET [base]/Procedure?patient=[reference]&date={gt|lt|ge|le}[date]`
+    `GET [base]/Procedure?patient=[reference]&date={gt|lt|ge|le}[date]`
 
-    Example: GET [base]/Procedure?patient=1137192&amp;date=ge2019-01-14
+    Example:
+    
+    1. GET [base]/Procedure?patient=1137192&amp;date=ge2019-01-14
 
-  *Implementation Notes:* Fetches a bundle of all Procedure resources for the specified patient and date ([how to search by patient] and [how to search by date])
+    *Implementation Notes:* Fetches a bundle of all Procedure resources for the specified patient and date ([how to search by reference] and [how to search by token])
 
 
 
@@ -31,20 +61,24 @@ The following search parameters, search parameter combinations and search parame
 
 1. **SHOULD** support searching using the combination of the **[`patient`](SearchParameter-us-core-procedure-patient.html)** and **[`status`](SearchParameter-us-core-procedure-status.html)** search parameters:
 
-  `GET [base]/Procedure?patient=[reference]&status=[token]`
+    `GET [base]/Procedure?patient=[reference]&status={[system]}|[code]`
 
-   Example: GET [base]/Procedure?patient=1137192&amp;status=completed
+    Example:
+    
+    1. GET [base]/Procedure?patient=1137192&amp;status=completed
 
-   *Implementation Notes:* Fetches a bundle of all Procedure resources for the specified patient and status ([how to search by reference] and [how to search by token])
+    *Implementation Notes:* Fetches a bundle of all Procedure resources for the specified patient and status ([how to search by reference] and [how to search by token])
 
 1. **SHOULD** support searching using the combination of the **[`patient`](SearchParameter-us-core-procedure-patient.html)** and **[`code`](SearchParameter-us-core-procedure-code.html)** and **[`date`](SearchParameter-us-core-procedure-date.html)** search parameters:
   - including support for these comparators: `gt, lt, ge, le`
 
-  `GET [base]/Procedure?patient=[reference]&code=[token]&date={gt|lt|ge|le}[date]`
+    `GET [base]/Procedure?patient=[reference]&code={[system]}|[code]&date={gt|lt|ge|le}[date]`
 
-   Example: GET [base]/Procedure?patient=1137192&amp;date=ge2019-01-14&amp;code=http://snomed.info/sct\|35637008
+    Example:
+    
+    1. GET [base]/Procedure?patient=1137192&amp;date=ge2019-01-14&amp;code=http://snomed.info/sct\|35637008
 
-   *Implementation Notes:* Fetches a bundle of all Procedure resources for the specified patient and date and procedure code(s).  SHOULD support search by multiple codes. ([how to search by reference] and [how to search by token] and [how to search by date])
+    *Implementation Notes:* Fetches a bundle of all Procedure resources for the specified patient and date and procedure code(s).  SHOULD support search by multiple codes. ([how to search by reference] and [how to search by token] and [how to search by date])
 
 
 {% include link-list.md %}
