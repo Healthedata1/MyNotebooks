@@ -32,9 +32,9 @@
 			<h3 class="no_toc" id="resource--details">RESTful Capabilities by Resource/Profile:</h3>
 
 			{% if cs.rest[0].operation %}
-	<p><strong>Summary of Operations</strong></p>
+	<p><strong>Summary of System Wide Operations</strong></p>
 			{% for r in cs.rest[0].operation %}
-				<li><strong>{{r.extension[0].valueCode}}</strong> support the	<a href="{{r.definition.reference}}"><code>${{r.name}}</code></a> operation.</li>
+				<li><strong>{{r.extension[0].valueCode}}</strong> support the	<a href="{{path_map[r.definition.reference]}}"><code>${{r.name}}</code></a> operation.</li>
 			{% endfor %}
 			{% endif %}
 
@@ -46,6 +46,7 @@
 						<th>Supported Profiles</th>
 						<th>Supported Searches</th>
 						<th>Supported Includes</th>
+						<th>Supported Operations</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -56,7 +57,7 @@
 						</td>
 						<td>
 {% for i in r.supportedProfile %}
-						<a href="#{{i }}">{{p_map[i]}}</a>{%- if not loop.last %}, {% endif %}
+						<a href="{{path_map[i]}}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
 {%  endfor %}
 						</td>
 						<td>
@@ -67,7 +68,7 @@
 							{%- for s in r.extension %}
 							{%- if s.url == "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination" %}
 							{%- for combo in s.extension if combo.url == 'required' or combo.url == 'optional'-%}
-							{{ sp_map[combo.valueString][0] }}
+							{{ sp_map[combo.valueString] }}
 							{%- if not loop.last %}+{% endif %}
 							{%- endfor %}
 							{%- endif %}
@@ -76,6 +77,12 @@
 						</td>
 						<td>
 							{{r.searchInclude | join(', ') }}
+						</td>
+						<td>
+							{% for s in r.operation if s.extension[0].valueCode == 'SHOULD' or  s.extension[0].valueCode == 'SHALL' %}
+							${{ s.name }}
+							{%- if not loop.last %}, {% endif %}
+							{%- endfor %}
 						</td>
 					</tr>
 					{% endfor %}
@@ -89,12 +96,14 @@
 
 			<p>Supported Profiles:
 				{% for i in r.supportedProfile %}
-										<a href="#{{i }}">{{p_map[i]}}</a>{%- if not loop.last %}, {% endif %}
+											<a href="{{path_map[i]}}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
 				{%  endfor %}
 				</p>
 
 
-			{% if r.documentation %}{{ r.documentation | markdown | safe }}{% endif %}
+			{% if r.documentation %}<p>Resource Specific Documentation:</p>
+
+			<blockquote>{{ r.documentation | markdown | safe }}</blockquote>{% endif %}
 
 			{% if r.referencePolicy %}<p>Reference Policy: {% for rf in r.referencePolicy %}<code>{{rf}}</code>
 			{%- if not loop.last %}, {% endif %}{%- endfor %}</p>{% endif %}
@@ -134,6 +143,44 @@
 
 				</ul>
 
+				{% if r.operation %}
+				<p>Operation  Summary:</p>
+					{% set ns = namespace(shall=false,should=false,may=false) %}
+					{%for i in r.operation %}
+	    		{% if i.extension[0].valueCode == 'SHALL' %}
+					{% set ns.shall = true %}
+					{% elif i.extension[0].valueCode == 'SHOULD' %}
+	        {% set ns.should = true %}
+					{% elif i.extension[0].valueCode == 'MAY' %}
+	        {% set ns.may = true %}
+	    		{% endif %}{% endfor %}
+
+					<ul>
+						{% if ns.shall %}<li><strong>SHALL</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'SHALL' %}
+																								<a href="{{path_map[i.definition]}}">${{i.name}}</a> operation
+																								{% if i.documentation %}<p>{{i.documentation| markdown | safe }}</p>{% endif %}
+																								{%- if not loop.last %}, {% endif %}
+																								{%- endfor %}</li>
+						{%- endif %}
+						{% if ns.should %}<li><strong>SHOULD</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'SHOULD' %}
+																									<a href="{{path_map[i.definition]}}">${{i.name}}</a> operation
+																									{% if i.documentation%}<p>{{i.documentation| markdown | safe }}</p>{% endif %}
+																								{%- if not loop.last %}, {% endif %}
+																								{%- endfor %}</li>
+						{%- endif %}
+						{% if ns.may %}<li><strong>MAY</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'MAY' %}
+																									<a href="{{path_map[i.definition]}}">${{i.name}}</a> operation
+																									{% if i.documentation%}<p>{{i.documentation| markdown | safe }}</p>{% endif %}
+																								{%- if not loop.last %}, {% endif %}
+																								{%- endfor %}</li>
+						{%- endif %}
+
+
+
+					</ul>
+				{% endif %}
+
+
 			<p>Fetch and Search Criteria:</p>
 			<ul>
 				{%for i in r.interaction if i.code == "read" %}
@@ -172,7 +219,7 @@
 							<strong>{{ s.extension[0].valueCode }}</strong>
 						</td>
 						<td>
-							<a href="{{sp_map[s.name][1]}}">{{s.name}}</a>
+							<a href="{{path_map[s.definition]}}">{{s.name}}</a>
 						</td>
 						<td>
 							{{s.type}}
@@ -217,20 +264,20 @@
 						</td>
 						<td>
 							{%- for combo in combos.extension if combo.url == 'required' or combo.url == 'optional'-%}
-							<a href="{{sp_map[combo.valueString][1]}}">{{combo.valueString}}</a>
+							{{combo.valueString}}
 							{%- if not loop.last %}+{% endif %}
 							{%- endfor %}
 						</td>
 						<td>
 							{%- for combo in combos.extension if combo.url == 'required' or combo.url == 'optional'-%}
-							{{sp_map[combo.valueString][0]}}
+							{{sp_map[combo.valueString]}}
 							{%- if not loop.last %}+{% endif %}
 							{%- endfor %}
 						</td>
 						<td>
 							<code class="highlighter-rouge">GET [base]/{{r.type}}?
 								{%- for combo in combos.extension if combo.url == 'required' or combo.url == 'optional'-%}
-								{%- set p = combo.valueString -%}{%- set t = sp_map[combo.valueString][0] -%}
+								{%- set p = combo.valueString -%}{%- set t = sp_map[combo.valueString] -%}
 																																							{{p}}={%- if t == '_id' %}[id]
 																																							{%- elif p == 'status' %}[status]
 																																							{%- elif t == 'composite' %}[code]&amp;[value]
@@ -250,7 +297,10 @@
 			</table>
 			{% endif %}
 
+
 			{% endif %}
+<hr/>
+
 			{% endfor %}
 			<br />
 		</div>

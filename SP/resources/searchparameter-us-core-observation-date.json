@@ -24,7 +24,7 @@
             ]
         }
     ],
-    "date": "2019-05-01T02:17:15.306028Z",
+    "date": "2019-05-01T20:37:58.623109Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-date",
     "description": "Obtained date/time. If the obtained element is a period, a date that falls in the period",
     "experimental": false,

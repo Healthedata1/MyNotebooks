@@ -14,7 +14,7 @@
             ]
         }
     ],
-    "date": "2019-05-01T02:17:15.120523Z",
+    "date": "2019-05-01T20:37:58.337870Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/DiagnosticReport-category",
     "description": "Which diagnostic discipline/department created the report",
     "experimental": false,

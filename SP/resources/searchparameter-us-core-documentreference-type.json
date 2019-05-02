@@ -14,7 +14,7 @@
             ]
         }
     ],
-    "date": "2019-05-01T02:17:15.073647Z",
+    "date": "2019-05-01T20:37:58.268058Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-type",
     "description": "Kind of document (LOINC if possible)",
     "experimental": false,

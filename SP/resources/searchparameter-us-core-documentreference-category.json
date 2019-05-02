@@ -14,7 +14,7 @@
             ]
         }
     ],
-    "date": "2019-05-01T02:17:15.064671Z",
+    "date": "2019-05-01T20:37:58.254099Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/DocumentReference-category",
     "description": "Categorization of document",
     "experimental": false,

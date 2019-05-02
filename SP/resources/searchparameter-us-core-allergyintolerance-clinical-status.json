@@ -14,7 +14,7 @@
             ]
         }
     ],
-    "date": "2019-05-01T02:17:14.703637Z",
+    "date": "2019-05-01T20:37:57.792779Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-clinical-status",
     "description": "active | inactive | resolved",
     "experimental": false,

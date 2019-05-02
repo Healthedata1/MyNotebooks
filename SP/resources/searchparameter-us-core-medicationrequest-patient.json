@@ -14,7 +14,7 @@
             ]
         }
     ],
-    "date": "2019-05-01T02:17:15.189340Z",
+    "date": "2019-05-01T20:37:58.455557Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-patient",
     "description": "Returns prescriptions for a specific patient",
     "experimental": false,

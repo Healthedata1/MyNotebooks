@@ -16,43 +16,43 @@
 
 {%- macro get_conf_mods(j) -%}
 {%- if mods[j][2] %}
-  - including support for these modifiers: `{{ mods[j][2]|join(', ') }}`
+    - including support for these modifiers: `{{ mods[j][2]|join(', ') }}`
 {%- endif %}
 {%- if mods[j][3] %}
 {%- if mods[j][2] %}
     - and optional support these modifiers: `{{ mods[j][3]|join(', ') }}
 {%- else %}
-  - including optional support these modifiers: `{{ mods[j][3]|join(', ') }}`
+    - including optional support these modifiers: `{{ mods[j][3]|join(', ') }}`
 {%- endif %}
 {%- endif %}
 {%- if mods[j][4] %}
-  - including support for these comparators: `{{ mods[j][4]|join(', ') }}`
+    - including support for these comparators: `{{ mods[j][4]|join(', ') }}`
 {%- endif %}
 {%- if mods[j][5] %}
 {%- if mods[j][4] %}
     - and optional support these comparators: `{{ mods[j][5]|join(', ') }}`
 {%- else %}
-  - including optional support these comparators: `{{ mods[j][5]|join(', ') }}`
+    - including optional support these comparators: `{{ mods[j][5]|join(', ') }}`
 {%- endif %}
 {%- endif %}
 {%- if mods[j][6] %}
-  - including support for these chained parameters: `{{ mods[j][6]|join(', ') }}`
+    - including support for these chained parameters: `{{ mods[j][6]|join(', ') }}`
 {%- endif %}
 {%- if mods[j][7] %}
 {%- if mods[j][6] %}
     - and optional support these chained parameter: `{{ mods[j][7]|join(', ') }}`
 {%- else %}
-  - including optional support these chained parameter: `{{ mods[j][7]|join(', ') }}`
+    - including optional support these chained parameter: `{{ mods[j][7]|join(', ') }}`
 {%- endif %}
 {%- endif %}
 {%- if mods[j][8] %}
-  - support the use the `_include` parameter to indicate that these resources be included in the results: `{{ mods[j][8]|join(', ') }}`
+    - support the use the `_include` parameter to indicate that these resources be included in the results: `{{ mods[j][8]|join(', ') }}`
 {%- endif %}
 {%- if mods[j][9] %}
 {%- if mods[j][8] %}
     - and optional support of the `_include` parameter to indicate that these resources be included in the results: `{{ mods[j][9]|join(', ') }}`
 {%- else %}
-  - including optional support of the `_include` parameter to indicate that these resources be included in the results: `{{ mods[j][9]|join(', ') }}`
+    - including optional support of the `_include` parameter to indicate that these resources be included in the results: `{{ mods[j][9]|join(', ') }}`
 {%- endif %}
 {% endif %}
 {%- endmacro %}

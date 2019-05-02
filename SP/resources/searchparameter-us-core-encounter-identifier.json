@@ -14,7 +14,7 @@
             ]
         }
     ],
-    "date": "2019-05-01T02:17:14.827306Z",
+    "date": "2019-05-01T20:37:57.951904Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-identifier",
     "description": "Identifier(s) by which this encounter is known",
     "experimental": false,

@@ -24,7 +24,7 @@
             ]
         }
     ],
-    "date": "2019-05-01T02:17:15.229231Z",
+    "date": "2019-05-01T20:37:58.509412Z",
     "derivedFrom": "http://hl7.org/fhir/SearchParameter/MedicationStatement-effective",
     "description": "Date when patient was taking (or not taking) the medication",
     "experimental": false,
