@@ -8,7 +8,7 @@
 	<body>
 		<div xmlns="http://www.w3.org/1999/xhtml">
 		<h2 id="title">{{cs.title}}</h2>
-			<p>{{cs.description}}</p>
+			<p>{{cs.description | markdown | safe }}</p>
 			<ul>
 				<li>FHIR Version: {{cs.fhirVersion}}</li>
 				<li>Supported formats: {{ cs.format | join(', ') }}</li>
@@ -68,7 +68,7 @@
 							{%- for s in r.extension %}
 							{%- if s.url == "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination" %}
 							{%- for combo in s.extension if combo.url == 'required' or combo.url == 'optional'-%}
-							{{ sp_map[combo.valueString] }}
+							{{ combo.valueString }}
 							{%- if not loop.last %}+{% endif %}
 							{%- endfor %}
 							{%- endif %}
