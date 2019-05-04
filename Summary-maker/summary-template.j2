@@ -40,9 +40,12 @@ with {{article(i.binding.strength[0])}} [{{i.binding.strength}}]({{bindings[i.bi
 {%- endmacro -%}
 
 {%- macro sub_element(i) -%}
-which {% if i.min == 1 %}must {% else %}should {% endif %}have
+which {% if i.min == 1 %}must {% else %}should {% endif %}have{% if i.sliceName %} at least {% endif %}
 {%- if i.fixedUri %} a fixed `{{i.path}}` = `{{i.fixedUri}}`
 {%- elif i.fixedCode %} a fixed `{{i.path}}` = `{{i.fixedCode}}`
+{%- elif i.fixedSystem %} a fixed `{{i.path}}` = `{{i.fixedSystem}}`
+{%- elif i.fixedUri %} a fixed `{{i.path}}` = `{{i.fixedUri}}`
+{%- elif i.patternCodeableConcept %} a `{{i.path}}` = `{{i.patternCodeableConcept.as_json()| replace("'",'"') |safe }}`
 {%- else %}
 {%- if i.max == '1' %} {{article(first_letter(i))}} {{reference_name(i)}}{{ext(i)}} {{type_name(i)}} value {% else %} one or more {{reference_name(i)}}{{ext(i)}} {{type_name(i)}} values {% endif %} in `{{i.path}}`
 {% if i.binding.strength %}{{ binding(i) }}{% endif %}
@@ -67,7 +70,7 @@ which {% if i.min == 1 %}must {% else %}should {% endif %}have
 
 **{{elements[0].path}}**
 
-{%- for i in elements if i.min == 1 and i.path.count('.') == 1 %}
+{%- for i in elements if i.min == 1 and i.id.count('.') == 1 %}
 {%- set ns.mandatory = true %}
 {%- endfor %}
 {%- if ns.mandatory %}
@@ -75,17 +78,20 @@ which {% if i.min == 1 %}must {% else %}should {% endif %}have
 {%- endif %}
 
 {% for i in elements %}
-{%- if i.min == 1 and i.path.count('.') == 1 %}
+{%- if i.min == 1 and i.id.count('.') == 1 and i.id.count(':') == 0 %}
 {%- set ns.mandatory = true %}
 1. {{root_element(i)}}
-{%- elif ns.mandatory and i.path.count('.') > 1 %}
+{%- elif i.min == 1 and i.id.count('.') == 1 and i.id.count(':') > 0 %}
+{%- set ns.mandatory = true %}
    - {{sub_element(i)}}
-{%- elif i.min == 0 and i.path.count('.') == 1 %}
+{%- elif ns.mandatory and i.id.count('.') > 1  %}
+{% for i in range(i.id.count('.')) %}   {% endfor %}- {{sub_element(i)}}
+{%- elif i.min == 0 and i.id.count('.') == 1 %}
 {%- set ns.mandatory = false %}
 {%- endif %}
 {%- endfor %}
 
-{%- for i in elements if i.min == 0 and i.path.count('.') == 1 %}
+{%- for i in elements if i.min == 0 and i.id.count('.') == 1 %}
 {%- set ns.mustsupport = true %}
 {%- endfor %}
 {%- if ns.mustsupport %}
@@ -93,12 +99,12 @@ which {% if i.min == 1 %}must {% else %}should {% endif %}have
 {%- endif %}
 
 {% for i in elements %}
-{%- if i.min == 0 and i.path.count('.') == 1 %}
+{%- if i.min == 0 and i.id.count('.') == 1 %}
 {%- set ns.mustsupport = true %}
 1. {{root_element(i)}}
-{%- elif ns.mustsupport and i.path.count('.') > 1 %}
+{%- elif ns.mustsupport and i.id.count('.') > 1 %}
    - {{sub_element(i)}}
-{%- elif i.min == 1 and i.path.count('.') == 1 %}
+{%- elif i.min == 1 and i.id.count('.') == 1 %}
 {%- set ns.mustsupport = false %}
 {%- endif %}
 {%- endfor %}
