@@ -46,36 +46,36 @@
 {%- endif %}
 {%- endif %}
 {%- if mods[j][6] %}
-    - including support for these chained parameters: `{{j}}:{{ mods[j][6]|join(',') }}`
+    - including support for these chained parameters: `{{j + '.' +   mods[j][6]|join(',{0}.'.format(j)) }}`
 {%- endif %}
 {%- if mods[j][7] %}
 {%- if mods[j][6] %}
-    - and optional support these chained parameter: `{{j}}:{{ mods[j][7]|join(',') }}`
+    - and optional support these chained parameter: `{{j + '.' +   mods[j][6]|join(',{0}.'.format(j)) }}`
 {%- else %}
-    - including optional support these chained parameter: `{{j}}:{{ mods[j][7]|join(',') }}`
+    - including optional support these chained parameter: `{{j + '.' +   mods[j][6]|join(',{0}.'.format(j)) }}`
 {%- endif %}
 {%- endif %}
 {%- if mods[j][8] %}
-    - support the use these `_include` parameters: `{{ mods[j][8]|join(',') }}`
+    - including support for these `_include` parameters: `{{ mods[j][8]|join(',') }}`
 {%- endif %}
 {%- if mods[j][9] %}
 {%- if mods[j][8] %}
-    - and optional support of these `_include` parameters: `{{ mods[j][9]|join(',') }}`
+    - and optional support for these `_include` parameters: `{{ mods[j][9]|join(',') }}`
 {%- else %}
-    - including optional support of these `_include` parameters: `{{ mods[j][9]|join(',') }}`
+    - including optional support for these `_include` parameters: `{{ mods[j][9]|join(',') }}`
 {%- endif %}
 {%- endif %}
 {%- if mods[j][10] %}
-    - support for composite *AND* search on `{{j}}` (e.g.`{{j}}={{search_type[j]}}&{{j}}={{search_type[j]}}`)
+    -  including support for composite *AND* search on `{{j}}` (e.g.`{{j}}={{search_type[j]}}&{{j}}={{search_type[j]}}`)
 {%- endif %}
 {%- if mods[j][11] %}
-    - optional support for composite *AND* search on `{{j}}` (e.g.`{{j}}={{search_type[j]}}&{{j}}={{search_type[j]}}&...`)
+    - including optional support for composite *AND* search on `{{j}}` (e.g.`{{j}}={{search_type[j]}}&{{j}}={{search_type[j]}}&...`)
 {%- endif %}
 {%- if mods[j][12] %}
-    - support for composite *OR* search on `{{j}}` (e.g.`{{j}}={{search_type[j]}},{{search_type[j]}},...`)
+    - including support for composite *OR* search on `{{j}}` (e.g.`{{j}}={{search_type[j]}},{{search_type[j]}},...`)
 {%- endif %}
 {%- if mods[j][13] %}
-    - optional support for composite *OR* search on `{{j}}` (e.g.`{{j}}={{search_type[j]}},{{search_type[j]}},...`)
+    - including optional support for composite *OR* search on `{{j}}` (e.g.`{{j}}={{search_type[j]}},{{search_type[j]}},...`)
 {%- endif %}
 {%- endmacro %}
 
@@ -99,11 +99,11 @@ The following search parameters, search parameter combinations and search parame
 1. **SHALL** {% if i.description not in nulls %}{{i.description}}{% else %}support searching{% endif %} using the **[`{{i.code}}`]({{i.rel_url}})** search parameter:
 {{get_conf_mods(i.code)}}
 
-{%- if i.code == '_id'%}    `GET [base]/{{i.base}}[id]`{% else %}    `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}{{get_andors(i.code)}}`{% endif %}
+{% if i.code == '_id'%}    `GET [base]/{{i.base}}[id]`{% else %}    `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}{{get_andors(i.code)}}`{% endif %}
 {% if i.example not in nulls %}
     Example:
     {% for j in i.example.split('~') %}
-    1. {{j}}
+      1. {{j}}
     {%- endfor %}
 {% endif %}
     *Implementation Notes:* {{i.imp_note}} ([how to search by {% if i.code == '_id' %}the logical id] of the resource{% else %}{{i.type}}]{% endif %})
@@ -116,7 +116,7 @@ The following search parameters, search parameter combinations and search parame
 {% if i.example not in nulls %}
     Example:
     {% for j in i.example.split('~') %}
-    1. {{j}}
+      1. {{j}}
     {%- endfor %}
 {% endif %}
     *Implementation Notes:* {{i.imp_note}} ([how to search by {{ i.types.split(',') | join('] and [how to search by ')}}])
@@ -135,7 +135,7 @@ The following search parameters, search parameter combinations and search parame
 {%if i.example not in nulls %}
     Example:
     {% for j in i.example.split('~') %}
-    1. {{j}}
+      1. {{j}}
     {%- endfor %}
 {% endif %}
      *Implementation Notes:* {{i.imp_note}} ([how to search by {{i.type}}])
@@ -148,7 +148,7 @@ The following search parameters, search parameter combinations and search parame
 {% if i.example not in nulls %}
     Example:
     {% for j in i.example.split('~') %}
-    1. {{j}}
+      1. {{j}}
     {%- endfor %}
 {% endif %}
     *Implementation Notes:* {{i.imp_note}} ([how to search by {{i.types.split(',') | join('] and [how to search by ')}}])
