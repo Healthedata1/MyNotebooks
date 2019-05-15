@@ -1,22 +1,77 @@
-<div xmlns="http://www.w3.org/1999/xhtml"><h2>SearchParameter: {{sp.name}}</h2><br /><p><b> id</b> {{sp.id}}</p><p><b> url</b> : <b> {{sp.url}}</b></p><p><b> version</b> : {{sp.version}}</p><p><b> name</b> : {{sp.name}}</p><p><b> derivedFrom</b> : <a> {{sp.derivedFrom}}</a></p><p><b> status</b> : {{sp.status}}</p><p><b> experimental</b>  {{sp.experimental}}</p><p><b> date</b> : {{ sp.date | truncate(10,true,'') }}</p><p><b> publisher</b> : {{sp.publisher}}</p><p><b> contact</b> : {{sp.contact[0].telecom[0].value}}</p><p><b> description</b> : {{sp.description}}</p><p><b> useContext</b> : </p><p><b> jurisdiction</b> : United States of America (the) <span> (Details : {urn:iso:std:iso:3166 code 'US' = 'United States of America', given as 'United
-           States of America (the)'})</span></p><!--
+<div xmlns="http://www.w3.org/1999/xhtml">
+	<h2>SearchParameter: {{sp.name}}</h2>
+		<p>
+		<b> description</b> : {{sp.description | safe }}</p>
+		<br/>
+	<p>
+		<b> id</b> {{sp.id}}</p>
+	<p>
+		<b> url</b> : <b> {{sp.url}}</b>
+	</p>
+	<p>
+		<b> version</b> : {{sp.version}}</p>
+	<p>
+		<b> name</b> : {{sp.name}}</p>
+	<p>
+		<b> derivedFrom</b> : <a> {{sp.derivedFrom}}</a>
+	</p>
+	<p>
+		<b> status</b> : {{sp.status}}</p>
+	<p>
+		<b> experimental</b>  {{sp.experimental}}</p>
+	<p>
+		<b> date</b> : {{ sp.date | truncate(10,true,'') }}</p>
+	<p>
+		<b> publisher</b> : {{sp.publisher}}</p>
+	<p>
+		<b> contact</b> : {{sp.contact[0].telecom[0].value}}</p>
+
+	<p>
+		<b> useContext</b> : </p>
+	<p>
+		<b> jurisdiction</b> : United States of America (the) <span> (Details : {urn:iso:std:iso:3166 code 'US' = 'United States of America', given as 'United
+           States of America (the)'})</span>
+	</p>
+	<!--
 	<p>
 		<b> purpose</b> : Need to search by identifier for various infrastructural cases - mainly retrieving packages,
          and matching as part of a chain</p>
-  --><p><b> code</b> : <code>{{sp.code}}</code></p><p><b> base</b> :{{sp.base | join(', ')}}</p><p><b> type</b> : {{sp.type}}</p><p><b> expression</b> : <code>{{sp.expression}}</code></p><p><b> xpath</b> : <code>{{sp.xpath}}</code></p><p><b> xpathUsage</b> : {{sp.xpathUsage}}</p><p><b> mulitpleOr</b> : {{sp.multipleOr}}   (Conformance Expectation = {{ sp._multipleOr.extension[0].valueCode }})</p><p><b> mulitpleAnd</b> : {{sp.multipleAnd}}  ( Conformance Expectation = {{ sp._multipleAnd.extension[0].valueCode }})</p>
+  -->
+	<p>
+		<b> code</b> : <code>{{sp.code}}</code>
+	</p>
+	<p>
+		<b> base</b> :{{sp.base | join(', ')}}</p>
+	<p>
+		<b> type</b> : {{sp.type}}</p>
+	<p>
+		<b> expression</b> : <code>{{sp.expression}}</code>
+	</p>
+	<p>
+		<b> xpath</b> : <code>{{sp.xpath}}</code>
+	</p>
+	<p>
+		<b> xpathUsage</b> : {{sp.xpathUsage}}</p>
+	<p>
+		<b> mulitpleOr</b> : {{sp.multipleOr}}   (Conformance Expectation = {{ sp._multipleOr.extension[0].valueCode }})</p>
+	<p>
+		<b> mulitpleAnd</b> : {{sp.multipleAnd}}  ( Conformance Expectation = {{ sp._multipleAnd.extension[0].valueCode }})</p>
     {% if sp.comparator %}
     {% for i in sp.comparator %}
-    <p><b> comparator</b> : <code>{{i}}</code> ( Conformance Expectation = {{ sp._comparator[loop.index0].extension[0].valueCode }})</p>
+    <p>
+		<b> comparator</b> : <code>{{i}}</code> ( Conformance Expectation = {{ sp._comparator[loop.index0].extension[0].valueCode }})</p>
     {% endfor %}
     {% endif %}
     {% if sp.modifier %}
     {% for i in sp.modifier %}
-    <p><b> modifier</b> : <code>{{i}}</code>  (Conformance Expectation =  {{ sp._modifier[loop.index0].extension[0].valueCode }})</p>
+    <p>
+		<b> modifier</b> : <code>{{i}}</code>  (Conformance Expectation =  {{ sp._modifier[loop.index0].extension[0].valueCode }})</p>
     {% endfor %}
     {% endif %}
     {% if sp.chain %}
     {% for i in sp.chain %}
-    <p><b> chain</b> : <code>{{i}}</code>  (Conformance Expectation = {{ sp._chain[loop.index0].extension[0].valueCode }})</p>
+    <p>
+		<b> chain</b> : <code>{{i}}</code>  (Conformance Expectation = {{ sp._chain[loop.index0].extension[0].valueCode }})</p>
     {% endfor %}
 		{% endif %}
 		</div>
