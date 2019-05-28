@@ -1,0 +1,150 @@
+{
+    "resourceType": "Patient",
+    "id": "eroCd17NbCffM3E3WXi7eOQ3",
+    "active": true,
+    "gender": "male",
+    "birthDate": "1978-12-11",
+    "deceasedBoolean": false,
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+            "valueCode": "M"
+        },
+        {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [
+                {
+                    "url": "ombCategory",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/us/core/ValueSet/omb-race-category",
+                        "code": "2028-9",
+                        "display": "Asian"
+                    }
+                },
+                {
+                    "url": "text",
+                    "valueString": "Asian"
+                }
+            ]
+        },
+        {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [
+                {
+                    "url": "ombCategory",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category",
+                        "code": "UNK",
+                        "display": "Unknown"
+                    }
+                },
+                {
+                    "url": "text",
+                    "valueString": "Unknown"
+                }
+            ]
+        }
+    ],
+    "identifier": [
+        {
+            "use": "usual",
+            "system": "urn:oid:1.2.840.114350.1.13.0.1.7.5.737384.0",
+            "value": "E3948",
+            "type": {
+                "text": "EPIC"
+            }
+        },
+        {
+            "use": "usual",
+            "value": "Z6073",
+            "type": {
+                "text": "EXTERNAL"
+            }
+        },
+        {
+            "use": "usual",
+            "system": "urn:oid:2.16.840.1.113883.4.1",
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendered-value",
+                    "valueString": "xxx-xx-3601"
+                }
+            ]
+        }
+    ],
+    "name": [
+        {
+            "use": "usual",
+            "text": "Jason Argonaut",
+            "family": "Argonaut",
+            "given": [
+                "Jason"
+            ]
+        }
+    ],
+    "telecom": [
+        {
+            "system": "phone",
+            "value": "608-623-5250",
+            "use": "home"
+        },
+        {
+            "system": "phone",
+            "value": "608-777-7777",
+            "use": "work"
+        },
+        {
+            "system": "phone",
+            "value": "608-623-5250",
+            "use": "mobile"
+        }
+    ],
+    "address": [
+        {
+            "use": "home",
+            "line": [
+                "2197 State Rd 89"
+            ],
+            "city": "Mt Horeb",
+            "district": "DANE",
+            "state": "WI",
+            "postalCode": "53572",
+            "country": "US",
+            "period": {
+                "start": "2008-10-29"
+            }
+        }
+    ],
+    "communication": [
+        {
+            "preferred": true,
+            "language": {
+                "text": "English",
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/ValueSet/languages",
+                        "code": "en",
+                        "display": "English"
+                    }
+                ]
+            }
+        }
+    ],
+    "generalPractitioner": [
+        {
+            "reference": "https://connectathon.epic.com/Interconnect-Fhir-Unsecure/api/FHIR/STU3/Practitioner/e7D.u41Zv3VPrLmUp-mWnrQ3",
+            "display": "Physician Champion, MD"
+        }
+    ],
+    "managingOrganization": {
+        "reference": "https://connectathon.epic.com/Interconnect-Fhir-Unsecure/api/FHIR/STU3/Organization/enRyWnSP963FYDpoks4NHOA3",
+        "display": "Epic Hospital System"
+    },
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+        ]
+    }
+}
