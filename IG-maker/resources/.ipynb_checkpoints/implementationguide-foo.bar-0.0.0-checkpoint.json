@@ -1,0 +1,97 @@
+{
+    "id": "foo.bar-0.0.0",
+    "contact": [
+        {
+            "telecom": [
+                {
+                    "system": "email",
+                    "value": "mailto: ehaas@healthedatainc.com"
+                }
+            ]
+        }
+    ],
+    "date": "2019-06-19",
+    "definition": {
+        "grouping": [
+            {
+                "name": "base"
+            }
+        ],
+        "page": {
+            "generation": "markdown",
+            "nameUrl": "index.html",
+            "page": [
+                {
+                    "generation": "markdown",
+                    "nameUrl": "guidance.html",
+                    "title": "General Guidance"
+                },
+                {
+                    "generation": "markdown",
+                    "nameUrl": "profiles.html",
+                    "title": "Profiles and Extensions"
+                },
+                {
+                    "generation": "markdown",
+                    "nameUrl": "operations.html",
+                    "title": "Operations"
+                },
+                {
+                    "generation": "markdown",
+                    "nameUrl": "terminology.html",
+                    "title": "Terminology"
+                },
+                {
+                    "generation": "markdown",
+                    "nameUrl": "searchparameters.html",
+                    "title": "Search Parameters"
+                },
+                {
+                    "generation": "markdown",
+                    "nameUrl": "capstatements.html",
+                    "title": "Capability Statements"
+                },
+                {
+                    "generation": "markdown",
+                    "nameUrl": "security.html",
+                    "title": "Security"
+                },
+                {
+                    "generation": "markdown",
+                    "nameUrl": "downloads.html",
+                    "title": "Downloads"
+                },
+                {
+                    "generation": "markdown",
+                    "nameUrl": "all-examples.html",
+                    "title": "All Examples"
+                },
+                {
+                    "generation": "html",
+                    "nameUrl": "toc.html",
+                    "title": "Table of Contents"
+                }
+            ],
+            "title": "Home"
+        },
+        "resource": [
+            {
+                "reference": {
+                    "display": "Foo Bar",
+                    "reference": "foo/bar.json"
+                }
+            }
+        ]
+    },
+    "fhirVersion": [
+        "1.0.0"
+    ],
+    "license": "yes",
+    "name": "FooBar",
+    "packageId": "foo.bar",
+    "publisher": "Health eData Inc",
+    "status": "active",
+    "title": "Foo Bar Implementation Guide",
+    "url": "foo/bar-0.0.0",
+    "resourceType": "ImplementationGuide"
+}
