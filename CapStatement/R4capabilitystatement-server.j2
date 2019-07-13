@@ -15,13 +15,16 @@
 				<li>Published: {{cs.date.as_json()}}</li>
 				<li>Published by: {{cs.publisher}}</li>
 			</ul>
-            
+
 			<p>{{cs.description | markdown | safe }}</p>
 
-			{% if cs.implementationGuide|length > 2 %}
-	    <h3 class="no_toc" id="igs">Implementation guides that SHOULD be supported:</h3>
+			{% if cs.implementationGuide|length > 1 %}
+	    <h3 class="no_toc" id="igs">SHALL Support the Following Implementation Guides:</h3>
+
 			{% for ig in cs.implementationGuide[1:] %}
-			<li>{{ig}}</li>
+			<ul>
+				<li><a href="{{ig}}">{{ig}}</a></li>
+			</ul>
 			{% endfor %}
 			{% endif %}
 
