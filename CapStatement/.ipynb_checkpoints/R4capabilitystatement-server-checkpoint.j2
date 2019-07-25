@@ -15,13 +15,16 @@
 				<li>Published: {{cs.date.as_json()}}</li>
 				<li>Published by: {{cs.publisher}}</li>
 			</ul>
-            
+
 			<p>{{cs.description | markdown | safe }}</p>
 
-			{% if cs.implementationGuide|length > 2 %}
-	    <h3 class="no_toc" id="igs">Implementation guides that SHOULD be supported:</h3>
+			{% if cs.implementationGuide|length > 1 %}
+	    <h3 class="no_toc" id="igs">SHALL Support the Following Implementation Guides:</h3>
+
 			{% for ig in cs.implementationGuide[1:] %}
-			<li>{{ig}}</li>
+			<ul>
+				<li><a href="{{ig}}">{{ig}}</a></li>
+			</ul>
 			{% endfor %}
 			{% endif %}
 
@@ -31,7 +34,13 @@
 			<p id="security"><strong>Security:</strong></p>
 			{{cs.rest[0].security.description | markdown | safe }}
 
-			<h3 class="no_toc" id="resource--details">RESTful Capabilities by Resource/Profile:</h3>
+
+			{% if cs.rest[0].interaction  %}
+	<p><strong>Summary of System Wide Interactions</strong></p>
+			{% for r in cs.rest[0].interaction %}
+				<li><strong>{{r.extension[0].valueCode}}</strong> support the	<code>{{r.code}}</code> interaction.</li>
+			{% endfor %}
+	  	{% endif %}
 
 			{% if cs.rest[0].operation %}
 	<p><strong>Summary of System Wide Operations</strong></p>
@@ -39,6 +48,8 @@
 				<li><strong>{{r.extension[0].valueCode}}</strong> support the	<a href="{{path_map[r.definition.reference]}}"><code>${{r.name}}</code></a> operation.</li>
 			{% endfor %}
 			{% endif %}
+
+			<h3 class="no_toc" id="resource--details">RESTful Capabilities by Resource/Profile:</h3>
 
 			<p><strong>Summary of Search Criteria</strong></p>
 			<table class="grid">
@@ -48,6 +59,7 @@
 						<th>Supported Profiles</th>
 						<th>Supported Searches</th>
 						<th>Supported Includes</th>
+            <th>Supported Rev_Includes</th>
 						<th>Supported Operations</th>
 					</tr>
 				</thead>
@@ -80,6 +92,9 @@
 						<td>
 							{{r.searchInclude | join(', ') }}
 						</td>
+            <td>
+              {{r.searchRevInclude | join(', ') }}
+            </td>
 						<td>
 							{% for s in r.operation if s.extension[0].valueCode == 'SHOULD' or  s.extension[0].valueCode == 'SHALL' %}
 							${{ s.name }}
@@ -205,6 +220,17 @@
 					{% endfor %}
 				</li><br />
 				{% endif %}
+
+        {%if r.searchRevInclude %}
+				<li>
+					A {{ cs.rest[0].mode | capitalize }} <strong>SHOULD</strong> be capable of supporting the following _revincludes:
+					<br />
+					{% for revinclude in r.searchRevInclude %}
+						{{revinclude}} - <code class="highlighter-rouge">GET [base]/{{r.type}}?[parameter=value]&amp;_revinclude={{revinclude}}</code>
+					{% endfor %}
+				</li><br />
+				{% endif %}
+        
 			</ul>
 
 			{% if r.searchParam %}

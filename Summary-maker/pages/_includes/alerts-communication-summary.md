@@ -30,4 +30,4 @@ with a [required](http://hl7.org/fhir/R4/terminologies.html#required)
 1.  A  dateTime  in `Communication.sent`
 1. One or more Recipient References  in `Communication.recipient`
 1. One or more  Payloads  in `Communication.payload`
-   - which must have a  string, Attachment or Reference in `Communication.payload.content[x]`
+   - which must have a  string value  in `Communication.payload.content[x]`
