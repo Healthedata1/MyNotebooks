@@ -257,13 +257,14 @@
 							{{s.type}}
 						</td>
 						<td>
-							<code class="highlighter-rouge">GET [base]/{{r.type}}?{{s.name}}={%- if s.name == '_id' %}[id]
-																																						 {%- elif s.name == 'status' %}[status]
-																																						 {%- elif s.type == 'composite' %}[code]&amp;[value]
-																																						 {%- elif s.type == 'uri' %}[uri]
-																																						 {%- elif s.type == 'string' %}[{{s.name}}]
-																																						 {%- elif s.type == 'token' %}[system]|[code]
-																																						 {%- else %}[{{s.name}}]
+							<code class="highlighter-rouge">GET [base]/{{r.type}}?{{s.name}}{%- if s.name == '_id' %}=[id]
+																																						 {%- elif s.name == 'status' %}=[status]
+																																						 {%- elif s.type == 'composite' %}=[code]&amp;[value]
+																																						 {%- elif s.type == 'uri' %}=[uri]
+																																						 {%- elif s.type == 'string' %}=[{{s.name}}]
+																																						 {%- elif s.type == 'token' %}=[system]|[code]
+																																						 {%- elif s.name in ['us-core-includeprovenance'] %}
+																																						 {%- else %}=[{{s.name}}]
 																																						 {%- endif %}</code>
 						 </td>
 					</tr>
@@ -310,13 +311,14 @@
 							<code class="highlighter-rouge">GET [base]/{{r.type}}?
 								{%- for combo in combos.extension if combo.url == 'required' or combo.url == 'optional'-%}
 								{%- set p = combo.valueString -%}{%- set t = sp_map[combo.valueString] -%}
-																																							{{p}}={%- if t == '_id' %}[id]
-																																							{%- elif p == 'status' %}[status]
-																																							{%- elif t == 'composite' %}[code]&amp;[value]
-																																							{%- elif t == 'uri' %}[uri]
-																																							{%- elif t == 'string' %}[{{p}}]
-																																							{%- elif t== 'token' %}[system]|[code]
-																																							{%- else %}[{{p}}]
+																																							{{p}}{%- if p == '_id' %}=[id]
+																																							{%- elif p == 'status' %}=[status]
+																																							{%- elif t == 'composite' %}=[code]&amp;[value]
+																																							{%- elif t == 'uri' %}=[uri]
+																																							{%- elif t == 'string' %}=[{{p}}]
+																																							{%- elif t== 'token' %}=[system]|[code]
+																																						 	{%- elif p in ['us-core-includeprovenance'] %}
+																																							{%- else %}=[{{p}}]
 																																							{%- endif %}
 
 								{%- if not loop.last %}&amp;{%- endif %}
