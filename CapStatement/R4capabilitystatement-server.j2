@@ -59,7 +59,7 @@
 						<th>Supported Profiles</th>
 						<th>Supported Searches</th>
 						<th>Supported <code>_includes</code></th>
-            <th>Supported <code>_revincludes</code></th>
+            <!--<th>Supported <code>_revincludes</code></th>-->
 						<th>Supported Operations</th>
 					</tr>
 				</thead>
@@ -92,9 +92,9 @@
 						<td>
 							{{r.searchInclude | join(', ') }}
 						</td>
-            <td>
+            <!--<td>
               {{r.searchRevInclude | join(', ') }}
-            </td>
+            </td>-->
 						<td>
 							{% for s in r.operation if s.extension[0].valueCode == 'SHOULD' or  s.extension[0].valueCode == 'SHALL' %}
 							${{ s.name }}
@@ -111,11 +111,12 @@
 			<h4 class="no_toc" id="{{r.type | lower }}">{{r.type}}</h4>
 
 
-			<p>Supported Profiles:
+			{% if r.supportedProfile %}<p>Supported Profiles:
 				{% for i in r.supportedProfile %}
 											<a href="{{path_map[i]}}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
 				{%  endfor %}
-				</p>
+				</p>{% endif %}
+
 
 
 			{% if r.documentation %}<p>Resource Specific Documentation:</p>
@@ -128,7 +129,7 @@
 			{% if r.readHistory %}<p>Server returns past versions as part of the vRead operation.</p>{% endif %}
 			{% if r.updateCreate %}<p>Server allows the client to create new identities on the server</p>{% endif %}
 
-			<p>Profile Interaction Summary:</p>
+			{% if r.interaction %}<p>Profile Interaction Summary:</p>
 				{% set ns = namespace(shall=false,should=false,may=false) %}
 				{%for i in r.interaction %}
     		{% if i.extension[0].valueCode == 'SHALL' %}
@@ -163,7 +164,7 @@
 
 				</ul>
                 {% for i in r.interaction if i.documentation %}<blockquote>{{i.code}}<sup>&#8224;</sup>{{i.documentation | markdown | safe }}</blockquote>{% endfor %}
-
+				{% endif %}
 				{% if r.operation %}
 				<p>Operation  Summary:</p>
 					{% set ns = namespace(shall=false,should=false,may=false) %}
@@ -202,7 +203,7 @@
 				{% endif %}
 
 
-			<p>Fetch and Search Criteria:</p>
+			{% if r.searchParam or r.interaction or r.searchInclude or r.searchRevInclude %}<p>Fetch and Search Criteria:</p>
 			<ul>
 				{%for i in r.interaction if i.code == "read" %}
 				<li>
@@ -333,6 +334,7 @@
 
 
 			{% endif %}
+		{% endif %}
 <hr/>
 
 			{% endfor %}
