@@ -59,7 +59,7 @@
 						<th>Supported Profiles</th>
 						<th>Supported Searches</th>
 						<th>Supported <code>_includes</code></th>
-            <!--<th>Supported <code>_revincludes</code></th>-->
+            <th>Supported <code>_revincludes</code></th>
 						<th>Supported Operations</th>
 					</tr>
 				</thead>
@@ -92,9 +92,9 @@
 						<td>
 							{{r.searchInclude | join(', ') }}
 						</td>
-            <!--<td>
+            <td>
               {{r.searchRevInclude | join(', ') }}
-            </td>-->
+            </td>
 						<td>
 							{% for s in r.operation if s.extension[0].valueCode == 'SHOULD' or  s.extension[0].valueCode == 'SHALL' %}
 							${{ s.name }}
