@@ -22,7 +22,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": 14,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -55,16 +55,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 15,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "'2019-09-12T04:33:05.539921Z'"
+       "'2019-09-12T19:06:02.529282Z'"
       ]
      },
-     "execution_count": 2,
+     "execution_count": 15,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -100,7 +100,6 @@
     "Provenance = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-provenance',\n",
     ")\n",
     "\n",
-    "r_list =[]\n",
     "\n",
     "in_path = '/Users/ehaas/Documents/FHIR/synthea/output/fhir/'\n",
     "in_path = '/Users/ehaas/Documents/FHIR/synthea/output/us_core_r4/fhir/'\n",
@@ -108,7 +107,7 @@
     "out_path = '/Users/ehaas/Documents/FHIR/ArgoR4Validator/source/examples/'  # append forward slash \n",
     "#f_name = 'Denisse335_Stracke611_e760e08d-a0ff-4cd7-83c0-36b27dae6ec3'\n",
     "#f_name='Alaina222_Gleichner915_0e83bdc3-52c5-4e7e-ba92-174e711ba95c'\n",
-    "f_name = 'Jose871_Cruickshank494_52fb90a7-9e4f-4140-8c3c-c8afbbb3fbf9.json'\n",
+    "f_name = 'Nadia817_Morissette863_190017e3-417c-46d4-8c0e-dcc9dbc67d25.json'\n",
     "\n",
     "f_now = D.FHIRDate(f'{datetime.utcnow().isoformat()}Z')\n",
     "f_now.as_json()"
@@ -123,7 +122,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 16,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -143,7 +142,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 17,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -167,7 +166,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 18,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -186,7 +185,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 19,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -207,7 +206,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 20,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -257,7 +256,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": 21,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -274,7 +273,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": 22,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -326,7 +325,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": 23,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -386,7 +385,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": 24,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -395,7 +394,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 12,
+   "execution_count": 25,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -426,7 +425,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": 26,
    "metadata": {},
    "outputs": [
     {
@@ -445,9 +444,9 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "number of example resource = 2157\n",
+      "number of example resource = 361\n",
       "US Core types = dict_keys(['Patient', 'AllergyIntolerance', 'CarePlan', 'CareTeam', 'Condition', 'Device', 'DiagnosticReport', 'DocumentReference', 'Encounter', 'Goal', 'Immunization', 'Location', 'Medication', 'MedicationRequest', 'Observation', 'Organization', 'Practitioner', 'PractitionerRole', 'Procedure', 'Provenance'])\n",
-      "Synthea types {'Medication', 'Goal', 'CareTeam', 'Practitioner', 'Encounter', 'CarePlan', 'Patient', 'Immunization', 'Procedure', 'MedicationRequest', 'Observation', 'Condition', 'Device', 'PractitionerRole', 'Organization', 'AllergyIntolerance', 'Provenance', 'DiagnosticReport', 'Location'}\n",
+      "Synthea types {'Observation', 'Practitioner', 'Location', 'Patient', 'MedicationRequest', 'Device', 'Goal', 'Encounter', 'DiagnosticReport', 'Immunization', 'Medication', 'Provenance', 'Procedure', 'AllergyIntolerance', 'CareTeam', 'PractitionerRole', 'CarePlan', 'Condition', 'Organization'}\n",
       "What is missing {'DocumentReference'}\n",
       "======Fin======\n"
      ]
@@ -455,6 +454,7 @@
    ],
    "source": [
     "clear_path()\n",
+    "r_list= []\n",
     "\n",
     "synthea_files = [f_name] if f_name else [i for i in listdir(in_path)]\n",
     "\n",
@@ -471,10 +471,13 @@
     "            r = e[\"resource\"]\n",
     "            r_id = r[\"id\"]\n",
     "            t = r[\"resourceType\"]\n",
+    "            \n",
+    "            if t in types.keys(): # see what types are in bundle\n",
+    "               r_list.append(t)\n",
     "            # get a list of id's to create literal references later using a string replace \n",
     "            ids[r_id]=t\n",
-    "           \n",
-    "            e['resource']= add_meta(r) # add meta elements to resource\n",
+    "\n",
+    "            #e['resource']= add_meta(r) # add meta elements to resource  - Synthea already does this!!!\n",
     "            \n",
     "            #change POST to PUT and update the URL\n",
     "            e['request']['method']='PUT'\n",
