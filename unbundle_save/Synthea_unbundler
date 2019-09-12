@@ -1,0 +1,565 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Script to load Synthea bundle and:\n",
+    "\n",
+    "- Unbundle using dict and add meta profiles\n",
+    "- Save to USCore Validator and Validate\n",
+    "- Create a second transaction bundle of Provenance Resources for each Resource\n",
+    "- Load to FHIR Reference Server for further testing\n",
+    "\n",
+    "\n",
+    "for some reason the pyFHIRR4 models for Bundle not working :-(\n",
+    "\n",
+    "- python version 3.6+\n",
+    "- get data from folder\n",
+    "- unbundle\n",
+    "- display\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from os import listdir, path, unlink\n",
+    "from json import load, dumps, loads\n",
+    "from requests import get, post, put\n",
+    "from IPython.display import display, Markdown, HTML\n",
+    "from fhirclient.r4models import bundle as B\n",
+    "from fhirclient.r4models import provenance as P\n",
+    "from fhirclient.r4models import narrative as N\n",
+    "import fhirclient.r4models.coding as C\n",
+    "import fhirclient.r4models.codeableconcept as CC\n",
+    "import fhirclient.r4models.fhirdate as D\n",
+    "import fhirclient.r4models.fhirreference as FR\n",
+    "import fhirclient.r4models.meta as M\n",
+    "from fhirclient.r4models.fhirabstractbase import FHIRValidationError\n",
+    "from datetime import datetime, date\n",
+    "from requests import get, post, put\n",
+    "from uuid import uuid1\n",
+    "from time import sleep\n",
+    "from pprint import pprint"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### globals"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'2019-09-12T19:06:02.529282Z'"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "\n",
+    "types = dict (\n",
+    "Patient = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient',\n",
+    "AllergyIntolerance = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance',\n",
+    "CarePlan = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan',\n",
+    "CareTeam = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam',\n",
+    "Condition = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition',\n",
+    "Device = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-implantable-device',\n",
+    "DiagnosticReport = ['http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab',\n",
+    "                    'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note'],\n",
+    "DocumentReference = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-documentreference',\n",
+    "Encounter = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter',\n",
+    "Goal = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-goal',\n",
+    "Immunization = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization',\n",
+    "Location = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-location',\n",
+    "Medication = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication',\n",
+    "MedicationRequest = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest',\n",
+    "Observation = ['http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab',\n",
+    "               'http://hl7.org/fhir/StructureDefinition/vitalsigns',\n",
+    "                'http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus',\n",
+    "               'http://hl7.org/fhir/us/core/StructureDefinition/pediatric-weight-for-height',\n",
+    "               'http://hl7.org/fhir/us/core/StructureDefinition/pediatric-bmi-for-age',\n",
+    "               'http://hl7.org/fhir/us/core/StructureDefinition/us-core-pulse-oximetry',],\n",
+    "Organization = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization',\n",
+    "Practitioner = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner',\n",
+    "PractitionerRole = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole',\n",
+    "Procedure = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure',\n",
+    "Provenance = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-provenance',\n",
+    ")\n",
+    "\n",
+    "\n",
+    "in_path = '/Users/ehaas/Documents/FHIR/synthea/output/fhir/'\n",
+    "in_path = '/Users/ehaas/Documents/FHIR/synthea/output/us_core_r4/fhir/'\n",
+    "#in_path='test/'\n",
+    "out_path = '/Users/ehaas/Documents/FHIR/ArgoR4Validator/source/examples/'  # append forward slash \n",
+    "#f_name = 'Denisse335_Stracke611_e760e08d-a0ff-4cd7-83c0-36b27dae6ec3'\n",
+    "#f_name='Alaina222_Gleichner915_0e83bdc3-52c5-4e7e-ba92-174e711ba95c'\n",
+    "f_name = 'Nadia817_Morissette863_190017e3-417c-46d4-8c0e-dcc9dbc67d25.json'\n",
+    "\n",
+    "f_now = D.FHIRDate(f'{datetime.utcnow().isoformat()}Z')\n",
+    "f_now.as_json()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Get files"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def open_file(in_path,f_name): # get files\n",
+    "    with open(f'{in_path}{f_name}',encoding='utf-8', errors='ignore') as f:\n",
+    "        r = f.read()\n",
+    "       \n",
+    "        return(loads(r))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### First Clear the directory"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def clear_path():\n",
+    "    for filename in listdir(out_path):\n",
+    "        file_path = path.join(out_path,filename)\n",
+    "        try:\n",
+    "            if path.isfile(file_path):\n",
+    "               unlink(file_path)\n",
+    "            #elif os.path.isdir(file_path): shutil.rmtree(file_path)\n",
+    "        except Exception as e:\n",
+    "            print(repr(e))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Write file to examples dir in IG"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def write_file(r_json,type,id): # write file  \n",
+    "    with open(f'{out_path}{type}-{id}.json', 'w') as f:\n",
+    "        #print(f'Writing to {out_path}{type}-{id}.json')\n",
+    "        f.write(r_json)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Fetch Organization from the Bundle to create Provenance resource"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def prefetch_org(b):\n",
+    "    #bundle = B.Bundle(b, strict=False)\n",
+    "    #prov_org = (i for i in bundle.entry if i.resource.resource_type =='Organization')\n",
+    "    orgs = (i for i in b['entry'] if i['resource']['resourceType'] =='Organization')\n",
+    "    org_id  = next(orgs)['resource']['id']\n",
+    "    return(org_id)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Post Transaction Bundle to reference Server"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def post_transaction(b):\n",
+    "    # note that bundle b is a dict not a class\n",
+    "    types = [i['resource']['resourceType'] for i in b['entry']]\n",
+    "    display(HTML(f'<h1>bundle</h1><h3>resources</h3> {types}'))\n",
+    "    fhir_test_server = 'http://test.fhir.org/r4'\n",
+    "    #fhir_test_server = 'http://hapi.fhir.org/baseR4'\n",
+    "\n",
+    "    headers = {\n",
+    "    'Accept':'application/fhir+json',\n",
+    "    'Content-Type':'application/fhir+json',\n",
+    "    }\n",
+    "\n",
+    "    # profile = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient' # The official URL for this profile is: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient\n",
+    " \n",
+    "    params = dict(\n",
+    "      # profile = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient' # The official URL for this profile is: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient\n",
+    "        )\n",
+    "    \n",
+    "    r = post(fhir_test_server, params = params, headers = headers, data = dumps(b, indent=4))\n",
+    "    display(HTML('<h1>Request Headers</h1>')) \n",
+    "    pprint(r.request.headers)\n",
+    "    #display(HTML('<h1>Request Body</h1>')) \n",
+    "    #pprint(r.request.body)\n",
+    "\n",
+    "    display(HTML(f'<h1>Server Response</h1><h3>Status Code = {r.status_code}</h3>')) \n",
+    "    pprint(r.headers)\n",
+    "    pprint(r.json())\n",
+    "            "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Create Provenance\n",
+    "\n",
+    "- Inputs:\n",
+    "  - what resource is it about\n",
+    "  - Prefetched Organization to use for the author and transmitter ( for now just one will do)\n",
+    "- most everything else is a fixed value.\n",
+    "- validate using the argovalidator  (load to examples)\n",
+    "- add to bundle\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def get_agent_type(system,code):\n",
+    "    \n",
+    "    prov_type = CC.CodeableConcept()\n",
+    "    prov_type_coding = C.Coding()\n",
+    "    prov_type_coding.system = system\n",
+    "    prov_type_coding.code = code\n",
+    "    prov_type.coding = [prov_type_coding]\n",
+    "    #print(prov_type)\n",
+    "    return(prov_type)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def get_prov(org,target_type, target_id):\n",
+    "    \n",
+    "  \n",
+    "    who_ref=FR.FHIRReference(dict(\n",
+    "                reference=f'Organization/{org}'\n",
+    "        ))\n",
+    "                             \n",
+    "    prov_target = FR.FHIRReference(dict(\n",
+    "            reference=f'{target_type}/{target_id}'\n",
+    "        ))\n",
+    "    \n",
+    "    f_now = D.FHIRDate(f'{datetime.utcnow().isoformat()}Z')\n",
+    "    \n",
+    "    prov = P.Provenance()\n",
+    "    prov.id = str(uuid1())\n",
+    "    prov.meta = M.Meta(dict(profile =[types['Provenance']]))\n",
+    "    prov.target= [prov_target]\n",
+    "    prov.recorded = f_now\n",
+    "    prov.agent = []\n",
+    "    \n",
+    "    # this could be a function\n",
+    "    prov_agent = P.ProvenanceAgent()\n",
+    "    prov_agent.who = who_ref\n",
+    "    prov_agent.type = get_agent_type(system='http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type',code='transmitter')\n",
+    "    prov.agent.append(prov_agent)\n",
+    "    \n",
+    "    prov_agent = P.ProvenanceAgent()\n",
+    "    prov_agent.who = who_ref\n",
+    "    prov_agent.type = get_agent_type(system='http://terminology.hl7.org/CodeSystem/provenance-participant-type',code='author')\n",
+    "    prov.agent.append(prov_agent)\n",
+    "    \n",
+    "    #print(f'created resource Provenance-{prov.id} for resource {target_type}/{target_id}' )\n",
+    "    \n",
+    "    return(prov)    \n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Loop through all entries and if US Core type change logical to literal reference and save\n",
+    "\n",
+    "#### Loop through entries and create literal to logical reference map"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def add_meta(r):\n",
+    "    \n",
+    "    global r_list\n",
+    "                          \n",
+    "    t = r[\"resourceType\"]\n",
+    "    i = r[\"id\"]\n",
+    "    if t in types.keys(): \n",
+    "       r_list.append(t)\n",
+    "       if t not in [\"DiagnosticReport\",'Observation']: # add meta profiles\n",
+    "           r['meta']= (dict(profile =[types[t]]))\n",
+    "       elif \"Observation\" == t:  # \"Observation\"\n",
+    "           try:\n",
+    "               #['vital-signs','laboratory','72166-2']:\n",
+    "               if 'laboratory' in r['category'][0]['coding'][0]['code']:\n",
+    "                   r['meta']= dict(profile =[types[t][0]])\n",
+    "               elif '72166-2' in r['code']['coding'][0]['code']:\n",
+    "                   r['meta']= dict(profile =[types[t][2]])\n",
+    "               elif '77606-2' in r['code']['coding'][0]['code']:\n",
+    "                   r['meta']= dict(profile =[types[t][3]])\n",
+    "               elif '59576-9' in r['code']['coding'][0]['code']:\n",
+    "                   r['meta']= dict(profile =[types[t][4]])\n",
+    "               elif '2708-6' in r['code']['coding'][0]['code']:\n",
+    "                   r['meta']= dict(profile =[types[t][5]])\n",
+    "               elif 'vital-signs' in r['category'][0]['coding'][0]['code']:\n",
+    "                   r['meta']= dict(profile =[types[t][1]])\n",
+    "               else: # use lab\n",
+    "                   r['meta']= dict(profile =[types[t][0]])\n",
+    "                   pass\n",
+    "           except KeyError:\n",
+    "                   r['meta']= dict(profile =[types[t][0]])\n",
+    "\n",
+    "       else:  # \"DiagnosticReport\"\n",
+    "           try:\n",
+    "               if 'LAB' in r['category'][0]['coding'][0]['code']:\n",
+    "                   r['meta']= dict(profile =[types[t][0]])\n",
+    "               elif r['category'][0]['coding'][0]['code'] in ['LP29684-5','LP29708-2','LP7839-6',]:\n",
+    "                   r['meta']= dict(profile =[types[t][1]])\n",
+    "               else:  # use lab\n",
+    "                   r['meta']= dict(profile =[types[t][0]])\n",
+    "                   pass\n",
+    "           except KeyError:\n",
+    "               r['meta']= dict(profile =[types[t][0]])\n",
+    "                \n",
+    "    '''\n",
+    "    try:\n",
+    "        print(f' update resource {t}-{i} with meta {r[\"meta\"][\"profile\"][0]}' )\n",
+    "    except Exception as e:\n",
+    "        print(repr(e))\n",
+    "    '''\n",
+    "              \n",
+    "    return(r)\n",
+    "  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "### Validate Bundle entries using US Core Validator"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def validate_me(bundles):\n",
+    "    for b in bundles:\n",
+    "        for e in b[\"entry\"]:\n",
+    "                r = e[\"resource\"]\n",
+    "                r_id = r[\"id\"]\n",
+    "                #print(f'id = {r_id}')\n",
+    "                t = r[\"resourceType\"]\n",
+    "                #print(f'type = {t}')\n",
+    "                # convert all logical to literal references\n",
+    "                r_string = dumps(r,indent=4)\n",
+    "                for ref_id, ref_type in ids.items(): \n",
+    "                    r_string = r_string.replace(f'urn:uuid:{ref_id}',f'{ref_type}/{ref_id}')    \n",
+    "                # validate using the validation build\n",
+    "\n",
+    "                write_file(r_string,t,r_id) # validate using the argovalidator (load to examples)\n",
+    "    display(Markdown('**All files loaded onto Validator - run IG-Pub using -d option to validate**'))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Main File call all the functions above"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/markdown": [
+       "**All files loaded onto Validator - run IG-Pub using -d option to validate**"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Markdown object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "number of example resource = 361\n",
+      "US Core types = dict_keys(['Patient', 'AllergyIntolerance', 'CarePlan', 'CareTeam', 'Condition', 'Device', 'DiagnosticReport', 'DocumentReference', 'Encounter', 'Goal', 'Immunization', 'Location', 'Medication', 'MedicationRequest', 'Observation', 'Organization', 'Practitioner', 'PractitionerRole', 'Procedure', 'Provenance'])\n",
+      "Synthea types {'Observation', 'Practitioner', 'Location', 'Patient', 'MedicationRequest', 'Device', 'Goal', 'Encounter', 'DiagnosticReport', 'Immunization', 'Medication', 'Provenance', 'Procedure', 'AllergyIntolerance', 'CareTeam', 'PractitionerRole', 'CarePlan', 'Condition', 'Organization'}\n",
+      "What is missing {'DocumentReference'}\n",
+      "======Fin======\n"
+     ]
+    }
+   ],
+   "source": [
+    "clear_path()\n",
+    "r_list= []\n",
+    "\n",
+    "synthea_files = [f_name] if f_name else [i for i in listdir(in_path)]\n",
+    "\n",
+    "for file in synthea_files: # assume is synthea patient bundle.\n",
+    "    ids = {}\n",
+    "    provs = []\n",
+    "    if file.endswith(\".json\"):\n",
+    "        #print(\"json file found:\\t\", file)\n",
+    "        b = open_file(in_path,file)\n",
+    "        new_b = b\n",
+    "        org_id = prefetch_org(b) # for provenance\n",
+    "        #print(f'Provenance Organization url will be: Organization/{org_id}')\n",
+    "        for e in b[\"entry\"]:\n",
+    "            r = e[\"resource\"]\n",
+    "            r_id = r[\"id\"]\n",
+    "            t = r[\"resourceType\"]\n",
+    "            \n",
+    "            if t in types.keys(): # see what types are in bundle\n",
+    "               r_list.append(t)\n",
+    "            # get a list of id's to create literal references later using a string replace \n",
+    "            ids[r_id]=t\n",
+    "\n",
+    "            #e['resource']= add_meta(r) # add meta elements to resource  - Synthea already does this!!!\n",
+    "            \n",
+    "            #change POST to PUT and update the URL\n",
+    "            e['request']['method']='PUT'\n",
+    "            e['request']['url']=f'{e[\"request\"][\"url\"]}/{r_id}'\n",
+    "            \n",
+    "            # create provenance and add to list\n",
+    "            provs.append(get_prov(org_id,t,r_id)) #create corresponding Provenance resource and add to list\n",
+    "            \n",
+    "        # create a transaction bundle provenance ,stick with dict type\n",
+    "        pb = dict(\n",
+    "            resourceType=\"Bundle\",\n",
+    "            type=\"transaction\",\n",
+    "            )\n",
+    "        \n",
+    "        pb['entry'] = []\n",
+    "        for p in provs:\n",
+    "            ids[p.id]='Provenance'\n",
+    "            \n",
+    "            e = dict( # no fullURL for now - use relative literal references\n",
+    "                resource = p.as_json(),\n",
+    "                request = dict(\n",
+    "                    method='PUT',\n",
+    "                    url= f'Provenance/{p.id}',\n",
+    "                    ), \n",
+    "                )\n",
+    "            \n",
+    "            pb['entry'].append(e)\n",
+    "            \n",
+    "            \n",
+    "  \n",
+    "        #write bundle to temp file to test manually\n",
+    "        for i, bundle in enumerate([pb,b]):\n",
+    "            with open(f'test_bundle_{i}.json', 'w') as f:\n",
+    "                f.write(dumps(bundle, indent=4))\n",
+    "            \n",
+    "        # *********validate using the validation build ********\n",
+    "        \n",
+    "        validate_me([b,pb]) \n",
+    "        \n",
+    "        \n",
+    "        #*********load bundles to FHIR Server - DOES NOT WORK - USE POSTMAN INSTEAD ***********\n",
+    "        '''\n",
+    "        for bundle in [b,pb]:\n",
+    "            r = post_transaction(bundle)\n",
+    "            sleep(15)\n",
+    "         '''   \n",
+    "\n",
+    "print(f'number of example resource = {len(r_list)}')          \n",
+    "print(f'US Core types = {types.keys()}')\n",
+    "print(f'Synthea types {set(r_list)}')            \n",
+    "print(f'What is missing {set(types)-set(r_list)}')\n",
+    "\n",
+    "print('======Fin======')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
