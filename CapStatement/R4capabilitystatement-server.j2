@@ -212,22 +212,23 @@
 						<code class="highlighter-rouge">GET [base]/{{r.type}}/[id]</code>
 				</li><br />
 				{%endfor %}
+				<!-- Only SHOULDs for include for now the capability statement does not create the primitive extensios for this yet -->
 				{%if r.searchInclude %}
 				<li>
 					A {{ cs.rest[0].mode | capitalize }} <strong>SHOULD</strong> be capable of supporting the following _includes:
 					<br />
 					{% for include in r.searchInclude %}
-						{{include}} - <code class="highlighter-rouge">GET [base]/{{r.type}}?[parameter=value]&amp;_include={{include}}</code>
+						{{include}} - <code class="highlighter-rouge">GET [base]/{{r.type}}?[parameter=value]&amp;_include={{include}}</code><br />
 					{% endfor %}
 				</li><br />
 				{% endif %}
-
+				<!-- Only SHALLs for revinclude for now the capability statement does not create the primitive extensios for this yet -->
         {%if r.searchRevInclude %}
 				<li>
-					A {{ cs.rest[0].mode | capitalize }} <strong>SHOULD</strong> be capable of supporting the following _revincludes:
+					A {{ cs.rest[0].mode | capitalize }} <strong>{% if cs.rest[0].mode == "server" %}SHALL{% else %}SHOULD{% endif %}</strong> be capable of supporting the following _revincludes:
 					<br />
 					{% for revinclude in r.searchRevInclude %}
-						{{revinclude}} - <code class="highlighter-rouge">GET [base]/{{r.type}}?[parameter=value]&amp;_revinclude={{revinclude}}</code>
+						{{revinclude}} - <code class="highlighter-rouge">GET [base]/{{r.type}}?[parameter=value]&amp;_revinclude={{revinclude}}</code><br />
 					{% endfor %}
 				</li><br />
 				{% endif %}

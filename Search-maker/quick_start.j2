@@ -93,7 +93,7 @@ for a complete list of supported RESTful interactions for this IG.
 
 #### Mandatory Search Parameters:
 
-The following search parameters, search parameter combinations SHALL be supported.  Any listed search parameter [modifiers], [comparators], [chains] and [composites] SHALL also be supported UNLESS they are listed as "optional" in which case they SHOULD be supported.:
+The following search parameters and search parameter combinations SHALL be supported.:
 {%- endif %}
 {%- set nulls = [None,'','n/a'] %}
 {%- set ns = namespace(mods=[]) %}
@@ -129,7 +129,7 @@ The following search parameters, search parameter combinations SHALL be supporte
 {% if shoulds %}
 #### Optional Search Parameters:
 
-The following search parameters, search parameter combinations and search parameter [modifiers], [comparators], [chains] and [composites] SHOULD be supported.
+The following search parameter combinations SHOULD be supported.:
 {%- endif %}
 {% for i in sp  if i.display and i.base_conf == "SHOULD" %}
 1. **SHOULD** support searching using the **[`{{i.code}}`]({{rels[i.code]}})** search parameter:

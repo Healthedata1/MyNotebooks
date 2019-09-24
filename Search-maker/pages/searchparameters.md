@@ -118,12 +118,6 @@ This section lists the search parameters definitions that are used within the ca
 **Practitioner**
   - [name](SearchParameter-us-core-practitioner-name.html)
   - [identifier](SearchParameter-us-core-practitioner-identifier.html)
-  - [specialty](SearchParameter-us-core-practitionerrole-specialty.html)
-  - [practitioner](SearchParameter-us-core-practitionerrole-practitioner.html)
-
-**PractitionerRole**
-  - [specialty](SearchParameter-us-core-practitionerrole-specialty.html)
-  - [practitioner](SearchParameter-us-core-practitionerrole-practitioner.html)
 
 **Procedure**
   - [status](SearchParameter-us-core-procedure-status.html)
