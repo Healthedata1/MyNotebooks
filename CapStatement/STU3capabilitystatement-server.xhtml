@@ -38,6 +38,8 @@
 			{% endfor %}
 			{% endif %}
 
+
+{% if cs.rest[0].resource %}
 			<p><strong>Summary of Search Criteria</strong></p>
 			<table class="grid">
 				<thead>
@@ -244,6 +246,7 @@
 			{% endif %}
 			{% endfor %}
 			<br />
+			{% endif %}
 		</div>
 	</body>
 </html>
