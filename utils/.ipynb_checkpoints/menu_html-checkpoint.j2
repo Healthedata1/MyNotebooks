@@ -1,0 +1,33 @@
+<!-- Create Menu xhtml from directory -->
+<!doctype xhtml>
+<title>Menu from File Tree</title>
+<h1>Menu</h1>
+<ul>
+      <li><a href="index.md">Home</a></li>
+{%- for key, value in tree.dirs.pages.items() recursive %}   
+      {%- if key != 'dirs' %}
+      <li><a href="{{key + '.md'}}">{{key}}</a></li>
+      {%- endif %}   
+      {%-if value.dirs %}
+     <ul>
+       {{ loop(value.items())}}
+     </ul>
+       {%- else %}{{ loop(value.items())}}{%- endif %}                               
+{%- endfor %}
+</ul>
+
+
+ 
+<!--
+{'dirs': {'pages': {'dirs': {'Downloads': {'dirs': {}},
+                             'Examples': {'dirs': {}},
+                             'FHIR Artifacts': {'dirs': {'Capability Statements': {'dirs': {}},
+                                                         'Operations and Search Parameters': {'dirs': {}},
+                                                         'Profiles and Extensions': {'dirs': {}},
+                                                         'Terminology': {'dirs': {}}}},
+                             'Guidance': {'dirs': {'General Guidance': {'dirs': {}},
+                                                   'More Guidance': {'dirs': {}}}},
+                             'Security': {'dirs': {}},
+                             'images': {'dirs': {}},
+                             'includes': {'dirs': {}}}}}}
+-->

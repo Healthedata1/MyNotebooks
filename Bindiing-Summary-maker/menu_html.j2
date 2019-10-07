@@ -3,11 +3,11 @@
 <title>Menu from File Tree</title>
 <h1>Menu</h1>
 <ul>
-{%- for k tree recursive %}
+{%- for k in tree recursive %}
 {%- if k["index.md"] -%}
     <li><a href="{{ k["index.md"] }}">{{ k }}</a>
  {%- else -%}  
-     <ul>{{ loop(item.children) }}</ul>
-  {%- endif %}</li>
+     <ul>{{ loop(k) }}</ul>
+{%- endif %}</li>
 {%- endfor %}
 </ul>
