@@ -10,6 +10,7 @@
 		<h2 id="title">{{cs.title}}</h2>
 
 			<ul>
+				<li>Implementation Guide Version: {{cs.version}}</li>
 				<li>FHIR Version: {{cs.fhirVersion}}</li>
 				<li>Supported formats: {{ cs.format | join(', ') }}</li>
 				<li>Published: {{cs.date.as_json()}}</li>
@@ -71,7 +72,7 @@
 						</td>
 						<td>
 {% for i in r.supportedProfile %}
-						<a href="{{path_map[i]}}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
+						<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{i}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
 {%  endfor %}
 						</td>
 						<td>
@@ -113,7 +114,7 @@
 
 			{% if r.supportedProfile %}<p>Supported Profiles:
 				{% for i in r.supportedProfile %}
-											<a href="{{path_map[i]}}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
+											<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{i}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
 				{%  endfor %}
 				</p>{% endif %}
 
@@ -179,19 +180,19 @@
 
 					<ul>
 						{% if ns.shall %}<li><strong>SHALL</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'SHALL' %}
-																								<a href="{{path_map[i.definition]}}">${{i.name}}</a> operation
+																								<a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
 																								{% if i.documentation %}<p>{{i.documentation| markdown | safe }}</p>{% endif %}
 																								{%- if not loop.last %}, {% endif %}
 																								{%- endfor %}</li>
 						{%- endif %}
 						{% if ns.should %}<li><strong>SHOULD</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'SHOULD' %}
-																									<a href="{{path_map[i.definition]}}">${{i.name}}</a> operation
+																									<a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
 																									{% if i.documentation%}<p>{{i.documentation| markdown | safe }}</p>{% endif %}
 																								{%- if not loop.last %}, {% endif %}
 																								{%- endfor %}</li>
 						{%- endif %}
 						{% if ns.may %}<li><strong>MAY</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'MAY' %}
-																									<a href="{{path_map[i.definition]}}">${{i.name}}</a> operation
+																									<a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
 																									{% if i.documentation%}<p>{{i.documentation| markdown | safe }}</p>{% endif %}
 																								{%- if not loop.last %}, {% endif %}
 																								{%- endfor %}</li>
