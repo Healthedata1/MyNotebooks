@@ -10,6 +10,7 @@
 		<h2 id="title">{{cs.title}}</h2>
 
 			<ul>
+				<li>Implementation Guide Version: {{cs.version}}</li>
 				<li>FHIR Version: {{cs.fhirVersion}}</li>
 				<li>Supported formats: {{ cs.format | join(', ') }}</li>
 				<li>Published: {{cs.date.as_json()}}</li>
@@ -31,9 +32,10 @@
 			<h3 id="behavior">FHIR RESTful Capabilities</h3>
 
 			{{ cs.rest[0].documentation | markdown | safe }}
+            {% if cs.rest[0].security.description %}
 			<p id="security"><strong>Security:</strong></p>
 			{{cs.rest[0].security.description | markdown | safe }}
-
+            {% endif %}
 
 			{% if cs.rest[0].interaction  %}
 	<p><strong>Summary of System Wide Interactions</strong></p>
@@ -45,10 +47,10 @@
 			{% if cs.rest[0].operation %}
 	<p><strong>Summary of System Wide Operations</strong></p>
 			{% for r in cs.rest[0].operation %}
-				<li><strong>{{r.extension[0].valueCode}}</strong> support the	<a href="{{path_map[r.definition.reference]}}"><code>${{r.name}}</code></a> operation.</li>
+				<li><strong>{{r.extension[0].valueCode}}</strong> support the	<a href="{% if path_map[r.definition.reference]%}{{path_map[r.definition.reference]}}{% else %}{{r.definition}}{% endif %}"><code>${{r.name}}</code></a> operation.</li>
 			{% endfor %}
 			{% endif %}
-
+{% if cs.rest[0].resource %}
 			<h3 class="no_toc" id="resource--details">RESTful Capabilities by Resource/Profile:</h3>
 
 			<p><strong>Summary of Search Criteria</strong></p>
@@ -58,8 +60,8 @@
 						<th>Resource Type</th>
 						<th>Supported Profiles</th>
 						<th>Supported Searches</th>
-						<th>Supported Includes</th>
-            <th>Supported Rev_Includes</th>
+						<th>Supported <code>_includes</code></th>
+            <th>Supported <code>_revincludes</code></th>
 						<th>Supported Operations</th>
 					</tr>
 				</thead>
@@ -71,7 +73,7 @@
 						</td>
 						<td>
 {% for i in r.supportedProfile %}
-						<a href="{{path_map[i]}}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
+						<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{i}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
 {%  endfor %}
 						</td>
 						<td>
@@ -106,16 +108,18 @@
 				</tbody>
 			</table>
 			<br />
+{% endif %}
 
 			{% for r in cs.rest[0].resource %}
 			<h4 class="no_toc" id="{{r.type | lower }}">{{r.type}}</h4>
 
 
-			<p>Supported Profiles:
+			{% if r.supportedProfile %}<p>Supported Profiles:
 				{% for i in r.supportedProfile %}
-											<a href="{{path_map[i]}}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
+											<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{i}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
 				{%  endfor %}
-				</p>
+				</p>{% endif %}
+
 
 
 			{% if r.documentation %}<p>Resource Specific Documentation:</p>
@@ -128,7 +132,7 @@
 			{% if r.readHistory %}<p>Server returns past versions as part of the vRead operation.</p>{% endif %}
 			{% if r.updateCreate %}<p>Server allows the client to create new identities on the server</p>{% endif %}
 
-			<p>Profile Interaction Summary:</p>
+			{% if r.interaction %}<p>Profile Interaction Summary:</p>
 				{% set ns = namespace(shall=false,should=false,may=false) %}
 				{%for i in r.interaction %}
     		{% if i.extension[0].valueCode == 'SHALL' %}
@@ -163,7 +167,7 @@
 
 				</ul>
                 {% for i in r.interaction if i.documentation %}<blockquote>{{i.code}}<sup>&#8224;</sup>{{i.documentation | markdown | safe }}</blockquote>{% endfor %}
-
+				{% endif %}
 				{% if r.operation %}
 				<p>Operation  Summary:</p>
 					{% set ns = namespace(shall=false,should=false,may=false) %}
@@ -178,19 +182,19 @@
 
 					<ul>
 						{% if ns.shall %}<li><strong>SHALL</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'SHALL' %}
-																								<a href="{{path_map[i.definition]}}">${{i.name}}</a> operation
+																								<a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
 																								{% if i.documentation %}<p>{{i.documentation| markdown | safe }}</p>{% endif %}
 																								{%- if not loop.last %}, {% endif %}
 																								{%- endfor %}</li>
 						{%- endif %}
 						{% if ns.should %}<li><strong>SHOULD</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'SHOULD' %}
-																									<a href="{{path_map[i.definition]}}">${{i.name}}</a> operation
+																									<a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
 																									{% if i.documentation%}<p>{{i.documentation| markdown | safe }}</p>{% endif %}
 																								{%- if not loop.last %}, {% endif %}
 																								{%- endfor %}</li>
 						{%- endif %}
 						{% if ns.may %}<li><strong>MAY</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'MAY' %}
-																									<a href="{{path_map[i.definition]}}">${{i.name}}</a> operation
+																									<a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
 																									{% if i.documentation%}<p>{{i.documentation| markdown | safe }}</p>{% endif %}
 																								{%- if not loop.last %}, {% endif %}
 																								{%- endfor %}</li>
@@ -202,7 +206,7 @@
 				{% endif %}
 
 
-			<p>Fetch and Search Criteria:</p>
+			{% if r.searchParam or r.interaction or r.searchInclude or r.searchRevInclude %}<p>Fetch and Search Criteria:</p>
 			<ul>
 				{%for i in r.interaction if i.code == "read" %}
 				<li>
@@ -211,26 +215,27 @@
 						<code class="highlighter-rouge">GET [base]/{{r.type}}/[id]</code>
 				</li><br />
 				{%endfor %}
+				<!-- Only SHOULDs for include for now the capability statement does not create the primitive extensios for this yet -->
 				{%if r.searchInclude %}
 				<li>
 					A {{ cs.rest[0].mode | capitalize }} <strong>SHOULD</strong> be capable of supporting the following _includes:
 					<br />
 					{% for include in r.searchInclude %}
-						{{include}} - <code class="highlighter-rouge">GET [base]/{{r.type}}?[parameter=value]&amp;_include={{include}}</code>
+						{{include}} - <code class="highlighter-rouge">GET [base]/{{r.type}}?[parameter=value]&amp;_include={{include}}</code><br />
+					{% endfor %}
+				</li><br />
+				{% endif %}
+				<!-- Only SHALLs for revinclude for now the capability statement does not create the primitive extensios for this yet -->
+        {%if r.searchRevInclude %}
+				<li>
+					A {{ cs.rest[0].mode | capitalize }} <strong>{% if cs.rest[0].mode == "server" %}SHALL{% else %}SHOULD{% endif %}</strong> be capable of supporting the following _revincludes:
+					<br />
+					{% for revinclude in r.searchRevInclude %}
+						{{revinclude}} - <code class="highlighter-rouge">GET [base]/{{r.type}}?[parameter=value]&amp;_revinclude={{revinclude}}</code><br />
 					{% endfor %}
 				</li><br />
 				{% endif %}
 
-        {%if r.searchRevInclude %}
-				<li>
-					A {{ cs.rest[0].mode | capitalize }} <strong>SHOULD</strong> be capable of supporting the following _revincludes:
-					<br />
-					{% for revinclude in r.searchRevInclude %}
-						{{revinclude}} - <code class="highlighter-rouge">GET [base]/{{r.type}}?[parameter=value]&amp;_revinclude={{revinclude}}</code>
-					{% endfor %}
-				</li><br />
-				{% endif %}
-        
 			</ul>
 
 			{% if r.searchParam %}
@@ -257,13 +262,14 @@
 							{{s.type}}
 						</td>
 						<td>
-							<code class="highlighter-rouge">GET [base]/{{r.type}}?{{s.name}}={%- if s.name == '_id' %}[id]
-																																						 {%- elif s.name == 'status' %}[status]
-																																						 {%- elif s.type == 'composite' %}[code]&amp;[value]
-																																						 {%- elif s.type == 'uri' %}[uri]
-																																						 {%- elif s.type == 'string' %}[{{s.name}}]
-																																						 {%- elif s.type == 'token' %}[system]|[code]
-																																						 {%- else %}[{{s.name}}]
+							<code class="highlighter-rouge">GET [base]/{{r.type}}?{{s.name}}{%- if s.name == '_id' %}=[id]
+																																						 {%- elif s.name == 'status' %}=[status]
+																																						 {%- elif s.type == 'composite' %}=[code]&amp;[value]
+																																						 {%- elif s.type == 'uri' %}=[uri]
+																																						 {%- elif s.type == 'string' %}=[{{s.name}}]
+																																						 {%- elif s.type == 'token' %}=[system]|[code]
+																																						 {%- elif s.name in ['us-core-includeprovenance'] %}
+																																						 {%- else %}=[{{s.name}}]
 																																						 {%- endif %}</code>
 						 </td>
 					</tr>
@@ -310,13 +316,14 @@
 							<code class="highlighter-rouge">GET [base]/{{r.type}}?
 								{%- for combo in combos.extension if combo.url == 'required' or combo.url == 'optional'-%}
 								{%- set p = combo.valueString -%}{%- set t = sp_map[combo.valueString] -%}
-																																							{{p}}={%- if t == '_id' %}[id]
-																																							{%- elif p == 'status' %}[status]
-																																							{%- elif t == 'composite' %}[code]&amp;[value]
-																																							{%- elif t == 'uri' %}[uri]
-																																							{%- elif t == 'string' %}[{{p}}]
-																																							{%- elif t== 'token' %}[system]|[code]
-																																							{%- else %}[{{p}}]
+																																							{{p}}{%- if p == '_id' %}=[id]
+																																							{%- elif p == 'status' %}=[status]
+																																							{%- elif t == 'composite' %}=[code]&amp;[value]
+																																							{%- elif t == 'uri' %}=[uri]
+																																							{%- elif t == 'string' %}=[{{p}}]
+																																							{%- elif t== 'token' %}=[system]|[code]
+																																						 	{%- elif p in ['us-core-includeprovenance'] %}
+																																							{%- else %}=[{{p}}]
 																																							{%- endif %}
 
 								{%- if not loop.last %}&amp;{%- endif %}
@@ -331,6 +338,7 @@
 
 
 			{% endif %}
+		{% endif %}
 <hr/>
 
 			{% endfor %}
