@@ -29,5 +29,6 @@
       "reference": "Patient/patient01"
    },
    "subscriberId": "A123456789",
-   "resourceType": "Coverage"
+   "resourceType": "Coverage",
+    "status": "active"
 }
