@@ -113,14 +113,14 @@
 			{% for r in cs.rest[0].resource %}
 			<h4 class="no_toc" id="{{r.type | lower }}">{{r.type}}</h4>
 
+			{% if r.extension[0] %}<p>Conformance Expectation:	<strong>{{r.extension[0].valueCode}}</strong></p>
+			{% endif %}
 
 			{% if r.supportedProfile %}<p>Supported Profiles:
 				{% for i in r.supportedProfile %}
 											<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{i}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
 				{%  endfor %}
 				</p>{% endif %}
-
-
 
 			{% if r.documentation %}<p>Resource Specific Documentation:</p>
 
