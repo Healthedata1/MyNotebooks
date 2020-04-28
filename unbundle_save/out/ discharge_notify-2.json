@@ -1,0 +1,243 @@
+{
+    "type": "transaction",
+    "resourceType": "Bundle",
+    "entry": [
+        {
+            "fullUrl": "urn:uuid:5fe62cd5-bfcf-4d3b-a1e9-80d6f75d6f82",
+            "request": {
+                "method": "PUT",
+                "url": "Encounter/5fe62cd5-bfcf-4d3b-a1e9-80d6f75d6f82"
+            },
+            "resource": {
+                "id": "5fe62cd5-bfcf-4d3b-a1e9-80d6f75d6f82",
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"
+                    ]
+                },
+                "class": {
+                    "code": "IMP",
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+                },
+                "hospitalization": {
+                    "dischargeDisposition": {
+                        "coding": [
+                            {
+                                "code": "1",
+                                "display": "Discharge to Home or Self Care (Routine Discharge)",
+                                "system": "http://www.nubc.org/patient-discharge"
+                            }
+                        ],
+                        "text": "Discharge to Home or Self Care (Routine Discharge)"
+                    }
+                },
+                "identifier": [
+                    {
+                        "system": "http://example.org",
+                        "value": "Elden718Halvorson12420181021T2122150700"
+                    }
+                ],
+                "location": [
+                    {
+                        "location": {
+                            "display": "HOLY FAMILY HOSPITAL",
+                            "reference": "Location/09188b81-0d1d-453c-b0fa-203ef88c794c"
+                        }
+                    }
+                ],
+                "participant": [
+                    {
+                        "individual": {
+                            "display": "Dr. Janeth814 Jakubowski832",
+                            "reference": "Practitioner/0000016f-57cb-cdac-0000-00000000014a"
+                        }
+                    }
+                ],
+                "period": {
+                    "end": "2018-10-23T22:22:15-07:00",
+                    "start": "2018-10-21T21:22:15-07:00"
+                },
+                "serviceProvider": {
+                    "display": "HOLY FAMILY HOSPITAL",
+                    "reference": "Organization/a9f20dc1-5147-3789-bcef-bbecb41c5983"
+                },
+                "status": "finished",
+                "subject": {
+                    "display": "Mr. Elden718 Halvorson124",
+                    "reference": "Patient/06e1f0dd-5fbe-4480-9bb4-6b54ec02d31b"
+                },
+                "type": [
+                    {
+                        "coding": [
+                            {
+                                "code": "1234",
+                                "display": "Examplotomy Encounter",
+                                "system": "http://snomed.info/sct"
+                            }
+                        ],
+                        "text": "Examplotomy Encounter"
+                    }
+                ],
+                "resourceType": "Encounter"
+            }
+        },
+        {
+            "fullUrl": "urn:uuid:542f9e32-4309-4277-81ce-12419f0d1294",
+            "request": {
+                "method": "PUT",
+                "url": "Encounter/542f9e32-4309-4277-81ce-12419f0d1294"
+            },
+            "resource": {
+                "id": "542f9e32-4309-4277-81ce-12419f0d1294",
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"
+                    ]
+                },
+                "class": {
+                    "code": "IMP",
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+                },
+                "hospitalization": {
+                    "dischargeDisposition": {
+                        "coding": [
+                            {
+                                "code": "1",
+                                "display": "Discharge to Home or Self Care (Routine Discharge)",
+                                "system": "http://www.nubc.org/patient-discharge"
+                            }
+                        ],
+                        "text": "Discharge to Home or Self Care (Routine Discharge)"
+                    }
+                },
+                "identifier": [
+                    {
+                        "system": "http://example.org",
+                        "value": "Garland107Conn18820180217T1507390800"
+                    }
+                ],
+                "location": [
+                    {
+                        "location": {
+                            "display": "BETH ISRAEL DEACONESS HOSPITAL - PLYMOUTH",
+                            "reference": "Location/09178b24-9340-47ec-90b2-1aac03248cd5"
+                        }
+                    }
+                ],
+                "participant": [
+                    {
+                        "individual": {
+                            "display": "Dr. Tommy814 Schmeler639",
+                            "reference": "Practitioner/0000016f-57cb-cdac-0000-0000000000dc"
+                        }
+                    }
+                ],
+                "period": {
+                    "end": "2018-02-19T16:07:39-08:00",
+                    "start": "2018-02-17T15:07:39-08:00"
+                },
+                "serviceProvider": {
+                    "display": "BETH ISRAEL DEACONESS HOSPITAL - PLYMOUTH",
+                    "reference": "Organization/b1ddf812-1fdd-3adf-b1d5-32cc8bd07ebb"
+                },
+                "status": "finished",
+                "subject": {
+                    "display": "Mr. Garland107 Conn188",
+                    "reference": "Patient/b1cf5f57-b061-4b7f-aa9d-6283a121694b"
+                },
+                "type": [
+                    {
+                        "coding": [
+                            {
+                                "code": "1234",
+                                "display": "Examplotomy Encounter",
+                                "system": "http://snomed.info/sct"
+                            }
+                        ],
+                        "text": "Examplotomy Encounter"
+                    }
+                ],
+                "resourceType": "Encounter"
+            }
+        },
+        {
+            "fullUrl": "urn:uuid:02ba9ec6-0712-4715-8ba4-5485fc571403",
+            "request": {
+                "method": "PUT",
+                "url": "Encounter/02ba9ec6-0712-4715-8ba4-5485fc571403"
+            },
+            "resource": {
+                "id": "02ba9ec6-0712-4715-8ba4-5485fc571403",
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"
+                    ]
+                },
+                "class": {
+                    "code": "IMP",
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+                },
+                "hospitalization": {
+                    "dischargeDisposition": {
+                        "coding": [
+                            {
+                                "code": "1",
+                                "display": "Discharge to Home or Self Care (Routine Discharge)",
+                                "system": "http://www.nubc.org/patient-discharge"
+                            }
+                        ],
+                        "text": "Discharge to Home or Self Care (Routine Discharge)"
+                    }
+                },
+                "identifier": [
+                    {
+                        "system": "http://example.org",
+                        "value": "Jama227Corwin84620190706T1847440700"
+                    }
+                ],
+                "location": [
+                    {
+                        "location": {
+                            "display": "SOUTH SHORE HOSPITAL",
+                            "reference": "Location/76ebe279-211e-493a-8318-4bc784129ac5"
+                        }
+                    }
+                ],
+                "participant": [
+                    {
+                        "individual": {
+                            "display": "Dr. Raina861 Willms744",
+                            "reference": "Practitioner/0000016f-57cb-cdac-0000-00000000019a"
+                        }
+                    }
+                ],
+                "period": {
+                    "end": "2019-07-08T19:47:44-07:00",
+                    "start": "2019-07-06T18:47:44-07:00"
+                },
+                "serviceProvider": {
+                    "display": "SOUTH SHORE HOSPITAL",
+                    "reference": "Organization/db0acede-4abe-3c01-8d03-5c68a190d8c7"
+                },
+                "status": "finished",
+                "subject": {
+                    "display": "Ms. Jama227 Corwin846",
+                    "reference": "Patient/aad0894e-47f4-4ffc-8fab-8fe5487110d2"
+                },
+                "type": [
+                    {
+                        "coding": [
+                            {
+                                "code": "1234",
+                                "display": "Examplotomy Encounter",
+                                "system": "http://snomed.info/sct"
+                            }
+                        ],
+                        "text": "Examplotomy Encounter"
+                    }
+                ],
+                "resourceType": "Encounter"
+            }
+        }
+    ]
+}
