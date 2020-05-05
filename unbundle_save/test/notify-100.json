@@ -3075,31 +3075,6 @@
             }
         },
         {
-            "fullUrl": "urn:uuid:701473dc-2d2b-11ea-a702-a4d18ccf5172",
-            "request": {
-                "method": "POST",
-                "url": "Coverage"
-            },
-            "resource": {
-                "id": "701473dc-2d2b-11ea-a702-a4d18ccf5172",
-                "beneficiary": {
-                    "reference": "urn:uuid:6949b443-9ff7-443d-9cb5-cfae860c3362"
-                },
-                "payor": [
-                    {
-                        "display": "Anthem",
-                        "reference": "urn:uuid:7014758a-2d2b-11ea-a702-a4d18ccf5172"
-                    }
-                ],
-                "status": "active",
-                "subscriberId": "12345",
-                "type": {
-                    "text": "Anthem"
-                },
-                "resourceType": "Coverage"
-            }
-        },
-        {
             "fullUrl": "urn:uuid:7014758a-2d2b-11ea-a702-a4d18ccf5172",
             "request": {
                 "method": "POST",
@@ -16998,8 +16973,7 @@
                 },
                 "payor": [
                     {
-                        "display": "NO_INSURANCE",
-                        "reference": "urn:uuid:71d1a992-2d2b-11ea-a702-a4d18ccf5172"
+                        "display": "NO_INSURANCE"
                     }
                 ],
                 "status": "active",
@@ -28735,8 +28709,7 @@
                 },
                 "payor": [
                     {
-                        "display": "NO_INSURANCE",
-                        "reference": "urn:uuid:73631b06-2d2b-11ea-a702-a4d18ccf5172"
+                        "display": "NO_INSURANCE"
                     }
                 ],
                 "status": "active",
@@ -47965,8 +47938,7 @@
                 },
                 "payor": [
                     {
-                        "display": "NO_INSURANCE",
-                        "reference": "urn:uuid:764f9664-2d2b-11ea-a702-a4d18ccf5172"
+                        "display": "NO_INSURANCE"
                     }
                 ],
                 "status": "active",
