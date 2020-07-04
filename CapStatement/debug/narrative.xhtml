@@ -13,7 +13,7 @@
 				<li>Implementation Guide Version: 3.1.1</li>
 				<li>FHIR Version: 4.0.1</li>
 				<li>Supported formats: xml, json</li>
-				<li>Published: 2020-06-28</li>
+				<li>Published: 2020-07-04</li>
 				<li>Published by: HL7 International - US Realm Steering Committee</li>
 			</ul>
 
@@ -109,7 +109,7 @@
 						<td>
 							
 							category, date, patient, status
-							patient+category, patient+category+status+date, patient+category+date, patient+category+status
+							patient+category+status, patient+category+status+date, patient+category+date, patient+category
 							
 							
 						</td>
@@ -165,7 +165,7 @@
 						<td>
 							
 							category, clinical-status, patient, onset-date, code
-							patient+category, patient+clinical-status, patient+code, patient+onset-date
+							patient+onset-date, patient+clinical-status, patient+category, patient+code
 							
 							
 						</td>
@@ -223,7 +223,7 @@
 						<td>
 							
 							status, patient, category, code, date
-							patient+category+date, patient+code+date, patient+category, patient+status, patient+code
+							patient+category+date, patient+code, patient+code+date, patient+status, patient+category
 							
 							
 						</td>
@@ -251,7 +251,7 @@
 						<td>
 							
 							_id, status, patient, category, type, date, period
-							patient+category+date, patient+type, patient+type+period, patient+category, patient+status
+							patient+category+date, patient+type, patient+type+period, patient+status, patient+category
 							
 							
 						</td>
@@ -279,7 +279,7 @@
 						<td>
 							
 							_id, class, date, identifier, patient, status, type
-							patient+status, date+patient, patient+type, class+patient
+							patient+status, class+patient, patient+type, date+patient
 							
 							
 						</td>
@@ -415,7 +415,7 @@
 						<td>
 							
 							status, intent, patient, encounter, authoredon
-							patient+intent, patient+intent+authoredon, patient+intent+encounter, patient+intent+status
+							patient+intent+encounter, patient+intent+authoredon, patient+intent+status, patient+intent
 							
 							
 						</td>
@@ -444,14 +444,16 @@
 
 						<a href="StructureDefinition-pediatric-bmi-for-age.html">US Core Pediatric BMI for Age Observation Profile</a>, 
 
-						<a href="StructureDefinition-us-core-pulse-oximetry.html">US Core Pulse Oximetry Profile</a>
+						<a href="StructureDefinition-us-core-pulse-oximetry.html">US Core Pulse Oximetry Profile</a>, 
+
+						<a href="StructureDefinition-head-occipital-frontal-circumference-percentile.html">US Core Pediatric Head Occipital-frontal Circumference Percentile Profile</a>
 
 						</td>
 
 						<td>
 							
 							status, category, code, date, patient
-							patient+category+date, patient+code+date, patient+category+status, patient+category, patient+code
+							patient+category+status, patient+category+date, patient+code, patient+code+date, patient+category
 							
 							
 						</td>
@@ -507,7 +509,7 @@
 						<td>
 							
 							_id, birthdate, family, gender, given, identifier, name
-							birthdate+name, birthdate+family, gender+name, family+gender
+							birthdate+name, gender+name, birthdate+family, family+gender
 							
 							
 						</td>
@@ -591,7 +593,7 @@
 						<td>
 							
 							status, patient, date, code
-							patient+date, patient+status, patient+code+date
+							patient+date, patient+code+date, patient+status
 							
 							
 						</td>
@@ -1020,12 +1022,12 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
-						<td>patient+category
+						<td>patient+category+status
 						</td>
-						<td>reference+token
+						<td>reference+token+token
 						</td>
 						<td>
-							<code class="highlighter-rouge">GET [base]/CarePlan?patient=[patient]&amp;category=[system]|[code]</code>
+							<code class="highlighter-rouge">GET [base]/CarePlan?patient=[patient]&amp;category=[system]|[code]&amp;status=[status]</code>
 						 </td>
 					</tr>
 					<tr>
@@ -1053,12 +1055,12 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
-						<td>patient+category+status
+						<td>patient+category
 						</td>
-						<td>reference+token+token
+						<td>reference+token
 						</td>
 						<td>
-							<code class="highlighter-rouge">GET [base]/CarePlan?patient=[patient]&amp;category=[system]|[code]&amp;status=[status]</code>
+							<code class="highlighter-rouge">GET [base]/CarePlan?patient=[patient]&amp;category=[system]|[code]</code>
 						 </td>
 					</tr>
 				</tbody>
@@ -1446,12 +1448,12 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
-						<td>patient+category
+						<td>patient+onset-date
 						</td>
-						<td>reference+token
+						<td>reference+date
 						</td>
 						<td>
-							<code class="highlighter-rouge">GET [base]/Condition?patient=[patient]&amp;category=[system]|[code]</code>
+							<code class="highlighter-rouge">GET [base]/Condition?patient=[patient]&amp;onset-date=[onset-date]</code>
 						 </td>
 					</tr>
 					<tr>
@@ -1468,23 +1470,23 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
+						<td>patient+category
+						</td>
+						<td>reference+token
+						</td>
+						<td>
+							<code class="highlighter-rouge">GET [base]/Condition?patient=[patient]&amp;category=[system]|[code]</code>
+						 </td>
+					</tr>
+					<tr>
+						<td><strong>SHOULD</strong>
+						</td>
 						<td>patient+code
 						</td>
 						<td>reference+token
 						</td>
 						<td>
 							<code class="highlighter-rouge">GET [base]/Condition?patient=[patient]&amp;code=[system]|[code]</code>
-						 </td>
-					</tr>
-					<tr>
-						<td><strong>SHOULD</strong>
-						</td>
-						<td>patient+onset-date
-						</td>
-						<td>reference+date
-						</td>
-						<td>
-							<code class="highlighter-rouge">GET [base]/Condition?patient=[patient]&amp;onset-date=[onset-date]</code>
 						 </td>
 					</tr>
 				</tbody>
@@ -1888,23 +1890,23 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
+						<td>patient+code
+						</td>
+						<td>reference+token
+						</td>
+						<td>
+							<code class="highlighter-rouge">GET [base]/DiagnosticReport?patient=[patient]&amp;code=[system]|[code]</code>
+						 </td>
+					</tr>
+					<tr>
+						<td><strong>SHOULD</strong>
+						</td>
 						<td>patient+code+date
 						</td>
 						<td>reference+token+date
 						</td>
 						<td>
 							<code class="highlighter-rouge">GET [base]/DiagnosticReport?patient=[patient]&amp;code=[system]|[code]&amp;date=[date]</code>
-						 </td>
-					</tr>
-					<tr>
-						<td><strong>SHOULD</strong>
-						</td>
-						<td>patient+category
-						</td>
-						<td>reference+token
-						</td>
-						<td>
-							<code class="highlighter-rouge">GET [base]/DiagnosticReport?patient=[patient]&amp;category=[system]|[code]</code>
 						 </td>
 					</tr>
 					<tr>
@@ -1921,12 +1923,12 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
-						<td>patient+code
+						<td>patient+category
 						</td>
 						<td>reference+token
 						</td>
 						<td>
-							<code class="highlighter-rouge">GET [base]/DiagnosticReport?patient=[patient]&amp;code=[system]|[code]</code>
+							<code class="highlighter-rouge">GET [base]/DiagnosticReport?patient=[patient]&amp;category=[system]|[code]</code>
 						 </td>
 					</tr>
 				</tbody>
@@ -2224,23 +2226,23 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
-						<td>patient+category
-						</td>
-						<td>reference+token
-						</td>
-						<td>
-							<code class="highlighter-rouge">GET [base]/DocumentReference?patient=[patient]&amp;category=[system]|[code]</code>
-						 </td>
-					</tr>
-					<tr>
-						<td><strong>SHOULD</strong>
-						</td>
 						<td>patient+status
 						</td>
 						<td>reference+token
 						</td>
 						<td>
 							<code class="highlighter-rouge">GET [base]/DocumentReference?patient=[patient]&amp;status=[status]</code>
+						 </td>
+					</tr>
+					<tr>
+						<td><strong>SHOULD</strong>
+						</td>
+						<td>patient+category
+						</td>
+						<td>reference+token
+						</td>
+						<td>
+							<code class="highlighter-rouge">GET [base]/DocumentReference?patient=[patient]&amp;category=[system]|[code]</code>
 						 </td>
 					</tr>
 				</tbody>
@@ -2491,12 +2493,12 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
-						<td>date+patient
+						<td>class+patient
 						</td>
-						<td>date+reference
+						<td>token+reference
 						</td>
 						<td>
-							<code class="highlighter-rouge">GET [base]/Encounter?date=[date]&amp;patient=[patient]</code>
+							<code class="highlighter-rouge">GET [base]/Encounter?class=[system]|[code]&amp;patient=[patient]</code>
 						 </td>
 					</tr>
 					<tr>
@@ -2513,12 +2515,12 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
-						<td>class+patient
+						<td>date+patient
 						</td>
-						<td>token+reference
+						<td>date+reference
 						</td>
 						<td>
-							<code class="highlighter-rouge">GET [base]/Encounter?class=[system]|[code]&amp;patient=[patient]</code>
+							<code class="highlighter-rouge">GET [base]/Encounter?date=[date]&amp;patient=[patient]</code>
 						 </td>
 					</tr>
 				</tbody>
@@ -3419,12 +3421,12 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
-						<td>patient+intent
+						<td>patient+intent+encounter
 						</td>
-						<td>reference+token
+						<td>reference+token+reference
 						</td>
 						<td>
-							<code class="highlighter-rouge">GET [base]/MedicationRequest?patient=[patient]&amp;intent=[system]|[code]</code>
+							<code class="highlighter-rouge">GET [base]/MedicationRequest?patient=[patient]&amp;intent=[system]|[code]&amp;encounter=[encounter]</code>
 						 </td>
 					</tr>
 					<tr>
@@ -3441,23 +3443,23 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
-						<td>patient+intent+encounter
-						</td>
-						<td>reference+token+reference
-						</td>
-						<td>
-							<code class="highlighter-rouge">GET [base]/MedicationRequest?patient=[patient]&amp;intent=[system]|[code]&amp;encounter=[encounter]</code>
-						 </td>
-					</tr>
-					<tr>
-						<td><strong>SHOULD</strong>
-						</td>
 						<td>patient+intent+status
 						</td>
 						<td>reference+token+token
 						</td>
 						<td>
 							<code class="highlighter-rouge">GET [base]/MedicationRequest?patient=[patient]&amp;intent=[system]|[code]&amp;status=[status]</code>
+						 </td>
+					</tr>
+					<tr>
+						<td><strong>SHOULD</strong>
+						</td>
+						<td>patient+intent
+						</td>
+						<td>reference+token
+						</td>
+						<td>
+							<code class="highlighter-rouge">GET [base]/MedicationRequest?patient=[patient]&amp;intent=[system]|[code]</code>
 						 </td>
 					</tr>
 				</tbody>
@@ -3485,7 +3487,9 @@
 				
 											<a href="StructureDefinition-pediatric-bmi-for-age.html">US Core Pediatric BMI for Age Observation Profile</a>, 
 				
-											<a href="StructureDefinition-us-core-pulse-oximetry.html">US Core Pulse Oximetry Profile</a>
+											<a href="StructureDefinition-us-core-pulse-oximetry.html">US Core Pulse Oximetry Profile</a>, 
+				
+											<a href="StructureDefinition-head-occipital-frontal-circumference-percentile.html">US Core Pediatric Head Occipital-frontal Circumference Percentile Profile</a>
 				
 				</p>
 
@@ -3681,12 +3685,34 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
+						<td>patient+category+status
+						</td>
+						<td>reference+token+token
+						</td>
+						<td>
+							<code class="highlighter-rouge">GET [base]/Observation?patient=[patient]&amp;category=[system]|[code]&amp;status=[status]</code>
+						 </td>
+					</tr>
+					<tr>
+						<td><strong>SHOULD</strong>
+						</td>
 						<td>patient+category+date
 						</td>
 						<td>reference+token+date
 						</td>
 						<td>
 							<code class="highlighter-rouge">GET [base]/Observation?patient=[patient]&amp;category=[system]|[code]&amp;date=[date]</code>
+						 </td>
+					</tr>
+					<tr>
+						<td><strong>SHOULD</strong>
+						</td>
+						<td>patient+code
+						</td>
+						<td>reference+token
+						</td>
+						<td>
+							<code class="highlighter-rouge">GET [base]/Observation?patient=[patient]&amp;code=[system]|[code]</code>
 						 </td>
 					</tr>
 					<tr>
@@ -3703,34 +3729,12 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
-						<td>patient+category+status
-						</td>
-						<td>reference+token+token
-						</td>
-						<td>
-							<code class="highlighter-rouge">GET [base]/Observation?patient=[patient]&amp;category=[system]|[code]&amp;status=[status]</code>
-						 </td>
-					</tr>
-					<tr>
-						<td><strong>SHOULD</strong>
-						</td>
 						<td>patient+category
 						</td>
 						<td>reference+token
 						</td>
 						<td>
 							<code class="highlighter-rouge">GET [base]/Observation?patient=[patient]&amp;category=[system]|[code]</code>
-						 </td>
-					</tr>
-					<tr>
-						<td><strong>SHOULD</strong>
-						</td>
-						<td>patient+code
-						</td>
-						<td>reference+token
-						</td>
-						<td>
-							<code class="highlighter-rouge">GET [base]/Observation?patient=[patient]&amp;code=[system]|[code]</code>
 						 </td>
 					</tr>
 				</tbody>
@@ -4120,23 +4124,23 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
-						<td>birthdate+family
-						</td>
-						<td>date+string
-						</td>
-						<td>
-							<code class="highlighter-rouge">GET [base]/Patient?birthdate=[birthdate]&amp;family=[family]</code>
-						 </td>
-					</tr>
-					<tr>
-						<td><strong>SHOULD</strong>
-						</td>
 						<td>gender+name
 						</td>
 						<td>token+string
 						</td>
 						<td>
 							<code class="highlighter-rouge">GET [base]/Patient?gender=[system]|[code]&amp;name=[name]</code>
+						 </td>
+					</tr>
+					<tr>
+						<td><strong>SHOULD</strong>
+						</td>
+						<td>birthdate+family
+						</td>
+						<td>date+string
+						</td>
+						<td>
+							<code class="highlighter-rouge">GET [base]/Patient?birthdate=[birthdate]&amp;family=[family]</code>
 						 </td>
 					</tr>
 					<tr>
@@ -4645,23 +4649,23 @@
 					<tr>
 						<td><strong>SHOULD</strong>
 						</td>
-						<td>patient+status
-						</td>
-						<td>reference+token
-						</td>
-						<td>
-							<code class="highlighter-rouge">GET [base]/Procedure?patient=[patient]&amp;status=[status]</code>
-						 </td>
-					</tr>
-					<tr>
-						<td><strong>SHOULD</strong>
-						</td>
 						<td>patient+code+date
 						</td>
 						<td>reference+token+date
 						</td>
 						<td>
 							<code class="highlighter-rouge">GET [base]/Procedure?patient=[patient]&amp;code=[system]|[code]&amp;date=[date]</code>
+						 </td>
+					</tr>
+					<tr>
+						<td><strong>SHOULD</strong>
+						</td>
+						<td>patient+status
+						</td>
+						<td>reference+token
+						</td>
+						<td>
+							<code class="highlighter-rouge">GET [base]/Procedure?patient=[patient]&amp;status=[status]</code>
 						 </td>
 					</tr>
 				</tbody>
