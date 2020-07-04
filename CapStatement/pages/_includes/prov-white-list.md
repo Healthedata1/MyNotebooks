@@ -1,3 +1,4 @@
+{: prov-white-list}
 - The US Core Provenance resource **SHALL** be supported for these US Core resources:
    - US Core AllergyIntolerance Profile
    - US Core CarePlan Profile
