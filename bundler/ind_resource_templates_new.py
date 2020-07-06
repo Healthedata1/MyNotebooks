@@ -1,11 +1,11 @@
 summ = False
 use_bundle=True
 single_patient = False
-use_task = False
+use_task = True
 uc = 'mrp'
 
 base = '/Users/ehaas/Documents/FHIR/Davinci-DEQM'
-source = 'source/examples'
+source = 'input/examples'
 out_path ='r4'  #local output dir
 #out_path = f'{base}/{source}'  #DEQM source
 
@@ -23,27 +23,27 @@ mrs = [
         'Observation/observation01',
     ],
     [
-        'Practitioner/practitioner02',
+        'Practitioner/practitioner01',
         'Organization/organization01',
         'Organization/organization04',
         'Task/task01',
         'Organization/organization02',
         'Patient/patient02',
-        'Encounter/encounter02',
+        'Encounter/encounter01',
         'Coverage/coverage02',
-        'MeasureReport/measurereport02',
-        'Observation/observation02',
+        'MeasureReport/indv-measurereport02',
+        'Observation/observation01',
     ],
     [
-        'Practitioner/practitioner03',
+        'Practitioner/practitioner01',
         'Organization/organization01',
         'Organization/organization04',
         'Task/task01',
         'Organization/organization02',
         'Patient/patient03',
-        'Encounter/encounter03',
+        'Encounter/encounter01',
         'Coverage/coverage03',
-        'MeasureReport/measurereport03',
+        'MeasureReport/indv-measurereport03',
         'Observation/observation03',
     ],
 ]
