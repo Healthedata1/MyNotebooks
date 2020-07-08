@@ -6,10 +6,10 @@ uc = 'mrp'
 
 base = '/Users/ehaas/Documents/FHIR/Davinci-DEQM'
 source = 'input/examples'
-#out_path ='r4'  #local output dir
-out_path = f'{base}/{source}'  #DEQM source
+out_path ='r4'  #local output dir
+#out_path = f'{base}/{source}'  #DEQM source
 
- refs = {'Encounter/encounter01',
+refs = {'Encounter/encounter01',
  'Encounter/encounter02',
  'Encounter/encounter03',
  'MeasureReport/indv-measurereport02',
