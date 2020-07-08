@@ -6,8 +6,8 @@ uc = 'mrp'
 
 base = '/Users/ehaas/Documents/FHIR/Davinci-DEQM'
 source = 'input/examples'
-out_path ='r4'  #local output dir
-#out_path = f'{base}/{source}'  #DEQM source
+#out_path ='r4'  #local output dir
+out_path = f'{base}/{source}'  #DEQM source
 
 mrs = [
     [
@@ -26,24 +26,21 @@ mrs = [
         'Practitioner/practitioner01',
         'Organization/organization01',
         'Organization/organization04',
-        'Task/task01',
+        'Task/task02',
         'Organization/organization02',
         'Patient/patient02',
-        'Encounter/encounter01',
+        'Encounter/encounter02',
         'Coverage/coverage02',
         'MeasureReport/indv-measurereport02',
-        'Observation/observation01',
+        'Observation/observation02',
     ],
     [
         'Practitioner/practitioner01',
         'Organization/organization01',
         'Organization/organization04',
-        'Task/task01',
         'Organization/organization02',
         'Patient/patient03',
-        'Encounter/encounter01',
         'Coverage/coverage03',
         'MeasureReport/indv-measurereport03',
-        'Observation/observation03',
     ],
 ]
