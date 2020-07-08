@@ -14,7 +14,7 @@ print(p)
 # print(p.is_file())
 
 from json import loads
-mr_list = []
+mr_dict = {}
 MR1 = loads(p.read_text())
 
 from pprint import pprint
@@ -29,7 +29,7 @@ keys = get_all_keys(MR1)
 
 pprint(keys)
 
-mr_list.append(MR1)
+mr_dict[MR1['id']] = MR1
 
 from nested_lookup import nested_update
 
@@ -46,7 +46,7 @@ MR2 = nested_update(
    )
 
 MR2['id'] = 'indv-measurereport02a'
-mr_list.append(MR2)
+mr_dict[MR2['id']] = MR2
 MR3 = nested_update(
      MR1,
      key='reference',
@@ -61,11 +61,11 @@ MR3 = nested_update(
 MR3['id'] = 'indv-measurereport02b'
 
 #pprint(MR3)
-mr_list.append(MR3)
+mr_dict[MR3['id']] = MR3
 
 # step 2 create a set of all references from the MR and referenced resources
 ref_list = []
-for mr in mr_list:
+for mr in mr_dict.values():
     new_refs = nested_lookup('reference', mr)
     ref_list = ref_list + new_refs
     for ref in new_refs:
@@ -86,7 +86,7 @@ for mr in mr_list:
 ref_list = ref_list + ['MeasureReport/indv-measurereport02', 'MeasureReport/indv-measurereport02a','MeasureReport/indv-measurereport02b',]
 pprint(set(ref_list))
 
-
+print(mr_dict)
 
 
 # step 3 iterate through the set and get resources and Bundle
