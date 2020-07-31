@@ -24,7 +24,7 @@
 
 			{% for ig in cs.implementationGuide[1:] %}
 			<ul>
-				<li><a href="{{ig}}">{{ig}}</a></li>
+				<li><a href="{{ ig | urlencode }}">{{ig}}</a></li>
 			</ul>
 			{% endfor %}
 			{% endif %}

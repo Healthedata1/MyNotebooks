@@ -24,7 +24,7 @@
 
 			{% for ig in cs.implementationGuide[1:] %}
 			<ul>
-				<li><a href="{{ig}}">{{ig}}</a></li>
+				<li><a href="{{ ig | urlencode }}">{{ig}}</a></li>
 			</ul>
 			{% endfor %}
 			{% endif %}
@@ -40,7 +40,7 @@
 			{% if cs.rest[0].interaction  %}
 	<p><strong>Summary of System Wide Interactions</strong></p>
 			{% for r in cs.rest[0].interaction %}
-				<li><strong>{{r.extension[0].valueCode}}</strong> support the	<code>{{r.code}}</code> interaction.</li>
+				<li><strong>{% if r.extension %}{{r.extension[0].valueCode }}{% else %}undefined{% endif %}</strong> support the	<code>{{r.code}}</code> interaction.</li>
 			{% endfor %}
 	  	{% endif %}
 
@@ -72,36 +72,33 @@
 							<a href="#{{r.type | lower }}">{{r.type}}</a>
 						</td>
 						<td>
-{% for i in r.supportedProfile %}
+{% if r.supportedProfile %}{% for i in r.supportedProfile %}
 						<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{i}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
-{%  endfor %}
+{%  endfor %}{% endif %}
 						</td>
+
 						<td>
-							{% for s in r.searchParam if s.extension[0].valueCode == 'SHOULD' or  s.extension[0].valueCode == 'SHALL' %}
-							{{ s.name }}
+							{% if r.searchParam %}
+							{{ r.searchParam|join(', ', attribute='name') }}
+							{% if r.extension %}
+							{%- for s in r.extension if s.url == "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination" %}
+								{%- for combo in s.extension if combo.url == 'required' or combo.url == 'optional'-%}
+								{{combo.valueString}}
+								{%- if not loop.last %}+{% endif %}
+								{%- endfor %}
 							{%- if not loop.last %}, {% endif %}
 							{%- endfor %}
-							{%- for s in r.extension %}
-							{%- if s.url == "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination" %}
-							{%- for combo in s.extension if combo.url == 'required' or combo.url == 'optional'-%}
-							{{ combo.valueString }}
-							{%- if not loop.last %}+{% endif %}
-							{%- endfor %}
-							{%- endif %}
-							{%- if not loop.last %}, {% endif %}
-							{%- endfor %}
+							{% endif %}
+							{% endif %}
 						</td>
 						<td>
-							{{r.searchInclude | join(', ') }}
+							{% if r.searchInclude%}{{r.searchInclude | join(', ') }}{% endif %}
 						</td>
             <td>
-              {{r.searchRevInclude | join(', ') }}
+              {% if r.searchRevInclude%}{{r.searchRevInclude | join(', ') }}{% endif %}
             </td>
 						<td>
-							{% for s in r.operation if s.extension[0].valueCode == 'SHOULD' or  s.extension[0].valueCode == 'SHALL' %}
-							${{ s.name }}
-							{%- if not loop.last %}, {% endif %}
-							{%- endfor %}
+							{% if r.operation %}{{r.operation | join(', ',attribute='name') }}{% endif %}
 						</td>
 					</tr>
 					{% endfor %}
@@ -113,14 +110,14 @@
 			{% for r in cs.rest[0].resource %}
 			<h4 class="no_toc" id="{{r.type | lower }}">{{r.type}}</h4>
 
+			<p>Conformance Expectation:	<strong>{% if r.extension[0] %}{{r.extension[0].valueCode}}{% else %}undefined{% endif %}</strong></p>
+
 
 			{% if r.supportedProfile %}<p>Supported Profiles:
 				{% for i in r.supportedProfile %}
 											<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{i}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
 				{%  endfor %}
 				</p>{% endif %}
-
-
 
 			{% if r.documentation %}<p>Resource Specific Documentation:</p>
 
@@ -134,7 +131,7 @@
 
 			{% if r.interaction %}<p>Profile Interaction Summary:</p>
 				{% set ns = namespace(shall=false,should=false,may=false) %}
-				{%for i in r.interaction %}
+				{%for i in r.interaction if i.extension %}
     		{% if i.extension[0].valueCode == 'SHALL' %}
 				{% set ns.shall = true %}
 				{% elif i.extension[0].valueCode == 'SHOULD' %}
@@ -171,7 +168,7 @@
 				{% if r.operation %}
 				<p>Operation  Summary:</p>
 					{% set ns = namespace(shall=false,should=false,may=false) %}
-					{%for i in r.operation %}
+					{%for i in r.operation if i.extension %}
 	    		{% if i.extension[0].valueCode == 'SHALL' %}
 					{% set ns.shall = true %}
 					{% elif i.extension[0].valueCode == 'SHOULD' %}
@@ -186,14 +183,20 @@
 																								{% if i.documentation %}<p>{{i.documentation| markdown | safe }}</p>{% endif %}
 																								{%- if not loop.last %}, {% endif %}
 																								{%- endfor %}</li>
-						{%- endif %}
-						{% if ns.should %}<li><strong>SHOULD</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'SHOULD' %}
+
+						{% elif ns.should %}<li><strong>SHOULD</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'SHOULD' %}
 																									<a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
 																									{% if i.documentation%}<p>{{i.documentation| markdown | safe }}</p>{% endif %}
 																								{%- if not loop.last %}, {% endif %}
 																								{%- endfor %}</li>
-						{%- endif %}
-						{% if ns.may %}<li><strong>MAY</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'MAY' %}
+
+						{% elif ns.may %}<li><strong>MAY</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'MAY' %}
+																									<a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
+																									{% if i.documentation%}<p>{{i.documentation| markdown | safe }}</p>{% endif %}
+																								{%- if not loop.last %}, {% endif %}
+																								{%- endfor %}</li>
+
+						{% else %}<li><strong>undefined</strong> support the {%for i in r.operation if not i.extension %}
 																									<a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
 																									{% if i.documentation%}<p>{{i.documentation| markdown | safe }}</p>{% endif %}
 																								{%- if not loop.last %}, {% endif %}
@@ -210,7 +213,7 @@
 			<ul>
 				{%for i in r.interaction if i.code == "read" %}
 				<li>
-					A {{ cs.rest[0].mode | capitalize }} <strong>{{ i.extension[0].valueCode }}</strong> be capable of {% if cs.rest[0].mode == 'server' %}returning{% else %}fetching{% endif %} a {{r.type}} resource using:
+					A {{ cs.rest[0].mode | capitalize }} <strong>{% if i.extension %}{{ i.extension[0].valueCode }}{% else %}undefined{% endif %}</strong> be capable of {% if cs.rest[0].mode == 'server' %}returning{% else %}fetching{% endif %} a {{r.type}} resource using:
 					<br />
 						<code class="highlighter-rouge">GET [base]/{{r.type}}/[id]</code>
 				</li><br />
@@ -253,7 +256,7 @@
 					{%- for s in r.searchParam -%}
 					<tr>
 						<td>
-							<strong>{{ s.extension[0].valueCode }}</strong>
+							<strong>{% if s.extension %}{{ s.extension[0].valueCode }}{% else %}undefined{% endif %}</strong>
 						</td>
 						<td>
 							<a href="{{path_map[s.definition]}}">{{s.name}}</a>
@@ -278,9 +281,11 @@
 			</table>
 
 			{% set ns = namespace(combos=false) %}
+			{% if r.extension %}
 			{%- for combos in r.extension if combos.url == "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination" %}
 			{% set ns.combos = true %}
 			{% endfor %}
+			{% endif %}
 			{% if ns.combos %}
 			<p>Search Parameter Combination Summary:</p>
 			<table class="grid">

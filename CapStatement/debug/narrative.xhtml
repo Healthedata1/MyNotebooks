@@ -7,17 +7,17 @@
 	</head>
 	<body>
 		<div xmlns="http://www.w3.org/1999/xhtml">
-		<h2 id="title">Receiver Server CapabilityStatement</h2>
+		<h2 id="title">Notification Sender CapabilityStatement</h2>
 
 			<ul>
-				<li>Implementation Guide Version: 1.1.0</li>
+				<li>Implementation Guide Version: 1.0.0</li>
 				<li>FHIR Version: 4.0.1</li>
 				<li>Supported formats: xml, json</li>
-				<li>Published: 2020-07-05</li>
-				<li>Published by: HL7 International - Clinical Quality Information Work Group</li>
+				<li>Published: 2020-07-31</li>
+				<li>Published by: HL7 International - Infrastructure and Messaging Work Group</li>
 			</ul>
 
-			<p><p>This profile defines the expected capabilities of a Da Vinci DEQM Receiver Server when conforming to the Da Vinci DEQM Implementation Guide. Receivers include systems that are primary receivers of Measure data such as payers as well as public health and other healthcare-related agencies.  This CapabilityStatement resource includes the complete list of the <em>recommended</em>  Da Vinci DEQM profiles and RESTful operations that a Da Vinci DEQM Receiver Server could support. Servers have the option of choosing from this list based on their local use cases and other contextual requirements.</p>
+			<p><p>This CapabilityStatement describes the expected capabilities of a client that is capable of sending a Da Vinci Unsolicited Notification transacted with the <code>$process-message</code> operation.</p>
 </p>
 
 			
@@ -25,56 +25,43 @@
 
 			
 			<ul>
-				<li><a href="http://hl7.org/fhir/us/qicore/ImplementationGuide/hl7.fhir.us.qicore|4.0.0">http://hl7.org/fhir/us/qicore/ImplementationGuide/hl7.fhir.us.qicore|4.0.0</a></li>
-			</ul>
-			
-			<ul>
-				<li><a href="http://hl7.org/fhir/us/cqfmeasures/ImplementationGuide/hl7.fhir.us.cqfmeasures|2.0.0">http://hl7.org/fhir/us/cqfmeasures/ImplementationGuide/hl7.fhir.us.cqfmeasures|2.0.0</a></li>
+				<li><a href="http%3A//hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core%7C3.1.1">http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core|3.1.1</a></li>
 			</ul>
 			
 			
 
 			<h3 id="behavior">FHIR RESTful Capabilities</h3>
 
-			<p>Da Vinci DEQM Producer Server <strong>SHALL</strong></p>
+			<p>The Da Vinci Notification Sender <strong>SHALL</strong>:</p>
 <ol>
-<li>
-<p>Support the following  transactions defined in the <em>Framework</em> Section of  this  Implementation Guide:</p>
-<ul>
-<li>Individual Reporting</li>
-<li>Summary Reporting</li>
-</ul>
-</li>
-<li>
-<p>Declare a CapabilityStatement identifying the list of supported profiles and operations.</p>
-</li>
-<li>
-<p>Implement the FHIR RESTful API for operations including returning the appropriate response classes as described in the FHIR specification for <a href="http://hl7.org/fhir/R4/operations.html">Extended Operations on the RESTful API </a>.</p>
-</li>
-<li>
-<p>Support both xml and json resource formats for all interactions.</p>
-</li>
+<li>Support the notification framework defined in this Guide.</li>
+<li>Implement the RESTful behavior according to the FHIR specification.</li>
+<li>Support json source formats for all Da Vinci Notification interactions.</li>
+<li>Declare a CapabilityStatement identifying the scenarios, transactions and profiles supported.</li>
+</ol>
+<p>The Da Vinci Notifications Sender <strong>SHOULD</strong>:</p>
+<ol>
+<li>Support the admission/discharge use case defined in this Guide.</li>
+<li>Support xml source formats for all Da Vinci Notification interactions.</li>
+<li>Identify the Da Vinci or US Core profiles supported as part of the FHIR <code>meta.profile</code> attribute for each instance.</li>
 </ol>
 
             
 			<p id="security"><strong>Security:</strong></p>
-			<p>For general security consideration refer to the <a href="http://build.fhir.org/secpriv-module.html">Security and Privacy Considerations</a>.</p>
+			<ol>
+<li>For general security consideration refer to the <a href="http://build.fhir.org/secpriv-module.html">Security and Privacy Considerations</a>.</li>
+<li>For security considerations specific to this guide refer to the  <a href="security.html">Security</a> page for requirements and recommendations.</li>
+</ol>
 
             
 
 			
-	<p><strong>Summary of System Wide Interactions</strong></p>
-			
-				<li><strong>SHOULD</strong> support the	<code>transaction</code> interaction.</li>
-			
-				<li><strong>MAY</strong> support the	<code>batch</code> interaction.</li>
-			
-				<li><strong>MAY</strong> support the	<code>search-system</code> interaction.</li>
-			
-				<li><strong>MAY</strong> support the	<code>history-system</code> interaction.</li>
-			
-	  	
 
+			
+	<p><strong>Summary of System Wide Operations</strong></p>
+			
+				<li><strong>SHALL</strong> support the	<a href="http://hl7.org/fhir/OperationDefinition/MessageHeader-process-message"><code>$process-message</code></a> operation.</li>
+			
 			
 
 			<h3 class="no_toc" id="resource--details">RESTful Capabilities by Resource/Profile:</h3>
@@ -95,13 +82,221 @@
 					
 					<tr>
 						<td>
-							<a href="#measurereport">MeasureReport</a>
+							<a href="#bundle">Bundle</a>
 						</td>
 						<td>
 
-						<a href="StructureDefinition-summary-measurereport-deqm.html">DEQM Summary MeasureReport Profile</a>, 
+						<a href="StructureDefinition-notifications-bundle.html">Da Vinci Notifications Bundle Profile</a>
 
-						<a href="StructureDefinition-indv-measurereport-deqm.html">DEQM Individual MeasureReport Profile</a>
+						</td>
+
+						<td>
+							
+						</td>
+						<td>
+							
+						</td>
+            <td>
+              
+            </td>
+						<td>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<a href="#condition">Condition</a>
+						</td>
+						<td>
+
+						<a href="StructureDefinition-admit-discharge-notification-condition.html">Da Vinci Admit/Discharge Notification Condition Profile</a>
+
+						</td>
+
+						<td>
+							
+						</td>
+						<td>
+							
+						</td>
+            <td>
+              
+            </td>
+						<td>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<a href="#coverage">Coverage</a>
+						</td>
+						<td>
+
+						<a href="StructureDefinition-admit-discharge-notification-coverage.html">Da Vinci Admit/Discharge Notification Coverage Profile</a>
+
+						</td>
+
+						<td>
+							
+						</td>
+						<td>
+							
+						</td>
+            <td>
+              
+            </td>
+						<td>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<a href="#encounter">Encounter</a>
+						</td>
+						<td>
+
+						<a href="StructureDefinition-admit-discharge-notification-encounter.html">​Da Vinci Admit/Discharge Notification Encounter Profile</a>
+
+						</td>
+
+						<td>
+							
+						</td>
+						<td>
+							
+						</td>
+            <td>
+              
+            </td>
+						<td>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<a href="#location">Location</a>
+						</td>
+						<td>
+
+						</td>
+
+						<td>
+							
+						</td>
+						<td>
+							
+						</td>
+            <td>
+              
+            </td>
+						<td>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<a href="#messageheader">MessageHeader</a>
+						</td>
+						<td>
+
+						<a href="StructureDefinition-notifications-messageheader.html">Da Vinci Notifications MessageHeader Profile</a>, 
+
+						<a href="StructureDefinition-admit-notification-messageheader.html">Da Vinci Admit Notification MessageHeader Profile</a>, 
+
+						<a href="StructureDefinition-discharge-notification-messageheader.html">Da Vinci Discharge Notification MessageHeader Profile</a>
+
+						</td>
+
+						<td>
+							
+						</td>
+						<td>
+							
+						</td>
+            <td>
+              
+            </td>
+						<td>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<a href="#organization">Organization</a>
+						</td>
+						<td>
+
+						</td>
+
+						<td>
+							
+						</td>
+						<td>
+							
+						</td>
+            <td>
+              
+            </td>
+						<td>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<a href="#patient">Patient</a>
+						</td>
+						<td>
+
+						</td>
+
+						<td>
+							
+						</td>
+						<td>
+							
+						</td>
+            <td>
+              
+            </td>
+						<td>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<a href="#practitioner">Practitioner</a>
+						</td>
+						<td>
+
+						</td>
+
+						<td>
+							
+						</td>
+						<td>
+							
+						</td>
+            <td>
+              
+            </td>
+						<td>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<a href="#practitionerrole">PractitionerRole</a>
+						</td>
+						<td>
 
 						</td>
 
@@ -125,23 +320,18 @@
 
 
 			
-			<h4 class="no_toc" id="measurereport">MeasureReport</h4>
+			<h4 class="no_toc" id="bundle">Bundle</h4>
 
 			<p>Conformance Expectation:	<strong>SHALL</strong></p>
 
 
 			<p>Supported Profiles:
 				
-											<a href="StructureDefinition-summary-measurereport-deqm.html">DEQM Summary MeasureReport Profile</a>, 
-				
-											<a href="StructureDefinition-indv-measurereport-deqm.html">DEQM Individual MeasureReport Profile</a>
+											<a href="StructureDefinition-notifications-bundle.html">Da Vinci Notifications Bundle Profile</a>
 				
 				</p>
 
-			<p>Resource Specific Documentation:</p>
-
-			<blockquote><p>The DaVinci DEQM Receiver Server <strong>SHALL</strong> be capable of supporting the DEQM Summary MeasureReport Profile and  DEQM Individual MeasureReport Profile and all the DEQM and QI Core Profiles they reference.</p>
-</blockquote>
+			
 
 			
 			
@@ -152,22 +342,46 @@
 				
 				
     		
-				
-				
+        
     		
-				
-				
     		
         
-				
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
 
 				<ul>
-					<li><strong>SHALL</strong> support 
-																							<code>create</code>, 
-																							<code>update</code>.</li>
-					<li><strong>SHOULD</strong> support 
-																							<code>delete</code>.</li>
 					
+					
+					<li><strong>MAY</strong> support 
+																							<code>create</code>, 
+																							<code>search-type</code>, 
+																							<code>read</code>, 
+																							<code>vread</code>, 
+																							<code>update</code>, 
+																							<code>patch</code>, 
+																							<code>delete</code>, 
+																							<code>history-instance</code>, 
+																							<code>history-type</code>.</li>
 
 
 
@@ -180,6 +394,12 @@
 			<p>Fetch and Search Criteria:</p>
 			<ul>
 				
+				<li>
+					A Client <strong>MAY</strong> be capable of fetching a Bundle resource using:
+					<br />
+						<code class="highlighter-rouge">GET [base]/Bundle/[id]</code>
+				</li><br />
+				
 				<!-- Only SHOULDs for include for now the capability statement does not create the primitive extensios for this yet -->
 				
 				<!-- Only SHALLs for revinclude for now the capability statement does not create the primitive extensios for this yet -->
@@ -189,6 +409,381 @@
 
 			
 		
+<hr/>
+
+			
+			<h4 class="no_toc" id="condition">Condition</h4>
+
+			<p>Conformance Expectation:	<strong>SHOULD</strong></p>
+
+
+			<p>Supported Profiles:
+				
+											<a href="StructureDefinition-admit-discharge-notification-condition.html">Da Vinci Admit/Discharge Notification Condition Profile</a>
+				
+				</p>
+
+			<p>Resource Specific Documentation:</p>
+
+			<blockquote><p>Required resource type to carry information regarding admission and discharge event in the Da Vinci Notification message bundle</p>
+</blockquote>
+
+			
+			
+			
+			
+
+			
+				
+
+
+			
+<hr/>
+
+			
+			<h4 class="no_toc" id="coverage">Coverage</h4>
+
+			<p>Conformance Expectation:	<strong>SHOULD</strong></p>
+
+
+			<p>Supported Profiles:
+				
+											<a href="StructureDefinition-admit-discharge-notification-coverage.html">Da Vinci Admit/Discharge Notification Coverage Profile</a>
+				
+				</p>
+
+			<p>Resource Specific Documentation:</p>
+
+			<blockquote><p>Required resource type to carry information regarding admission and discharge event in the Da Vinci Notification message bundle</p>
+</blockquote>
+
+			
+			
+			
+			
+
+			<p>Profile Interaction Summary:</p>
+				
+				
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+
+				<ul>
+					
+					
+					<li><strong>MAY</strong> support 
+																							<code>create</code>, 
+																							<code>search-type</code><sup>&#8224;</sup>, 
+																							<code>read</code>, 
+																							<code>vread</code>, 
+																							<code>update</code>, 
+																							<code>patch</code>, 
+																							<code>delete</code>, 
+																							<code>history-instance</code>, 
+																							<code>history-type</code>.</li>
+
+
+
+				</ul>
+                <blockquote>search-type<sup>&#8224;</sup><p><strong>SHALL</strong> support  the <code>iterate</code> and <code>*</code> modifiers for the <code>_include</code> search parameter</p>
+</blockquote>
+				
+				
+
+
+			<p>Fetch and Search Criteria:</p>
+			<ul>
+				
+				<li>
+					A Client <strong>MAY</strong> be capable of fetching a Coverage resource using:
+					<br />
+						<code class="highlighter-rouge">GET [base]/Coverage/[id]</code>
+				</li><br />
+				
+				<!-- Only SHOULDs for include for now the capability statement does not create the primitive extensios for this yet -->
+				
+				<!-- Only SHALLs for revinclude for now the capability statement does not create the primitive extensios for this yet -->
+        
+
+			</ul>
+
+			
+		
+<hr/>
+
+			
+			<h4 class="no_toc" id="encounter">Encounter</h4>
+
+			<p>Conformance Expectation:	<strong>SHOULD</strong></p>
+
+
+			<p>Supported Profiles:
+				
+											<a href="StructureDefinition-admit-discharge-notification-encounter.html">​Da Vinci Admit/Discharge Notification Encounter Profile</a>
+				
+				</p>
+
+			<p>Resource Specific Documentation:</p>
+
+			<blockquote><p>Required resource type to carry information regarding admission and discharge event in the Da Vinci Notification message bundle</p>
+</blockquote>
+
+			
+			
+			
+			
+
+			
+				
+
+
+			
+<hr/>
+
+			
+			<h4 class="no_toc" id="location">Location</h4>
+
+			<p>Conformance Expectation:	<strong>SHOULD</strong></p>
+
+
+			
+
+			<p>Resource Specific Documentation:</p>
+
+			<blockquote><p>Required resource type to carry information regarding admission and discharge event in the Da Vinci Notification message bundle</p>
+</blockquote>
+
+			
+			
+			
+			
+
+			
+				
+
+
+			
+<hr/>
+
+			
+			<h4 class="no_toc" id="messageheader">MessageHeader</h4>
+
+			<p>Conformance Expectation:	<strong>SHALL</strong></p>
+
+
+			<p>Supported Profiles:
+				
+											<a href="StructureDefinition-notifications-messageheader.html">Da Vinci Notifications MessageHeader Profile</a>, 
+				
+											<a href="StructureDefinition-admit-notification-messageheader.html">Da Vinci Admit Notification MessageHeader Profile</a>, 
+				
+											<a href="StructureDefinition-discharge-notification-messageheader.html">Da Vinci Discharge Notification MessageHeader Profile</a>
+				
+				</p>
+
+			
+
+			
+			
+			
+			
+
+			<p>Profile Interaction Summary:</p>
+				
+				
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+    		
+        
+    		
+
+				<ul>
+					
+					
+					<li><strong>MAY</strong> support 
+																							<code>create</code>, 
+																							<code>search-type</code>, 
+																							<code>read</code>, 
+																							<code>vread</code>, 
+																							<code>update</code>, 
+																							<code>patch</code>, 
+																							<code>delete</code>, 
+																							<code>history-instance</code>, 
+																							<code>history-type</code>.</li>
+
+
+
+				</ul>
+                
+				
+				
+
+
+			<p>Fetch and Search Criteria:</p>
+			<ul>
+				
+				<li>
+					A Client <strong>MAY</strong> be capable of fetching a MessageHeader resource using:
+					<br />
+						<code class="highlighter-rouge">GET [base]/MessageHeader/[id]</code>
+				</li><br />
+				
+				<!-- Only SHOULDs for include for now the capability statement does not create the primitive extensios for this yet -->
+				
+				<!-- Only SHALLs for revinclude for now the capability statement does not create the primitive extensios for this yet -->
+        
+
+			</ul>
+
+			
+		
+<hr/>
+
+			
+			<h4 class="no_toc" id="organization">Organization</h4>
+
+			<p>Conformance Expectation:	<strong>SHOULD</strong></p>
+
+
+			
+
+			<p>Resource Specific Documentation:</p>
+
+			<blockquote><p>Required resource type to carry information regarding admission and discharge event in the Da Vinci Notification message bundle</p>
+</blockquote>
+
+			
+			
+			
+			
+
+			
+				
+
+
+			
+<hr/>
+
+			
+			<h4 class="no_toc" id="patient">Patient</h4>
+
+			<p>Conformance Expectation:	<strong>SHOULD</strong></p>
+
+
+			
+
+			<p>Resource Specific Documentation:</p>
+
+			<blockquote><p>Required resource type to carry information regarding admission and discharge event in the Da Vinci Notification message bundle</p>
+</blockquote>
+
+			
+			
+			
+			
+
+			
+				
+
+
+			
+<hr/>
+
+			
+			<h4 class="no_toc" id="practitioner">Practitioner</h4>
+
+			<p>Conformance Expectation:	<strong>SHOULD</strong></p>
+
+
+			
+
+			<p>Resource Specific Documentation:</p>
+
+			<blockquote><p>Required resource type to carry information regarding admission and discharge event in the Da Vinci Notification message bundle</p>
+</blockquote>
+
+			
+			
+			
+			
+
+			
+				
+
+
+			
+<hr/>
+
+			
+			<h4 class="no_toc" id="practitionerrole">PractitionerRole</h4>
+
+			<p>Conformance Expectation:	<strong>SHOULD</strong></p>
+
+
+			
+
+			<p>Resource Specific Documentation:</p>
+
+			<blockquote><p>Required resource type to carry information regarding admission and discharge event in the Da Vinci Notification message bundle</p>
+</blockquote>
+
+			
+			
+			
+			
+
+			
+				
+
+
+			
 <hr/>
 
 			
