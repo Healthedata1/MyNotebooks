@@ -112,7 +112,10 @@
 
 			<p>Conformance Expectation:	<strong>{% if r.extension[0] %}{{r.extension[0].valueCode}}{% else %}undefined{% endif %}</strong></p>
 
-
+			{% if r.profile %}<p>Base System profile for all uses of resource:
+			{% if path_map[r.profile] %}<a href="{{path_map[r.profile]}}">{{pname_map[r.profile]}}</a>{% else %}<code>{{r.profile}}</code>{% endif %}
+				</p>{% endif %}
+                
 			{% if r.supportedProfile %}<p>Supported Profiles:
 				{% for i in r.supportedProfile %}
 											<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{i}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
