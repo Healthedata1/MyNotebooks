@@ -24,7 +24,7 @@
 
 			{% for ig in cs.implementationGuide[1:] %}
 			<ul>
-				<li><a href="{{ig}}">{{ig}}</a></li>
+				<li><a href="{{ ig | urlencode }}">{{ig}}</a></li>
 			</ul>
 			{% endfor %}
 			{% endif %}
@@ -112,10 +112,7 @@
 
 			<p>Conformance Expectation:	<strong>{% if r.extension[0] %}{{r.extension[0].valueCode}}{% else %}undefined{% endif %}</strong></p>
 
-			{% if r.profile %}<p>Base System profile for all uses of resource:
-			{% if path_map[r.profile] %}<a href="{{path_map[r.profile]}}">{{pname_map[r.profile]}}</a>{% else %}<code>{{r.profile}}</code>{% endif %}
-				</p>{% endif %}
-                
+
 			{% if r.supportedProfile %}<p>Supported Profiles:
 				{% for i in r.supportedProfile %}
 											<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{i}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
@@ -262,7 +259,7 @@
 							<strong>{% if s.extension %}{{ s.extension[0].valueCode }}{% else %}undefined{% endif %}</strong>
 						</td>
 						<td>
-							<a href="{{path_map[s.definition]}}">{{s.name}}</a>
+							<a href="{% if path_map[s.definition] %}{{path_map[s.definition]}}{% else %}http://hl7.org/fhir/R4/search.html{% endif %}">{{s.name}}</a>
 						</td>
 						<td>
 							{{s.type}}
