@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div xmlns="http://www.w3.org/1999/xhtml">
-		<h2 id="title">Data Source Client CapabilityStatement</h2>
+		<h2 id="title">Data Consumer Server CapabilityStatement</h2>
 
 			<ul>
 				<li>Implementation Guide Version: 0.2.0</li>
@@ -17,26 +17,38 @@
 				<li>Published by: HL7 International - Patient Care Work Group</li>
 			</ul>
 
-		<p>This CapabilityStatement describes the expected capabilities of a Da Vinci CDex Data Source (often an EHR) in <em>Client</em> mode during a clinical data exchange with a Data Consumer. This includes the following interactions:</p>
+		<p>This CapabilityStatement describes the expected capabilities of a Da Vinci CDex Data Consumer (often a Payer) in <em>Server</em> mode when  responding to a  Data Source  (often an EHR) or one of its proxies during a clinical data exchange.   This includes the following interactions:</p>
 <ol>
-<li>Query for Authorization information represented by a CommunicationRequest or ServiceRequest</li>
-<li>Posting a subscription notification to a Data Consumer endpoint updating the status of a Task</li>
+<li>Responding to a query for Authorization information represented by a CommunicationRequest or ServiceRequest</li>
+<li>Responding to Subscription Notification posted to it endpoint updating the status of a Task</li>
 </ol>
 
 
 			
+	    <h3 class="no_toc" id="igs">SHALL Support the Following Implementation Guides:</h3>
+
+			
+			<ul>
+				<li><a href="http://hl7.org/fhir/us/core/index.html">HL7 FHIR® US Core Implementation Guide STU3 Release 3.1.1</a></li>
+			</ul>
+			
+			<ul>
+				<li><a href="http://hl7.org/fhir/us/davinci-hrex/2020Sep/index.html">Da Vinci Health Record Exchange (HRex) 0.2.0 - STU R1 - 2nd ballot</a></li>
+			</ul>
+			
+			
 
 			<h3 id="behavior">FHIR RESTful Capabilities</h3>
 
-			<p>The  Da Vinci CDex Data Source <strong>SHALL</strong>:</p>
+			<p>The  Da Vinci CDex Data Consumer  <strong>SHALL</strong>:</p>
 <ol>
 <li>Support  theTask Based Approach approaches for requesting information as defined in this Guide:</li>
 <li>Support json source formats for all Da Vinci Notification interactions.</li>
 <li>Declare a CapabilityStatement identifying  transactions and profiles supported.</li>
 </ol>
-<p>The  Da Vinci CDex Data Source  <strong>SHOULD</strong>:</p>
+<p>The  Da Vinci CDex Data Consumer  <strong>SHOULD</strong>:</p>
 <ol>
-<li>Support xml source formats for all Da Vinci CDex interactions.</li>
+<li>Support xml source formats for all Da Vinci Notification interactions.</li>
 </ol>
 
             
@@ -227,7 +239,7 @@
 			<ul>
 				
 				<li>
-					A Client <strong>SHOULD</strong> be capable of fetching a CommunicationRequest resource using:
+					A Server <strong>SHOULD</strong> be capable of returning a CommunicationRequest resource using:
 					<br />
 						<code class="highlighter-rouge">GET [base]/CommunicationRequest/[id]</code>
 				</li><br />
@@ -320,7 +332,7 @@
 			<ul>
 				
 				<li>
-					A Client <strong>SHOULD</strong> be capable of fetching a ServiceRequest resource using:
+					A Server <strong>SHOULD</strong> be capable of returning a ServiceRequest resource using:
 					<br />
 						<code class="highlighter-rouge">GET [base]/ServiceRequest/[id]</code>
 				</li><br />
@@ -414,7 +426,7 @@
 			<ul>
 				
 				<li>
-					A Client <strong>MAY</strong> be capable of fetching a Subscription resource using:
+					A Server <strong>MAY</strong> be capable of returning a Subscription resource using:
 					<br />
 						<code class="highlighter-rouge">GET [base]/Subscription/[id]</code>
 				</li><br />
