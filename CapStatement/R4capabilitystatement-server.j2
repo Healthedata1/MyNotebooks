@@ -17,14 +17,14 @@
 				<li>Published by: {{cs.publisher}}</li>
 			</ul>
 
-			<p>{{cs.description | markdown | safe }}</p>
+		{{cs.description | markdown | safe }}
 
 			{% if cs.implementationGuide|length > 1 %}
 	    <h3 class="no_toc" id="igs">SHALL Support the Following Implementation Guides:</h3>
 
 			{% for ig in cs.implementationGuide[1:] %}
 			<ul>
-				<li><a href="{{ ig_dict[ig][1] | urlencode }}">{{ ig_dict[ig][0] }}</a></li>
+				<li><a href="{{ ig_dict[ig][1] }}index.html">{{ ig_dict[ig][0] }}</a></li>
 			</ul>
 			{% endfor %}
 			{% endif %}
