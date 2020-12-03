@@ -80,12 +80,7 @@
 {%- endif %}
 {%- endmacro %}
 
-{#-
-### Quick Start
-Below is an overview of the required set of RESTful FHIR interactions - for
-example, search and read operations - for this profile. See the [Conformance requirements]
-for a complete list of supported RESTful interactions for this IG.
--#}
+{%- raw %}{% include quickstart-intro.md %}{% endraw %}
 
 - The syntax used to describe the interactions is described [here](general-guidance.html#search-syntax).
 {%- if shalls %}

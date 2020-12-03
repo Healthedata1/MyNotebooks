@@ -8,8 +8,7 @@
 	<body>
 		<div xmlns="http://www.w3.org/1999/xhtml">
 			<!--<h2>SearchParameter: {{sp.name}}</h2>-->
-			<p>
-				<b> description</b> : {{sp.description | safe }}</p>
+				<b> description</b> : {{sp.description | markdown | safe }}
 			<br/>
 			<p>
 				<b> id</b> {{sp.id}}</p>
