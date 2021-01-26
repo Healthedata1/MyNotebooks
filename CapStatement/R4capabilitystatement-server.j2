@@ -1,6 +1,5 @@
 <div xmlns="http://www.w3.org/1999/xhtml">
-		<h2 id="title">{{cs.title}}</h2>
-
+		<h2 id="title">{% if cs.title %}{{cs.title}}{% else %}{{ cs.id | upper }}{% endif %}</h2>
 			<ul>
 				<li>Implementation Guide Version: {{cs.version}}</li>
 				<li>FHIR Version: {{cs.fhirVersion}}</li>
@@ -22,11 +21,12 @@
 			{% endif %}
 
 			<h3 id="behavior">FHIR RESTful Capabilities</h3>
-
-			{{ cs.rest[0].documentation | markdown | safe }}
+			{% if cs.rest[0].documentation %}
+						{{ cs.rest[0].documentation | markdown | safe }}
+			{% endif %}
             {% if cs.rest[0].security.description %}
-			<p id="security"><strong>Security:</strong></p>
-			{{cs.rest[0].security.description | markdown | safe }}
+							<p id="security"><strong>Security:</strong></p>
+							{{cs.rest[0].security.description | markdown | safe }}
             {% endif %}
 
 			{% if cs.rest[0].interaction  %}
