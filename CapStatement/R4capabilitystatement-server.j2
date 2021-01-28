@@ -3,7 +3,7 @@
 			<ul>
 				<li>Implementation Guide Version: {{cs.version}}</li>
 				<li>FHIR Version: {{cs.fhirVersion}}</li>
-				<li>Supported formats: {{ cs.format | join(', ') }}</li>
+				<li>Supported formats: {{ cs.format | join(', ') | upper }}</li>
 				<li>Published: {{cs.date.as_json()}}</li>
 				<li>Published by: {{cs.publisher}}</li>
 			</ul>
