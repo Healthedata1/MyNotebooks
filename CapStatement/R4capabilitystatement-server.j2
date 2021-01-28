@@ -10,15 +10,23 @@
 
 		{{cs.description | markdown | safe }}
 
-			{% if cs.implementationGuide|length > 1 %}
-	    <h3 class="no_toc" id="igs">SHALL Support the Following Implementation Guides:</h3>
-
-			{% for ig in cs.implementationGuide[1:] %}
+ {% if shall_igs %}
+     <h3 class="no_toc" id="shall_igs">SHALL Support the Following Implementation Guides:</h3>
+			{% for ig in shall_igs %}
 			<ul>
-				<li><a href="{{ ig_dict[ig][1] }}index.html">{{ ig_dict[ig][0] }}</a></li>
+				<li><a href="{{ shall_igs[ig][1] }}index.html">{{ shall_igs[ig][0] }}</a></li>
 			</ul>
 			{% endfor %}
-			{% endif %}
+	{% endif %}
+
+ {% if should_igs %}
+			<h3 class="no_toc" id="igs">SHOULD Support the Following Implementation Guides:</h3>
+			{% for ig in cs.implementationGuide[1:] if should_igs[ig][2] == "SHOULD" %}
+			<ul>
+				<li><a href="{{ should_igs[ig][1] }}index.html">{{ should_igs[ig][0] }}</a></li>
+			</ul>
+			{% endfor %}
+	{% endif %}
 
 			<h3 id="behavior">FHIR RESTful Capabilities</h3>
 			{% if cs.rest[0].documentation %}
@@ -257,7 +265,11 @@
 							<strong>{% if s.extension %}{{ s.extension[0].valueCode }}{% else %}undefined{% endif %}</strong>
 						</td>
 						<td>
-							<a href="{% if path_map[s.definition] %}{{path_map[s.definition]}}{% else %}http://hl7.org/fhir/R4/search.html{% endif %}">{{s.name}}</a>
+							<a href="{% if path_map[s.definition] %}{{path_map[s.definition]}}
+							{%- elif s.name.startswith('_') %}http://hl7.org/fhir/R4/search.html
+							{%- else %}http://hl7.org/fhir/R4/{{r.type.lower()}}.html#search
+							{%- endif %}">
+							{{s.name}}</a>
 						</td>
 						<td>
 							{{s.type}}
