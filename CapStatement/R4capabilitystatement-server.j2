@@ -4,56 +4,72 @@
 				<li>Implementation Guide Version: {{cs.version}}</li>
 				<li>FHIR Version: {{cs.fhirVersion}}</li>
 				<li>Supported formats: {{ cs.format | join(', ') | upper }}</li>
-				<li>Published: {{cs.date.as_json()}}</li>
+				<li>Published: {{cs.date}}</li>
 				<li>Published by: {{cs.publisher}}</li>
 			</ul>
 
 		{{cs.description | markdown | safe }}
 
- {% if shall_igs %}
-     <h3 class="no_toc" id="shall_igs">SHALL Support the Following Implementation Guides:</h3>
-			{% for ig in shall_igs %}
-			<ul>
-				<li><a href="{{ shall_igs[ig][1] }}index.html">{{ shall_igs[ig][0] }}</a></li>
-			</ul>
+ {% if cs.implementationGuide %}
+ 			{% set ns = namespace(shall=false) %}
+			{% for ig in cs.implementationGuide %}
+				{% if (cs.implementationGuide__ext[loop.index0] and
+				 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="SHALL") %}
+			  {% set ns.shall = true %}
+				{% endif %}
 			{% endfor %}
+			{% if ns.shall %}
+				<h3 class="no_toc" id="shall_igs">SHALL Support the Following Implementation Guides:</h3>
+				{% for ig in cs.implementationGuide %}
+					{% if (cs.implementationGuide__ext[loop.index0] and
+					 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="SHALL") %}
+						<ul>
+							<li><a href="{{ig}}index.html">{{ig}}</a></li>
+						</ul>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+
+			{% set ns = namespace(should=false) %}
+			{% for ig in cs.implementationGuide %}
+				{% if (cs.implementationGuide__ext[loop.index0] and
+				 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="SHOULD") %}
+			  {% set ns.should = true %}
+				{% endif %}
+			{% endfor %}
+			{% if ns.should %}
+				<h3 class="no_toc" id="shall_igs">SHOULD Support the Following Implementation Guides:</h3>
+				{% for ig in cs.implementationGuide %}
+					{% if (cs.implementationGuide__ext[loop.index0] and
+					 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="SHOULD") %}
+						<ul>
+							<li><a href="{{ig}}index.html">{{ig}}</a></li>
+						</ul>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+
+			{% set ns = namespace(may=false) %}
+			{% for ig in cs.implementationGuide %}
+				{% if (cs.implementationGuide__ext[loop.index0] == None or
+				 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="MAY") %}
+			  {% set ns.may = true %}
+				{% endif %}
+			{% endfor %}
+			{% if ns.may %}
+				<h3 class="no_toc" id="shall_igs">MAY Support the Following Implementation Guides:</h3>
+				{% for ig in cs.implementationGuide %}
+				{% if (cs.implementationGuide__ext[loop.index0] == None or
+				 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="MAY") %}
+						<ul>
+							<li><a href="{{ig}}index.html">{{ig}}</a></li>
+						</ul>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+
 	{% endif %}
 
- {% if should_igs %}
-			<h3 class="no_toc" id="igs">SHOULD Support the Following Implementation Guides:</h3>
-			{% for ig in cs.implementationGuide[1:] if should_igs[ig][2] == "SHOULD" %}
-			<ul>
-				<li><a href="{{ should_igs[ig][1] }}index.html">{{ should_igs[ig][0] }}</a></li>
-			</ul>
-			{% endfor %}
-	{% endif %}
-
-			<h3 id="behavior">FHIR RESTful Capabilities</h3>
-			{% if cs.rest[0].documentation %}
-						{{ cs.rest[0].documentation | markdown | safe }}
-			{% endif %}
-            {% if cs.rest[0].security.description %}
-							<p id="security"><strong>Security:</strong></p>
-							{{cs.rest[0].security.description | markdown | safe }}
-            {% endif %}
-
-			{% if cs.rest[0].interaction  %}
-	<p><strong>Summary of System Wide Interactions</strong></p>
-	<ul>
-			{% for r in cs.rest[0].interaction %}
-				<li><strong>{% if r.extension %}{{r.extension[0].valueCode }}{% else %}undefined{% endif %}</strong> support the	<code>{{r.code}}</code> interaction.</li>
-			{% endfor %}
-	</ul>
-	  	{% endif %}
-
-			{% if cs.rest[0].operation %}
-	<p><strong>Summary of System Wide Operations</strong></p>
-		<ul>
-			{% for r in cs.rest[0].operation %}
-				<li><strong>{{r.extension[0].valueCode}}</strong> support the	<a href="{% if path_map[r.definition.reference]%}{{path_map[r.definition.reference]}}{% else %}{{r.definition}}{% endif %}"><code>${{r.name}}</code></a> operation.</li>
-			{% endfor %}
-		</ul>
-			{% endif %}
 {% if cs.rest[0].resource %}
 			<h3 class="no_toc" id="resource--details">RESTful Capabilities by Resource/Profile:</h3>
 
