@@ -111,7 +111,7 @@
 {% endif %}
 
 {% if cs._imports %}
-  			{% set ns = namespace(shall=false) %}
+  		{% set ns = namespace(shall=false) %}
  			{% for ig in cs._imports %}
  				{% if (cs._imports__ext[loop.index0] and
  				 cs._imports__ext[loop.index0].extension[0].valueCode=="SHALL") %}
@@ -371,6 +371,12 @@
 			</ul>
 
 			{% if r.searchParam %}
+
+			{% set ns = namespace(sps=false) %}
+			{%- for s in r.searchParam if s.extension[0].valueCode != "MAY" -%}
+				{% set ns.sps=true %}
+			{% endfor %}
+			{% if ns.sps %}
 			<p>Search Parameter Summary:</p>
 			<table class="grid">
 				<thead>
@@ -382,7 +388,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{%- for s in r.searchParam -%}
+					{%- for s in r.searchParam if s.extension[0].valueCode != "MAY" -%}
 					<tr>
 						<td>
 							<strong>{% if s.extension %}{{ s.extension[0].valueCode }}{% else %}undefined{% endif %}</strong>
@@ -397,6 +403,7 @@
 						<td>
 							{{s.type}}
 						</td>
+						<!--{% raw %}
 						<td align="left">
 						{% if s.documentation%}{{s.documentation | markdown | safe }}{% else %} - {% endif %}
 						<!--{% raw %}
@@ -409,12 +416,13 @@
 																																						 {%- elif s.name in ['us-core-includeprovenance'] %}
 																																						 {%- else %}=[{{s.name}}]
 																																						 {%- endif %}</code>
-					{% endraw %}-->
 						 </td>
+					{% endraw %}-->
 					</tr>
 					{%- endfor %}
 				</tbody>
 			</table>
+			{% endif %}
 
 			{% set ns = namespace(combos=false) %}
 			{% if r.extension %}
@@ -479,10 +487,28 @@
 			</table>
 			{% endif %}
 
-
-			{% endif %}
+		{% set ns = namespace(spr=false) %}
+		{%- for s in r.searchParam if s.documentation -%}
+			{% set ns.spr=true %}
+		{% endfor %}
+		{% if ns.spr %}
+			<div>
+			<p>Search Parameter Requirements (When Used Alone or in Combination):</p>
+			<ul>
+			{%- for s in r.searchParam if s.documentation -%}
+				<li><a href="{% if path_map[s.definition] %}{{path_map[s.definition]}}
+				{%- elif s.name.startswith('_') %}http://hl7.org/fhir/R4/search.html
+				{%- else %}http://hl7.org/fhir/R4/{{r.type.lower()}}.html#search
+				{%- endif %}">
+				{{s.name}}</a> ({{s.type}}):{{s.documentation | markdown | safe }}</li>
+			{%- endfor %}
+			</ul>
+			</div>
 		{% endif %}
-<hr/>
 
-			{% endfor %}
+		{% endif %}
+		{% endif %}
+
+<hr/>
+		{% endfor %}
 </div>
