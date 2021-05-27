@@ -24,7 +24,7 @@
 					{% if (cs.implementationGuide__ext[loop.index0] and
 					 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="SHALL") %}
 						<ul>
-							<li><a href="{{ig}}index.html">{{ig}}</a></li>
+							<li><a href="{{ig}}/index.html">{{igname_map[ig]}}</a></li>
 						</ul>
 					{% endif %}
 				{% endfor %}
@@ -38,12 +38,12 @@
 				{% endif %}
 			{% endfor %}
 			{% if ns.should %}
-				<h3 class="no_toc" id="shall_igs">SHOULD Support the Following Implementation Guides:</h3>
+				<h3 class="no_toc" id="should_igs">SHOULD Support the Following Implementation Guides:</h3>
 				{% for ig in cs.implementationGuide %}
 					{% if (cs.implementationGuide__ext[loop.index0] and
 					 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="SHOULD") %}
 						<ul>
-							<li><a href="{{ig}}index.html">{{ig}}</a></li>
+							<li><a href="{{ig}}/index.html">{{igname_map[ig]}}</a></li>
 						</ul>
 					{% endif %}
 				{% endfor %}
@@ -57,12 +57,12 @@
 				{% endif %}
 			{% endfor %}
 			{% if ns.may %}
-				<h3 class="no_toc" id="shall_igs">MAY Support the Following Implementation Guides:</h3>
+				<h3 class="no_toc" id="may_igs">MAY Support the Following Implementation Guides:</h3>
 				{% for ig in cs.implementationGuide %}
 				{% if (cs.implementationGuide__ext[loop.index0] == None or
 				 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="MAY") %}
 						<ul>
-							<li><a href="{{ig}}index.html">{{ig}}</a></li>
+							<li><a href="{{ig}}/index.html">{{igname_map[ig]}}</a></li>
 						</ul>
 					{% endif %}
 				{% endfor %}
@@ -72,38 +72,38 @@
 
 {% if cs.instantiates %}
   		{% set ns = namespace(shall=false) %}
- 			{% for ig in cs.instantiates %}
+ 			{% for cap in cs.instantiates %}
  				{% if (cs.instantiates__ext[loop.index0] and
  				 cs.instantiates__ext[loop.index0].extension[0].valueCode=="SHALL") %}
  			  {% set ns.shall = true %}
  				{% endif %}
  			{% endfor %}
  			{% if ns.shall %}
- 				<h3 class="no_toc" id="shall_igs">SHALL Implement All Or Parts Of The Following Capability Statements:</h3>
- 				{% for ig in cs.instantiates %}
+ 				<h3 class="no_toc" id="shall_css">SHALL Implement All Or Parts Of The Following Capability Statements:</h3>
+ 				{% for cap in cs.instantiates %}
  					{% if (cs.instantiates__ext[loop.index0] and
  					 cs.instantiates__ext[loop.index0].extension[0].valueCode=="SHALL") %}
  						<ul>
- 							<li><a href="{{ig}}index.html">{{ig}}</a></li>
+ 							<li><a href="{{cap}}/index.html">{{csname_map[cap]}}</a></li>
  						</ul>
  					{% endif %}
  				{% endfor %}
  			{% endif %}
 
  			{% set ns = namespace(should=false) %}
- 			{% for ig in cs.instantiates %}
+ 			{% for cap in cs.instantiates %}
  				{% if (cs.instantiates__ext[loop.index0] and
  				 cs.instantiates__ext[loop.index0].extension[0].valueCode=="SHOULD") %}
  			  {% set ns.should = true %}
  				{% endif %}
  			{% endfor %}
  			{% if ns.should %}
- 				<h3 class="no_toc" id="shall_igs">SHOULD Implement All Or Parts Of The Following Capability Statements:</h3>
- 				{% for ig in cs.instantiates %}
+ 				<h3 class="no_toc" id="should_css">SHOULD Implement All Or Parts Of The Following Capability Statements:</h3>
+ 				{% for cap in cs.instantiates %}
  					{% if (cs.instantiates__ext[loop.index0] and
  					 cs.instantiates__ext[loop.index0].extension[0].valueCode=="SHOULD") %}
  						<ul>
- 							<li><a href="{{ig}}index.html">{{ig}}</a></li>
+ 							<li><a href="{{cap}}/index.html">{{csname_map[cap]}}</a></li>
  						</ul>
  					{% endif %}
  				{% endfor %}
