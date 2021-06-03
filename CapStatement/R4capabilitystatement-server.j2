@@ -239,19 +239,26 @@
 
 			<p>Conformance Expectation:	<strong>{% if r.extension[0] %}{{r.extension[0].valueCode}}{% else %}undefined{% endif %}</strong></p>
 
+			{% if r.documentation %}<p>Resource Specific Documentation:</p>
+
+			<blockquote>{{ r.documentation | markdown | safe }}</blockquote>{% endif %}
+
 			{% if r.profile %}<p>Base System profile for all uses of resource:
 			{% if path_map[r.profile] %}<a href="{{path_map[r.profile]}}">{{pname_map[r.profile]}}</a>{% else %}<code>{{r.profile}}</code>{% endif %}
 				</p>{% endif %}
 
-			{% if r.supportedProfile %}<p>Supported Profiles:
+			{% if r.supportedProfile %}<p>Supported Profiles:</p>
+				<ul>
 				{% for i in r.supportedProfile %}
-											<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{purl_map[i]}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
+				{% if r.supportedProfile__ext[loop.index0]%}
+					<li><strong>{{r.supportedProfile__ext[loop.index0].extension[0].valueCode}}</strong> support:
+				{% else %} <li>
+				{%  endif %}
+					 		<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{purl_map[i]}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
+					</li>
 				{%  endfor %}
-				</p>{% endif %}
-
-			{% if r.documentation %}<p>Resource Specific Documentation:</p>
-
-			<blockquote>{{ r.documentation | markdown | safe }}</blockquote>{% endif %}
+				</ul>
+				{% endif %}
 
 			{% if r.referencePolicy %}<p>Reference Policy: {% for rf in r.referencePolicy %}<code>{{rf}}</code>
 			{%- if not loop.last %}, {% endif %}{%- endfor %}</p>{% endif %}
