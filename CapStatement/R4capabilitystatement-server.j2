@@ -201,7 +201,7 @@
 						<td>
 {% if r.supportedProfile %}{% for i in r.supportedProfile %}
 						<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{purl_map[i]}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
-{%  endfor %}{% endif %}
+{%  endfor %}{% else %}-{% endif %}
 						</td>
 
 						<td>
@@ -216,16 +216,17 @@
 							{%- if not loop.last %}, {% endif %}
 							{%- endfor %}
 							{% endif %}
+							{% else %}-
 							{% endif %}
 						</td>
 						<td>
-							{% if r.searchInclude%}{{r.searchInclude | join(', ') }}{% endif %}
+							{% if r.searchInclude%}{{r.searchInclude | join(', ') }}{% else %}-{% endif %}
 						</td>
             <td>
-              {% if r.searchRevInclude%}{{r.searchRevInclude | join(', ') }}{% endif %}
+              {% if r.searchRevInclude%}{{r.searchRevInclude | join(', ') }}{% else %}-{% endif %}
             </td>
 						<td>
-							{% if r.operation %}{{r.operation | join(', ',attribute='name') }}{% endif %}
+							{% if r.operation %}{{r.operation | join(', ',attribute='name') }}{% else %}-{% endif %}
 						</td>
 					</tr>
 					{% endfor %}
