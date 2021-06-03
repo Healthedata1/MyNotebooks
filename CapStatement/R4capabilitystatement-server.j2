@@ -24,7 +24,7 @@
 					{% if (cs.implementationGuide__ext[loop.index0] and
 					 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="SHALL") %}
 						<ul>
-							<li><a href="{{ig}}/index.html">{{igname_map[ig]}}</a></li>
+							<li><a href="{{igurl_map[ig]}}/index.html">{{igname_map[ig]}}</a></li>
 						</ul>
 					{% endif %}
 				{% endfor %}
@@ -43,7 +43,7 @@
 					{% if (cs.implementationGuide__ext[loop.index0] and
 					 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="SHOULD") %}
 						<ul>
-							<li><a href="{{ig}}/index.html">{{igname_map[ig]}}</a></li>
+							<li><a href="{{igurl_map[ig]}}/index.html">{{igname_map[ig]}}</a></li>
 						</ul>
 					{% endif %}
 				{% endfor %}
@@ -62,7 +62,7 @@
 				{% if (cs.implementationGuide__ext[loop.index0] == None or
 				 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="MAY") %}
 						<ul>
-							<li><a href="{{ig}}/index.html">{{igname_map[ig]}}</a></li>
+							<li><a href="{{igurl_map[ig]}}/index.html">{{igname_map[ig]}}</a></li>
 						</ul>
 					{% endif %}
 				{% endfor %}
@@ -84,7 +84,7 @@
  					{% if (cs.instantiates__ext[loop.index0] and
  					 cs.instantiates__ext[loop.index0].extension[0].valueCode=="SHALL") %}
  						<ul>
- 							<li><a href="{{cap}}/index.html">{{csname_map[cap]}}</a></li>
+ 							<li><a href="{{csurl_map[cap]}}/index.html">{{csname_map[cap]}}</a></li>
  						</ul>
  					{% endif %}
  				{% endfor %}
@@ -103,7 +103,7 @@
  					{% if (cs.instantiates__ext[loop.index0] and
  					 cs.instantiates__ext[loop.index0].extension[0].valueCode=="SHOULD") %}
  						<ul>
- 							<li><a href="{{cap}}/index.html">{{csname_map[cap]}}</a></li>
+ 							<li><a href="{{csurl_map[cap]}}/index.html">{{csname_map[cap]}}</a></li>
  						</ul>
  					{% endif %}
  				{% endfor %}
@@ -124,7 +124,7 @@
  					{% if (cs._imports__ext[loop.index0] and
  					 cs._imports__ext[loop.index0].extension[0].valueCode=="SHALL") %}
  						<ul>
- 							<li><a href="{{ig}}index.html">{{ig}}</a></li>
+ 							<li><a href="{{csurl_map[cap]}}/index.html">{{csname_map[cap]}}</a></li>
  						</ul>
  					{% endif %}
  				{% endfor %}
@@ -143,7 +143,7 @@
  					{% if (cs._imports__ext[loop.index0] and
  					 cs._imports__ext[loop.index0].extension[0].valueCode=="SHOULD") %}
  						<ul>
- 							<li><a href="{{ig}}index.html">{{ig}}</a></li>
+ 							<li><a href="{{csurl_map[cap]}}/index.html">{{csname_map[cap]}}</a></li>
  						</ul>
  					{% endif %}
  				{% endfor %}
@@ -200,7 +200,7 @@
 						</td>
 						<td>
 {% if r.supportedProfile %}{% for i in r.supportedProfile %}
-						<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{i}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
+						<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{purl_map[i]}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
 {%  endfor %}{% endif %}
 						</td>
 
@@ -244,7 +244,7 @@
 
 			{% if r.supportedProfile %}<p>Supported Profiles:
 				{% for i in r.supportedProfile %}
-											<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{i}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
+											<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{purl_map[i]}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
 				{%  endfor %}
 				</p>{% endif %}
 
