@@ -1,9 +1,21 @@
 <div xmlns="http://www.w3.org/1999/xhtml">
 		<h2 id="title">{% if cs.title %}{{cs.title}}{% else %}{{ cs.id | upper }}{% endif %}</h2>
+
 			<ul>
+				<li>Official URL: <code>{{cs.url}}</code></li>
 				<li>Implementation Guide Version: {{cs.version}}</li>
 				<li>FHIR Version: {{cs.fhirVersion}}</li>
-				<li>Supported formats: {{ cs.format | join(', ') | upper }}</li>
+				<li>Supported formats:
+				{% if cs.format__ext %}
+				{% for format in cs.format %}
+					 <strong>{{cs.format__ext[loop.index0].extension[0].valueCode}}</strong>
+					 support {{ format | upper }}
+					{%- if not loop.last %}, {% endif %}
+				{% endfor %}
+				{% else %}
+					{{ cs.format | join(', ') | upper }}
+				{% endif %}
+				</li>
 				<li>Published: {{cs.date}}</li>
 				<li>Published by: {{cs.publisher}}</li>
 			</ul>
