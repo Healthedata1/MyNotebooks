@@ -36,7 +36,7 @@
 					{% if (cs.implementationGuide__ext[loop.index0] and
 					 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="SHALL") %}
 						<ul>
-							<li><a href="{{igurl_map[ig]}}/index.html">{{igname_map[ig]}}</a></li>
+							<li><a href="{{igurl_map[ig]}}">{{igname_map[ig]}}</a></li>
 						</ul>
 					{% endif %}
 				{% endfor %}
@@ -55,7 +55,7 @@
 					{% if (cs.implementationGuide__ext[loop.index0] and
 					 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="SHOULD") %}
 						<ul>
-							<li><a href="{{igurl_map[ig]}}/index.html">{{igname_map[ig]}}</a></li>
+							<li><a href="{{igurl_map[ig]}}">{{igname_map[ig]}}</a></li>
 						</ul>
 					{% endif %}
 				{% endfor %}
@@ -76,7 +76,7 @@
 				{% if (cs.implementationGuide__ext[loop.index0] == None or
 				 cs.implementationGuide__ext[loop.index0].extension[0].valueCode=="MAY") %}
 						<ul>
-							<li><a href="{{igurl_map[ig]}}/index.html">{{igname_map[ig]}}</a></li>
+							<li><a href="{{igurl_map[ig]}}">{{igname_map[ig]}}</a></li>
 						</ul>
 					{% endif %}
 				{% endfor %}
@@ -98,7 +98,7 @@
  					{% if (cs.instantiates__ext[loop.index0] and
  					 cs.instantiates__ext[loop.index0].extension[0].valueCode=="SHALL") %}
  						<ul>
- 							<li><a href="{{csurl_map[cap]}}/index.html">{{csname_map[cap]}}</a></li>
+ 							<li><a href="{{csurl_map[cap]}}">{{csname_map[cap]}}</a></li>
  						</ul>
  					{% endif %}
  				{% endfor %}
@@ -117,7 +117,7 @@
  					{% if (cs.instantiates__ext[loop.index0] and
  					 cs.instantiates__ext[loop.index0].extension[0].valueCode=="SHOULD") %}
  						<ul>
- 							<li><a href="{{csurl_map[cap]}}/index.html">{{csname_map[cap]}}</a></li>
+ 							<li><a href="{{csurl_map[cap]}}">{{csname_map[cap]}}</a></li>
  						</ul>
  					{% endif %}
  				{% endfor %}
@@ -138,7 +138,7 @@
  					{% if (cs._imports__ext[loop.index0] and
  					 cs._imports__ext[loop.index0].extension[0].valueCode=="SHALL") %}
  						<ul>
- 							<li><a href="{{csurl_map[cap]}}/index.html">{{csname_map[cap]}}</a></li>
+ 							<li><a href="{{csurl_map[cap]}}">{{csname_map[cap]}}</a></li>
  						</ul>
  					{% endif %}
  				{% endfor %}
@@ -157,7 +157,7 @@
  					{% if (cs._imports__ext[loop.index0] and
  					 cs._imports__ext[loop.index0].extension[0].valueCode=="SHOULD") %}
  						<ul>
- 							<li><a href="{{csurl_map[cap]}}/index.html">{{csname_map[cap]}}</a></li>
+ 							<li><a href="{{csurl_map[cap]}}">{{csname_map[cap]}}</a></li>
  						</ul>
  					{% endif %}
  				{% endfor %}
