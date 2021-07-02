@@ -80,20 +80,16 @@
 {%- endif %}
 {%- endmacro %}
 
-{#-
-### Quick Start
-Below is an overview of the required set of RESTful FHIR interactions - for
-example, search and read operations - for this profile. See the [Conformance requirements]
-for a complete list of supported RESTful interactions for this IG.
--#}
+{%- raw %}{% include quickstart-intro.md %}{% endraw %}
 
+- The syntax used to describe the interactions is described [here](general-guidance.html#search-syntax).
 {%- if shalls %}
 - See the [General Guidance] section for additional rules and expectations when a server requires status parameters.
 - See the [General Guidance] section for additional guidance on searching for multiple patients.
 
 #### Mandatory Search Parameters:
 
-The following search parameters, search parameter combinations and search parameter [modifiers], [comparators], [chains] and [composites] SHALL be supported.  the  modifiers, comparators, chains and composites that are listed as optional SHOULD be supported.:
+The following search parameters and search parameter combinations SHALL be supported:
 {%- endif %}
 {%- set nulls = [None,'','n/a'] %}
 {%- set ns = namespace(mods=[]) %}
@@ -129,7 +125,7 @@ The following search parameters, search parameter combinations and search parame
 {% if shoulds %}
 #### Optional Search Parameters:
 
-The following search parameters, search parameter combinations and search parameter [modifiers], [comparators], [chains] and [composites] SHOULD be supported.
+The following search parameter combinations SHOULD be supported:
 {%- endif %}
 {% for i in sp  if i.display and i.base_conf == "SHOULD" %}
 1. **SHOULD** support searching using the **[`{{i.code}}`]({{rels[i.code]}})** search parameter:
@@ -157,5 +153,9 @@ The following search parameters, search parameter combinations and search parame
 {% endif %}
     *Implementation Notes:* {{i.imp_note}} ([how to search by {{i.types.split(',') | join('] and [how to search by ')}}])
 {% endfor %}
+
+{% if r_type == "DocumentReference" %}
+  {% raw %}{% include write-and-docref.md %}{% endraw %}
+{% endif %}
 
 {% raw %}{% include link-list.md %}{% endraw %}

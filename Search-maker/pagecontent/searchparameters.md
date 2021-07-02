@@ -14,9 +14,14 @@ NOTE: These search parameters **SHALL NOT** be interpreted on their own as requi
 This section lists the search parameters definitions that are used within the capability statement to define the search capabilities expectations for the US Core Server.  This is not a list of search requirements for the client or server.
 
 
-**CareTeam**
-  - [patient](SearchParameter-us-core-careteam-patient.html)
-  - [status](SearchParameter-us-core-careteam-status.html)
+**Patient**
+  - [_id](SearchParameter-us-core-patient-id.html)
+  - [birthdate](SearchParameter-us-core-patient-birthdate.html)
+  - [family](SearchParameter-us-core-patient-family.html)
+  - [gender](SearchParameter-us-core-patient-gender.html)
+  - [given](SearchParameter-us-core-patient-given.html)
+  - [identifier](SearchParameter-us-core-patient-identifier.html)
+  - [name](SearchParameter-us-core-patient-name.html)
 
 
 
