@@ -1,0 +1,1948 @@
+{
+   "id": "argo-pl-connectathon25",
+   "entry": [
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Patient/1461398",
+         "request": {
+            "method": "PUT",
+            "url": "Patient/1461398"
+         },
+         "resource": {
+            "id": "1461398",
+            "meta": {
+               "lastUpdated": "2020-09-10T06:08:12.589+00:00",
+               "profile": [
+                  "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+               ],
+               "source": "#jU68SFkEjgoGVMZy",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "1"
+            },
+            "extension": [
+               {
+                  "extension": [
+                     {
+                        "url": "ombCategory",
+                        "valueCoding": {
+                           "code": "2106-3",
+                           "display": "White",
+                           "system": "urn:oid:2.16.840.1.113883.6.238"
+                        }
+                     },
+                     {
+                        "url": "text",
+                        "valueString": "White"
+                     }
+                  ],
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+               },
+               {
+                  "extension": [
+                     {
+                        "url": "ombCategory",
+                        "valueCoding": {
+                           "code": "2186-5",
+                           "display": "Not Hispanic or Latino",
+                           "system": "urn:oid:2.16.840.1.113883.6.238"
+                        }
+                     },
+                     {
+                        "url": "text",
+                        "valueString": "Not Hispanic or Latino"
+                     }
+                  ],
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+               },
+               {
+                  "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+                  "valueString": "Breanna581 Bayer639"
+               },
+               {
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+                  "valueCode": "F"
+               },
+               {
+                  "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+                  "valueAddress": {
+                     "city": "Necedah",
+                     "country": "US",
+                     "state": "Wisconsin"
+                  }
+               },
+               {
+                  "url": "http://synthetichealth.github.io/synthea/disability-adjusted-life-years",
+                  "valueDecimal": 0.6623117856439531
+               },
+               {
+                  "url": "http://synthetichealth.github.io/synthea/quality-adjusted-life-years",
+                  "valueDecimal": 27.337688214356046
+               }
+            ],
+            "address": [
+               {
+                  "extension": [
+                     {
+                        "extension": [
+                           {
+                              "url": "latitude",
+                              "valueDecimal": 43.03604301486846
+                           },
+                           {
+                              "url": "longitude",
+                              "valueDecimal": -89.48965499370813
+                           }
+                        ],
+                        "url": "http://hl7.org/fhir/StructureDefinition/geolocation"
+                     }
+                  ],
+                  "city": "Madison",
+                  "country": "US",
+                  "line": [
+                     "1094 Hackett Run"
+                  ],
+                  "postalCode": "53714",
+                  "state": "WI"
+               }
+            ],
+            "birthDate": "1991-03-17",
+            "communication": [
+               {
+                  "language": {
+                     "coding": [
+                        {
+                           "code": "en-US",
+                           "display": "English",
+                           "system": "urn:ietf:bcp:47"
+                        }
+                     ],
+                     "text": "English"
+                  }
+               }
+            ],
+            "gender": "female",
+            "identifier": [
+               {
+                  "system": "https://github.com/synthetichealth/synthea",
+                  "value": "678f72e9-9de7-59d5-37ce-13a92d481dfe"
+               },
+               {
+                  "system": "http://hospital.smarthealthit.org",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "MR",
+                           "display": "Medical Record Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Medical Record Number"
+                  },
+                  "value": "678f72e9-9de7-59d5-37ce-13a92d481dfe"
+               },
+               {
+                  "system": "http://hl7.org/fhir/sid/us-ssn",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "SS",
+                           "display": "Social Security Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Social Security Number"
+                  },
+                  "value": "999-38-9721"
+               },
+               {
+                  "system": "urn:oid:2.16.840.1.113883.4.3.25",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "DL",
+                           "display": "Driver's License",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Driver's License"
+                  },
+                  "value": "S99953585"
+               },
+               {
+                  "system": "http://standardhealthrecord.org/fhir/StructureDefinition/passportNumber",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "PPN",
+                           "display": "Passport Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Passport Number"
+                  },
+                  "value": "X61971148X"
+               }
+            ],
+            "maritalStatus": {
+               "coding": [
+                  {
+                     "code": "M",
+                     "display": "M",
+                     "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
+                  }
+               ],
+               "text": "M"
+            },
+            "multipleBirthBoolean": false,
+            "name": [
+               {
+                  "family": "Crooks415",
+                  "given": [
+                     "Abbie917"
+                  ],
+                  "prefix": [
+                     "Mrs."
+                  ],
+                  "use": "official"
+               },
+               {
+                  "family": "McKenzie376",
+                  "given": [
+                     "Abbie917"
+                  ],
+                  "prefix": [
+                     "Mrs."
+                  ],
+                  "use": "maiden"
+               }
+            ],
+            "telecom": [
+               {
+                  "system": "phone",
+                  "use": "home",
+                  "value": "555-447-6223"
+               }
+            ],
+            "resourceType": "Patient"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Patient/1461398",
+         "request": {
+            "method": "PUT",
+            "url": "Patient/1461398"
+         },
+         "resource": {
+            "id": "1461398",
+            "meta": {
+               "lastUpdated": "2020-09-10T06:08:12.589+00:00",
+               "profile": [
+                  "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+               ],
+               "source": "#jU68SFkEjgoGVMZy",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "1"
+            },
+            "extension": [
+               {
+                  "extension": [
+                     {
+                        "url": "ombCategory",
+                        "valueCoding": {
+                           "code": "2106-3",
+                           "display": "White",
+                           "system": "urn:oid:2.16.840.1.113883.6.238"
+                        }
+                     },
+                     {
+                        "url": "text",
+                        "valueString": "White"
+                     }
+                  ],
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+               },
+               {
+                  "extension": [
+                     {
+                        "url": "ombCategory",
+                        "valueCoding": {
+                           "code": "2186-5",
+                           "display": "Not Hispanic or Latino",
+                           "system": "urn:oid:2.16.840.1.113883.6.238"
+                        }
+                     },
+                     {
+                        "url": "text",
+                        "valueString": "Not Hispanic or Latino"
+                     }
+                  ],
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+               },
+               {
+                  "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+                  "valueString": "Breanna581 Bayer639"
+               },
+               {
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+                  "valueCode": "F"
+               },
+               {
+                  "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+                  "valueAddress": {
+                     "city": "Necedah",
+                     "country": "US",
+                     "state": "Wisconsin"
+                  }
+               },
+               {
+                  "url": "http://synthetichealth.github.io/synthea/disability-adjusted-life-years",
+                  "valueDecimal": 0.6623117856439531
+               },
+               {
+                  "url": "http://synthetichealth.github.io/synthea/quality-adjusted-life-years",
+                  "valueDecimal": 27.337688214356046
+               }
+            ],
+            "address": [
+               {
+                  "extension": [
+                     {
+                        "extension": [
+                           {
+                              "url": "latitude",
+                              "valueDecimal": 43.03604301486846
+                           },
+                           {
+                              "url": "longitude",
+                              "valueDecimal": -89.48965499370813
+                           }
+                        ],
+                        "url": "http://hl7.org/fhir/StructureDefinition/geolocation"
+                     }
+                  ],
+                  "city": "Madison",
+                  "country": "US",
+                  "line": [
+                     "1094 Hackett Run"
+                  ],
+                  "postalCode": "53714",
+                  "state": "WI"
+               }
+            ],
+            "birthDate": "1991-03-17",
+            "communication": [
+               {
+                  "language": {
+                     "coding": [
+                        {
+                           "code": "en-US",
+                           "display": "English",
+                           "system": "urn:ietf:bcp:47"
+                        }
+                     ],
+                     "text": "English"
+                  }
+               }
+            ],
+            "gender": "female",
+            "identifier": [
+               {
+                  "system": "https://github.com/synthetichealth/synthea",
+                  "value": "678f72e9-9de7-59d5-37ce-13a92d481dfe"
+               },
+               {
+                  "system": "http://hospital.smarthealthit.org",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "MR",
+                           "display": "Medical Record Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Medical Record Number"
+                  },
+                  "value": "678f72e9-9de7-59d5-37ce-13a92d481dfe"
+               },
+               {
+                  "system": "http://hl7.org/fhir/sid/us-ssn",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "SS",
+                           "display": "Social Security Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Social Security Number"
+                  },
+                  "value": "999-38-9721"
+               },
+               {
+                  "system": "urn:oid:2.16.840.1.113883.4.3.25",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "DL",
+                           "display": "Driver's License",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Driver's License"
+                  },
+                  "value": "S99953585"
+               },
+               {
+                  "system": "http://standardhealthrecord.org/fhir/StructureDefinition/passportNumber",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "PPN",
+                           "display": "Passport Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Passport Number"
+                  },
+                  "value": "X61971148X"
+               }
+            ],
+            "maritalStatus": {
+               "coding": [
+                  {
+                     "code": "M",
+                     "display": "M",
+                     "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
+                  }
+               ],
+               "text": "M"
+            },
+            "multipleBirthBoolean": false,
+            "name": [
+               {
+                  "family": "Crooks415",
+                  "given": [
+                     "Abbie917"
+                  ],
+                  "prefix": [
+                     "Mrs."
+                  ],
+                  "use": "official"
+               },
+               {
+                  "family": "McKenzie376",
+                  "given": [
+                     "Abbie917"
+                  ],
+                  "prefix": [
+                     "Mrs."
+                  ],
+                  "use": "maiden"
+               }
+            ],
+            "telecom": [
+               {
+                  "system": "phone",
+                  "use": "home",
+                  "value": "555-447-6223"
+               }
+            ],
+            "resourceType": "Patient"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Patient/1461624",
+         "request": {
+            "method": "PUT",
+            "url": "Patient/1461624"
+         },
+         "resource": {
+            "id": "1461624",
+            "meta": {
+               "lastUpdated": "2020-09-10T06:08:23.441+00:00",
+               "profile": [
+                  "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+               ],
+               "source": "#BePAqBq445NZjp90",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "1"
+            },
+            "extension": [
+               {
+                  "extension": [
+                     {
+                        "url": "ombCategory",
+                        "valueCoding": {
+                           "code": "2106-3",
+                           "display": "White",
+                           "system": "urn:oid:2.16.840.1.113883.6.238"
+                        }
+                     },
+                     {
+                        "url": "text",
+                        "valueString": "White"
+                     }
+                  ],
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+               },
+               {
+                  "extension": [
+                     {
+                        "url": "ombCategory",
+                        "valueCoding": {
+                           "code": "2186-5",
+                           "display": "Not Hispanic or Latino",
+                           "system": "urn:oid:2.16.840.1.113883.6.238"
+                        }
+                     },
+                     {
+                        "url": "text",
+                        "valueString": "Not Hispanic or Latino"
+                     }
+                  ],
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+               },
+               {
+                  "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+                  "valueString": "Georgie506 Schultz619"
+               },
+               {
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+                  "valueCode": "M"
+               },
+               {
+                  "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+                  "valueAddress": {
+                     "city": "Farmington",
+                     "country": "US",
+                     "state": "Wisconsin"
+                  }
+               },
+               {
+                  "url": "http://synthetichealth.github.io/synthea/disability-adjusted-life-years",
+                  "valueDecimal": 0.5164795800175304
+               },
+               {
+                  "url": "http://synthetichealth.github.io/synthea/quality-adjusted-life-years",
+                  "valueDecimal": 34.48352041998247
+               }
+            ],
+            "address": [
+               {
+                  "extension": [
+                     {
+                        "extension": [
+                           {
+                              "url": "latitude",
+                              "valueDecimal": 43.16549069902368
+                           },
+                           {
+                              "url": "longitude",
+                              "valueDecimal": -89.39599327485244
+                           }
+                        ],
+                        "url": "http://hl7.org/fhir/StructureDefinition/geolocation"
+                     }
+                  ],
+                  "city": "Madison",
+                  "country": "US",
+                  "line": [
+                     "391 Pollich Esplanade"
+                  ],
+                  "postalCode": "53532",
+                  "state": "WI"
+               }
+            ],
+            "birthDate": "1984-05-19",
+            "communication": [
+               {
+                  "language": {
+                     "coding": [
+                        {
+                           "code": "en-US",
+                           "display": "English",
+                           "system": "urn:ietf:bcp:47"
+                        }
+                     ],
+                     "text": "English"
+                  }
+               }
+            ],
+            "gender": "male",
+            "identifier": [
+               {
+                  "system": "https://github.com/synthetichealth/synthea",
+                  "value": "03de8bdf-e224-23ba-ee00-171e571fcaa9"
+               },
+               {
+                  "system": "http://hospital.smarthealthit.org",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "MR",
+                           "display": "Medical Record Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Medical Record Number"
+                  },
+                  "value": "03de8bdf-e224-23ba-ee00-171e571fcaa9"
+               },
+               {
+                  "system": "http://hl7.org/fhir/sid/us-ssn",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "SS",
+                           "display": "Social Security Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Social Security Number"
+                  },
+                  "value": "999-25-8755"
+               },
+               {
+                  "system": "urn:oid:2.16.840.1.113883.4.3.25",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "DL",
+                           "display": "Driver's License",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Driver's License"
+                  },
+                  "value": "S99950432"
+               },
+               {
+                  "system": "http://standardhealthrecord.org/fhir/StructureDefinition/passportNumber",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "PPN",
+                           "display": "Passport Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Passport Number"
+                  },
+                  "value": "X87517736X"
+               }
+            ],
+            "maritalStatus": {
+               "coding": [
+                  {
+                     "code": "M",
+                     "display": "M",
+                     "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
+                  }
+               ],
+               "text": "M"
+            },
+            "multipleBirthBoolean": false,
+            "name": [
+               {
+                  "family": "Corkery305",
+                  "given": [
+                     "Abdul218"
+                  ],
+                  "prefix": [
+                     "Mr."
+                  ],
+                  "use": "official"
+               }
+            ],
+            "telecom": [
+               {
+                  "system": "phone",
+                  "use": "home",
+                  "value": "555-742-5925"
+               }
+            ],
+            "resourceType": "Patient"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Patient/1461398",
+         "request": {
+            "method": "PUT",
+            "url": "Patient/1461398"
+         },
+         "resource": {
+            "id": "1461398",
+            "meta": {
+               "lastUpdated": "2020-09-10T06:08:12.589+00:00",
+               "profile": [
+                  "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+               ],
+               "source": "#jU68SFkEjgoGVMZy",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "1"
+            },
+            "extension": [
+               {
+                  "extension": [
+                     {
+                        "url": "ombCategory",
+                        "valueCoding": {
+                           "code": "2106-3",
+                           "display": "White",
+                           "system": "urn:oid:2.16.840.1.113883.6.238"
+                        }
+                     },
+                     {
+                        "url": "text",
+                        "valueString": "White"
+                     }
+                  ],
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+               },
+               {
+                  "extension": [
+                     {
+                        "url": "ombCategory",
+                        "valueCoding": {
+                           "code": "2186-5",
+                           "display": "Not Hispanic or Latino",
+                           "system": "urn:oid:2.16.840.1.113883.6.238"
+                        }
+                     },
+                     {
+                        "url": "text",
+                        "valueString": "Not Hispanic or Latino"
+                     }
+                  ],
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+               },
+               {
+                  "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+                  "valueString": "Breanna581 Bayer639"
+               },
+               {
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+                  "valueCode": "F"
+               },
+               {
+                  "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+                  "valueAddress": {
+                     "city": "Necedah",
+                     "country": "US",
+                     "state": "Wisconsin"
+                  }
+               },
+               {
+                  "url": "http://synthetichealth.github.io/synthea/disability-adjusted-life-years",
+                  "valueDecimal": 0.6623117856439531
+               },
+               {
+                  "url": "http://synthetichealth.github.io/synthea/quality-adjusted-life-years",
+                  "valueDecimal": 27.337688214356046
+               }
+            ],
+            "address": [
+               {
+                  "extension": [
+                     {
+                        "extension": [
+                           {
+                              "url": "latitude",
+                              "valueDecimal": 43.03604301486846
+                           },
+                           {
+                              "url": "longitude",
+                              "valueDecimal": -89.48965499370813
+                           }
+                        ],
+                        "url": "http://hl7.org/fhir/StructureDefinition/geolocation"
+                     }
+                  ],
+                  "city": "Madison",
+                  "country": "US",
+                  "line": [
+                     "1094 Hackett Run"
+                  ],
+                  "postalCode": "53714",
+                  "state": "WI"
+               }
+            ],
+            "birthDate": "1991-03-17",
+            "communication": [
+               {
+                  "language": {
+                     "coding": [
+                        {
+                           "code": "en-US",
+                           "display": "English",
+                           "system": "urn:ietf:bcp:47"
+                        }
+                     ],
+                     "text": "English"
+                  }
+               }
+            ],
+            "gender": "female",
+            "identifier": [
+               {
+                  "system": "https://github.com/synthetichealth/synthea",
+                  "value": "678f72e9-9de7-59d5-37ce-13a92d481dfe"
+               },
+               {
+                  "system": "http://hospital.smarthealthit.org",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "MR",
+                           "display": "Medical Record Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Medical Record Number"
+                  },
+                  "value": "678f72e9-9de7-59d5-37ce-13a92d481dfe"
+               },
+               {
+                  "system": "http://hl7.org/fhir/sid/us-ssn",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "SS",
+                           "display": "Social Security Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Social Security Number"
+                  },
+                  "value": "999-38-9721"
+               },
+               {
+                  "system": "urn:oid:2.16.840.1.113883.4.3.25",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "DL",
+                           "display": "Driver's License",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Driver's License"
+                  },
+                  "value": "S99953585"
+               },
+               {
+                  "system": "http://standardhealthrecord.org/fhir/StructureDefinition/passportNumber",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "PPN",
+                           "display": "Passport Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Passport Number"
+                  },
+                  "value": "X61971148X"
+               }
+            ],
+            "maritalStatus": {
+               "coding": [
+                  {
+                     "code": "M",
+                     "display": "M",
+                     "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
+                  }
+               ],
+               "text": "M"
+            },
+            "multipleBirthBoolean": false,
+            "name": [
+               {
+                  "family": "Crooks415",
+                  "given": [
+                     "Abbie917"
+                  ],
+                  "prefix": [
+                     "Mrs."
+                  ],
+                  "use": "official"
+               },
+               {
+                  "family": "McKenzie376",
+                  "given": [
+                     "Abbie917"
+                  ],
+                  "prefix": [
+                     "Mrs."
+                  ],
+                  "use": "maiden"
+               }
+            ],
+            "telecom": [
+               {
+                  "system": "phone",
+                  "use": "home",
+                  "value": "555-447-6223"
+               }
+            ],
+            "resourceType": "Patient"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Patient/1461624",
+         "request": {
+            "method": "PUT",
+            "url": "Patient/1461624"
+         },
+         "resource": {
+            "id": "1461624",
+            "meta": {
+               "lastUpdated": "2020-09-10T06:08:23.441+00:00",
+               "profile": [
+                  "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+               ],
+               "source": "#BePAqBq445NZjp90",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "1"
+            },
+            "extension": [
+               {
+                  "extension": [
+                     {
+                        "url": "ombCategory",
+                        "valueCoding": {
+                           "code": "2106-3",
+                           "display": "White",
+                           "system": "urn:oid:2.16.840.1.113883.6.238"
+                        }
+                     },
+                     {
+                        "url": "text",
+                        "valueString": "White"
+                     }
+                  ],
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+               },
+               {
+                  "extension": [
+                     {
+                        "url": "ombCategory",
+                        "valueCoding": {
+                           "code": "2186-5",
+                           "display": "Not Hispanic or Latino",
+                           "system": "urn:oid:2.16.840.1.113883.6.238"
+                        }
+                     },
+                     {
+                        "url": "text",
+                        "valueString": "Not Hispanic or Latino"
+                     }
+                  ],
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+               },
+               {
+                  "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+                  "valueString": "Georgie506 Schultz619"
+               },
+               {
+                  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+                  "valueCode": "M"
+               },
+               {
+                  "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+                  "valueAddress": {
+                     "city": "Farmington",
+                     "country": "US",
+                     "state": "Wisconsin"
+                  }
+               },
+               {
+                  "url": "http://synthetichealth.github.io/synthea/disability-adjusted-life-years",
+                  "valueDecimal": 0.5164795800175304
+               },
+               {
+                  "url": "http://synthetichealth.github.io/synthea/quality-adjusted-life-years",
+                  "valueDecimal": 34.48352041998247
+               }
+            ],
+            "address": [
+               {
+                  "extension": [
+                     {
+                        "extension": [
+                           {
+                              "url": "latitude",
+                              "valueDecimal": 43.16549069902368
+                           },
+                           {
+                              "url": "longitude",
+                              "valueDecimal": -89.39599327485244
+                           }
+                        ],
+                        "url": "http://hl7.org/fhir/StructureDefinition/geolocation"
+                     }
+                  ],
+                  "city": "Madison",
+                  "country": "US",
+                  "line": [
+                     "391 Pollich Esplanade"
+                  ],
+                  "postalCode": "53532",
+                  "state": "WI"
+               }
+            ],
+            "birthDate": "1984-05-19",
+            "communication": [
+               {
+                  "language": {
+                     "coding": [
+                        {
+                           "code": "en-US",
+                           "display": "English",
+                           "system": "urn:ietf:bcp:47"
+                        }
+                     ],
+                     "text": "English"
+                  }
+               }
+            ],
+            "gender": "male",
+            "identifier": [
+               {
+                  "system": "https://github.com/synthetichealth/synthea",
+                  "value": "03de8bdf-e224-23ba-ee00-171e571fcaa9"
+               },
+               {
+                  "system": "http://hospital.smarthealthit.org",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "MR",
+                           "display": "Medical Record Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Medical Record Number"
+                  },
+                  "value": "03de8bdf-e224-23ba-ee00-171e571fcaa9"
+               },
+               {
+                  "system": "http://hl7.org/fhir/sid/us-ssn",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "SS",
+                           "display": "Social Security Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Social Security Number"
+                  },
+                  "value": "999-25-8755"
+               },
+               {
+                  "system": "urn:oid:2.16.840.1.113883.4.3.25",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "DL",
+                           "display": "Driver's License",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Driver's License"
+                  },
+                  "value": "S99950432"
+               },
+               {
+                  "system": "http://standardhealthrecord.org/fhir/StructureDefinition/passportNumber",
+                  "type": {
+                     "coding": [
+                        {
+                           "code": "PPN",
+                           "display": "Passport Number",
+                           "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        }
+                     ],
+                     "text": "Passport Number"
+                  },
+                  "value": "X87517736X"
+               }
+            ],
+            "maritalStatus": {
+               "coding": [
+                  {
+                     "code": "M",
+                     "display": "M",
+                     "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
+                  }
+               ],
+               "text": "M"
+            },
+            "multipleBirthBoolean": false,
+            "name": [
+               {
+                  "family": "Corkery305",
+                  "given": [
+                     "Abdul218"
+                  ],
+                  "prefix": [
+                     "Mr."
+                  ],
+                  "use": "official"
+               }
+            ],
+            "telecom": [
+               {
+                  "system": "phone",
+                  "use": "home",
+                  "value": "555-742-5925"
+               }
+            ],
+            "resourceType": "Patient"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Practitioner/1461401",
+         "request": {
+            "method": "PUT",
+            "url": "Practitioner/1461401"
+         },
+         "resource": {
+            "id": "1461401",
+            "meta": {
+               "lastUpdated": "2020-09-10T06:08:12.589+00:00",
+               "profile": [
+                  "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner"
+               ],
+               "source": "#jU68SFkEjgoGVMZy",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "1"
+            },
+            "active": true,
+            "address": [
+               {
+                  "city": "MADISON",
+                  "country": "US",
+                  "line": [
+                     "202 S PARK ST"
+                  ],
+                  "postalCode": "53715",
+                  "state": "WI"
+               }
+            ],
+            "gender": "male",
+            "identifier": [
+               {
+                  "system": "http://hl7.org/fhir/sid/us-npi",
+                  "value": "9999999639"
+               }
+            ],
+            "name": [
+               {
+                  "family": "Bauch723",
+                  "given": [
+                     "Jonathon205"
+                  ],
+                  "prefix": [
+                     "Dr."
+                  ]
+               }
+            ],
+            "telecom": [
+               {
+                  "extension": [
+                     {
+                        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+                        "valueBoolean": true
+                     }
+                  ],
+                  "system": "email",
+                  "use": "work",
+                  "value": "Jonathon205.Bauch723@example.com"
+               }
+            ],
+            "resourceType": "Practitioner"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Organization/1461400",
+         "request": {
+            "method": "PUT",
+            "url": "Organization/1461400"
+         },
+         "resource": {
+            "id": "1461400",
+            "meta": {
+               "lastUpdated": "2020-09-10T06:08:12.589+00:00",
+               "profile": [
+                  "http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization"
+               ],
+               "source": "#jU68SFkEjgoGVMZy",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "1"
+            },
+            "active": true,
+            "address": [
+               {
+                  "city": "MADISON",
+                  "country": "US",
+                  "line": [
+                     "202 S PARK ST"
+                  ],
+                  "postalCode": "53715",
+                  "state": "WI"
+               }
+            ],
+            "identifier": [
+               {
+                  "system": "https://github.com/synthetichealth/synthea",
+                  "value": "e6c5d179-370a-3659-9ce6-3d09da3c3ad0"
+               }
+            ],
+            "name": "UNITYPOINT HEALTH - MERITER",
+            "telecom": [
+               {
+                  "system": "phone",
+                  "value": "6084176000"
+               }
+            ],
+            "type": [
+               {
+                  "coding": [
+                     {
+                        "code": "prov",
+                        "display": "Healthcare Provider",
+                        "system": "http://terminology.hl7.org/CodeSystem/organization-type"
+                     }
+                  ],
+                  "text": "Healthcare Provider"
+               }
+            ],
+            "resourceType": "Organization"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Organization/example-organization-2",
+         "request": {
+            "method": "PUT",
+            "url": "Organization/example-organization-2"
+         },
+         "resource": {
+            "id": "example-organization-2",
+            "meta": {
+               "lastUpdated": "2020-08-23T22:29:15.807+00:00",
+               "profile": [
+                  "http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization"
+               ],
+               "source": "#am8AFY4qgnd73EGD",
+               "versionId": "4"
+            },
+            "active": true,
+            "address": [
+               {
+                  "city": "Amherst",
+                  "country": "USA",
+                  "line": [
+                     "3300 Washtenaw Avenue, Suite 227"
+                  ],
+                  "postalCode": "01002",
+                  "state": "MA"
+               }
+            ],
+            "identifier": [
+               {
+                  "system": "http://hl7.org.fhir/sid/us-npi",
+                  "value": "1407071236"
+               },
+               {
+                  "system": "http://example.org/fhir/sid/us-tin",
+                  "value": "121111111"
+               }
+            ],
+            "name": "Acme Clinic",
+            "telecom": [
+               {
+                  "system": "phone",
+                  "value": "(+1) 734-677-7777"
+               },
+               {
+                  "system": "email",
+                  "value": "customer-service@acme-clinic.org"
+               }
+            ],
+            "type": [
+               {
+                  "coding": [
+                     {
+                        "code": "prov",
+                        "display": "Healthcare Provider",
+                        "system": "http://terminology.hl7.org/CodeSystem/organization-type"
+                     }
+                  ]
+               }
+            ],
+            "resourceType": "Organization"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Questionnaire/1169270",
+         "request": {
+            "method": "PUT",
+            "url": "Questionnaire/1169270"
+         },
+         "resource": {
+            "id": "1169270",
+            "meta": {
+               "lastUpdated": "2020-05-20T15:46:00.964+00:00",
+               "source": "#eddpbEX0FzlvCJ4u",
+               "versionId": "1"
+            },
+            "date": "2016-04-14",
+            "item": [
+               {
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.1--2012-05-30T11:32:36",
+                  "repeats": false,
+                  "required": false,
+                  "text": "COVID Contact",
+                  "type": "boolean"
+               },
+               {
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.3--2011-01-28T00:00:00",
+                  "repeats": false,
+                  "required": true,
+                  "text": "Age/Legal Sex",
+                  "type": "string"
+               },
+               {
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.13--2011-01-28T00:00:00",
+                  "repeats": false,
+                  "required": false,
+                  "text": "SAPS II Score",
+                  "type": "integer"
+               },
+               {
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.18--2011-01-28T00:00:00",
+                  "repeats": false,
+                  "required": false,
+                  "text": "SAPS II Score change",
+                  "type": "integer"
+               },
+               {
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.19--2011-01-28T00:00:00",
+                  "repeats": false,
+                  "required": false,
+                  "text": "SOFA Score",
+                  "type": "integer"
+               },
+               {
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.20--2011-01-28T00:00:00",
+                  "repeats": false,
+                  "required": false,
+                  "text": "Unit",
+                  "type": "string"
+               }
+            ],
+            "name": "Patient-List-columns",
+            "status": "draft",
+            "subjectType": [
+               "Patient"
+            ],
+            "title": "Patient List columns",
+            "url": "Questionnaire/patient-list-columns",
+            "resourceType": "Questionnaire"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/QuestionnaireResponse/1169472",
+         "request": {
+            "method": "PUT",
+            "url": "QuestionnaireResponse/1169472"
+         },
+         "resource": {
+            "id": "1169472",
+            "meta": {
+               "lastUpdated": "2020-05-22T19:35:03.454+00:00",
+               "source": "#DXmbSU49QpFm5wJk",
+               "versionId": "2"
+            },
+            "authored": "2020-03-05T11:25:25.975116",
+            "item": [
+               {
+                  "answer": [
+                     {
+                        "valueBoolean": false
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.1--2012-05-30T11:32:36",
+                  "text": "COVID Contact"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueString": "43 / Female"
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.3--2011-01-28T00:00:00",
+                  "text": "Age/Legal Sex"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueInteger": 15
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.13--2011-01-28T00:00:00",
+                  "text": "SAPS II Score"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueInteger": 2
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.18--2011-01-28T00:00:00",
+                  "text": "SAPS II Score Change"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueInteger": 1
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.19--2011-01-28T00:00:00",
+                  "text": "SOFA Score"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueString": "ICU"
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.20--2011-01-28T00:00:00",
+                  "text": "Unit"
+               }
+            ],
+            "questionnaire": "http://hapi.fhir.org/baseR4/Questionnaire/1169270",
+            "status": "completed",
+            "subject": {
+               "reference": "Patient/456"
+            },
+            "resourceType": "QuestionnaireResponse"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/QuestionnaireResponse/1171740",
+         "request": {
+            "method": "PUT",
+            "url": "QuestionnaireResponse/1171740"
+         },
+         "resource": {
+            "id": "1171740",
+            "meta": {
+               "lastUpdated": "2020-05-22T19:36:41.771+00:00",
+               "source": "#OOhTRtqZXyseZymC",
+               "versionId": "2"
+            },
+            "authored": "2020-03-05T11:25:25.975116",
+            "item": [
+               {
+                  "answer": [
+                     {
+                        "valueBoolean": true
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.1--2012-05-30T11:32:36",
+                  "text": "COVID Contact"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueString": "65 / Male"
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.3--2011-01-28T00:00:00",
+                  "text": "Age/Legal Sex"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueInteger": 30
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.13--2011-01-28T00:00:00",
+                  "text": "SAPS II Score"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueInteger": 12
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.18--2011-01-28T00:00:00",
+                  "text": "SAPS II Score Change"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueInteger": 15
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.19--2011-01-28T00:00:00",
+                  "text": "SOFA Score"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueString": "ICU"
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.20--2011-01-28T00:00:00",
+                  "text": "Unit"
+               }
+            ],
+            "questionnaire": "http://hapi.fhir.org/baseR4/Questionnaire/1169270",
+            "status": "completed",
+            "subject": {
+               "reference": "Patient/567"
+            },
+            "resourceType": "QuestionnaireResponse"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/QuestionnaireResponse/1171741",
+         "request": {
+            "method": "PUT",
+            "url": "QuestionnaireResponse/1171741"
+         },
+         "resource": {
+            "id": "1171741",
+            "meta": {
+               "lastUpdated": "2020-05-22T19:37:31.710+00:00",
+               "source": "#llUaMwD32dkmQz92",
+               "versionId": "2"
+            },
+            "authored": "2020-03-05T11:25:25.975116",
+            "item": [
+               {
+                  "answer": [
+                     {
+                        "valueBoolean": true
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.1--2012-05-30T11:32:36",
+                  "text": "COVID Contact"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueString": "33 / Male"
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.3--2011-01-28T00:00:00",
+                  "text": "Age/Legal Sex"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueInteger": 35
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.13--2011-01-28T00:00:00",
+                  "text": "SAPS II Score"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueInteger": 5
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.18--2011-01-28T00:00:00",
+                  "text": "SAPS II Score Change"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueInteger": 5
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.19--2011-01-28T00:00:00",
+                  "text": "SOFA Score"
+               },
+               {
+                  "answer": [
+                     {
+                        "valueString": "ICU"
+                     }
+                  ],
+                  "linkId": "2.16.840.1.113883.3.1937.99.62.3.2.20--2011-01-28T00:00:00",
+                  "text": "Unit"
+               }
+            ],
+            "questionnaire": "http://hapi.fhir.org/baseR4/Questionnaire/1169270",
+            "status": "completed",
+            "subject": {
+               "reference": "Patient/901"
+            },
+            "resourceType": "QuestionnaireResponse"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Group/1465515",
+         "request": {
+            "method": "PUT",
+            "url": "Group/1465515"
+         },
+         "resource": {
+            "id": "1465515",
+            "meta": {
+               "lastUpdated": "2020-09-10T06:44:44.204+00:00",
+               "source": "#gzsqoU84lBNIJ9v6",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "1"
+            },
+            "actual": true,
+            "name": "Empty #1",
+            "type": "person",
+            "resourceType": "Group"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Group/1465516",
+         "request": {
+            "method": "PUT",
+            "url": "Group/1465516"
+         },
+         "resource": {
+            "id": "1465516",
+            "meta": {
+               "lastUpdated": "2020-09-10T06:44:44.204+00:00",
+               "source": "#gzsqoU84lBNIJ9v6",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "1"
+            },
+            "actual": true,
+            "name": "Empty #2",
+            "type": "animal",
+            "resourceType": "Group"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Group/1465517",
+         "request": {
+            "method": "PUT",
+            "url": "Group/1465517"
+         },
+         "resource": {
+            "id": "1465517",
+            "meta": {
+               "lastUpdated": "2020-09-10T06:44:44.204+00:00",
+               "source": "#gzsqoU84lBNIJ9v6",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "1"
+            },
+            "actual": true,
+            "managingEntity": {
+               "reference": "Organization/1461400"
+            },
+            "member": [
+               {
+                  "entity": {
+                     "reference": "Patient/1461398"
+                  }
+               }
+            ],
+            "name": "Organization Managed #1",
+            "type": "person",
+            "resourceType": "Group"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Group/1465518",
+         "request": {
+            "method": "PUT",
+            "url": "Group/1465518"
+         },
+         "resource": {
+            "id": "1465518",
+            "meta": {
+               "lastUpdated": "2020-09-10T06:44:44.204+00:00",
+               "source": "#gzsqoU84lBNIJ9v6",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "1"
+            },
+            "actual": true,
+            "managingEntity": {
+               "reference": "Practitioner/1461401"
+            },
+            "member": [
+               {
+                  "entity": {
+                     "reference": "Patient/1461398"
+                  }
+               },
+               {
+                  "entity": {
+                     "reference": "Patient/1461624"
+                  }
+               }
+            ],
+            "name": "Practitioner Managed #1",
+            "type": "person",
+            "resourceType": "Group"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Group/1465519",
+         "request": {
+            "method": "PUT",
+            "url": "Group/1465519"
+         },
+         "resource": {
+            "id": "1465519",
+            "meta": {
+               "lastUpdated": "2020-09-11T15:38:28.852+00:00",
+               "source": "#wRJH8IyVRxENLBLj",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "2"
+            },
+            "actual": true,
+            "characteristic": [
+               {
+                  "code": {
+                     "coding": [
+                        {
+                           "code": "at-location",
+                           "system": "http://argonautproject.org/patient-lists/CodeSystem/characteristics"
+                        }
+                     ]
+                  },
+                  "exclude": false,
+                  "valueReference": {
+                     "reference": "Location/1461399"
+                  }
+               }
+            ],
+            "member": [
+               {
+                  "entity": {
+                     "reference": "Patient/1461398"
+                  }
+               }
+            ],
+            "name": "Location-based",
+            "type": "person",
+            "resourceType": "Group"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Group/1465520",
+         "request": {
+            "method": "PUT",
+            "url": "Group/1465520"
+         },
+         "resource": {
+            "id": "1465520",
+            "meta": {
+               "lastUpdated": "2020-09-11T15:43:12.860+00:00",
+               "source": "#Or7LreWQnWwcuzU9",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "2"
+            },
+            "actual": true,
+            "characteristic": [
+               {
+                  "code": {
+                     "coding": [
+                        {
+                           "code": "attributed-to-care-team",
+                           "system": "http://argonautproject.org/patient-lists/CodeSystem/characteristics"
+                        }
+                     ]
+                  },
+                  "exclude": false,
+                  "valueReference": {
+                     "reference": "CareTeam/1463628"
+                  }
+               }
+            ],
+            "member": [
+               {
+                  "entity": {
+                     "reference": "Patient/1461624"
+                  }
+               }
+            ],
+            "name": "Care Team List #1",
+            "type": "person",
+            "resourceType": "Group"
+         }
+      },
+      {
+         "fullUrl": "http://hapi.fhir.org/baseR4/Group/1171742",
+         "request": {
+            "method": "PUT",
+            "url": "Group/1171742"
+         },
+         "resource": {
+            "id": "1171742",
+            "meta": {
+               "lastUpdated": "2020-09-11T02:52:11.871+00:00",
+               "source": "#yvKBgaYDYOOj9TZ1",
+               "tag": [
+                  {
+                     "code": "2020-Sep",
+                     "system": "http://hl7.org/Connectathon"
+                  }
+               ],
+               "versionId": "4"
+            },
+            "extension": [
+               {
+                  "url": "http://registry.fhir.org/argonaut/patientlistsquestionnairev1",
+                  "valueReference": {
+                     "reference": "Questionnaire/1169270"
+                  }
+               }
+            ],
+            "active": true,
+            "actual": true,
+            "identifier": [
+               {
+                  "system": "http://example.org",
+                  "value": "dba0a9f9-82cb-4d42-ad92-3250756a9420"
+               }
+            ],
+            "managingEntity": {
+               "display": "Dairyland Hospital",
+               "reference": "Organization/example-organization-2"
+            },
+            "member": [
+               {
+                  "entity": {
+                     "extension": [
+                        {
+                           "url": "http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1",
+                           "valueReference": {
+                              "reference": "QuestionnaireResponse/1169472"
+                           }
+                        }
+                     ],
+                     "display": "Name = Daniel Crimson (MRN = 456)",
+                     "identifier": {
+                        "system": "http://example.org",
+                        "value": "456"
+                     }
+                  },
+                  "inactive": false
+               },
+               {
+                  "entity": {
+                     "extension": [
+                        {
+                           "url": "http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1",
+                           "valueReference": {
+                              "reference": "QuestionnaireResponse/1171740"
+                           }
+                        }
+                     ],
+                     "display": "Name = Peter Silie (MRN = 567)",
+                     "identifier": {
+                        "system": "http://example.org",
+                        "value": "567"
+                     }
+                  },
+                  "inactive": false
+               },
+               {
+                  "entity": {
+                     "extension": [
+                        {
+                           "url": "http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1",
+                           "valueReference": {
+                              "reference": "QuestionnaireResponse/1171741"
+                           }
+                        }
+                     ],
+                     "display": "Name = Caleb Cushing (MRN = 901)",
+                     "identifier": {
+                        "system": "http://example.org",
+                        "value": "901"
+                     }
+                  },
+                  "inactive": false
+               }
+            ],
+            "name": "ICU List",
+            "type": "person",
+            "resourceType": "Group"
+         }
+      }
+   ],
+   "type": "transaction",
+   "resourceType": "Bundle"
+}

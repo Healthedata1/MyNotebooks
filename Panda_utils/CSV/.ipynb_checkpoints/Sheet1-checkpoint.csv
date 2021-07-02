@@ -1,0 +1,10 @@
+,Header.schema_id.name,Observation.category.code,Observation.code.system,Observation.code.code,Observation.code.display
+2,blood_glucose,laboratory,http://loinc.org,2339-0,Glucose Mass/volume in Blood
+3,blood_pressure,vital-signs,http://loinc.org,85354-9,NA*
+4,body_temperature,vital-signs,http://loinc.org,8310-5,Body temperature
+5,body_weight,vital-signs,http://loinc.org,29463-7,Body weight
+6,heart_rate,vital-signs,http://loinc.org,8867-4,Heart rate
+7,oxygen_saturation,vital-signs,http://loinc.org,59408-5,Oxygen saturation in Arterial blood by Pulse oximetry
+8,respiratory_rate,vital-signs,http://loinc.org,9279-1,Respiratory Rate
+9,sleep_duration,physical-activity,http://snomed.info/id,248263006,Duration of sleep (observable entity)
+10,step_count,physical-activity,http://loinc.org,55423-8,Number of steps in unspecified time Pedometer

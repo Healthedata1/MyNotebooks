@@ -1,0 +1,82 @@
+
+<ul>
+	<li>FHIR Version: {{cs.fhirVersion}}</li>
+	<li>Supported formats: {{ cs.format|join(', ') }}</li>
+	<li>Published: {{ cs.date.as_json() }}</li>
+	<li>Published by: {{ cs.publisher }}</li>
+</ul>
+
+{{cs.description}}
+
+			<h4 id="behavior">Behavior</h4>
+			<p>Description:</p>
+			{{ cs.rest[0].documentation | markdown }}
+			<h4 id="security">Security:</h4>
+			<p>US Core Servers <strong>SHALL</strong>:</p>
+			<ol>
+				<li>Implement the <a href="security.html">security requirements</a> documented in the this IG.</li>
+				<li>A server has ensured that every API request includes a valid Authorization token, supplied via: <code class="highlighter-rouge">Authorization: Bearer {server-specific-token-here}</code>
+				</li>
+				<li>A server has rejected any unauthorized requests by returning an <code class="highlighter-rouge">HTTP 401</code> Unauthorized response code.</li>
+			</ol>
+			<h4 id="profile-interaction-summary">Profile Interaction Summary:</h4>
+			<ol>
+				<li>All servers <strong>SHALL</strong> make available the <a href="http://hl7.org/fhir/STU3/http.html#read">read</a> and <a href="http://hl7.org/fhir/STU3/http.html#search">search</a> interactions for the Profiles the server chooses to support.</li>
+				<li>All servers <strong>SHOULD</strong> make available the <a href="http://hl7.org/fhir/STU3/http.html#vread">vread</a> and <a href="http://hl7.org/fhir/STU3/http.html#history">history-instance</a> interactions for the Profiles the server chooses to support.</li>
+			</ol>
+			<p>
+				<strong>Summary of US Core search criteria</strong>
+			</p>
+			<p>Specific server search capabilities are described in detail in each of the resource sections below.</p>
+			<table class="grid">
+				<thead>
+					<tr>
+						<th>Resource Type</th>
+						<th>Supported Profiles</th>
+						<th>Supported Searches</th>
+						<th>Supported Includes</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<a href="#patient">Patient</a>
+						</td>
+						<td>US Core Patient Profile</td>
+						<td>name , family , given , identifier , gender , birthdate , name + gender , name + birthdate , family + gender , given + gender</td>
+						<td/>
+					</tr>
+				</tbody>
+			</table>
+			<h4 class="no_toc" id="resource--details">Resource  Details:</h4>
+			<hr/>
+			<h4 class="no_toc" id="patient">Patient</h4>
+			<p>Supported Profiles:  <a href="http://hl7.org/fhir/us/core/StructureDefinition-us-core-patient.html">US Core Patient Profile</a>
+			</p>
+			<p>Search Criteria:</p>
+			<ol>
+				<li>
+					<p>A server <strong>SHALL</strong> be capable of returning a patient using:</p>
+					<p>
+						<code class="highlighter-rouge">GET [base]/Patient/[id]</code>.</p>
+				</li>
+			</ol>
+			<p>Search Parameters:</p>
+			<table class="grid">
+				<thead>
+					<tr>
+						<th>Conformance</th>
+						<th>Parameter</th>
+						<th>Type</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>SHALL</td>
+						<td>name</td>
+						<td>string</td>
+					</tr>
+				</tbody>
+			</table>
+			<hr/>
+		</div>
