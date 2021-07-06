@@ -2,13 +2,26 @@ resourceType: Observation
 meta:
   extension:
   - url: http://hl7.org/fhir/StructureDefinition/instance-name
-    valueString: Patient Supplied WT Example 1
+    valueString: Patient Supplied WT Example 8
   - url: http://hl7.org/fhir/StructureDefinition/instance-description
     valueMarkdown: This is a simple patient entered weight example for the Argo Write
-      project without any identifier, service key, sensed/entered modality, or encounter
+      project with source, identifier, service key, sensed/entered modality, and encounter
       data
+  source: 0e23a054-4246-806c-1db4-1629fc030475
   profile:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-weight
+extension:
+- url: http://www.fhir.org/guides/omhtofhir/StructureDefinition/extension-modality
+  valueCode: sensed
+identifier:
+- value: 7051c783-4e4d-7a63-56f0-7f2a13654d06
+  assigner:
+    display: WiTscale S200 Bluetooth scale
+basedOn:
+- reference: ServiceRequest/123
+  identifier:
+    value: SR123456
+  display: Provider X Home weight monitoring
 status: final
 category:
 - coding:
@@ -25,9 +38,16 @@ code:
 subject:
   reference: Patient/06e1f0dd-5fbe-4480-9bb4-6b54ec02d31b
   display: Eldon718 Halvorson124
-effectiveDateTime: 2021-07-05 21:50:26+00:00
+encounter:
+  display: At Home Monitoring
+effectiveDateTime: 2021-07-09 09:50:26+00:00
 valueQuantity:
-  value: 165.0
+  value: 161.0
   unit: pounds
   system: http://unitsofmeasure.org
   code: '[lb_av]'
+device:
+  reference: Device/123
+  identifier:
+    value: Dev123456
+  display: WiTscale S200 Bluetooth scale

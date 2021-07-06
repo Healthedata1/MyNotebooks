@@ -2,13 +2,15 @@ resourceType: Observation
 meta:
   extension:
   - url: http://hl7.org/fhir/StructureDefinition/instance-name
-    valueString: Patient Supplied WT Example 1
+    valueString: Patient Supplied WT Example 7
   - url: http://hl7.org/fhir/StructureDefinition/instance-description
     valueMarkdown: This is a simple patient entered weight example for the Argo Write
-      project without any identifier, service key, sensed/entered modality, or encounter
-      data
+      project with modality = sensed|entered by patient data
   profile:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-weight
+extension:
+- url: http://www.fhir.org/guides/omhtofhir/StructureDefinition/extension-modality
+  valueCode: sensed
 status: final
 category:
 - coding:
@@ -25,9 +27,9 @@ code:
 subject:
   reference: Patient/06e1f0dd-5fbe-4480-9bb4-6b54ec02d31b
   display: Eldon718 Halvorson124
-effectiveDateTime: 2021-07-05 21:50:26+00:00
+effectiveDateTime: 2021-07-08 21:50:26+00:00
 valueQuantity:
-  value: 165.0
+  value: 160.0
   unit: pounds
   system: http://unitsofmeasure.org
   code: '[lb_av]'

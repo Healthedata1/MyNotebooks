@@ -18,8 +18,6 @@ code:
 subject:
   reference: Patient/06e1f0dd-5fbe-4480-9bb4-6b54ec02d31b
   display: Eldon718 Halvorson124
-encounter:
-  display: At Home Monitoring
 effectiveDateTime: '1999-07-02'
 valueQuantity:
   value: 165
