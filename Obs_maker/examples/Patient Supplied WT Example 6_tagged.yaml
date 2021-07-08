@@ -1,0 +1,37 @@
+resourceType: Observation
+meta:
+  extension:
+  - url: http://hl7.org/fhir/StructureDefinition/instance-name
+    valueString: Patient Supplied WT Example 6
+  - url: http://hl7.org/fhir/StructureDefinition/instance-description
+    valueMarkdown: This is a simple patient entered weight example for the Argo Write
+      project with encounter data provided
+  profile:
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-weight
+  tag:
+  - system: http://www.fhir.org/guides/argonaut/argo-write/CodeSystem/tags
+    code: patient-supplied
+status: final
+category:
+- coding:
+  - system: http://terminology.hl7.org/CodeSystem/observation-category
+    code: vital-signs
+    display: Vital Signs
+  text: Vital Signs
+code:
+  coding:
+  - system: http://loinc.org
+    code: 29463-7
+    display: Body Weight
+  text: weight
+subject:
+  reference: Patient/06e1f0dd-5fbe-4480-9bb4-6b54ec02d31b
+  display: Eldon718 Halvorson124
+encounter:
+  display: At Home Monitoring
+effectiveDateTime: 2021-07-10 03:02:35+00:00
+valueQuantity:
+  value: 168.0
+  unit: pounds
+  system: http://unitsofmeasure.org
+  code: '[lb_av]'
