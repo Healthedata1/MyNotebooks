@@ -12,7 +12,7 @@ meta:
   - system: http://www.fhir.org/guides/argonaut/argo-write/CodeSystem/tags
     code: patient-supplied
 identifier:
-- value: a9b492be-19e0-5018-4823-37781e420397
+- value: 7de71ef6-858c-287e-3e30-950770b56ce6
   assigner:
     display: WiTscale S200 Bluetooth scale
 status: final
@@ -31,9 +31,9 @@ code:
 subject:
   reference: Patient/06e1f0dd-5fbe-4480-9bb4-6b54ec02d31b
   display: Eldon718 Halvorson124
-effectiveDateTime: 2021-07-09 15:02:35+00:00
+effectiveDateTime: 2021-07-14 12:08:33+00:00
 valueQuantity:
-  value: 165.0
+  value: 167.0
   unit: pounds
   system: http://unitsofmeasure.org
   code: '[lb_av]'

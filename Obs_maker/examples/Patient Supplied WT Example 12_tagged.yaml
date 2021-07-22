@@ -7,7 +7,7 @@ meta:
     valueMarkdown: This is a simple patient entered weight example for the Argo Write
       project with source, identifier, submission key, sensed/entered modality, and
       encounter data
-  source: b3392a3a-0f95-49d9-1ea7-a79579ca4a1d
+  source: 2e721f70-8d41-1dc8-5ae3-abd3d5f906cd
   profile:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-weight
   tag:
@@ -17,7 +17,7 @@ extension:
 - url: http://www.fhir.org/guides/omhtofhir/StructureDefinition/extension-modality
   valueCode: sensed
 identifier:
-- value: ad42644f-7f4f-14c5-6eec-ff9459540b51
+- value: ca3dd4da-43a5-5584-2cd4-56b4ea9e96d6
   assigner:
     display: WiTscale S200 Bluetooth scale
 basedOn:
@@ -43,9 +43,9 @@ subject:
   display: Eldon718 Halvorson124
 encounter:
   display: At Home Monitoring
-effectiveDateTime: 2021-07-13 03:02:35+00:00
+effectiveDateTime: 2021-07-18 00:08:33+00:00
 valueQuantity:
-  value: 160.0
+  value: 163.0
   unit: pounds
   system: http://unitsofmeasure.org
   code: '[lb_av]'

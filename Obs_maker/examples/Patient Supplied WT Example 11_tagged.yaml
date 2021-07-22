@@ -5,26 +5,24 @@ meta:
     valueString: Patient Supplied WT Example 11
   - url: http://hl7.org/fhir/StructureDefinition/instance-description
     valueMarkdown: This is a simple patient entered weight example for the Argo Write
-      project with source, identifier, submission key, sensed/entered modality, and
-      encounter data
-  source: 0dcdd41f-844f-290a-39e2-c9e2af22878d
+      project with submission key, sensed/entered modality, and device data
   profile:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-weight
+# ========== patient-supplied tag ('Reliability' Tag) ============
   tag:
   - system: http://www.fhir.org/guides/argonaut/argo-write/CodeSystem/tags
-    code: patient-supplied
+    code: patient-supplied # <<< 'patient-supplied'|'provider-reviewed'
+# ================== Modality extension ==========================
 extension:
 - url: http://www.fhir.org/guides/omhtofhir/StructureDefinition/extension-modality
-  valueCode: sensed
-identifier:
-- value: ef138f8e-32f1-10ca-921f-72c1bbc825ee
-  assigner:
-    display: WiTscale S200 Bluetooth scale
+  valueCode: sensed # <<< 'sensed'|'self-reported`
+# ================== 'Submission Key' ============================
 basedOn:
-- reference: ServiceRequest/123
+- reference: ServiceRequest/123 # <<< could be a fhirid...
   identifier:
-    value: SR123456
-  display: Provider X Home weight monitoring
+    value: SR123456 # <<< ...or an opaque business id...
+  display: Provider X Home weight monitoring  # <<< ...or even a text string
+# ================== 'Submission Key' ============================
 status: final
 category:
 - coding:
@@ -41,16 +39,16 @@ code:
 subject:
   reference: Patient/06e1f0dd-5fbe-4480-9bb4-6b54ec02d31b
   display: Eldon718 Halvorson124
-encounter:
-  display: At Home Monitoring
-effectiveDateTime: 2021-07-12 15:02:35+00:00
+effectiveDateTime: 2021-07-17 12:08:33+00:00
 valueQuantity:
-  value: 161.0
+  value: 166.0
   unit: pounds
   system: http://unitsofmeasure.org
   code: '[lb_av]'
+# ================== 'Device Element' ============================
 device:
-  reference: Device/123
+  reference: Device/123 # <<< could be a fhirid...
   identifier:
-    value: Dev123456
-  display: WiTscale S200 Bluetooth scale
+    value: Dev123456 # <<< ...or an opaque business id...
+  display: WiTscale S200 Bluetooth scale  # <<< ...or even a text string
+# =================================================================

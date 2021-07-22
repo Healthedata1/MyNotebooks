@@ -5,6 +5,22 @@ from fhir.resources.observation import Observation
 from fhir.resources import construct_fhir_element
 from requests import post
 from IPython.display import display as Display, HTML
+from pathlib import Path
+from yaml import load, FullLoader
+
+def get_template(r_type):
+    #/Users/ehaas/Documents/Python/MyNotebooks/Obs_maker/Provenance.yml
+    path = Path.cwd() / 'fhir_templates' /f'{r_type}.yml'
+    r_dict = load(path.read_text(), Loader=FullLoader)
+    r_obj = construct_fhir_element(r_type,r_dict)
+    return r_obj
+
+def get_element_type(resource,element):
+    try:
+        element_type = next(i.type_.__resource_type__ for i in resource.element_properties() if i.name == element)
+    except AttributeError as e:
+        print(e)
+    return element_type
 
 def new_dict(**kwargs):
     '''
@@ -32,34 +48,33 @@ def new_dict(**kwargs):
         return new_dict
 
 
-def update_obj(element,element_dict,resource):
+def update_obj(element,element_dict,resource,replace=False):
     ### function to add complex elements to resource
-    element_type = next(i.type_.__resource_type__ for i in resource.element_properties() if i.name == element)
-    #print(f'element={element}\nelement_dict={element_dict}\nelement_type={element_type}')
+    element_type = get_element_type(resource,element)
     if element_dict:
         new_element=construct_fhir_element(element_type,element_dict)
     else:
         return
-    try: # assume not a list 
-        setattr(resource,element,new_element) # not a list 
-        #print(getattr(resource,element).yaml())
-    except: # treat as list
-        try: # assume list already exists
-            getattr(resource,element).append(new_element)
-        except: # list does not exist
-            setattr(resource,element,[new_element])
-        #print(getattr(resource,element)[0].yaml())
+    if not replace:
+        try: # assume not a list 
+            setattr(resource,element,new_element) # not a list 
+            #print(getattr(resource,element).yaml())
+        except: # treat as list
+            try: # assume list already exists
+                getattr(resource,element).append(new_element)
+            except: # list does not exist
+                setattr(resource,element,[new_element])
+            #print(getattr(resource,element)[0].yaml())
+    else:
+        setattr(resource,element,[new_element])
+
         
 def validate(pyfhir):
-    print('foo')
     print(pyfhir.resource_type)
-    
-
     # validate fhir resource as fhir.resource object
-    fhir_test_server = 'http://test.fhir.org/r4'
+    #fhir_test_server = 'http://test.fhir.org/r4'
     #fhir_test_server = 'http://hapi.fhir.org/baseR4'
-    #fhir_test_server = 'http://wildfhir4.aegis.net/fhir4-0-1'
-    
+    fhir_test_server = 'http://wildfhir4.aegis.net/fhir4-0-1'   
     headers = {
     'Accept':'application/fhir+json',
     'Content-Type':'application/fhir+json'

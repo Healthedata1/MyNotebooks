@@ -6,7 +6,7 @@ meta:
   - url: http://hl7.org/fhir/StructureDefinition/instance-description
     valueMarkdown: This is a simple patient entered weight example for the Argo Write
       project with a meta.source identifier/string provided for simple provenance
-  source: cdda928b-2d61-3a57-2eee-2d57336c9771
+  source: 87044a00-9afd-42d0-0df4-6f68a47319cf
   profile:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-weight
   tag:
@@ -28,9 +28,9 @@ code:
 subject:
   reference: Patient/06e1f0dd-5fbe-4480-9bb4-6b54ec02d31b
   display: Eldon718 Halvorson124
-effectiveDateTime: 2021-07-09 03:02:35+00:00
+effectiveDateTime: 2021-07-14 00:08:33+00:00
 valueQuantity:
-  value: 167.0
+  value: 163.0
   unit: pounds
   system: http://unitsofmeasure.org
   code: '[lb_av]'

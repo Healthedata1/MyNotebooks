@@ -30,9 +30,9 @@ code:
 subject:
   reference: Patient/06e1f0dd-5fbe-4480-9bb4-6b54ec02d31b
   display: Eldon718 Halvorson124
-effectiveDateTime: 2021-07-10 15:02:35+00:00
+effectiveDateTime: 2021-07-15 12:08:33+00:00
 valueQuantity:
-  value: 160.0
+  value: 166.0
   unit: pounds
   system: http://unitsofmeasure.org
   code: '[lb_av]'
