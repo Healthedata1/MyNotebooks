@@ -19,13 +19,12 @@
 				<b> version</b> : {{sp.version}}</p>
 			<p>
 				<b> name</b> : {{sp.name}}</p>
-			<p>
-				<b> derivedFrom</b> : {{sp.derivedFrom }}
-			</p>
+			{% if sp.derivedFrom %}<p>
+				<b> derivedFrom</b> : {{sp.derivedFrom }}</p>{% endif %}
 			<p>
 				<b> status</b> : {{sp.status}}</p>
-			<p>
-				<b> experimental</b>  {{sp.experimental}}</p>
+			{% if sp.experimental %}<p>
+				<b> experimental</b>  {{sp.experimental}}</p>{% endif %}
 			<p>
 				<b> date</b> : {{ sp.date | truncate(10,true,'') }}</p>
 			<p>

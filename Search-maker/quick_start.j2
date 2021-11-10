@@ -96,7 +96,7 @@ The following search parameters and search parameter combinations SHALL be suppo
 {%- set ns = namespace(comps=[]) %}
 
 {% for i in sp if i.display and i.base_conf == "SHALL" %}
-1. **SHALL** {% if i.description not in nulls %}{{i.description}}{% else %}support searching{% endif %} using the **[`{{i.code}}`]({{rels[i.code]}})** search parameter:
+1. {% if i.is_new %}{% raw %}{:.new-content}{% endraw %}{% endif %}**SHALL** {% if i.description not in nulls %}{{i.description}}{% else %}support searching{% endif %} using the **[`{{i.code}}`]({{rels[i.code]}})** search parameter:
 {{get_conf_mods(i.code)}}
 
 {% if i.code == '_id'%}    `GET [base]/{{i.base}}[id]`{% else %}    `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}{{get_andors(i.code)}}`{% endif %}
@@ -109,7 +109,7 @@ The following search parameters and search parameter combinations SHALL be suppo
     *Implementation Notes:* {{i.imp_note}} ([how to search by {% if i.code == '_id' %}the logical id] of the resource{% else %}{{i.type}}]{% endif %})
 {% endfor %}
 {%- for i in combos if i.combo_conf == 'SHALL' %}
-1. **SHALL** support searching using the combination of the {% for j in i.combo.split(',') %}{{'**[`' + j + '`](' + rels[j] + ')**'}}{% if not loop.last %} and {% endif %}{%  endfor  %} search parameters:
+1. {% if i.is_new %}{% raw %}{:.new-content}{% endraw %}{% endif %}**SHALL** support searching using the combination of the {% for j in i.combo.split(',') %}{{'**[`' + j + '`](' + rels[j] + ')**'}}{% if not loop.last %} and {% endif %}{%  endfor  %} search parameters:
 {%- for j in i.combo.split(',') %}{{get_conf_mods(j)}}{%  endfor  %}
 
     `GET [base]/{{r_type}}?{%- for j in i.combo.split(',') %}{% if j in i.fixed_kv.split('=') %}{{i.fixed_kv}}{% else %}{{j + get_mods(j) + '=' + get_comps(j) + get_type(j) + get_andors(j)}}{% endif %}{%- if not loop.last %}&{% endif %}{%  endfor  %}`
@@ -128,7 +128,7 @@ The following search parameters and search parameter combinations SHALL be suppo
 The following search parameter combinations SHOULD be supported:
 {%- endif %}
 {% for i in sp  if i.display and i.base_conf == "SHOULD" %}
-1. **SHOULD** support searching using the **[`{{i.code}}`]({{rels[i.code]}})** search parameter:
+1. {% if i.is_new %}{% raw %}{:.new-content}{% endraw %}{% endif %}**SHOULD** support searching using the **[`{{i.code}}`]({{rels[i.code]}})** search parameter:
 {{get_conf_mods(i.code)}}
 
      `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}{{get_andors(i.code)}}`
@@ -141,7 +141,7 @@ The following search parameter combinations SHOULD be supported:
      *Implementation Notes:* {{i.imp_note}} ([how to search by {{i.type}}])
 {% endfor %}
 {%- for i in combos if i.combo_conf == 'SHOULD' %}
-1. **SHOULD** support searching using the combination of the {% for j in i.combo.split(',') %}{{'**[`' + j + '`](' + rels[j] + ')**'}}{% if not loop.last %} and {% endif %}{%  endfor  %} search parameters:
+1. {% if i.is_new %}{% raw %}{:.new-content}{% endraw %}{% endif %}**SHOULD** support searching using the combination of the {% for j in i.combo.split(',') %}{{'**[`' + j + '`](' + rels[j] + ')**'}}{% if not loop.last %} and {% endif %}{%  endfor  %} search parameters:
 {%- for j in i.combo.split(',') %}{{get_conf_mods(j)}}{%  endfor  %}
 
     `GET [base]/{{r_type}}?{%- for j in i.combo.split(',') %}{% if j in i.fixed_kv.split('=') %}{{i.fixed_kv}}{% else %}{{j + get_mods(j) + '=' + get_comps(j) + get_type(j) + get_andors(j)}}{% endif %}{%- if not loop.last %}&{% endif %}{%  endfor  %}`
