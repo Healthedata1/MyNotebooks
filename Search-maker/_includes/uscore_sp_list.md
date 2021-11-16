@@ -59,6 +59,7 @@
 - [`lifecycle-status`](SearchParameter-us-core-goal-lifecycle-status.html)
 - [`patient`](SearchParameter-us-core-goal-patient.html)
 - [`target-date`](SearchParameter-us-core-goal-target-date.html)
+- {:.new-content}[`description`](SearchParameter-us-core-goal-description.html)
 
 **Immunization**
 - [`patient`](SearchParameter-us-core-immunization-patient.html)
@@ -113,4 +114,16 @@
 - [`patient`](SearchParameter-us-core-procedure-patient.html)
 - [`date`](SearchParameter-us-core-procedure-date.html)
 - [`code`](SearchParameter-us-core-procedure-code.html)
+
+**RelatedPerson**
+- {:.new-content}[`_id`](SearchParameter-us-core-relatedperson-id.html)
+- {:.new-content}[`patient`](SearchParameter-us-core-relatedperson-patient.html)
+
+**ServiceRequest**
+- {:.new-content}[`status`](SearchParameter-us-core-servicerequest-status.html)
+- {:.new-content}[`patient`](SearchParameter-us-core-servicerequest-patient.html)
+- {:.new-content}[`category`](SearchParameter-us-core-servicerequest-category.html)
+- {:.new-content}[`code`](SearchParameter-us-core-servicerequest-code.html)
+- {:.new-content}[`authored`](SearchParameter-us-core-servicerequest-authored.html)
+- {:.new-content}[`_id`](SearchParameter-us-core-servicerequest-id.html)
 

@@ -373,10 +373,13 @@
 				{%if r.searchInclude %}
 				<li>
 					A {{ cs.rest[0].mode | capitalize }} <strong>SHOULD</strong> be capable of supporting the following _includes:
-
+                    <ul>
 					{% for include in r.searchInclude %}
-						{{include}} - <code class="highlighter-rouge">GET [base]/{{r.type}}?[parameter=value]&amp;_include={{include}}</code>
+						<li>
+                        {{include}}: <code class="highlighter-rouge">GET [base]/{{r.type}}?[parameter=value]&amp;_include={{include}}</code>
+                        </li>
 					{% endfor %}
+                    </ul>
 				</li>
 				{% endif %}
 				<!-- Only SHALLs for revinclude for now the capability statement does not create the primitive extensios for this yet -->
