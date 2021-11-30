@@ -1,0 +1,139 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from json import dumps, loads\n",
+    "from requests import get, post, put\n",
+    "from IPython.display import display, Markdown\n",
+    "from pathlib import Path\n",
+    "import urllib.parse"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# open SDOH Resource\n",
+    "example_path = r'/Users/ehaas/Documents/FHIR/US-Core-R4/input/examples/hunger-question-example.json'\n",
+    "\n",
+    "path = Path(example_path)\n",
+    "path"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# get example\n",
+    "r = loads(path.read_text())\n",
+    "r"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# post to server\n",
+    "#fhir_test_server = 'http://hapi.fhir.org/baseR4'\n",
+    "#fhir_test_server = 'http://test.fhir.org/r4'\n",
+    "fhir_test_server = 'http://wildfhir4.aegis.net/fhir4-0-1'\n",
+    "#r = get(f'{fhir_test_server}/Patient', headers = headers) # test server\n",
+    "r = put(f\"{fhir_test_server}/{r['resourceType']}/{r['id']}\", headers = headers, data = dumps(r))\n",
+    "\n",
+    "display(Markdown(f'<h1>Put Response</h1><p><strong>Transaction Status</strong> = {r.status_code}\\\n",
+    "\\nraw output :</p><code>{dumps(r.json(),indent=3)}</code>'))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "s_type = 'Observation'\n",
+    "s_id = 'hunger-question-example'\n",
+    "print(fhir_test_server)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "r = get(f'{fhir_test_server}/Observation',params=params, headers=headers)\n",
+    "\n",
+    "display(Markdown(f'Transaction Status</strong> = {r.status_code}</p>'))\n",
+    "my_resource = r.json()\n",
+    "#help(r)\n",
+    "#print(dumps(my_resource, indent=2))\n",
+    "\n",
+    "print(\"**Request url using GET**\")\n",
+    "\n",
+    "print(f\"GET `{urllib.parse.unquote(r.request.url)}`\")\n",
+    "\n",
+    "print(\"**Request Headers**\")\n",
+    "print('~~~')\n",
+    "for k,v in r.request.headers.items():\n",
+    "    print(f'{k}: {v}')\n",
+    "print('~~~')   \n",
+    "    \n",
+    "# print()\n",
+    "# print(\"**Request Body**\")\n",
+    "# print('-'*80)\n",
+    "# print(r.request.body)\n",
+    "\n",
+    "\n",
+    "print(r.status_code, r.reason)\n",
+    "print()\n",
+    "print(\"**Response Headers**\")\n",
+    "print('~~~')  \n",
+    "for k,v in r.headers.items():\n",
+    "    print(f'{k}: {v}')\n",
+    "print('~~~') \n",
+    "print(\"**Response Body**\")\n",
+    "print('~~~') \n",
+    "print(dumps(r.json(), indent=2))\n",
+    "print('~~~') "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3.7.3 64-bit ('venv37': venv)",
+   "language": "python",
+   "name": "python37364bitvenv37venv2b400d68decb43d5b2206c004a019450"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
