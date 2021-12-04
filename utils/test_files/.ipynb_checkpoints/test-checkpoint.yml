@@ -1,0 +1,10 @@
+!!python/object/apply:pathlib.PosixPath
+- /
+- Users
+- ehaas
+- Documents
+- FHIR
+- Davinci-CDEX
+- input
+- includes-yaml
+- cdex-example1-authorized-request.yml
