@@ -1,11 +1,11 @@
 <div xmlns="http://www.w3.org/1999/xhtml">
 		<h2 id="title">{% if cs.title %}{{cs.title}}{% else %}{{ cs.id | upper }}{% endif %}</h2>
 
-			<ul>
-				<li>Official URL: <code>{{cs.url}}</code></li>
-				<li>Implementation Guide Version: {{cs.version}}</li>
-				<li>FHIR Version: {{cs.fhirVersion}}</li>
-				<li>Supported formats:
+			<table class="grid">
+			<tr><td>Official URL</td><td><code>{{cs.url}}</code></td></tr>
+				<tr><td>Implementation Guide Version</td><td>{{cs.version}}</td></tr>
+				<tr><td>FHIR Version</td><td>{{cs.fhirVersion}}</td></tr>
+				<tr><td>Supported formats</td><td>
 				{% if cs.format__ext %}
 				{% for format in cs.format %}
 					 <strong>{{cs.format__ext[loop.index0].extension[0].valueCode}}</strong>
@@ -15,10 +15,10 @@
 				{% else %}
 					{{ cs.format | join(', ') | upper }}
 				{% endif %}
-				</li>
-				<li>Published: {{cs.date}}</li>
-				<li>Published by: {{cs.publisher}}</li>
-			</ul>
+				</td></tr>
+				<tr><td>Published</td><td>{{cs.date}}</td></tr>
+				<tr><td>Published by</td><td>{{cs.publisher}}</td></tr>
+			</table>
 
 		{{cs.description | markdown | safe }}
 
