@@ -186,7 +186,9 @@
 <p><strong>Summary of System Wide Operations</strong></p>
 <ul>
 {% for r in cs.rest[0].operation %}
+
 	<li><strong>{{r.extension[0].valueCode}}</strong> support the	<a href="{% if path_map[r.definition.reference]%}{{path_map[r.definition.reference]}}{% else %}{{r.definition}}{% endif %}"><code>${{r.name}}</code></a> operation.</li>
+  {% if r.documentation %}<blockquote>{{r.documentation | markdown | safe }}</blockquote>{% endif %}
 {% endfor %}
 </ul>
 {% endif %}
