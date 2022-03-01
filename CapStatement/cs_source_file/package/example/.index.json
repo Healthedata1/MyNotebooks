@@ -1,0 +1,60 @@
+{
+  "index-version": 1,
+  "files": [
+    {
+      "filename": "Task-cdex-example1-query-completed-contained.json",
+      "resourceType": "Task",
+      "id": "cdex-example1-query-completed-contained"
+    },
+    {
+      "filename": "Task-cdex-example1-authorized-request.json",
+      "resourceType": "Task",
+      "id": "cdex-example1-authorized-request"
+    },
+    {
+      "filename": "Task-cdex-example1-authorized-completed.json",
+      "resourceType": "Task",
+      "id": "cdex-example1-authorized-completed"
+    },
+    {
+      "filename": "Task-cdex-example1-free-text-completed.json",
+      "resourceType": "Task",
+      "id": "cdex-example1-free-text-completed"
+    },
+    {
+      "filename": "Task-cdex-example2-query-requested.json",
+      "resourceType": "Task",
+      "id": "cdex-example2-query-requested"
+    },
+    {
+      "filename": "Task-cdex-example2-query-failed.json",
+      "resourceType": "Task",
+      "id": "cdex-example2-query-failed"
+    },
+    {
+      "filename": "Task-cdex-example1-free-text-request.json",
+      "resourceType": "Task",
+      "id": "cdex-example1-free-text-request"
+    },
+    {
+      "filename": "Task-cdex-example1-query-completed.json",
+      "resourceType": "Task",
+      "id": "cdex-example1-query-completed"
+    },
+    {
+      "filename": "Task-cdex-example3-query-requested.json",
+      "resourceType": "Task",
+      "id": "cdex-example3-query-requested"
+    },
+    {
+      "filename": "Task-cdex-example3-query-completed.json",
+      "resourceType": "Task",
+      "id": "cdex-example3-query-completed"
+    },
+    {
+      "filename": "Task-cdex-example1-query-requested.json",
+      "resourceType": "Task",
+      "id": "cdex-example1-query-requested"
+    }
+  ]
+}
