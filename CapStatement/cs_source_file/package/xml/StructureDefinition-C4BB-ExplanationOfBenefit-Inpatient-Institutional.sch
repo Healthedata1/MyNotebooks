@@ -1,1 +1,0 @@
-/scratch/ig-build-temp-R4GWYB/repo/temp/pages/StructureDefinition-C4BB-ExplanationOfBenefit-Inpatient-Institutional.sch

@@ -1,32 +1,32 @@
 {
-  "name": "hl7.fhir.us.carin-bb",
-  "version": "1.1.0",
+  "name": "hl7.fhir.us.davinci-cdex",
+  "version": "0.2.0",
   "tools-version": 3,
   "type": "fhir.ig",
-  "date": "20210602210921",
+  "date": "20201216190156",
   "license": "CC0-1.0",
-  "canonical": "http://hl7.org/fhir/us/carin-bb",
-  "notForPublication": true,
-  "url": "https://build.fhir.org/ig/HL7/carin-bb/",
-  "title": "CARIN Consumer Directed Payer Data Exchange (CARIN IG for Blue Button®)",
-  "description": "CARIN Consumer Directed Payer Data Exchange (CARIN IG for Blue Button®) (built Wed, Jun 2, 2021 21:09+0000+00:00)",
+  "canonical": "http://hl7.org/fhir/us/davinci-cdex",
+  "url": "http://hl7.org/fhir/us/davinci-cdex/2021Jan",
+  "title": "Da Vinci Clinical Data Exchange (CDex) Implementation Guide",
+  "description": "This IG provides detailed guidance that helps implementers use FHIR-based interactions and resources relevant to support specific exchanges of clinical information between provider and payers (or other providers).  What is unique about this guide is that is provides additional technical guidance on two FHIR transaction approaches for requesting information:\n\n - Direct Query\n - Task Based Approach:\n\nThe types of clinical data is not limited to FHIR resources, but includes C-CDA documents, pdfs, text files and other types of data. There may be requests for payloads of clinical records of care such as CCD Documents, clinical data sets that may be represented in a FHIR bundles, and clinical data such as a specific FHIR resource. By using the FHIR standard and implementing this guide the quality of information shared can be improved.   Payers can be explicit about the data they are requesting, as opposed to general requests which often result in providers sending more information than might be necessary to make sure claims are supported. Benefits resulting from the information exchange interaction include:\n\n  - Improve care coordination\n  - Support risk adjustment\n  - Ease quality management\n  - Facilitate claims auditing\n  - Confirm medical necessity\n  - Support orders and referrals (built Wed, Dec 16, 2020 19:01+0000+00:00)",
   "fhirVersions": [
     "4.0.1"
   ],
   "dependencies": {
     "hl7.fhir.r4.core": "4.0.1",
-    "hl7.fhir.us.core": "3.1.1"
+    "hl7.fhir.us.core": "3.1.1",
+    "hl7.fhir.us.davinci-hrex": "0.2.0"
   },
-  "author": "HL7 Financial Management Working Group",
+  "author": "HL7 International - Patient Care Work Group",
   "maintainers": [
     {
-      "name": "HL7 Financial Management Working Group",
-      "email": "fm@lists.HL7.org",
-      "url": "http://www.hl7.org/Special/committees/fm/index.cfm"
+      "name": "HL7 International - Patient Care Work Group",
+      "url": "http://www.hl7.org/Special/committees/patientcare/index.cfm"
     }
   ],
   "directories": {
     "lib": "package",
     "example": "example"
-  }
+  },
+  "jurisdiction": "urn:iso:std:iso:3166#US"
 }

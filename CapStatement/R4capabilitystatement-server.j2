@@ -1,4 +1,5 @@
 <div xmlns="http://www.w3.org/1999/xhtml">
+<!-- {% raw %}
 		<h2 id="title">{% if cs.title %}{{cs.title}}{% else %}{{ cs.id | upper }}{% endif %}</h2>
 
 			<table class="grid">
@@ -21,6 +22,7 @@
 			</table>
 
 		{{cs.description | markdown | safe }}
+{% endraw %} -->
 
 {% if cs.implementationGuide %}
  			{% set ns = namespace(shall=false) %}
@@ -414,7 +416,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{%- for s in r.searchParam if s.extension[0].valueCode != "MAY" -%}
+					{%- for s in r.searchParam if s.extension and s.extension[0].valueCode != "MAY" -%}
 					<tr>
 						<td>
 							<strong>{% if s.extension %}{{ s.extension[0].valueCode }}{% else %}(conformance expectation undefined){% endif %}</strong>
