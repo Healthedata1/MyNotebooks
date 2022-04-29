@@ -31,7 +31,7 @@ The following search parameters and search parameter combinations SHALL be suppo
 
 1. **SHALL** support searching using the combination of the **[`date`](SearchParameter-us-core-encounter-date.html)** and **[`patient`](SearchParameter-us-core-encounter-patient.html)** search parameters:
     - including support for these `date` comparators: `gt,lt,ge,le`
-    - including optional support for composite *AND* search on `date` (e.g.`date=[date]&date=[date]]&...`)
+    - including optional support for *AND* search on `date` (e.g.`date=[date]&date=[date]]&...`)
 
     `GET [base]/Encounter?date={gt|lt|ge|le}[date]{&date={gt|lt|ge|le}[date]&...}&patient={Type/}[id]`
 
@@ -76,7 +76,7 @@ The following search parameter combinations SHOULD be supported:
 
     *Implementation Notes:* Fetches a bundle of all Encounter resources matching the specified patient and type ([how to search by reference] and [how to search by token])
 
-1. {:.new-content}**SHOULD** support searching using the combination of the **[`patient`](SearchParameter-us-core-encounter-patient.html)** and **[`location`](SearchParameter-us-core-encounter-location.html)** search parameters:
+1. **SHOULD** support searching using the combination of the **[`patient`](SearchParameter-us-core-encounter-patient.html)** and **[`location`](SearchParameter-us-core-encounter-location.html)** search parameters:
 
     `GET [base]/Encounter?patient={Type/}[id]&location={Type/}[id]`
 
@@ -96,7 +96,7 @@ The following search parameter combinations SHOULD be supported:
 
     *Implementation Notes:* Fetches a bundle of all Encounter resources matching the specified patient and status ([how to search by reference] and [how to search by token])
 
-1. {:.new-content}**SHOULD** support searching using the combination of the **[`patient`](SearchParameter-us-core-encounter-patient.html)** and **[`discharge-disposition`](SearchParameter-us-core-encounter-discharge-disposition.html)** search parameters:
+1. **SHOULD** support searching using the combination of the **[`patient`](SearchParameter-us-core-encounter-patient.html)** and **[`discharge-disposition`](SearchParameter-us-core-encounter-discharge-disposition.html)** search parameters:
 
     `GET [base]/Encounter?patient={Type/}[id]&discharge-disposition={system|}[code]`
 

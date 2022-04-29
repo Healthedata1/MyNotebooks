@@ -7,9 +7,9 @@
 	</head>
 	<body>
 		<div xmlns="http://www.w3.org/1999/xhtml">
-			<!--<h2>SearchParameter: {{sp.name}}</h2>-->
+			<!--<h2>SearchParameter: {{sp.name}}</h2>
 				<b> description</b> : {{sp.description | markdown | safe }}
-			<br/>
+			<br/>-->
 			<p>
 				<b> id</b> {{sp.id}}</p>
 			<p>
@@ -26,7 +26,7 @@
 			{% if sp.experimental %}<p>
 				<b> experimental</b>  {{sp.experimental}}</p>{% endif %}
 			<p>
-				<b> date</b> : {{ sp.date | truncate(10,true,'') }}</p>
+				<b> date</b> : {{ sp.date.strftime('%m/%d/%Y') }}</p>
 			<p>
 				<b> publisher</b> : {{sp.publisher}}</p>
 			<p>
