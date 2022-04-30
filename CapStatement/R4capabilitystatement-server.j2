@@ -322,43 +322,50 @@
     {% endif %}
     {% if r.operation %}
     <p>Operation Summary:</p>
-    {% set ns = namespace(shall=false,should=false,may=false) %}
-    {%for i in r.operation if i.extension %}
-        		{% if i.extension[0].valueCode == 'SHALL' %}
-    {% set ns.shall = true %}
-    {% elif i.extension[0].valueCode == 'SHOULD' %}
-            {% set ns.should = true %}
-    {% elif i.extension[0].valueCode == 'MAY' %}
-            {% set ns.may = true %}
-        		{% endif %}{% endfor %}
+    {% set ns = namespace(shall=false,should=false,may=false,not_defined=false) %}
+    {% for i in r.operation %}
+    {% if i.extension %}
+        {% if i.extension[0].valueCode == 'SHALL' %}
+            {% set ns.shall = true %}
+        {% elif i.extension[0].valueCode == 'SHOULD' %}
+                    {% set ns.should = true %}
+        {% elif i.extension[0].valueCode == 'MAY' %}
+                    {% set ns.may = true %}
+        {% endif %}
+    {% else %}
+        {% set ns.not_defined = true %}
+    {% endif %}
+    {% endfor %}
+
 
     <ul>
     {% if ns.shall %}<li><strong>SHALL</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'SHALL' %}
-    <a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
+    <a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name| replace("$", "")}}</a> operation
     {% if i.documentation %}{{i.documentation| markdown | safe }}{% endif %}
     {%- if not loop.last %}, {% endif %}
     {%- endfor %}</li>
+    {%- endif %}
 
-    {% elif ns.should %}<li><strong>SHOULD</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'SHOULD' %}
-    <a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
-    {% if i.documentation%}{{i.documentation| markdown | safe }}{% endif %}
-    {%- if not loop.last %}, {% endif %}
-    {%- endfor %}</li>
-
-    {% elif ns.may %}<li><strong>MAY</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'MAY' %}
-    <a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
-    {% if i.documentation%}{{i.documentation| markdown | safe }}{% endif %}
-    {%- if not loop.last %}, {% endif %}
-    {%- endfor %}</li>
-
-    {% else %}<li><strong>(conformance expectation undefined)</strong> support the {%for i in r.operation if not i.extension %}
-    <a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
+    {% if ns.should %}<li><strong>SHOULD</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'SHOULD' %}
+    <a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name| replace("$", "")}}</a> operation
     {% if i.documentation%}{{i.documentation| markdown | safe }}{% endif %}
     {%- if not loop.last %}, {% endif %}
     {%- endfor %}</li>
     {%- endif %}
 
+    {% if ns.may %}<li><strong>MAY</strong> support the {%for i in r.operation if i.extension[0].valueCode == 'MAY' %}
+    <a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name| replace("$", "")}}</a> operation
+    {% if i.documentation%}{{i.documentation| markdown | safe }}{% endif %}
+    {%- if not loop.last %}, {% endif %}
+    {%- endfor %}</li>
+    {%- endif %}
 
+    {% if ns.not_defined %}<li><strong>(conformance expectation undefined)</strong> support the {%for i in r.operation if not i.extension %}
+    <a href="{% if path_map[i.definition] %}{{path_map[i.definition]}}{% else %}{{i.definition}}{% endif %}">${{i.name}}</a> operation
+    {% if i.documentation%}{{i.documentation| markdown | safe }}{% endif %}
+    {%- if not loop.last %}, {% endif %}
+    {%- endfor %}</li>
+    {%- endif %}
 
     </ul>
     {% endif %}
