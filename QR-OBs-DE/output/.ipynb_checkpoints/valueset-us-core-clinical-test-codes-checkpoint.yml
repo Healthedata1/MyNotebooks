@@ -1,0 +1,846 @@
+resourceType: ValueSet
+id: us-core-clinical-test-codes
+url: http://hl7.org/fhir/us/core/ValueSet/us-core-clinical-test-codes
+name: UorlinicaesodesValueSet
+title: Us Core Clinical Test Codes ValueSet
+status: active
+date: 2022-04-08
+description: a starter set of clinical test LOINC codes identified in [Appendix B
+  in U.S. Core Data for Interoperability (USCDI) Task Force 2021 HITAC Phase 3 Recommendations
+  Report Letter](https://www.healthit.gov/sites/default/files/page/2021-10/2021-09-09_USCDI_TF_2021_HITAC_Phase%203_%20Recommendations%20Report_Signed_508.pdf)
+copyright: "LOINC (http://loinc.org). LOINC is copyright 1995-2020, Regenstrief Institute,
+  Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee and
+  is available at no cost under the license at http://loinc.org/license. LOINC\xAE
+  is a registered United States trademark of Regenstrief Institute, Inc"
+compose:
+  include:
+  - system: http://loinc.org
+    concept:
+    - code: 34534-8
+      display: 12 lead EKG Pnl
+    - code: 8897-1
+      display: QRS Complex nRate Hrt ventrs EKG
+    - code: 8894-8
+      display: P wave Atrium by EKG
+    - code: 8625-6
+      display: P-R interval
+    - code: 8633-0
+      display: QRS dur
+    - code: 8634-8
+      display: Q-T interval
+    - code: 8636-3
+      display: Q-T interval corrected
+    - code: 8626-4
+      display: P wave axis
+    - code: 8632-2
+      display: QRS axis
+    - code: 8638-9
+      display: T wave axis
+    - code: 8601-7
+      display: EKG impression
+    - code: 34552-0
+      display: Cardiac 2D echo panel
+    - code: 18010-9
+      display: Aorta Diam US
+    - code: 18018-2
+      display: LVOT Diam US
+    - code: 20307-5
+      display: RVOT Diam 2D US
+    - code: 29468-6
+      display: LA Diam AP sys 2D US
+    - code: 18083-6
+      display: LV Diam dias, short 2D US
+    - code: 18085-1
+      display: LV Diam sys, short 2D US
+    - code: 29442-1
+      display: LVPW Thickness dia 2D US
+    - code: 29430-6
+      display: IVS Thickness dia 2D US
+    - code: 8806-2
+      display: LV EF 2D Echo
+    - code: 29434-8
+      display: LV FS 2D US
+    - code: 18147-9
+      display: US Cent CV Study [Imp]
+    - code: 78950-3
+      display: LV SWM Pnl Angiogram
+    - code: 78951-1
+      display: LV.basal ant SWM by Angiogram
+    - code: 78952-9
+      display: LV.lat ant SWM by Angiogram
+    - code: 78953-7
+      display: LV apex SWM by Angiogram
+    - code: 78954-5
+      display: LV inf SWM by Angiogram
+    - code: 78955-2
+      display: LV.basal post SWM by Angiogram
+    - code: 78956-0
+      display: VS SWM by Angiogram
+    - code: 78957-8
+      display: LV.lat post SWM by Angiogram
+    - code: 82654-5
+      display: Cardiac NM SPECT Pnl
+    - code: 82652-9
+      display: TID LV SPECT
+    - code: 82651-1
+      display: Washout Myocardium SPECT
+    - code: 78895-0
+      display: Coronary angiography panel
+    - code: 78897-6
+      display: Percent sten of pRCA by Angiogram
+    - code: 78898-4
+      display: Percent sten of mRCA by Angiogram
+    - code: 78899-2
+      display: Percent sten of dRCA by Angiogram
+    - code: 78900-8
+      display: Percent sten of AV nodal by Angiogram
+    - code: 78901-6
+      display: Percent sten of R-PDA by Angiogram
+    - code: 78902-4
+      display: Percent sten of LM by Angiogram
+    - code: 78903-2
+      display: Percent sten of pLAD by Angiogram
+    - code: 78904-0
+      display: Percent sten of mLAD by Angiogram
+    - code: 78905-7
+      display: Percent sten of dLAD by Angiogram
+    - code: 78906-5
+      display: Percent sten of D1 by Angiogram
+    - code: 78907-3
+      display: Percent sten of D2 by Angiogram
+    - code: 78908-1
+      display: Percent sten of pCx by Angiogram
+    - code: 78909-9
+      display: Percent sten of OM by Angiogram
+    - code: 78910-7
+      display: Percent sten of LCx by Angiogram
+    - code: 78911-5
+      display: Percent sten of L-PLB by Angiogram
+    - code: 78912-3
+      display: Percent sten of L-PDA by Angiogram
+    - code: 78913-1
+      display: Percent sten of RI by Angiogram
+    - code: 80227-2
+      display: Percent sten of R-PLB
+    - code: 80228-0
+      display: Percent sten of D1a
+    - code: 80229-8
+      display: Percent sten of D2a
+    - code: 78896-8
+      display: Num dis coronary segments on Card Angio
+    - code: 83311-1
+      display: BMD qn measurement Pnl
+    - code: 46383-6
+      display: DXA Bone ArMass BMD
+    - code: 24701-5
+      display: DXA Femur ArMass BMD
+    - code: 38263-0
+      display: DXA Femur T-score BMD
+    - code: 80934-3
+      display: DXA Femur Z-score BMD
+    - code: 80954-1
+      display: DXA Femur-L ArMass BMD
+    - code: 80948-3
+      display: DXA Femur-L T-score BMD
+    - code: 80940-0
+      display: DXA Femur-L Z-score BMD
+    - code: 80953-3
+      display: DXA Femur-R ArMass BMD
+    - code: 80947-5
+      display: DXA Femur-R T-score BMD
+    - code: 80939-2
+      display: DXA Femur-R Z-score BMD
+    - code: 38262-2
+      display: DXA Heel ArMass BMD
+    - code: 38266-3
+      display: DXA Heel T-score BMD
+    - code: 80956-6
+      display: DXA Heel-L ArMass BMD
+    - code: 80950-9
+      display: DXA Heel-L T-score BMD
+    - code: 80942-6
+      display: DXA Heel-L Z-score BMD
+    - code: 80955-8
+      display: DXA Heel-R ArMass BMD
+    - code: 80949-1
+      display: DXA Heel-R T-score BMD
+    - code: 80941-8
+      display: DXA Heel-R Z-score BMD
+    - code: 38261-4
+      display: DXA Hip ArMass BMD
+    - code: 38264-8
+      display: DXA Hip T-score BMD
+    - code: 80933-5
+      display: DXA Hip Z-score BMD
+    - code: 46278-8
+      display: DXA Hip-L ArMass BMD
+    - code: 80946-7
+      display: DXA Hip-L T-score BMD
+    - code: 80938-4
+      display: DXA Hip-L Z-score BMD
+    - code: 46279-6
+      display: DXA Hip-R ArMass BMD
+    - code: 80945-9
+      display: DXA Hip-R T-score BMD
+    - code: 80937-6
+      display: DXA Hip-R Z-score BMD
+    - code: 24966-4
+      display: DXA L-spine ArMass BMD
+    - code: 38267-1
+      display: DXA L-spine T-score BMD
+    - code: 24890-6
+      display: DXA Radius+Ulna ArMass BMD
+    - code: 38265-5
+      display: DXA Radius+Ulna T-score BMD
+    - code: 80932-7
+      display: DXA Radius+Ulna Z-score BMD
+    - code: 80952-5
+      display: DXA Radius+Ulna-L ArMass BMD
+    - code: 80944-2
+      display: DXA Radius+Ulna-L T-score BMD
+    - code: 80936-8
+      display: DXA Radius+Ulna-L Z-score BMD
+    - code: 80951-7
+      display: DXA Radius+Ulna-R ArMass BMD
+    - code: 80943-4
+      display: DXA Radius+Ulna-R T-score BMD
+    - code: 80935-0
+      display: DXA Radius+Ulna-R Z-score BMD
+    - code: 98604-2
+      display: Nerve conduction study Pnl Nerve
+    - code: 98605-9
+      display: Sensory NC Pnl L radial n
+    - code: 98611-7
+      display: Sensory NC Pnl R radial n
+    - code: 98617-4
+      display: Sensory NC Pnl L median n
+    - code: 98622-4
+      display: Sensory NC Pnl R median n
+    - code: 98627-3
+      display: Sensory NC Pnl L ulnar n
+    - code: 98632-3
+      display: Sensory NC Pnl R ulnar n
+    - code: 98637-2
+      display: Sensory NC Pnl L MACN
+    - code: 98642-2
+      display: Sensory NC Pnl R MACN
+    - code: 98647-1
+      display: Sensory NC Pnl L LACN
+    - code: 98652-1
+      display: Sensory NC Pnl R LACN
+    - code: 98495-5
+      display: Color vision Pnl
+    - code: 79731-6
+      display: L eye Color vision
+    - code: 79730-8
+      display: R eye Color vision
+    - code: 79732-4
+      display: Color vision exam type
+    - code: 98496-3
+      display: Color blindness Eye
+    - code: 79894-2
+      display: ERG Pnl
+    - code: 79800-9
+      display: ERG ISCEV standard protocol used
+    - code: 79794-4
+      display: ERG study standard proc used
+    - code: 79791-0
+      display: ERG Ref electrode Loc
+    - code: 79792-8
+      display: Overall study imp R ret ERG
+    - code: 79793-6
+      display: Overall study imp L ret ERG
+    - code: 79773-8
+      display: a-wave amp R ret dark-adapt ERG
+    - code: 79777-9
+      display: a-wave impl time R ret dark-adapt ERG
+    - code: 79781-1
+      display: b-wave amp R ret dark-adapt ERG
+    - code: 79786-0
+      display: b-wave impl time R ret dark-adapt ERG
+    - code: 79774-6
+      display: a-wave amp L ret dark-adapt ERG
+    - code: 79778-7
+      display: a-wave impl time L ret dark-adapt ERG
+    - code: 79782-9
+      display: b-wave amp L ret dark-adapt ERG
+    - code: 79785-2
+      display: b-wave impl time L ret dark-adapt ERG
+    - code: 79775-3
+      display: a-wave amp R ret light-adapt ERG
+    - code: 79779-5
+      display: a-wave impl time R ret light-adapt ERG
+    - code: 79783-7
+      display: b-wave amp R ret light-adapt ERG
+    - code: 79787-8
+      display: b-wave impl time R ret light-adapt ERG
+    - code: 79776-1
+      display: a-wave amp L ret light-adapt ERG
+    - code: 79780-3
+      display: a-wave impl time L ret light-adapt ERG
+    - code: 79784-5
+      display: b-wave amp L ret light-adapt ERG
+    - code: 79788-6
+      display: b-wave impl time L ret light-adapt ERG
+    - code: 79789-4
+      display: R ret Oscillatory pot ERG
+    - code: 79790-2
+      display: L ret Oscillatory pot ERG
+    - code: 79795-1
+      display: Flicker resp amp R ret light-adapt ERG
+    - code: 79797-7
+      display: Flick resp wave imp time Ret-R lt-ad ERG
+    - code: 79796-9
+      display: Flicker resp amp L ret light-adapt ERG
+    - code: 79798-5
+      display: Flick resp wave imp time Ret-L lt-ad ERG
+    - code: 96189-6
+      display: R macula Function ERG
+    - code: 96190-4
+      display: L macula Function ERG
+    - code: 96191-2
+      display: R optic n Function ERG
+    - code: 96192-0
+      display: L optic n Function ERG
+    - code: 96193-8
+      display: R cones Function ERG
+    - code: 96194-6
+      display: L cones Function ERG
+    - code: 96195-3
+      display: R rods Function ERG
+    - code: 96196-1
+      display: L rods Function ERG
+    - code: 96197-9
+      display: R cones+rods Function ERG
+    - code: 96198-7
+      display: L cones+rods Function ERG
+    - code: 96199-5
+      display: R ganglion cells Function ERG
+    - code: 96200-1
+      display: L ganglion cells Function ERG
+    - code: 96201-9
+      display: R optic disc+RNFL Function ERG
+    - code: 96202-7
+      display: L optic disc+RNFL Function ERG
+    - code: 96205-0
+      display: R optic n Comp func ERG
+    - code: 96206-8
+      display: L optic n Comp func ERG
+    - code: 96207-6
+      display: R macula Comp func ERG
+    - code: 96208-4
+      display: L macula Comp func ERG
+    - code: 96209-2
+      display: L rods Comp func ERG
+    - code: 96210-0
+      display: R rods Comp func ERG
+    - code: 96211-8
+      display: L cones Comp func ERG
+    - code: 96212-6
+      display: R cones Comp func ERG
+    - code: 96213-4
+      display: L cones+rods Comp func ERG
+    - code: 96214-2
+      display: R cones+rods Comp func ERG
+    - code: 96215-9
+      display: L ganglion cells Comp func ERG
+    - code: 96216-7
+      display: R ganglion cells Comp func ERG
+    - code: 96217-5
+      display: L optic disc+RNFL Comp func ERG
+    - code: 96218-3
+      display: R optic disc+RNFL Comp func ERG
+    - code: 96219-1
+      display: R ret Func find [Imp] ERG
+    - code: 96220-9
+      display: L ret Func find [Imp] ERG
+    - code: 95298-6
+      display: Keratometry pnl
+    - code: 28975-1
+      display: R cornea Axis by KM
+    - code: 28985-0
+      display: L cornea Axis by KM
+    - code: 28977-7
+      display: R cornea Axis 2 by KM
+    - code: 28987-6
+      display: L cornea Axis 2 by KM
+    - code: 95300-0
+      display: Axis step KM
+    - code: 28974-4
+      display: R cornea Base curve 1 by KM
+    - code: 28984-3
+      display: L cornea Base curve 1 by KM
+    - code: 28976-9
+      display: R cornea Base curve 2 by KM
+    - code: 28986-8
+      display: L cornea Base curve 2 by KM
+    - code: 28978-5
+      display: R eye Comment [Imp] by KM
+    - code: 28988-4
+      display: L eye Comment [Imp] by KM
+    - code: 79813-2
+      display: R cornea Corneal curvature by KM
+    - code: 79814-0
+      display: L cornea Corneal curvature by KM
+    - code: 95302-6
+      display: R cornea Curvature radius.flat by KM
+    - code: 95305-9
+      display: L cornea Curvature radius.flat by KM
+    - code: 95303-4
+      display: R cornea Curvature radius.steep by KM
+    - code: 95306-7
+      display: L cornea Curvature radius.steep by KM
+    - code: 95304-2
+      display: R cornea Curvature radius.mean by KM
+    - code: 95307-5
+      display: L cornea Curvature radius.mean by KM
+    - code: 95309-1
+      display: R cornea Cylinder by KM
+    - code: 95311-7
+      display: L cornea Cylinder by KM
+    - code: 95301-8
+      display: Type of Cylinder mode by by KM
+    - code: 8642-1
+      display: R pupil Diam Auto
+    - code: 8640-5
+      display: L pupil Diam Auto
+    - code: 95314-1
+      display: R pupil Diam by KM
+    - code: 95315-8
+      display: L pupil Diam by KM
+    - code: 95316-6
+      display: R cornea Horiz diam by KM
+    - code: 95317-4
+      display: L cornea Horiz diam by KM
+    - code: 28983-5
+      display: R cornea Longit radius by KM
+    - code: 28993-4
+      display: L cornea Longit radius by KM
+    - code: 28994-2
+      display: R cornea Power R1 by KM
+    - code: 28996-7
+      display: L cornea Power R1 by KM
+    - code: 28995-9
+      display: R cornea Power R2 by KM
+    - code: 28997-5
+      display: L cornea Power R2 by KM
+    - code: 95308-3
+      display: R cornea Refractive power.mean by KM
+    - code: 95310-9
+      display: L cornea Refractive power.mean by KM
+    - code: 95299-4
+      display: Type of Refract pwr step
+    - code: 28980-1
+      display: R cornea Sag rad.inf by KM
+    - code: 28990-0
+      display: L cornea Sag rad.inf by KM
+    - code: 28982-7
+      display: R cornea Sag rad.nasal by KM
+    - code: 28992-6
+      display: L cornea Sag rad.nasal by KM
+    - code: 28979-3
+      display: R cornea Sag rad.sup by KM
+    - code: 28989-2
+      display: L cornea Sag rad.sup by KM
+    - code: 28981-9
+      display: R cornea Sag rad.temp by KM
+    - code: 28991-8
+      display: L cornea Sag rad.temp by KM
+    - code: 95318-2
+      display: Lensmeter Pnl
+    - code: 95319-0
+      display: Corrective lens type
+    - code: 95320-8
+      display: LM Sphere increment [InvLen]
+    - code: 95321-6
+      display: LM Axis step
+    - code: 95322-4
+      display: Cylinder mode
+    - code: 95323-2
+      display: LM Prism step InvLen
+    - code: 95324-0
+      display: Prism mode
+    - code: 95326-5
+      display: Corr lens Sph equiv Calc
+    - code: 95327-3
+      display: R corr lens Sph equiv Calc
+    - code: 95328-1
+      display: L corr lens Sph equiv Calc
+    - code: 28814-2
+      display: Corr lens Add 1 Binoc by LM
+    - code: 28810-0
+      display: R corr lens Add 1 by LM
+    - code: 28812-6
+      display: L corr lens Add 1 by LM
+    - code: 28815-9
+      display: Corr lens Add 2 Binoc by LM
+    - code: 28811-8
+      display: R corr lens Add 2 by LM
+    - code: 28813-4
+      display: L corr lens Add 2 by LM
+    - code: 95329-9
+      display: Corr lens Sphere N 1 by LM
+    - code: 28793-8
+      display: R corr lens Sphere N 1 by LM
+    - code: 28802-7
+      display: L corr lens Sphere N 1 by LM
+    - code: 95330-7
+      display: Corr lens Sphere N 2 by LM
+    - code: 28796-1
+      display: R corr lens Sphere N 2 by LM
+    - code: 28805-0
+      display: L corr lens Sphere N 2 by LM
+    - code: 95331-5
+      display: Corr lens Prism by LM
+    - code: 95332-3
+      display: R corr lens Prism by LM
+    - code: 95333-1
+      display: L corr lens Prism by LM
+    - code: 95334-9
+      display: Corr lens H prism-in by LM
+    - code: 95335-6
+      display: Corr lens H prism-out by LM
+    - code: 95336-4
+      display: R corr lens H prism-in by LM
+    - code: 95337-2
+      display: R corr lens H prism-out by LM
+    - code: 95338-0
+      display: L corr lens H prism-in by LM
+    - code: 95339-8
+      display: L corr lens H prism-out by LM
+    - code: 95340-6
+      display: Corr lens V prism-up by LM
+    - code: 95341-4
+      display: Corr lens V prism-down by LM
+    - code: 95342-2
+      display: R corr lens V prism-up by LM
+    - code: 95343-0
+      display: R corr lens V prism-down by LM
+    - code: 95344-8
+      display: L corr lens V prism-up by LM
+    - code: 95345-5
+      display: L corr lens V prism-down by LM
+    - code: 95346-3
+      display: Corr lens UVT by LM
+    - code: 95347-1
+      display: R corr lens UVT by LM
+    - code: 95348-9
+      display: L corr lens UVT by LM
+    - code: 28792-0
+      display: Glasses PD binoc by LM
+    - code: 28782-1
+      display: R glasses PD monoc by LM
+    - code: 28789-6
+      display: L glasses PD monoc by LM
+    - code: 95349-7
+      display: Glasses PD binoc near by LM
+    - code: 28799-5
+      display: R glasses PD monoc near by LM
+    - code: 95350-5
+      display: L glasses PD monoc near by LM
+    - code: 96227-4
+      display: mfERG Pnl
+    - code: 96229-0
+      display: R macula N1 amp--light-adapt mfERG
+    - code: 96228-2
+      display: L macula N1 amp--light-adapt mfERG
+    - code: 96230-8
+      display: R macula N1 impl time--light-adapt mfERG
+    - code: 96231-6
+      display: L macula N1 impl time--light-adapt mfERG
+    - code: 96238-1
+      display: R macula P1 amp--light-adapt mfERG
+    - code: 96239-9
+      display: L macula P1 amp--light-adapt mfERG
+    - code: 96240-7
+      display: R macula P1 impl time--light-adapt mfERG
+    - code: 96241-5
+      display: L macula P1 impl time--light-adapt mfERG
+    - code: 96232-4
+      display: R macula N2 amp--light-adapt mfERG
+    - code: 96233-2
+      display: L macula N2 amp--light-adapt mfERG
+    - code: 96234-0
+      display: R macula N2 impl time--light-adapt mfERG
+    - code: 96235-7
+      display: L macula N2 impl time--light-adapt mfERG
+    - code: 79898-3
+      display: Obj refraction Pnl
+    - code: 79841-3
+      display: Type of Obj refract method
+    - code: 79837-1
+      display: R eye Sphere--W cyclo Obj refraction
+    - code: 79833-0
+      display: R eye Cylinder--W cyclo Obj refraction
+    - code: 79829-8
+      display: R eye Axis--W cyclo Obj refraction
+    - code: 79838-9
+      display: L eye Sphere--W cyclo Obj refraction
+    - code: 79834-8
+      display: L eye Cylinder--W cyclo Obj refraction
+    - code: 79830-6
+      display: L eye Axis--W cyclo Obj refraction
+    - code: 79839-7
+      display: R eye Sphere--WO cyclo Obj refraction
+    - code: 79835-5
+      display: R eye Cylinder--WO cyclo Obj refraction
+    - code: 79831-4
+      display: R eye Axis--WO cyclo Obj refraction
+    - code: 79840-5
+      display: L eye Sphere--WO cyclo Obj refraction
+    - code: 79836-3
+      display: L eye Cylinder--WO cyclo Obj refraction
+    - code: 79832-2
+      display: L eye Axis--WO cyclo Obj refraction
+    - code: 57119-0
+      display: Optical coherence tomography Pnl
+    - code: 57108-3
+      display: Macular grid.CP thickness OCT
+    - code: 57109-1
+      display: Macular grid.CS thickness OCT
+    - code: 57110-9
+      display: Macular grid.ISS thickness OCT
+    - code: 57111-7
+      display: Macular grid.INS thickness OCT
+    - code: 57112-5
+      display: Macular grid.IIS thickness OCT
+    - code: 57113-3
+      display: Macular grid.ITS thickness OCT
+    - code: 57114-1
+      display: Macular grid.OSS thickness OCT
+    - code: 57115-8
+      display: Macular grid.ONS thickness OCT
+    - code: 57116-6
+      display: Macular grid.OIS thickness OCT
+    - code: 57117-4
+      display: Macular grid.OTS thickness OCT
+    - code: 57118-2
+      display: Macular grid.total vol OCT
+    - code: 96246-4
+      display: PERG Pnl
+    - code: 96236-5
+      display: R ret N95 amp--light-adapt PERG
+    - code: 96237-3
+      display: L ret N95 amp--light-adapt PERG
+    - code: 96242-3
+      display: R ret P50 amp--light-adapt PERG
+    - code: 96243-1
+      display: L ret P50 amp--light-adapt PERG
+    - code: 96244-9
+      display: R ret--light-adapt PERG
+    - code: 96245-6
+      display: L ret--light-adapt PERG
+    - code: 79895-9
+      display: Subj refraction Pnl
+    - code: 79854-6
+      display: Type of Subj refract method
+    - code: 79850-4
+      display: R eye Sphere--W cyclo Subj refraction
+    - code: 79846-2
+      display: R eye Cylinder--W cyclo Subj refraction
+    - code: 79842-1
+      display: R eye Axis--W cyclo Subj refraction
+    - code: 79851-2
+      display: L eye Sphere--W cyclo Subj refraction
+    - code: 79847-0
+      display: L eye Cylinder--W cyclo Subj refraction
+    - code: 79843-9
+      display: L eye Axis--W cyclo Subj refraction
+    - code: 79852-0
+      display: R eye Sphere--WO cyclo Subj refraction
+    - code: 79848-8
+      display: R eye Cylinder--WO cyclo Subj refraction
+    - code: 79844-7
+      display: R eye Axis--WO cyclo Subj refraction
+    - code: 79853-8
+      display: L eye Sphere--WO cyclo Subj refraction
+    - code: 79849-6
+      display: L eye Cylinder--WO cyclo Subj refraction
+    - code: 79845-4
+      display: L eye Axis--WO cyclo Subj refraction
+    - code: 79896-7
+      display: Tonometry Pnl
+    - code: 79764-7
+      display: Type of Tonometer
+    - code: 79892-6
+      display: R eye IOP Tono
+    - code: 79893-4
+      display: L eye IOP Tono
+    - code: 98497-1
+      display: Visual acuity Pnl
+    - code: 98498-9
+      display: L eye VA--uncorr
+    - code: 98499-7
+      display: R eye VA--uncorr
+    - code: 98500-2
+      display: Eye VA.binoc--uncorr
+    - code: 98501-0
+      display: L eye Near VA--uncorr
+    - code: 98502-8
+      display: R eye Near VA--uncorr
+    - code: 98503-6
+      display: Eye Near VA.binoc--uncorr
+    - code: 98504-4
+      display: L eye Far VA--uncorr
+    - code: 98505-1
+      display: R eye Far VA--uncorr
+    - code: 98506-9
+      display: Eye Far VA.binoc--uncorr
+    - code: 65893-0
+      display: R eye VA--corr
+    - code: 65897-1
+      display: L eye VA--corr
+    - code: 98507-7
+      display: Eye VA.binoc--corr
+    - code: 98508-5
+      display: L eye Near VA--corr
+    - code: 98509-3
+      display: R eye Near VA--corr
+    - code: 98510-1
+      display: Eye Near VA.binoc--corr
+    - code: 98511-9
+      display: L eye Far VA--corr
+    - code: 98512-7
+      display: R eye Far VA--corr
+    - code: 98513-5
+      display: Eye Far VA.binoc--corr
+    - code: 79908-0
+      display: Type of Visual acuity exam method
+    - code: 89015-2
+      display: Pure tone thresh Pnl
+    - code: 91375-6
+      display: Hearing threshold 250 Hz Ear-L
+    - code: 89024-4
+      display: Hearing threshold 500 Hz Ear-L
+    - code: 91379-8
+      display: Hearing threshold 750 Hz Ear-L
+    - code: 89016-0
+      display: Hearing threshold 1000 Hz Ear-L
+    - code: 91373-1
+      display: Hearing threshold 1500 Hz Ear-L
+    - code: 89018-6
+      display: Hearing threshold 2000 Hz Ear-L
+    - code: 89020-2
+      display: Hearing threshold 3000 Hz Ear-L
+    - code: 89022-8
+      display: Hearing threshold 4000 Hz Ear-L
+    - code: 91377-2
+      display: Hearing threshold 5000 Hz Ear-L
+    - code: 89026-9
+      display: Hearing threshold 6000 Hz Ear-L
+    - code: 89028-5
+      display: Hearing threshold 8000 Hz Ear-L
+    - code: 91374-9
+      display: Hearing threshold 250 Hz Ear-R
+    - code: 89025-1
+      display: Hearing threshold 500 Hz Ear-R
+    - code: 91378-0
+      display: Hearing threshold 750 Hz Ear-R
+    - code: 89017-8
+      display: Hearing threshold 1000 Hz Ear-R
+    - code: 91372-3
+      display: Hearing threshold 1500 Hz Ear-R
+    - code: 89019-4
+      display: Hearing threshold 2000 Hz Ear-R
+    - code: 89021-0
+      display: Hearing threshold 3000 Hz Ear-R
+    - code: 89023-6
+      display: Hearing threshold 4000 Hz Ear-R
+    - code: 91376-4
+      display: Hearing threshold 5000 Hz Ear-R
+    - code: 89027-7
+      display: Hearing threshold 6000 Hz Ear-R
+    - code: 89029-3
+      display: Hearing threshold 8000 Hz Ear-R
+    - code: 81459-0
+      display: Spiro pnl
+    - code: 90568-7
+      display: Polysomnography Pnl
+    - code: 90565-3
+      display: Resp effort-related arousal index nRate
+    - code: 90557-0
+      display: Num resp effort-related arousal
+    - code: 90563-8
+      display: Obstr apnea hypopnea index nRate
+    - code: 90559-6
+      display: Num apnea+hypopnea
+    - code: 90560-4
+      display: Num obstructive apnea
+    - code: 90552-1
+      display: Num mixed apnea
+    - code: 90553-9
+      display: Num central apnea
+    - code: 90561-2
+      display: Hypopnea index nRate
+    - code: 90555-4
+      display: Num hypopnea
+    - code: 90556-2
+      display: Num obstructive hypopnea
+    - code: 90564-6
+      display: Central apnea hypopnea index nRate
+    - code: 90558-8
+      display: Num central hypopnea
+    - code: 90562-0
+      display: Apnea index nRate
+    - code: 90566-1
+      display: Resp disturbance index nRate
+    - code: 90554-7
+      display: Num O2 desaturation
+    - code: 90567-9
+      display: O2 desaturation index nRate
+    - code: 81458-2
+      display: PFT pnl
+    - code: 81440-0
+      display: VC pre BD Vol Respiratory
+    - code: 81441-8
+      display: VC p BD Vol Respiratory
+    - code: 81456-6
+      display: FRC pre BD
+    - code: 81457-4
+      display: FRC p BD
+    - code: 81452-5
+      display: Residual vol pre BD
+    - code: 81453-3
+      display: Residual vol p BD
+    - code: 81450-9
+      display: TLC pre BD
+    - code: 81451-7
+      display: TLC p BD
+    - code: 81454-1
+      display: Residual vol/Total capacity pre BD
+    - code: 81455-8
+      display: Residual vol/Total capacity p BD
+    - code: 81448-3
+      display: Insp gas flow.max pre BD Airway
+    - code: 81449-1
+      display: Insp gas flow.max p BD Airway
+    - code: 81446-7
+      display: Max exp press pre BD Respiratory
+    - code: 81447-5
+      display: Max exp press p BD Respiratory
+    - code: 81444-2
+      display: Max insp press pre BD Respiratory
+    - code: 81445-9
+      display: Max insp press p BD Respiratory
+    - code: 81443-4
+      display: Airway resist pre BD
+    - code: 81442-6
+      display: Airway resist p BD
+    - code: 80525-9
+      display: Uroflowmetry Pnl GU Uroflow
+    - code: 80519-2
+      display: Urine flow.max GU Uroflow
+    - code: 80526-7
+      display: Time to max urine flow GU Uroflow
+    - code: 80523-4
+      display: Fluid output urine Uroflow
+    - code: 80520-0
+      display: Flow time Ur Uroflow
+    - code: 80524-2
+      display: Voiding time Ur Uroflow
+    - code: 80522-6
+      display: Urineflow.mean GU Uroflow
+    - code: 9197-5
+      display: Fluid output urine p vdg
+    - code: 80521-8
+      display: Uroflow study

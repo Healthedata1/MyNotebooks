@@ -1,0 +1,283 @@
+{
+  "resourceType": "CapabilityStatement",
+  "id": "backport-subscription-server",
+  "url": "http://hl7.org/fhir/uv/subscriptions-backport/CapabilityStatement/CapabilitySubscriptionServer",
+  "rest": [
+    {
+      "resource": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+              "valueCode": "SHALL"
+            }
+          ],
+          "interaction": [
+            {
+              "code": "read",
+              "_code": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                    "valueCode": "SHALL"
+                  }
+                ]
+              }
+            },
+            {
+              "code": "create",
+              "_code": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                    "valueCode": "MAY"
+                  }
+                ]
+              }
+            },
+            {
+              "code": "update",
+              "_code": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                    "valueCode": "MAY"
+                  }
+                ]
+              }
+            },
+            {
+              "code": "delete",
+              "_code": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                    "valueCode": "MAY"
+                  }
+                ]
+              }
+            }
+          ],
+          "searchParam": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHALL"
+                }
+              ],
+              "name": "url",
+              "definition": "http://hl7.org/fhir/SearchParameter/url",
+              "type": "uri"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHALL"
+                }
+              ],
+              "name": "derived-or-self",
+              "definition": "http://hl7.org/fhir/SearchParameter/derived-or-self",
+              "type": "uri"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHOULD"
+                }
+              ],
+              "name": "resource",
+              "definition": "http://hl7.org/fhir/SearchParameter/resource",
+              "type": "uri"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHOULD"
+                }
+              ],
+              "name": "title",
+              "definition": "http://hl7.org/fhir/SearchParameter/title",
+              "type": "string"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHOULD"
+                }
+              ],
+              "name": "trigger-description",
+              "definition": "http://hl7.org/fhir/SearchParameter/trigger-description",
+              "type": "string"
+            }
+          ],
+          "type": "SubscriptionTopic",
+          "documentation": "Test documentation..what happens with it?"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+              "valueCode": "SHALL"
+            }
+          ],
+          "interaction": [
+            {
+              "code": "read",
+              "_code": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                    "valueCode": "SHALL"
+                  }
+                ]
+              }
+            },
+            {
+              "code": "create",
+              "_code": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                    "valueCode": "SHOULD"
+                  }
+                ]
+              }
+            },
+            {
+              "code": "update",
+              "_code": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                    "valueCode": "SHOULD"
+                  }
+                ]
+              }
+            },
+            {
+              "code": "delete",
+              "_code": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                    "valueCode": "SHOULD"
+                  }
+                ]
+              }
+            }
+          ],
+          "searchParam": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHOULD"
+                }
+              ],
+              "name": "url",
+              "definition": "http://hl7.org/fhir/SearchParameter/url",
+              "type": "uri"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHOULD"
+                }
+              ],
+              "name": "status",
+              "definition": "http://hl7.org/fhir/SearchParameter/status",
+              "type": "token"
+            }
+          ],
+          "operation": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHALL"
+                }
+              ],
+              "name": "$status",
+              "definition": "http://hl7.org/fhir/uv/subscriptions-backport/OperationDefinition/OperationBackportSubscriptionStatus"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "MAY"
+                }
+              ],
+              "name": "$events",
+              "definition": "http://hl7.org/fhir/uv/subscriptions-backport/OperationDefinition/OperationBackportSubscriptionEvents"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "MAY"
+                }
+              ],
+              "name": "$get-ws-binding-token",
+              "definition": "http://hl7.org/fhir/uv/subscriptions-backport/OperationDefinition/OperationBackportSubscriptionGetWsBindingToken"
+            }
+          ],
+          "type": "Subscription",
+          "supportedProfile": [
+            "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription"
+          ],
+          "_supportedProfile": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHALL"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "mode": "server"
+    }
+  ],
+  "name": "BackportSubscriptionCapabilityStatement",
+  "description": "CapabilityStatement describing the minimal required capabilities of a FHIR Server supporting backported R5 Subscriptions.",
+  "implementationGuide": [
+    "http://hl7.org/fhir/uv/subscriptions-backport/ImplementationGuide/hl7.fhir.uv.subscriptions-backport"
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "001",
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm"
+        }
+      ]
+    }
+  ],
+  "status": "active",
+  "date": "2020-11-30",
+  "publisher": "HL7 International - FHIR Infrastructure Work Group",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://hl7.org/Special/committees/fiwg/index.cfm"
+        }
+      ]
+    }
+  ],
+  "kind": "requirements",
+  "fhirVersion": "4.1.0",
+  "format": [
+    "xml",
+    "json"
+  ]
+}
