@@ -1,12 +1,6 @@
 {% include quickstart-intro.md %}
 
-- The syntax used to describe the interactions is described [here](general-guidance.html#search-syntax).
-- See the [General Guidance] section for additional rules and expectations when a server requires status parameters.
-- See the [General Guidance] section for additional guidance on searching for multiple patients.
 
-#### Mandatory Search Parameters:
-
-The following search parameters and search parameter combinations SHALL be supported:
 
 1. **SHALL** support fetching a Patient using the **[`_id`](SearchParameter-us-core-patient-id.html)** search parameter:
 

@@ -1,6 +1,6 @@
 
 FSHOnly: true
 fhirVersion: 4.0.1
-canonical: "http://hl7.org/fhir/us/fhir-mCODE-ig"
+canonical: "http://hl7.org/fhir/us/fhir-registry-protocols-ig"
 name: Temp
 status: draft
