@@ -29,6 +29,7 @@
 .panel th, td {
     font-weight: bold;
     text-align: left;
+    font-size: 1.2em;
     }
 
  .panel a {
@@ -44,12 +45,14 @@
 
 </style>
 
+<div>
 <div class="icon-right">
-    <img src="USCDI.png" class="media-object" alt="USCDI Logo">
- </div>
-<h3>
-US Core Data for Interoperability USCD V3
-</h3>
+<img src="USCDI.png" alt="USCDI Logo" class="pull-right img-responsive" style="width: 60%;">
+</div>
+<p style="font-size: 300%; font-weight: bold;" class="text-center">US Core Data for Interoperability USCD V3</p>
+</div>
+
+
 
 {% for df in dfs %}
 {% for j,row in df.iterrows() %}
