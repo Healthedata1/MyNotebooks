@@ -1,0 +1,206 @@
+{
+  "resourceType": "CapabilityStatement",
+  "id": "receiver-server",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <h3 class=\"no_toc\" id=\"shall_igs\">SHALL Support the Following Implementation Guides:</h3> <ul> <li><a href=\"https://hl7.org/fhir/us/qicore/STU4.1.1/index.html\">QI Core</a></li> </ul> <ul> <li><a href=\"http://hl7.org/fhir/us/cqfmeasures/STU3/index.html\">CFQM</a></li> </ul> <h3 id=\"behavior\">FHIR RESTful Capabilities</h3> <p>Da Vinci DEQM Producer Server <strong>SHALL</strong></p> <ol> <li> <p>Support the following transactions defined in the <em>Framework</em> Section of this Implementation Guide:</p> <ul> <li>Individual Reporting</li> <li>Summary Reporting</li> </ul> </li> <li> <p>Declare a CapabilityStatement identifying the list of supported profiles and operations.</p> </li> <li> <p>Implement the FHIR RESTful API for operations including returning the appropriate response classes as described in the FHIR specification for <a href=\"http://hl7.org/fhir/R4/operations.html\">Extended Operations on the RESTful API </a>.</p> </li> <li> <p>Support both xml and json resource formats for all interactions.</p> </li> </ol> <p id=\"security\"><strong>Security:</strong></p> <p>For general security consideration refer to the <a href=\"http://build.fhir.org/secpriv-module.html\">Security and Privacy Considerations</a>.</p> <p><strong>Summary of System Wide Interactions</strong></p> <ul> <li><strong>SHOULD</strong> support the <code>transaction</code> interaction.</li> <li><strong>MAY</strong> support the <code>batch</code> interaction.</li> <li><strong>MAY</strong> support the <code>search-system</code> interaction.</li> <li><strong>MAY</strong> support the <code>history-system</code> interaction.</li> </ul> <h3 class=\"no_toc\" id=\"resource-details\">RESTful Capabilities by Resource/Profile:</h3> <h4>Summary</h4> <table class=\"grid\"> <thead> <tr> <th>Resource Type</th> <th>Supported Profiles</th> <th>Supported Searches</th> <th>Supported <code>_includes</code></th> <th>Supported <code>_revincludes</code></th> <th>Supported Operations</th> </tr> </thead> <tbody> <tr> <td> <a href=\"#measurereport\">MeasureReport</a> </td> <td> <a href=\"StructureDefinition-summary-measurereport-deqm.html\">DEQM Summary MeasureReport Profile</a>, <a href=\"StructureDefinition-indv-measurereport-deqm.html\">DEQM Individual MeasureReport Profile</a> </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> </tbody> </table> <h4 class=\"no_toc\" id=\"measurereport\">MeasureReport</h4> <p>Conformance Expectation: <strong>SHALL</strong></p> <p>Resource Specific Documentation:</p> <blockquote><p>The DaVinci DEQM Receiver Server <strong>SHALL</strong> be capable of supporting the DEQM Summary MeasureReport Profile and DEQM Individual MeasureReport Profile and all the DEQM and QI Core Profiles they reference.</p> </blockquote> <p>Supported Profiles:</p> <ul> <li><strong>SHALL</strong> support: <a href=\"StructureDefinition-summary-measurereport-deqm.html\">DEQM Summary MeasureReport Profile</a>, </li> <li><strong>SHALL</strong> support: <a href=\"StructureDefinition-indv-measurereport-deqm.html\">DEQM Individual MeasureReport Profile</a> </li> </ul> <p>Profile Interaction Summary:</p> <ul> <li><strong>SHALL</strong> support <code>create</code>, <code>update</code>.</li><li><strong>SHOULD</strong> support <code>delete</code>.</li> </ul> <p>Fetch and Search Criteria:</p> <ul> </ul> <hr /> </div>"
+  },
+  "url": "http://hl7.org/fhir/us/davinci-deqm/CapabilityStatement/receiver-server",
+  "version": "3.1.0",
+  "name": "ReceiverServerCapabilityStatement",
+  "title": "Receiver Server CapabilityStatement",
+  "status": "active",
+  "experimental": false,
+  "date": "2022-10-28T00:13:07.665109-08:00",
+  "publisher": "HL7 International - Clinical Quality Information Work Group",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/cqi/index.cfm"
+        }
+      ]
+    }
+  ],
+  "description": "This profile defines the expected capabilities of a Da Vinci DEQM Receiver Server when conforming to the Da Vinci DEQM Implementation Guide. Receivers include systems that are primary receivers of Measure data such as payers as well as public health and other healthcare-related agencies.  This CapabilityStatement resource includes the complete list of the *recommended*  Da Vinci DEQM profiles and RESTful operations that a Da Vinci DEQM Receiver Server could support. Servers have the option of choosing from this list based on their local use cases and other contextual requirements.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US"
+        }
+      ]
+    }
+  ],
+  "kind": "requirements",
+  "fhirVersion": "4.0.1",
+  "format": [
+    "json",
+    "xml"
+  ],
+  "_format": [
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+          "valueCode": "SHALL"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+          "valueCode": "SHALL"
+        }
+      ]
+    }
+  ],
+  "patchFormat": [
+    "application/json-patch+json"
+  ],
+  "_patchFormat": [
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+          "valueCode": "MAY"
+        }
+      ]
+    }
+  ],
+  "implementationGuide": [
+    "http://hl7.org/fhir/us/qicore/ImplementationGuide/hl7.fhir.us.qicore|4.1.1",
+    "http://hl7.org/fhir/us/cqfmeasures/ImplementationGuide/hl7.fhir.us.cqfmeasures|3.0.0"
+  ],
+  "_implementationGuide": [
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+          "valueCode": "SHALL"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+          "valueCode": "SHALL"
+        }
+      ]
+    }
+  ],
+  "rest": [
+    {
+      "mode": "server",
+      "documentation": "Da Vinci DEQM Producer Server **SHALL**\n\n1. Support the following  transactions defined in the *Framework* Section of  this  Implementation Guide:\n\n   - Individual Reporting\n   - Summary Reporting\n1. Declare a CapabilityStatement identifying the list of supported profiles and operations.\n1. Implement the FHIR RESTful API for operations including returning the appropriate response classes as described in the FHIR specification for [Extended Operations on the RESTful API ](http://hl7.org/fhir/R4/operations.html).\n1. Support both xml and json resource formats for all interactions.\n",
+      "security": {
+        "description": "For general security consideration refer to the [Security and Privacy Considerations](http://build.fhir.org/secpriv-module.html)."
+      },
+      "resource": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+              "valueCode": "SHALL"
+            }
+          ],
+          "type": "MeasureReport",
+          "supportedProfile": [
+            "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/summary-measurereport-deqm",
+            "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"
+          ],
+          "_supportedProfile": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHALL"
+                }
+              ]
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHALL"
+                }
+              ]
+            }
+          ],
+          "documentation": "The DaVinci DEQM Receiver Server **SHALL** be capable of supporting the DEQM Summary MeasureReport Profile and  DEQM Individual MeasureReport Profile and all the DEQM and QI Core Profiles they reference.",
+          "interaction": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHALL"
+                }
+              ],
+              "code": "create"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHALL"
+                }
+              ],
+              "code": "update"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode": "SHOULD"
+                }
+              ],
+              "code": "delete"
+            }
+          ]
+        }
+      ],
+      "interaction": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+              "valueCode": "SHOULD"
+            }
+          ],
+          "code": "transaction"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+              "valueCode": "MAY"
+            }
+          ],
+          "code": "batch"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+              "valueCode": "MAY"
+            }
+          ],
+          "code": "search-system"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+              "valueCode": "MAY"
+            }
+          ],
+          "code": "history-system"
+        }
+      ]
+    }
+  ]
+}
