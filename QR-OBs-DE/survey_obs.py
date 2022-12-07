@@ -13,20 +13,11 @@ survey_obs = {
             }
         ],
         "profile": [
-            "http://www.fhir.org/guides/healthedata1-sandbox/StructureDefinition/us-core-observation-sdoh-assessment"
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment"
         ]
     },
     "status": "final",
     "category": [
-        {
-            "coding": [
-                {
-                    "system": "http://loinc.org",
-                    "code": "LG41762-2",
-                    "display": "SocialDeterminantsOfHealth"
-                }
-            ]
-        },
         {
             "coding": [
                 {

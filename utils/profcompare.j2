@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Comparison of {{LEFT}} with this {{RIGHT}}</title>
+ <link rel="stylesheet" href="fhir.css"/>
+</head>
+<body>
+
+<title>Comparison of {{LEFT}} with {{RIGHT}}</title>
+
+<ul>
+<table class="grid">
+
+ <tr>
+  <th width="260"><b>{{LEFT}}</b></td>
+  <th width="260"><b>{{RIGHT}}</b></td>
+  <th width="100"><b>Difference</b></td>
+  <td width="260"><b>Notes</b></td>
+ </tr>
+ <tr><td colspan="4"><b>Profiles and Extensions</b></td></tr>
+{% for r in profcomp %}
+  
+  {% set lfilename= r[1] %}
+  {% set rfilename= r[2] %}
+  {% set rfilename2= r[3] %}
+  {% set left=lfilename.split('/')[-1] | title %}
+
+  {% if lfilename and rfilename %}
+  {% set right=rfilename.split('/')[-1] | title | replace ("Us", "US") %}
+  {% set link = "sd-"+lfilename.split('/')[-1]+"-"+rfilename.split('/')[-1]+".html"%}
+  <tr style="background-color: #f0b3ff">
+    <td>{{left}}</td>
+    <td>{{right}}</td>
+    <td>{% if link in sd_complist %}<a href={{link}}>comparison</a>{% else %}No comparison available{% endif %}</td>
+    <td>{{r.notes}}</td>
+
+  {% elif rfilename2 %}
+  {% set right=rfilename2.split('/')[-1] | title | replace ("Us", "US") %}
+  {% set link = "sd-"+lfilename.split('/')[-1]+"-"+rfilename2.split('/')[-1]+".html"%}
+  <tr style="background-color: #f0b3ff">
+    <td>{{left}}</td>
+    <td>{{right}}</td>
+    <td>{% if link in sd_complist %}<a href={{link}}>comparison</a>{% else %}No comparison available{% endif %}</td>
+    <td>{{r.notes}}</td>
+
+  {% elif rfilename and not lfilename %}
+    <tr style="background-color: #ffecb3">
+    <td>{{left}}</td>
+    <td>{{right}}</td>
+    <td>No {{LEFT}} profile</td>
+    <td>{{r.notes}}</td>
+
+  {% elif lfilename and not rfilename %}
+    <tr style="background-color: #ffffb3">
+    <td>{{left}}</td>
+    <td>{{right}}</td>
+    <td>No {{RIGHT}} profile</td>
+    <td>{{r.notes}}</td>
+  {% endif %}
+{% endfor %}
+  </tr>
+</table>
+
+<table class="grid">
+</ul>
+<hr/>
+<ul
+ <tr>
+  <th width="260"><b>{{LEFT}}</b></td>
+  <th width="260"><b>{{RIGHT}}</b></td>
+  <th width="100"><b>Difference</b></td>
+  <td width="260"><b>Notes</b></td>
+ </tr>
+ <tr><td colspan="4"><b>ValueSets</b></td></tr>
+{% for k,v in vs_dict.items() %}  
+  {% set left=v.split(' vs ')[-0] | title %}
+  {% set right=v.split(' vs ')[-1] | title %}
+  <tr style="background-color: #f0b3ff">
+    <td>{{left}}</td>
+    <td>{{right}}</td>
+    <td><a href={{k}}>comparison</a></td>
+    <td></td>
+{% endfor %}
+</ul>
+
+
+</body>
+</html>
+
+<ul>
+</ul>

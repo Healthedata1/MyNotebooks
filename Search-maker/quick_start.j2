@@ -97,7 +97,7 @@ The following search parameters and search parameter combinations SHALL be suppo
 1. {% if i.is_new %}{% raw %}{:.new-content}{% endraw %}{% endif %}**SHALL** {% if i.description not in nulls %}{{i.description}}{% else %}support searching{% endif %} using the **[`{{i.code}}`]({{rels[i.code]}})** search parameter:
 {{get_conf_mods(i.code)}}
 
-{% if i.code == '_id'%}    `GET [base]/{{i.base}}[id]` or `GET [base]/{{i.base}}?_id=[id]`{% else %}    `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}{{get_andors(i.code)}}`{% endif %}
+{% if i.code == '_id'%}    `GET [base]/{{i.base}}/[id]` or `GET [base]/{{i.base}}?_id=[id]`{% else %}    `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}{{get_andors(i.code)}}`{% endif %}
 {% if i.example not in nulls %}
     Example:
     {% for j in i.example.split('~') %}
@@ -129,7 +129,7 @@ The following search parameter combinations SHOULD be supported:
 1. {% if i.is_new %}{% raw %}{:.new-content}{% endraw %}{% endif %}**SHOULD** support searching using the **[`{{i.code}}`]({{rels[i.code]}})** search parameter:
 {{get_conf_mods(i.code)}}
 
-{% if i.code == '_id'%}    `GET [base]/{{i.base}}[id]` or `GET [base]/{{i.base}}?_id=[id]`{% else %}     `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}{{get_andors(i.code)}}`{% endif %}
+{% if i.code == '_id'%}    `GET [base]/{{i.base}}/[id]` or `GET [base]/{{i.base}}?_id=[id]`{% else %}     `GET [base]/{{i.base}}?{{i.code}}{{get_mods(i.code)}}={{get_comps(i.code)}}{{search_type[i.type]}}{{get_andors(i.code)}}`{% endif %}
 {%if i.example not in nulls %}
     Example:
     {% for j in i.example.split('~') %}

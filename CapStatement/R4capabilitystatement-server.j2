@@ -278,8 +278,14 @@
     </ul>
     {% endif %}
 
-    {% if r.referencePolicy %}<p>Reference Policy: {% for rf in r.referencePolicy %}<code>{{rf}}</code>
-    {%- if not loop.last %}, {% endif %}{%- endfor %}</p>{% endif %}
+    {% if r.referencePolicy %}<p>Reference Policy</p>
+        <ul>
+        {% for rf in r.referencePolicy %}
+        <li><strong>{{r.referencePolicy__ext[loop.index0].extension[0].valueCode | default('MAY')}}</strong> support <a href="http://hl7.org/fhir/valueset-reference-handling-policy.html#expansion">{{rf}}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
     {% if r.versioning %}<p>Versioning Policy: <code>{{r.versioning}}</code></p>{% endif %}
     {% if r.readHistory %}<p>Server returns past versions as part of the vRead operation.</p>{% endif %}
     {% if r.updateCreate %}<p>Server allows the client to create new identities on the server</p>{% endif %}

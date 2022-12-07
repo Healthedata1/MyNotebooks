@@ -1,0 +1,33 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "e2be1502-faf9-42b5-bc9f-f335cc900d7e-6",
+  "url" : "http://hl7.org/fhir/comparison/ValueSet/e2be1502-faf9-42b5-bc9f-f335cc900d7e-6",
+  "name" : "IntersectionNarrative StatusAndNarrativeStatus",
+  "title" : "Intersection of null And US Core Narrative Status",
+  "status" : "draft",
+  "date" : "2022-12-06T16:47:04-08:00",
+  "compose" : {
+    "include" : [{
+      "concept" : [{
+        "code" : "additional",
+        "display" : "additional"
+      },
+      {
+        "code" : "generated",
+        "display" : "generated"
+      }]
+    }]
+  },
+  "expansion" : {
+    "contains" : [{
+      "system" : "http://hl7.org/fhir/narrative-status",
+      "code" : "additional",
+      "display" : "additional"
+    },
+    {
+      "system" : "http://hl7.org/fhir/narrative-status",
+      "code" : "generated",
+      "display" : "generated"
+    }]
+  }
+}
