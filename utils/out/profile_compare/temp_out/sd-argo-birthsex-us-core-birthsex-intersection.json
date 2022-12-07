@@ -1,11 +1,11 @@
 {
   "resourceType" : "StructureDefinition",
-  "id" : "e74ec816-fc98-4aa6-b241-865cffeff203-3",
-  "url" : "http://hl7.org/fhir/comparison/StructureDefinition/e74ec816-fc98-4aa6-b241-865cffeff203-3",
+  "id" : "d4b9a50f-35e4-4f2d-a25c-5aa56c2654c4-3",
+  "url" : "http://hl7.org/fhir/comparison/StructureDefinition/d4b9a50f-35e4-4f2d-a25c-5aa56c2654c4-3",
   "name" : "IntersectionSex of patient assigned at birthAndUSCoreBirthSexExtension",
   "title" : "Intersection of Sex of patient assigned at birth And US Core Birth Sex Extension",
   "status" : "draft",
-  "date" : "2022-12-06T16:46:36-08:00",
+  "date" : "2022-12-06T20:52:48-08:00",
   "snapshot" : {
     "element" : [{
       "path" : "Extension",

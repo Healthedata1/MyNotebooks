@@ -1,11 +1,11 @@
 {
   "resourceType" : "StructureDefinition",
-  "id" : "61017904-902d-4ce7-b8c9-22bc07bd3590-2",
-  "url" : "http://hl7.org/fhir/comparison/StructureDefinition/61017904-902d-4ce7-b8c9-22bc07bd3590-2",
+  "id" : "466632af-ee7e-4017-a6ae-a065d23efdaf-2",
+  "url" : "http://hl7.org/fhir/comparison/StructureDefinition/466632af-ee7e-4017-a6ae-a065d23efdaf-2",
   "name" : "UnionArgonaut AllergyIntolerance ProfileAndUSCoreAllergyIntolerance",
   "title" : "Union of null And US Core AllergyIntolerance Profile",
   "status" : "draft",
-  "date" : "2022-12-06T16:46:06-08:00",
+  "date" : "2022-12-06T20:52:19-08:00",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
