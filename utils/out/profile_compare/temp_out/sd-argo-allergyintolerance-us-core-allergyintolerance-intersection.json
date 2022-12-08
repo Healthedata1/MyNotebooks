@@ -1,11 +1,11 @@
 {
   "resourceType" : "StructureDefinition",
-  "id" : "466632af-ee7e-4017-a6ae-a065d23efdaf-3",
-  "url" : "http://hl7.org/fhir/comparison/StructureDefinition/466632af-ee7e-4017-a6ae-a065d23efdaf-3",
+  "id" : "22d2640d-b286-4895-8f46-da6969c7d7b8-3",
+  "url" : "http://hl7.org/fhir/comparison/StructureDefinition/22d2640d-b286-4895-8f46-da6969c7d7b8-3",
   "name" : "IntersectionArgonaut AllergyIntolerance ProfileAndUSCoreAllergyIntolerance",
   "title" : "Intersection of null And US Core AllergyIntolerance Profile",
   "status" : "draft",
-  "date" : "2022-12-06T20:52:19-08:00",
+  "date" : "2022-12-07T16:35:30-08:00",
   "snapshot" : {
     "element" : [{
       "path" : "AllergyIntolerance",

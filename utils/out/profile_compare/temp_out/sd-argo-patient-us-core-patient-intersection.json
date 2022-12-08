@@ -1,11 +1,11 @@
 {
   "resourceType" : "StructureDefinition",
-  "id" : "e209e0e5-e8d9-4ea9-867f-8a8d916803f3-9",
-  "url" : "http://hl7.org/fhir/comparison/StructureDefinition/e209e0e5-e8d9-4ea9-867f-8a8d916803f3-9",
+  "id" : "4cc2d972-3edf-4604-bb4e-e0d85635f4ed-9",
+  "url" : "http://hl7.org/fhir/comparison/StructureDefinition/4cc2d972-3edf-4604-bb4e-e0d85635f4ed-9",
   "name" : "IntersectionArgonaut Patient ProfileAndUSCorePatientProfile",
   "title" : "Intersection of null And US Core Patient Profile",
   "status" : "draft",
-  "date" : "2022-12-06T20:53:16-08:00",
+  "date" : "2022-12-07T16:45:52-08:00",
   "snapshot" : {
     "element" : [{
       "path" : "Patient",
@@ -2096,7 +2096,7 @@
       "isSummary" : false,
       "binding" : {
         "strength" : "required",
-        "valueSet" : "http://hl7.org/fhir/comparison/ValueSet/e209e0e5-e8d9-4ea9-867f-8a8d916803f3-12"
+        "valueSet" : "http://hl7.org/fhir/comparison/ValueSet/4cc2d972-3edf-4604-bb4e-e0d85635f4ed-12"
       },
       "mapping" : [{
         "identity" : "cda",
