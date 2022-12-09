@@ -25,23 +25,23 @@
   {% set rfilename= r[2] %}
   {% set rfilename2= r[3] %}
   {% set left=lfilename.split('/')[-1] | title %}
-
-  {% if lfilename and rfilename %}
   {% set right=rfilename.split('/')[-1] | title | replace ("Us", "US") %}
   {% set link = "sd-"+lfilename.split('/')[-1]+"-"+rfilename.split('/')[-1]+".html"%}
+  {% set right2=rfilename2.split('/')[-1] | title | replace ("Us", "US") %}
+  {% set link2 = "sd-"+lfilename.split('/')[-1]+"-"+rfilename2.split('/')[-1]+".html"%}
+
+  {% if lfilename and rfilename %}
   <tr style="background-color: #f0b3ff">
     <td>{{left}}</td>
     <td>{{right}}</td>
     <td>{% if link in sd_complist %}<a href={{link}}>comparison</a>{% else %}No comparison available{% endif %}</td>
     <td>{{r.notes}}</td>
 
-  {% elif rfilename2 %}
-  {% set right=rfilename2.split('/')[-1] | title | replace ("Us", "US") %}
-  {% set link = "sd-"+lfilename.split('/')[-1]+"-"+rfilename2.split('/')[-1]+".html"%}
+  {% elif lfilename and rfilename2 %}
   <tr style="background-color: #f0b3ff">
     <td>{{left}}</td>
-    <td>{{right}}</td>
-    <td>{% if link in sd_complist %}<a href={{link}}>comparison</a>{% else %}No comparison available{% endif %}</td>
+    <td>{{right2}}</td>
+    <td>{% if link2 in sd_complist %}<a href={{link2}}>comparison</a>{% else %}No comparison available{% endif %}</td>
     <td>{{r.notes}}</td>
 
   {% elif rfilename and not lfilename %}

@@ -4,8 +4,8 @@
   "tool-version" : "5.0.0-ballot",
   "tool-build" : "3",
   "webUrl" : "http://hl7.org/fhir/us/core",
-  "date" : "2022-12-05",
-  "date-time" : "20221205043248+0000",
+  "date" : "2022-12-08",
+  "date-time" : "20221208021823+0000",
   "paths" : {
     "http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core|6.0.0-ballot" : "6.0.0-ballot/ImplementationGuide-hl7.fhir.us.core.html",
     "http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core" : "ImplementationGuide-hl7.fhir.us.core.html",
