@@ -84,7 +84,7 @@
 
 {%- raw %}{% include quickstart-intro.md %}{% endraw %}
 
-{% if shall %}
+{% if shalls %}
 #### Mandatory Search Parameters:
 
 The following search parameters and search parameter combinations SHALL be supported:
@@ -123,7 +123,7 @@ The following search parameters and search parameter combinations SHALL be suppo
 {% if shoulds %}
 #### Optional Search Parameters:
 
-The following search parameter combinations SHOULD be supported:
+The following search parameter combinations **SHOULD** be supported:
 {%- endif %}
 {% for i in sp  if i.display and i.base_conf == "SHOULD" %}
 1. {% if i.is_new %}{% raw %}{:.new-content}{% endraw %}{% endif %}**SHOULD** support searching using the **[`{{i.code}}`]({{rels[i.code]}})** search parameter:
@@ -154,6 +154,10 @@ The following search parameter combinations SHOULD be supported:
 
 {% if r_type == "DocumentReference" %}
   {% raw %}{% include write-and-docref.md %}{% endraw %}
+{% endif %}
+
+{% if r_type == "Specimen" %}
+  {% raw %}{%include specimen-include-note.md %}{% endraw %}
 {% endif %}
 
 {% raw %}{% include link-list.md %}{% endraw %}
