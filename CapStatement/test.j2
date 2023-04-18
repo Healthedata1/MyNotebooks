@@ -1,0 +1,71 @@
+    <h3 class="no_toc" id="resource-details">RESTful Capabilities by Resource/Profile:</h3>
+
+    <h4>Summary of RESTful interactions</h4>
+    <table class="grid">
+    <thead>
+    <tr>
+    <th>Resource Type</th>
+    <th>Supported Profiles</th>
+    <th>Supported Searches</th>
+    <th>Supported <code>_includes</code></th>
+            <th>Supported <code>_revincludes</code></th>
+    <th>Supported Operations</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+    </table>
+
+
+<!-- new table here --->
+
+
+{% for v in my_records %}
+{{ v['US Core Profile'] }}
+
+
+{% endfor %}
+
+------
+
+------
+
+
+
+<h4>Summary of Must Support References Between Profiles</h4>
+<ul>
+<li>US Core Profile: The profile referencing another profile or resource (Target Profile).</li>
+<li>Resource Type, The resource type of the source profile.</li>
+<li>Target Profile: The profile or resource that is being referenced by another profile (US Core Profile).</li>
+<li>Target Resource Type, The resource type of the target profile.</li>
+</ul>
+
+    <table class="grid">
+    <thead>
+    <tr>
+    <th>US Core Profile</th>
+    <th>Resource Type</th>
+    <th>Target Profile</th>
+    <th>Target Resource Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for v in references_summary["US Core Profile"] %}
+        {% set i = loop.index0 %}
+        <tr>
+          {% for r in references_summary %}
+            <td>
+            {{references_summary[r][i] | safe }}
+            </td>          
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+
+{# {{ my_df.to_html() | safe }} #}
+
+<!-- end new table here --->
+
