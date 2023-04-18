@@ -35,7 +35,7 @@ def get_my_dict():
     count = 0
     cant_match_path = []
 
-    for enum,i in enumerate(my_path.glob('Struct*.json')):
+    for enum,i in enumerate(sorted(my_path.glob('Struct*.json'))):
         my_urls = set()
 
         obj = y_load(i.read_text(),Loader=FullLoader) #dict
@@ -189,9 +189,15 @@ def get_references_summary():
                 p_links.append(f'<a href="{t}">{title_map[t]}</a>')
                 r_links.append(f'<a href="#{type_map[t].lower()}">{type_map[t]}</a>')
             except KeyError:
-                p_links.append(f'<a href="#{t.split("/")[-1].lower()}">{t.split("/")[-1]}</a>')
-        t_profile_links.append('</br>'.join(p_links))
-        t_types_links.append('</br>'.join(r_links))
+                if t == "http://hl7.org/fhir/StructureDefinition/Resource":
+                    p_links.append(f'<a href="#">Any Resource</a>')
+                    r_links.append(f'<a href="#">Any Resource</a>')
+                else:
+                    p_links.append(f'<a href="#{t.split("/")[-1].lower()}">{t.split("/")[-1]}</a>')
+                    r_links.append(f'<a href="#{t.split("/")[-1].lower()}">{t.split("/")[-1]}</a>')
+
+        t_profile_links.append('<br />'.join(p_links))
+        t_types_links.append('<br />'.join(r_links))
     # t_profile_values
     #t_types_values
     references_summary = {'US Core Profile': uscore_profile_links, 'Resource Type':resource_links, 'Target US Core Profile or FHIR Resource': t_profile_links,  'Target Resource Type':t_types_links}

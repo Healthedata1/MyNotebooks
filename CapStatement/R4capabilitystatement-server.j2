@@ -279,7 +279,7 @@
             <tr>
             {% for r in references_summary %}
                 <td>
-                {{references_summary[r][i] | safe }}
+                {{references_summary[r][i] | safe | default('-' , true) }}
                 </td>          
                 {% endfor %}
             </tr>
