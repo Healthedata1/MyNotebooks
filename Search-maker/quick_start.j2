@@ -160,4 +160,8 @@ The following search parameter combinations **SHOULD** be supported:
   {% raw %}{%include specimen-include-note.md %}{% endraw %}
 {% endif %}
 
+{% if r_type == "QuestionnaireResponse" %}
+  {% raw %}{%include questionnaireresponse-context-note.md %}{% endraw %}
+{% endif %}
+
 {% raw %}{% include link-list.md %}{% endraw %}

@@ -1,11 +1,11 @@
 {
   "resourceType" : "ValueSet",
-  "id" : "9c669dc6-9004-4775-943f-dced624a79f4-6",
-  "url" : "http://hl7.org/fhir/comparison/ValueSet/9c669dc6-9004-4775-943f-dced624a79f4-6",
+  "id" : "021eb581-9a96-4a6b-b0b9-08b1a0eb0580-6",
+  "url" : "http://hl7.org/fhir/comparison/ValueSet/021eb581-9a96-4a6b-b0b9-08b1a0eb0580-6",
   "name" : "IntersectionLOINCCodesAndUSCoreLaboratoryTestCodes",
   "title" : "Intersection of LOINC Codes And US Core Laboratory Test Codes",
   "status" : "draft",
-  "date" : "2022-12-09T02:18:18-08:00",
+  "date" : "2023-04-20T10:39:53-07:00",
   "expansion" : {
     "contains" : [{
       "system" : "http://loinc.org",
