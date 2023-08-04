@@ -1,0 +1,25 @@
+{
+    "resourceType": "DeviceRequest",
+    "id": "example-1-devicerequest",
+    "status": "active",
+    "intent": "original-order",
+    "codeReference": {
+        "display": "Portable Oxygen Concentrator"
+    },
+"subject": {
+    "reference": "Patient/example",
+    "display": "Amy V. Shaw"
+},
+    "reasonCode": [
+        {
+            "coding": [
+                {
+                    "system": "http:/example.org/codesystem",
+                    "code": "1",
+                    "display": "Initial or original order for certification"
+                }
+            ]
+        }
+    ],
+    "authoredOn": "2022-06-17"
+}

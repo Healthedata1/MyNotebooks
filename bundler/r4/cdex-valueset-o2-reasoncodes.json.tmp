@@ -1,0 +1,67 @@
+{
+    "resourceType": "ValueSet",
+    "meta": {
+        "extension": [
+            {
+                "url": "http://hapifhir.io/fhir/StructureDefinition/valueset-expansion-message",
+                "valueString": "ValueSet with URL \"ValueSet.url[http://example.org/cdex-valueset-o2-reasoncodes]\" was expanded using an in-memory expansion"
+            }
+        ]
+    },
+    "url": "http://example.org/cdex-valueset-o2-reasoncodes",
+    "status": "active",
+    "compose": {
+        "include": [
+            {
+                "system": "http://example.org/cdex-codesystem-o2-reasoncodes",
+                "concept": [
+                    {
+                        "code": "1"
+                    },
+                    {
+                        "code": "2"
+                    },
+                    {
+                        "code": "3"
+                    },
+                    {
+                        "code": "4"
+                    }
+                ]
+            }
+        ]
+    },
+    "expansion": {
+        "identifier": "69ddf587-37cb-460d-ba2c-54a026c144fa",
+        "timestamp": "2023-06-22T23:30:22+00:00",
+        "offset": 0,
+        "parameter": [
+            {
+                "name": "offset",
+                "valueInteger": 0
+            },
+            {
+                "name": "count",
+                "valueInteger": 1000
+            }
+        ],
+        "contains": [
+            {
+                "system": "http://example.org/cdex-codesystem-o2-reasoncodes",
+                "code": "1"
+            },
+            {
+                "system": "http://example.org/cdex-codesystem-o2-reasoncodes",
+                "code": "2"
+            },
+            {
+                "system": "http://example.org/cdex-codesystem-o2-reasoncodes",
+                "code": "3"
+            },
+            {
+                "system": "http://example.org/cdex-codesystem-o2-reasoncodes",
+                "code": "4"
+            }
+        ]
+    }
+}

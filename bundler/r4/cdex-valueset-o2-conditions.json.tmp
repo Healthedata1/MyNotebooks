@@ -1,0 +1,95 @@
+{
+    "resourceType": "ValueSet",
+    "meta": {
+        "extension": [
+            {
+                "url": "http://hapifhir.io/fhir/StructureDefinition/valueset-expansion-message",
+                "valueString": "ValueSet with URL \"ValueSet.url[http://example.org/cdex-valueset-o2-conditions]\" was expanded using an in-memory expansion"
+            }
+        ]
+    },
+    "url": "http://example.org/cdex-valueset-o2-conditions",
+    "status": "active",
+    "compose": {
+        "include": [
+            {
+                "system": "http://snomed.info/sct",
+                "concept": [
+                    {
+                        "code": "13645005"
+                    },
+                    {
+                        "code": "19829001"
+                    },
+                    {
+                        "code": "233604007"
+                    },
+                    {
+                        "code": "195967001"
+                    },
+                    {
+                        "code": "84114007"
+                    },
+                    {
+                        "code": "73430006"
+                    },
+                    {
+                        "code": "190905008"
+                    },
+                    {
+                        "code": "316358009"
+                    }
+                ]
+            }
+        ]
+    },
+    "expansion": {
+        "identifier": "9256843e-5b5e-42bb-a3ee-0bb2cb5aeb8e",
+        "timestamp": "2023-06-22T23:34:27+00:00",
+        "offset": 0,
+        "parameter": [
+            {
+                "name": "offset",
+                "valueInteger": 0
+            },
+            {
+                "name": "count",
+                "valueInteger": 1000
+            }
+        ],
+        "contains": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "13645005"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "19829001"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "233604007"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "195967001"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "84114007"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "73430006"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "190905008"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "316358009"
+            }
+        ]
+    }
+}

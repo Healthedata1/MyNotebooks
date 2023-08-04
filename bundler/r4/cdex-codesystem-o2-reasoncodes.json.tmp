@@ -1,0 +1,30 @@
+{
+    "resourceType": "CodeSystem",
+    "url": "http: //example.org/cdex-codesystem-o2-reasoncodes",
+    "name": "Example1ReasonCodes",
+    "title": "Example 1 Reason Codes",
+    "status": "draft",
+    "experimental": false,
+    "date": "2018-08-22",
+    "scription": "Example 1 Reason Codes.",
+    "caseSensitive": true,
+    "content": "complete",
+    "concept": [
+        {
+            "code": "1",
+            "display": "Initial or original order for certification"
+        },
+        {
+            "code": "2",
+            "display": "Change in status"
+        },
+        {
+            "code": "3",
+            "display": "Revision or change in equipment"
+        },
+        {
+            "code": "4",
+            "display": "Replacement"
+        }
+    ]
+}
