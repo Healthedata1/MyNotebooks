@@ -1,0 +1,33 @@
+{
+    "resourceType": "Subscription",
+    "id": "pas-example",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription"
+        ]
+    },
+    "status": "requested",
+    "reason": "Topic-Based Subscription for PAS Claims Updates",
+    "criteria": "http://hl7.org/fhir/us/davinci-pas/SubscriptionTopic/PASSubscriptionTopic",
+    "_criteria": {
+        "extension": [
+            {
+                "url": "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-filter-criteria",
+                "valueString": "identifier=authorizationresponseid123&patient.identifier=Member123]&status=active"
+            }
+        ]
+    },
+    "channel": {
+        "type": "rest-hook",
+        "endpoint": "https://api.logicahealth.org/DaVinciCDexProvider/open/Bundle",
+        "payload": "application/fhir+json",
+        "_payload": {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-payload-content",
+                    "valueCode": "id-only"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,150 @@
+{
+    "resourceType": "Bundle",
+    "id": "pas-claim-update",
+    "type": "collection",
+    "timestamp": "2023-08-24T13:00:22.980814-07:00",
+    "entry": [
+        {
+            "fullUrl": "urn:uuid:dc2908f2-42b8-11ee-a1fc-daaf18ab2cba",
+            "resource": {
+                "resourceType": "ClaimResponse",
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/profile-claimresponse"
+                    ]
+                },
+                "identifier": [
+                    {
+                        "system": "http://example.org/PATIENT_EVENT_TRACE_NUMBER",
+                        "value": "1111111",
+                        "assigner": {
+                            "identifier": {
+                                "system": "http://example.org/USER_ASSIGNED",
+                                "value": "9012345678"
+                            }
+                        }
+                    }
+                ],
+                "status": "active",
+                "type": {
+                    "coding": [
+                        {
+                            "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+                            "code": "professional"
+                        }
+                    ]
+                },
+                "use": "preauthorization",
+                "patient": {
+                    "reference": "Patient/SubscriberExample"
+                },
+                "created": "2023-08-27T15:02:00+05:00",
+                "insurer": {
+                    "reference": "Organization/InsurerExample"
+                },
+                "requestor": {
+                    "reference": "Organization/UMOExample"
+                },
+                "outcome": "complete",
+                "item": [
+                    {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-itemRequestedServiceDate",
+                                "valueDateTime": "2023-09-10"
+                            },
+                            {
+                                "url": "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-itemPreAuthIssueDate",
+                                "valueDate": "2023-08-27"
+                            },
+                            {
+                                "url": "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-itemPreAuthPeriod",
+                                "valuePeriod": {
+                                    "start": "2023-08-27",
+                                    "end": "2023-12-31"
+                                }
+                            },
+                            {
+                                "extension": [
+                                    {
+                                        "url": "provider",
+                                        "valueReference": {
+                                            "reference": "Practitioner/ReferralPractitionerExample"
+                                        }
+                                    }
+                                ],
+                                "url": "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-itemAuthorizedProvider"
+                            },
+                            {
+                                "extension": [
+                                    {
+                                        "url": "productOrServiceCode",
+                                        "valueCodeableConcept": {
+                                            "coding": [
+                                                {
+                                                    "system": "http://www.ama-assn.org/go/cpt",
+                                                    "code": "73722",
+                                                    "display": "Magnetic resonance (eg, proton) imaging, any joint of lower extremity"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "url": "unitPrice",
+                                        "valueMoney": {
+                                            "value": 700,
+                                            "currency": "USD"
+                                        }
+                                    },
+                                    {
+                                        "url": "quantity",
+                                        "valueQuantity": {
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "url": "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-itemAuthorizedDetail"
+                            }
+                        ],
+                        "itemSequence": 1,
+                        "adjudication": [
+                            {
+                                "extension": [
+                                    {
+                                        "extension": [
+                                            {
+                                                "url": "number",
+                                                "valueString": "AUTH0001"
+                                            },
+                                            {
+                                                "url": "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-reviewActionCode",
+                                                "valueCodeableConcept": {
+                                                    "coding": [
+                                                        {
+                                                            "system": "https://codesystem.x12.org/005010/306",
+                                                            "code": "A1",
+                                                            "display": "Certified in total"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "url": "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-reviewAction"
+                                    }
+                                ],
+                                "category": {
+                                    "coding": [
+                                        {
+                                            "system": "http://terminology.hl7.org/CodeSystem/adjudication",
+                                            "code": "submitted"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

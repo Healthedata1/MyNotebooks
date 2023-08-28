@@ -1,0 +1,56 @@
+resourceType: CommunicationRequest
+id: ImageStudyReportRequest
+meta:
+  profile:
+    - >-
+      http://hl7.org/fhir/us/davinci-pas/StructureDefinition/profile-communicationrequest
+
+
+# ====================  Tracking ID ===================
+identifier:
+    - 
+        system: 'http://example.org/PATIENT_EVENT_TRACE_NUMBER'
+        value: '1111111'
+        assigner:
+            identifier:
+                system: 'http://example.org/USER_ASSIGNED'
+                value: '9012345678'
+# ==============================================================
+status: active
+
+requester:
+   display: BIG PAYER
+recipient:
+  - type: Organization
+    identifier:
+      system: 'http://hl7.org/fhir/sid/us-npi'
+      value: '9941339100'
+
+# category:
+#   - coding:
+#       - system: 'https://codesystem.x12.org/005010/755'
+#         code: '15'
+#         display: Justification for Admissions
+
+payload:
+  - extension:
+      - url: >-
+          http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-serviceLineNumber
+        valuePositiveInt: 1
+
+      - url: >-
+          http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-communicatedDiagnosis
+        valueCodeableConcept:
+          coding:
+            - system: 'http://hl7.org/fhir/sid/icd-10-cm'
+              code: S86
+              display: Injury of muscle, fascia and tendon at lower leg level
+
+      - url: >-
+          http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-contentModifier
+        valueCodeableConcept:
+          coding:
+            - system: 'http://loinc.org'
+              code: 	18748-4
+              display: 'Diagnostic imaging study'
+    contentString: Please provide requested documents.

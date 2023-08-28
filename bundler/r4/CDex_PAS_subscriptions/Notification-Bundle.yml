@@ -1,0 +1,47 @@
+resourceType: Bundle
+id: pas-claim-update-notification
+meta:
+  profile:
+    - >-
+      http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-notification-r4
+type: collection  # history not supported on the CDEX server
+timestamp: '2023-08-24T18:39:28.142Z'
+entry:
+  - fullUrl: 'urn:uuid:292d3c72-edc1-4d8a-afaa-d85e19c7f563'
+    resource:
+      resourceType: Parameters
+      id: 292d3c72-edc1-4d8a-afaa-d85e19c7f563
+      meta:
+        profile:
+          - >-
+            http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-status-r4
+      parameter:
+        - name: subscription
+          valueReference:
+            reference: 'https://ae1b595a-425d-4283-a852-db917aa44e08.mock.pstmn.io/Subscription/pas-example' #<<< Reference to the Subscription responsible for this notification
+        - name: topic
+          valueCanonical: 'http://hl7.org/fhir/us/davinci-pas/SubscriptionTopic/PASSubscriptionTopic' #<<< Canonical reference to the SubscriptionTopic this notification relates to
+        - name: status
+          valueCode: active
+        - name: type
+          valueCode: event-notification
+        - name: events-since-subscription-start
+          valueString: '1'
+
+        - name: notification-event
+          part:
+            - name: event-number
+              valueString: '1'
+            - name: timestamp
+              valueInstant: '2023-08-24T18:59:04.113Z'
+            - name: focus  # <<< URL to the Claim Response Bundle
+              valueReference: 
+                reference: >-
+                  https://example.org/fhir/Bundle/pas-claim-update
+    request:
+      method: GET
+      url: 'https://ae1b595a-425d-4283-a852-db917aa44e08.mock.pstmn.io/Subscription/pas-example/$status' # For the status resource (entry[0]), the request SHALL be filled out to match a request to the $status operation. 
+    response:
+      status: '200'
+
+     

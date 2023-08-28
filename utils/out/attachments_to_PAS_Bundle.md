@@ -9,15 +9,15 @@
 -->
 
 | Data Element | ClaimResponse (from PAS Response Bundle) | PAS Response Bundle |
-|---|---------|------------|
-| Tracking ID | ClaimResponse.item.commmunicationRequest: CommunicationRequest.identifier | ClaimResponse = Bundle.entry[0].resource, CommunicationRequest = Bundle.entry[n].resource referenced by ClaimResponse.communincationRequest |
+|---|------------|------------|
+| Tracking ID | ClaimResponse.identifier, ClaimResponse.item.commmunicationRequest: CommunicationRequest.identifier | ClaimResponse = Bundle.entry[0].resource, CommunicationRequest = Bundle.entry[n].resource referenced by ClaimResponse.communincationRequest |
 | Use | preauthorization | Fixed to "preauthorization" |
 | Payer ID | ClaimResponse.insurer: Organization.identifier | ClaimResponse = Bundle.entry[0].resource, Organization = Bundle.entry[n].resource referenced by ClaimResponse.insurer |
 | Payer URL | out of band | out of band |
-| Organization ID | ClaimResponse.requester: Organization.identifier | ClaimResponse = Bundle.entry[0].resource, Organization = Bundle.entry[n].resource referenced by ClaimResponse.requester |
-| Provider ID | ClaimResponse.requester: Practitioner.identifier | ClaimResponse = Bundle.entry[0].resource, Practitioner = Bundle.entry[n].resource referenced by ClaimResponse.requester |
-| Line Item(s) | ClaimResponse.item.commmunicationRequest: CommunicationRequest.payload.extension:serviceLineNumber | ClaimResponse = Bundle.entry[0].resource |
-| LOINC Attachment Code | ClaimResponse.item.commmunicationRequest: CommunicationRequest.payload.extension | ClaimResponse = Bundle.entry[0].resource |
+| Organization ID | ClaimResponse.requester: Organization.identifier, ClaimResponse.requester: PractitionerRole.organization: Organziation.identifier | ClaimResponse = Bundle.entry[0].resource, Organization,PractitionerRole = Bundle.entry[n].resource referenced by ClaimResponse.requester |
+| Provider ID | ClaimResponse.requester: PractitionerRole.practitioner: Practitioner.identifier | ClaimResponse = Bundle.entry[0].resource, PractitionerRole = Bundle.entry[n].resource referenced by ClaimResponse.requester |
+| Line Item(s) | ClaimResponse.item.extension:itemTraceNumber Note: CommunicationRequest.payload.extension:serviceLineNumber references this item | ClaimResponse = Bundle.entry[0].resource |
+| LOINC Attachment Code | ClaimResponse.item.commmunicationRequest: CommunicationRequest.payload.extension:contentModifier | ClaimResponse = Bundle.entry[0].resource |
 | Date of Service | ClaimResponse.item.extension:requestedServiceDate | ClaimResponse = Bundle.entry[0].resource |
 | Member ID | ClaimResponse.patient: Patient.identifer | ClaimResponse = Bundle.entry[0].resource, Patient = Bundle.entry[n].resource referenced by ClaimResponse.patient |
 {:.grid}

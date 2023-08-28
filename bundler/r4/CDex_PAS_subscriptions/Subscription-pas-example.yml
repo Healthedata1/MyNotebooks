@@ -1,0 +1,41 @@
+resourceType: Subscription
+id: pas-example
+meta:
+  profile:
+    - >-
+      http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription
+
+status: requested
+# end: '2020-12-31T12:00:00Z'
+reason: Topic-Based Subscription for PAS Claims Updates
+
+criteria: 'http://hl7.org/fhir/us/davinci-pas/SubscriptionTopic/PASSubscriptionTopic'  # <<< topic URL here
+_criteria:
+  extension:  # see PAS Filters
+    - url: >-
+        http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-filter-criteria
+      valueString: identifier=authorizationresponseid123&patient.identifier=Member123]&status=active  # <<< what is the AuthorizationResponse ID?
+
+
+channel:
+# Optional extensions
+  # extension:
+  #   - url: >-
+  #       http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-heartbeat-period
+  #     valueUnsignedInt: 86400
+  #   - url: >-
+  #       http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-timeout
+  #     valueUnsignedInt: 60
+  #   - url: >-
+  #       http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-max-count
+  #     valuePositiveInt: 20
+
+  type: rest-hook
+  endpoint: 'https://api.logicahealth.org/DaVinciCDexProvider/open/Bundle'  # use this endpoint for testing
+  
+  payload: application/fhir+json
+  _payload:
+    extension:
+      - url: >-
+          http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-payload-content
+        valueCode: id-only
