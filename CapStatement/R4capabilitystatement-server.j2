@@ -252,7 +252,7 @@
     </table>
 {% endif %}
 
-{% if references_summary %}
+{% if ms_references_summary %}
 
     <!-- new table here --->
 
@@ -274,12 +274,54 @@
         </tr>
         </thead>
         <tbody>
-        {% for v in references_summary["US Core Profile"] %}
+        {% for v in ms_references_summary["US Core Profile"] %}
             {% set i = loop.index0 %}
             <tr>
-            {% for r in references_summary %}
+            {% for r in ms_references_summary %}
                 <td>
-                {{references_summary[r][i] | safe | default('-' , true) }}
+                {{ms_references_summary[r][i] | safe | default('-' , true) }}
+                </td>          
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+
+
+    {# {{ my_df.to_html() | safe }} #}
+
+    <!-- end new table here --->
+
+{% endif %}
+
+{% if addl_uscdi_references_summary %}
+
+    <!-- new table here --->
+
+    <h4>Summary of Additional USCDI Requirement References Between Profiles</h4>
+    <ul>
+    <li>US Core Profile: The profile referencing another profile or resource (Target Profile).</li>
+    <li>Resource Type, The resource type of the source profile.</li>
+    <li>Target Profile: The profile or resource that is being referenced by another profile (US Core Profile).</li>
+    <li>Target Resource Type, The resource type of the target profile.</li>
+    </ul>
+
+        <table class="grid">
+        <thead>
+        <tr>
+        <th>US Core Profile</th>
+        <th>Resource Type</th>
+        <th>Target Profile</th>
+        <th>Target Resource Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for v in addl_uscdi_references_summary["US Core Profile"] %}
+            {% set i = loop.index0 %}
+            <tr>
+            {% for r in addl_uscdi_references_summary %}
+                <td>
+                {{addl_uscdi_references_summary[r][i] | safe | default('-' , true) }}
                 </td>          
                 {% endfor %}
             </tr>

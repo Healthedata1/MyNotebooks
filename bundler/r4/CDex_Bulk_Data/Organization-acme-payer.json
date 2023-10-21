@@ -1,0 +1,27 @@
+
+       { "resourceType": "Organization",
+        "id": "acme-payer",
+        "meta": {
+            "profile": [
+                "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/profile-insurer"
+            ]
+        },
+        "identifier": [
+            {
+                "system": "urn:oid:2.16.840.1.113883.6.300",
+                "value": "55555"
+            }
+        ],
+        "active": true,
+        "type": [
+            {
+                "coding": [
+                    {
+                        "system": "https://codesystem.x12.org/005010/98",
+                        "code": "PR"
+                    }
+                ]
+            }
+        ],
+        "name": "ACME INSURANCE COMPANY"
+    }

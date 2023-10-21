@@ -1,0 +1,103 @@
+{
+    "resourceType": "Group",
+    "id": "s8_member_list",
+    "identifier": [
+        {
+            "system": "http://example.org/fhir/group-ids",
+            "value": "group123"
+        }
+    ],
+    "active": true,
+    "type": "person",
+    "actual": true,
+    "name": "S8 Member List",
+    "managingEntity": {
+        "reference": "Organization/acme-payer",
+        "identifier": [
+            {
+                "system": "urn:oid:2.16.840.1.113883.6.300",
+                "value": "55555"
+            }
+        ],
+        "display": "Acme Health Plan"
+    },
+    "characteristic": [
+        {
+            "code": {
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/us/davinci-atr/CodeSystem/davinci-group-characteristic-codes",
+                        "code": "organization",
+                        "display": "Organization"
+                    }
+                ]
+            },
+            "valueReference": {
+                "reference": "Organization/holy-healthcare",
+                "identifier": [
+                    {
+                        "system": "http://hl7.org/fhir/sid/us-npi",
+                        "value": "9941339100"
+                    }
+                ],
+                "display": "Holy HealthCare"
+            }
+        },
+        {
+            "code": {
+                "coding": [
+                    {
+                        "system": "http://snomed.info/sct",
+                        "code": "73211009",
+                        "display": "Diabetes mellitus (disorder)"
+                    }
+                ]
+            },
+            "valueBoolean": true
+        }
+    ],
+    "member": [
+        {
+            "entity": {
+                "identifier": [
+                    {
+                        "system": "http://example.org/cdex/payer/member-ids",
+                        "value": "Member123"
+                    }
+                ]
+            },
+            "period": {
+                "start": "2014-10-08"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "identifier": [
+                    {
+                        "system": "http://example.org/cdex/payer/member-ids",
+                        "value": "Member456"
+                    }
+                ]
+            },
+            "period": {
+                "start": "2015-04-02"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "identifier": [
+                    {
+                        "system": "http://example.org/cdex/payer/member-ids",
+                        "value": "Member789"
+                    }
+                ]
+            },
+            "period": {
+                "start": "2016-09-02"
+            },
+            "inactive": false
+        }
+    ]
+}

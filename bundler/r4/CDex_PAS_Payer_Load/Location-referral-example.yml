@@ -1,0 +1,13 @@
+            resourceType: Location
+            id: ReferralLocationExample
+            meta:
+                profile:
+                    - 'http://hl7.org/fhir/us/davinci-pas/StructureDefinition/profile-locaation'
+            name: REFERRAL CLINIC
+            address:
+                line:
+                    - 111 1ST STREET
+                city: SAN DIEGO
+                state: CA
+                postalCode: '92101'
+                country: US

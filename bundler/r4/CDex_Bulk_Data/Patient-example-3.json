@@ -1,0 +1,35 @@
+{
+    "resourceType": "Patient",
+    "id": "example-3",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/davinci-cdex/StructureDefinition/cdex-patient-demographics"
+        ]
+    },
+    "identifier": [
+        {
+            "use": "usual",
+            "type": {
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/us/davinci-hrex/CodeSystem/hrex-temp",
+                        "code": "UMB",
+                        "display": "Member Number"
+                    }
+                ],
+                "text": "Member Number"
+            },
+            "system": "http://example.org/cdex/payer/member-ids",
+            "value": "Member789"
+        }
+    ],
+    "name": [
+        {
+            "family": "Zafar",
+            "given": [
+                "Anne"
+            ]
+        }
+    ],
+    "birthDate": "1986-02-20"
+}

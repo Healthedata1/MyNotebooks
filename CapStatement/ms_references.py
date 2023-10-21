@@ -2,7 +2,9 @@
 # # Find all must support dependent profiles in StructureDefinitions
 # 
 # - see FHIR-39723
-# - for hard coded path search all SD (in YAML) for all reference with must support = true profiles
+# - for hard coded path search all SD (in YAML) for:
+#   -  all reference with must support = true profiles
+#   -  all reference with must support = true and add't USCDI profiles when add add'l USCDI equal True
 # - list of other profile that need to be supported
 # - incorporate into narrative generator...
 # - todo think about canonical too and !uscdi requirements as well! and inherited references from base. (such as Media) use snapshot instead?
@@ -18,25 +20,26 @@ from pprint import pprint
 import pandas as pd
 from IPython.display import display, HTML
 yml_path = Path('/Users/ehaas/Documents/FHIR/US-Core/input/resources-yaml')
-snapshot_path =  Path('/Users/ehaas/Documents/FHIR/US-Core/output')  # use this 
+snapshot_path =  Path('/Users/ehaas/Documents/FHIR/US-Core/output')  # use this
 
 my_path = snapshot_path
 
 # %%
-def get_my_dict():
+def get_my_dict(addl_uscdi = False):
     type_map={}
     title_map={}
     derived_map={}
     mydict = {}
     excludelist = []
-
+    print(f'addl_uscdi={addl_uscdi}')
     whitelist = []
 
     count = 0
     cant_match_path = []
 
-    for enum,i in enumerate(sorted(my_path.glob('Struct*.json'))):
-        my_urls = set()
+    for enum,i in enumerate(my_path.glob('Struct*.json')):
+        my_urls = set() # MS only set
+        my_uscdi_urls = set() # MS + USCDI set
 
         obj = y_load(i.read_text(),Loader=FullLoader) #dict
         if obj['id'] in excludelist or obj['type'] == 'Extension':
@@ -65,7 +68,11 @@ def get_my_dict():
                     try:
                         snapshot_reference = (type for type in snapshot_element['type'] if type['code'] == 'Reference').__next__()['targetProfile']
                         # print(f"++++++++++++++++snapshot_reference={snapshot_reference}+++++++++++++++++++++")
-                        my_urls.update(snapshot_reference) #add list to set
+                        try:
+                            if element['mustSupport']: # only Must Supports / no add;l uscdi elements
+                                my_urls.update(snapshot_reference) #add list to set
+                        except KeyError: # Must Supports + Add;l USCDI
+                            my_uscdi_urls.update(snapshot_reference) #add list to set
 
                     except KeyError:
                         # print('not a type = reference')
@@ -96,14 +103,23 @@ def get_my_dict():
                     zipped = dict(zip(targetProfile,ms_ext))
                     ms_targetProfile = [k for k,v in zipped.items() if v["extension"][0]['valueBoolean']]
                     # print(f"{element['id']} = {ms_targetProfile}\n")
-                    my_urls.update(ms_targetProfile) #add list to set
+                    try:
+                        if element['mustSupport']: # only Must Supports / no add;l uscdi elements
+                            my_urls.update(ms_targetProfile) #add list to set
+                    except KeyError: # Must Supports + Add;l USCDI
+                        my_uscdi_urls.update(ms_targetProfile) #add list to set
                 except TypeError:
                     # print(f"{element['id']} = {targetProfile}\n")
-                    my_urls.update(targetProfile) #add list to set
-                
+                    try:
+                        if element['mustSupport']: # only Must Supports / no add;l uscdi elements
+                            my_urls.update(targetProfile) #add list to set
+                    except KeyError: # Must Supports + Add;l USCDI
+                        my_uscdi_urls.update(targetProfile) #add list to set             
         # print(f'{my_urls}\n')
-        mydict[obj['url']] = list(my_urls)
-
+        if addl_uscdi:
+            mydict[obj['url']] = list(my_uscdi_urls)
+        else:
+            mydict[obj['url']] = list(my_urls)
 
     ### update profiles derived from other US Core profiles
     #
@@ -113,12 +129,12 @@ def get_my_dict():
             # print(k,v,mydict[k],mydict[v])
             mydict[k] = mydict[k] + mydict[v]
     # pprint(mydict)
-    # print('return mydict, type_map, title_map')
+    print('return mydict, type_map, title_map')
     return mydict, type_map, title_map
 
 
 # %% [markdown]
-# ### Create A Dependency Table Using DataFrames (disable)
+# ### Create A Dependency Table Using DataFrames ******DISABLED*******
 
 # %% [markdown]
 # #### Map The Url To Types
@@ -154,13 +170,13 @@ for v in list(mydict.values()):
                 target_type.append(t_types_value)
                 
     # print(target_type)
-    t_types_values.append('</br>'.join(target_type))
-    t_profile_values.append('</br>'.join(v))
+    t_types_values.append('<br />'.join(target_type))
+    t_profile_values.append('<br />'.join(v))
 
 df = pd.DataFrame({'US Core Profile': keys, 'Resource Type':r_types_keys, 'Target US Core Profile or FHIR Resource': t_profile_values,  'Target Resource Type':t_types_values})
 # my_md_table = df.to_markdown(index=False)
 # display.Markdown(my_md_table)
-# display.Markdown("foo</br>bar")
+# display.Markdown("foo<br />bar")
 # df.to_dict('records')
 
 
@@ -169,8 +185,8 @@ df = pd.DataFrame({'US Core Profile': keys, 'Resource Type':r_types_keys, 'Targe
 # ### map in the the links to US Core IG
 
 # %%
-def get_references_summary():
-    mydict,type_map,title_map = get_my_dict()
+def get_references_summary(addl_uscdi=False):
+    mydict,type_map,title_map = get_my_dict(addl_uscdi=addl_uscdi)
     keys = list(mydict.keys())
     r_types_keys = [type_map[k] for k in keys]
     # uscore_profile_links
@@ -197,8 +213,9 @@ def get_references_summary():
                     r_links.append(f'<a href="#{t.split("/")[-1].lower()}">{t.split("/")[-1]}</a>')
 
         t_profile_links.append('<br />'.join(p_links))
-        t_types_links.append('<br />'.join(r_links))
-    # t_profile_values
+        t_types_links.append(' <br />'.join(r_links))
+  
+
     #t_types_values
     references_summary = {'US Core Profile': uscore_profile_links, 'Resource Type':resource_links, 'Target US Core Profile or FHIR Resource': t_profile_links,  'Target Resource Type':t_types_links}
     # for i, v in enumerate(references_summary["US Core Profile"]):
@@ -214,9 +231,9 @@ def get_references_summary():
 
 # %%
 
-def main():
+def main(addl_uscdi=False):
     from jinja2 import Environment, FileSystemLoader, select_autoescape
-    in_path = '/Users/ehaas/Documents/Python/Jupyter/MyNotebooks/CapStatement/'
+    in_path = ''
     in_file = 'test.j2'
     def markdown(text, *args, **kwargs):
         return commonmark(text, *args, **kwargs)
@@ -230,7 +247,7 @@ def main():
     env.filters['markdown'] = markdown
     template = env.get_template(in_file)
 
-    references_summary = get_references_summary()
+    references_summary = get_references_summary(addl_uscdi=addl_uscdi)
     print(references_summary['US Core Profile'][0])
     rendered = template.render(references_summary=references_summary)
     return (rendered)
@@ -238,12 +255,10 @@ def main():
 # %%
 if __name__ == '__main__':
     # from IPython.display import display, HTML
-    # display(HTML("<h1>Test</h1>"))
-    # display(HTML("<h2>test<h2>"))
     print("main")
-    my_table = main()
-    # display(HTML(my_table))
-    print(my_table)
-   
+    # global addl_uscdi
+    addl_uscdi = False
+    my_table = main(addl_uscdi=addl_uscdi)
+    display(HTML(my_table))
 
 
