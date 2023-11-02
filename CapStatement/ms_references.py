@@ -37,7 +37,7 @@ def get_my_dict(addl_uscdi = False):
     count = 0
     cant_match_path = []
 
-    for enum,i in enumerate(my_path.glob('Struct*.json')):
+    for i in sorted(my_path.glob('Struct*.json')):
         my_urls = set() # MS only set
         my_uscdi_urls = set() # MS + USCDI set
 
