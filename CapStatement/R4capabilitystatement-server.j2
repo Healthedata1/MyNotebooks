@@ -218,7 +218,8 @@
     </td>
     <td>
 {% if r.supportedProfile %}{% for i in r.supportedProfile %}
-    <a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{purl_map[i]}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
+    {% set base_canonical = i.split('|')[0] %}
+    <a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{purl_map[i]}}{% endif %}">{{pname_map[base_canonical]}}</a>{%- if not loop.last %}, {% endif %}
 {%  endfor %}{% else %}-{% endif %}
     </td>
 
@@ -357,8 +358,9 @@
     <li><strong>{{r.supportedProfile__ext[loop.index0].extension[0].valueCode}}</strong> support:
     {% else %} <li>
     {%  endif %}
-     		<a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{purl_map[i]}}{% endif %}">{{pname_map[i]}}</a>{%- if not loop.last %}, {% endif %}
-    </li>
+       {% set base_canonical = i.split('|')[0] %}
+       <a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{purl_map[i]}}{% endif %}">{{pname_map[base_canonical]}}</a>
+        </li>
     {%  endfor %}
     </ul>
     {% endif %}
