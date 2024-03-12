@@ -1,0 +1,42 @@
+{
+  "resourceType": "Observation",
+  "id": "observation-bmi-2",
+  "meta": {
+    "versionId": "2",
+    "lastUpdated": "2023-01-11T18:35:32+00:00",
+    "source": "#vdxQymXIw79WL5RD"
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "39156-5",
+        "display": "Body mass index (BMI) [Ratio]"
+      }
+    ],
+    "text": "BMI"
+  },
+  "subject": {
+    "reference": "Patient/13db04df-0023-42dd-965c-a5c2b626b706"
+  },
+  "effectiveDateTime": "1999-07-02",
+  "valueQuantity": {
+    "value": 16.2,
+    "unit": "kg/m2",
+    "system": "http://unitsofmeasure.org",
+    "code": "kg/m2"
+  }
+}

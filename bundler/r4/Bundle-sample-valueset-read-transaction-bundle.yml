@@ -1,0 +1,112 @@
+resourceType: Bundle
+id: sample-valueset-read-transaction-bundle
+meta:
+  lastUpdated: '2024-01-23T13:42:32.111210-08:00'
+type: transaction
+timestamp: '2024-01-23T13:42:32.110913-08:00'
+entry:
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/birthsex
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/detailed-ethnicity
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/detailed-race
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/omb-race-category
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/simple-language
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-clinical-note-type
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-clinical-result-observation-category
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-condition-code
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-category
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-report-and-note-codes
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-discharge-disposition
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-category
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-type
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-encounter-type
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-goal-description
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-narrative-status
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-observation-smoking-status-status
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-observation-smokingstatus-max
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-observation-value-codes
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-pregnancy-intent
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-pregnancy-status
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-problem-or-health-concern
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-procedure-code
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-provenance-participant-type
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-screening-assessment-condition-category
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-screening-assessment-observation-category
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-servicerequest-category
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-simple-observation-category
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/simple-observation
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-smoking-status-observation-codes
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-survey-codes
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-vital-signs
+- request:
+    method: GET
+    url: ValueSet?url=http://hl7.org/fhir/us/core/ValueSet/us-core-laboratory-test-codes

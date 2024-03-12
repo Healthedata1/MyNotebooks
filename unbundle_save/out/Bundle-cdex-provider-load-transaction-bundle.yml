@@ -1,0 +1,510 @@
+resourceType: Bundle
+id: cdex-provider-load-transaction-bundle
+meta:
+  lastUpdated: '2024-01-15T20:44:54.137007-08:00'
+  profile:
+  - http://hl7.org/fhir/smart-app-launch/StructureDefinition/patient-access-brands-bundle
+type: transaction
+timestamp: '2024-01-15T20:44:54.136537-08:00'
+entry:
+- fullUrl: urn:uuid:fde7c8ec-b429-11ee-869d-daaf18ab2cb9
+  resource:
+    resourceType: Condition
+    meta:
+      versionId: '1'
+      lastUpdated: '2022-05-09T18:02:19+00:00'
+      source: '#zY1ATnzO8eekdEVQ'
+    clinicalStatus:
+      coding:
+      - system: http://terminology.hl7.org/CodeSystem/condition-clinical
+        code: active
+    verificationStatus:
+      coding:
+      - system: http://terminology.hl7.org/CodeSystem/condition-ver-status
+        code: differential
+    code:
+      coding:
+      - system: http://snomed.info/sct
+        code: '87628006'
+        display: Bacterial infectious disease
+    subject:
+      reference: Patient/13db04df-0023-42dd-965c-a5c2b626b706
+      display: Roel
+    recordedDate: '2013-04-04'
+    asserter:
+      reference: urn:uuid:fde82fda-b429-11ee-869d-daaf18ab2cb9
+    id: null
+  request:
+    method: POST
+    url: Condition
+- fullUrl: urn:uuid:fde7e2aa-b429-11ee-869d-daaf18ab2cb9
+  resource:
+    resourceType: Condition
+    meta:
+      versionId: '3'
+      lastUpdated: '2022-08-03T02:35:42+00:00'
+      source: '#3AJGsx2Zhuzf6HtZ'
+    clinicalStatus:
+      coding:
+      - system: http://terminology.hl7.org/CodeSystem/condition-clinical
+        code: active
+    verificationStatus:
+      coding:
+      - system: http://terminology.hl7.org/CodeSystem/condition-ver-status
+        code: confirmed
+    severity:
+      coding:
+      - system: http://snomed.info/sct
+        code: '6736007'
+        display: Moderate
+    code:
+      coding:
+      - system: http://snomed.info/sct
+        code: '368009'
+        display: Heart valve disorder
+    bodySite:
+    - coding:
+      - system: http://snomed.info/sct
+        code: '40768004'
+        display: Left thorax
+      text: heart structure
+    subject:
+      reference: Patient/13db04df-0023-42dd-965c-a5c2b626b706
+      display: John Doe
+    recordedDate: '2011-10-05'
+    id: null
+  request:
+    method: POST
+    url: Condition
+- fullUrl: urn:uuid:fde7ee1c-b429-11ee-869d-daaf18ab2cb9
+  resource:
+    resourceType: Observation
+    meta:
+      versionId: '1'
+      lastUpdated: '2022-05-09T18:12:08+00:00'
+      source: '#T7Uil0JdH5Tybz4V'
+    identifier:
+    - use: official
+      system: http://www.bmc.nl/zorgportal/identifiers/observations
+      value: '6323'
+    status: final
+    code:
+      coding:
+      - system: http://loinc.org
+        code: 15074-8
+        display: Glucose [Moles/volume] in Blood
+    subject:
+      reference: Patient/13db04df-0023-42dd-965c-a5c2b626b706
+      display: P. van de Heuvel
+    effectivePeriod:
+      start: '2013-04-02T09:30:10+01:00'
+    issued: '2013-04-03T15:30:10+01:00'
+    performer:
+    - reference: urn:uuid:fde8391c-b429-11ee-869d-daaf18ab2cb9
+      display: A. Langeveld
+    valueQuantity:
+      value: 6.3
+      unit: mmol/l
+      system: http://unitsofmeasure.org
+      code: mmol/L
+    interpretation:
+    - coding:
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
+        code: H
+        display: High
+    referenceRange:
+    - low:
+        value: 3.1
+        unit: mmol/l
+        system: http://unitsofmeasure.org
+        code: mmol/L
+      high:
+        value: 6.2
+        unit: mmol/l
+        system: http://unitsofmeasure.org
+        code: mmol/L
+    id: null
+  request:
+    method: POST
+    url: Observation
+- fullUrl: urn:uuid:fde7f8ee-b429-11ee-869d-daaf18ab2cb9
+  resource:
+    resourceType: Observation
+    meta:
+      versionId: '2'
+      lastUpdated: '2022-05-09T18:23:45+00:00'
+      source: '#lU4611ZU2xQAesg6'
+    status: final
+    code:
+      coding:
+      - system: http://acmelabs.org
+        code: '104177'
+        display: Blood culture
+      - system: http://loinc.org
+        code: 600-7
+        display: Bacteria identified in Blood by Culture
+    subject:
+      reference: Patient/13db04df-0023-42dd-965c-a5c2b626b706
+      display: Abshire, Edelmira
+    issued: '2013-03-11T10:28:00+01:00'
+    performer:
+    - reference: urn:uuid:fde82a6c-b429-11ee-869d-daaf18ab2cb9
+      display: Barton, Ashlyn
+    valueCodeableConcept:
+      coding:
+      - system: http://snomed.info/sct
+        code: '3092008'
+        display: Staphylococcus aureus
+    interpretation:
+    - coding:
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
+        code: POS
+    method:
+      coding:
+      - system: http://snomed.info/sct
+        code: '104177005'
+        display: Blood culture for bacteria, including anaerobic screen
+    id: null
+  request:
+    method: POST
+    url: Observation
+- fullUrl: urn:uuid:fde80168-b429-11ee-869d-daaf18ab2cb9
+  resource:
+    resourceType: Observation
+    meta:
+      versionId: '1'
+      lastUpdated: '2022-07-19T01:46:05+00:00'
+      source: '#pnHJCffW7Uj60IAC'
+    status: final
+    category:
+    - coding:
+      - system: http://terminology.hl7.org/CodeSystem/observation-category
+        code: vital-signs
+        display: Vital Signs
+      text: Vital Signs
+    code:
+      coding:
+      - system: http://loinc.org
+        code: 8867-4
+        display: Heart rate
+      text: Heart rate
+    subject:
+      reference: Patient/13db04df-0023-42dd-965c-a5c2b626b706
+    effectiveDateTime: '1999-07-02'
+    valueQuantity:
+      value: 44
+      unit: beats/minute
+      system: http://unitsofmeasure.org
+      code: /min
+    id: null
+  request:
+    method: POST
+    url: Observation
+- fullUrl: urn:uuid:fde80910-b429-11ee-869d-daaf18ab2cb9
+  resource:
+    resourceType: Observation
+    meta:
+      versionId: '2'
+      lastUpdated: '2023-01-11T22:19:33+00:00'
+      source: '#24QrNVFKZxwESDQ1'
+    status: final
+    category:
+    - coding:
+      - system: http://terminology.hl7.org/CodeSystem/observation-category
+        code: vital-signs
+        display: Vital Signs
+    code:
+      coding:
+      - system: http://loinc.org
+        code: 85354-9
+        display: Blood pressure panel with all children optional
+      text: Blood pressure systolic & diastolic
+    subject:
+      reference: Patient/13db04df-0023-42dd-965c-a5c2b626b706
+    effectiveDateTime: '2012-09-17'
+    interpretation:
+    - coding:
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
+        code: L
+        display: low
+      text: Below low normal
+    bodySite:
+      coding:
+      - system: http://snomed.info/sct
+        code: '368209003'
+        display: Right arm
+    component:
+    - code:
+        coding:
+        - system: http://loinc.org
+          code: 8480-6
+          display: Systolic blood pressure
+        - system: http://snomed.info/sct
+          code: '271649006'
+          display: Systolic blood pressure
+        - system: http://acme.org/devices/clinical-codes
+          code: bp-s
+          display: Systolic Blood pressure
+      valueQuantity:
+        value: 107
+        unit: mmHg
+        system: http://unitsofmeasure.org
+        code: mm[Hg]
+      interpretation:
+      - coding:
+        - system: http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
+          code: N
+          display: normal
+        text: Normal
+    - code:
+        coding:
+        - system: http://loinc.org
+          code: 8462-4
+          display: Diastolic blood pressure
+      valueQuantity:
+        value: 60
+        unit: mmHg
+        system: http://unitsofmeasure.org
+        code: mm[Hg]
+      interpretation:
+      - coding:
+        - system: http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
+          code: L
+          display: low
+        text: Below low normal
+    id: null
+  request:
+    method: POST
+    url: Observation
+- fullUrl: urn:uuid:fde8136a-b429-11ee-869d-daaf18ab2cb9
+  resource:
+    resourceType: Observation
+    meta:
+      versionId: '2'
+      lastUpdated: '2023-01-11T18:35:32+00:00'
+      source: '#vdxQymXIw79WL5RD'
+    status: final
+    category:
+    - coding:
+      - system: http://terminology.hl7.org/CodeSystem/observation-category
+        code: vital-signs
+        display: Vital Signs
+      text: Vital Signs
+    code:
+      coding:
+      - system: http://loinc.org
+        code: 39156-5
+        display: Body mass index (BMI) [Ratio]
+      text: BMI
+    subject:
+      reference: Patient/13db04df-0023-42dd-965c-a5c2b626b706
+    effectiveDateTime: '1999-07-02'
+    valueQuantity:
+      value: 16.2
+      unit: kg/m2
+      system: http://unitsofmeasure.org
+      code: kg/m2
+    id: null
+  request:
+    method: POST
+    url: Observation
+- fullUrl: urn:uuid:fde81dd8-b429-11ee-869d-daaf18ab2cb9
+  resource:
+    resourceType: Observation
+    meta:
+      versionId: '2'
+      lastUpdated: '2023-01-11T18:38:26+00:00'
+      source: '#r5TOMMpMQqectAWW'
+    identifier:
+    - use: official
+      system: http://www.bmc.nl/zorgportal/identifiers/observations
+      value: '6323'
+    status: final
+    code:
+      coding:
+      - system: http://loinc.org
+        code: 15074-8
+        display: Glucose [Moles/volume] in Blood
+    subject:
+      reference: Patient/13db04df-0023-42dd-965c-a5c2b626b706
+    effectivePeriod:
+      start: '2013-04-02T09:30:10+01:00'
+    issued: '2013-04-03T15:30:10+01:00'
+    valueQuantity:
+      value: 6.3
+      unit: mmol/l
+      system: http://unitsofmeasure.org
+      code: mmol/L
+    interpretation:
+    - coding:
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
+        code: H
+        display: High
+    referenceRange:
+    - low:
+        value: 3.1
+        unit: mmol/l
+        system: http://unitsofmeasure.org
+        code: mmol/L
+      high:
+        value: 6.2
+        unit: mmol/l
+        system: http://unitsofmeasure.org
+        code: mmol/L
+    id: null
+  request:
+    method: POST
+    url: Observation
+- fullUrl: urn:uuid:fde824e0-b429-11ee-869d-daaf18ab2cb9
+  resource:
+    resourceType: Observation
+    meta:
+      versionId: '2'
+      lastUpdated: '2022-12-16T17:56:45+00:00'
+      source: '#TjrQOxrTa2B4k4D8'
+    status: final
+    category:
+    - coding:
+      - system: http://terminology.hl7.org/CodeSystem/observation-category
+        code: vital-signs
+        display: Vital Signs
+    code:
+      coding:
+      - system: http://loinc.org
+        code: 29463-7
+        display: Body Weight
+      - system: http://loinc.org
+        code: 3141-9
+        display: Body weight Measured
+      - system: http://snomed.info/sct
+        code: '27113001'
+        display: Body weight
+      - system: http://acme.org/devices/clinical-codes
+        code: body-weight
+        display: Body Weight
+    subject:
+      reference: Patient/13db04df-0023-42dd-965c-a5c2b626b706
+    effectiveDateTime: '2016-03-28'
+    valueQuantity:
+      value: 185
+      unit: lbs
+      system: http://unitsofmeasure.org
+      code: '[lb_av]'
+    id: null
+  request:
+    method: POST
+    url: Observation
+- fullUrl: urn:uuid:fde82a6c-b429-11ee-869d-daaf18ab2cb9
+  resource:
+    resourceType: Practitioner
+    meta:
+      versionId: '1'
+      lastUpdated: '2022-05-06T15:03:02.000+00:00'
+      source: '#dDN38N4uq13fRejq'
+      profile:
+      - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+    identifier:
+    - system: http://hl7.org/fhir/sid/us-npi
+      value: '400'
+    active: true
+    name:
+    - family: Barton704
+      given:
+      - Ashlyn643
+      prefix:
+      - Dr.
+    telecom:
+    - extension:
+      - url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct
+        valueBoolean: true
+      system: email
+      value: Ashlyn643.Barton704@example.com
+      use: work
+    address:
+    - line:
+      - 200 GROTON ROAD
+      city: AYER
+      state: MA
+      postalCode: '01432'
+      country: US
+    gender: female
+    id: null
+  request:
+    method: POST
+    url: Practitioner
+- fullUrl: urn:uuid:fde82fda-b429-11ee-869d-daaf18ab2cb9
+  resource:
+    resourceType: Practitioner
+    meta:
+      versionId: '1'
+      lastUpdated: '2022-05-06T15:03:02.000+00:00'
+      source: '#dDN38N4uq13fRejq'
+      profile:
+      - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+    identifier:
+    - system: http://hl7.org/fhir/sid/us-npi
+      value: '490'
+    active: true
+    name:
+    - family: Bins636
+      given:
+      - Shannon293
+      prefix:
+      - Dr.
+    telecom:
+    - extension:
+      - url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct
+        valueBoolean: true
+      system: email
+      value: Shannon293.Bins636@example.com
+      use: work
+    address:
+    - line:
+      - 800 WASHINGTON STREET
+      city: NORWOOD
+      state: MA
+      postalCode: '02062'
+      country: US
+    gender: male
+    id: null
+  request:
+    method: POST
+    url: Practitioner
+- fullUrl: urn:uuid:fde8391c-b429-11ee-869d-daaf18ab2cb9
+  resource:
+    resourceType: Practitioner
+    meta:
+      versionId: '1'
+      lastUpdated: '2022-05-06T15:03:02.000+00:00'
+      source: '#dDN38N4uq13fRejq'
+      profile:
+      - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+    identifier:
+    - system: http://hl7.org/fhir/sid/us-npi
+      value: '200'
+    active: true
+    name:
+    - family: Beer512
+      given:
+      - Corinna386
+      prefix:
+      - Dr.
+    telecom:
+    - extension:
+      - url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct
+        valueBoolean: true
+      system: email
+      value: Corinna386.Beer512@example.com
+      use: work
+    address:
+    - line:
+      - 680 CENTER STREET
+      city: BROCKTON
+      state: MA
+      postalCode: '02302'
+      country: US
+    gender: female
+    id: null
+  request:
+    method: POST
+    url: Practitioner
