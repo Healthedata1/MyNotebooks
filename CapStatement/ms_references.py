@@ -7,7 +7,8 @@
 #   -  all reference with must support = true and add't USCDI profiles when add add'l USCDI equal True
 # - list of other profile that need to be supported
 # - incorporate into narrative generator...
-# - todo think about canonical too and !uscdi requirements as well! and inherited references from base. (such as Media) use snapshot instead?
+# - do same for uscdi requirements with global parameter 
+# - todo think about canonical too and inherited references from base. (such as Media) use snapshot instead?
 #   - check if inherited reference if emopty ( e.g. Media )
 # - associated url with title to publish  (see narrative generator)
 # 
@@ -23,15 +24,34 @@ yml_path = Path('/Users/ehaas/Documents/FHIR/US-Core/input/resources-yaml')
 snapshot_path =  Path('/Users/ehaas/Documents/FHIR/US-Core/output')  # use this
 
 my_path = snapshot_path
+ig_base_url = 'http://hl7.org/fhir/us/core/'  # US Core don't forget the trailing /
+fhir_base = 'http://hl7.org/fhir/' # canonical url for FHIR don't forget the trailing /
+
+
+# %% [markdown]
+# ### Update Profile Canonicals to Relative References 
 
 # %%
-def get_my_dict(addl_uscdi = False):
+def canonical_to_path(canonical):
+    if canonical.startswith(ig_base_url):
+        relative_path_parts = canonical.split(ig_base_url)[-1].split('/')
+        # print(relative_path_parts)
+        return f"{relative_path_parts[0]}-{relative_path_parts[1]}.html"
+    else:
+        return canonical
+
+# %%
+canonical = 'http://hl7.org/fhir/StructureDefinition/CapabilityStatement'
+print(canonical_to_path(canonical))  # test it
+
+# %%
+def get_my_dict():
     type_map={}
     title_map={}
     derived_map={}
     mydict = {}
     excludelist = []
-    print(f'addl_uscdi={addl_uscdi}')
+    # print(f'addl_uscdi={addl_uscdi}')
     whitelist = []
 
     count = 0
@@ -71,7 +91,7 @@ def get_my_dict(addl_uscdi = False):
                         try:
                             if element['mustSupport']: # only Must Supports / no add;l uscdi elements
                                 my_urls.update(snapshot_reference) #add list to set
-                        except KeyError: # Must Supports + Add;l USCDI
+                        except KeyError: # Add;l USCDI
                             my_uscdi_urls.update(snapshot_reference) #add list to set
 
                     except KeyError:
@@ -115,82 +135,38 @@ def get_my_dict(addl_uscdi = False):
                             my_urls.update(targetProfile) #add list to set
                     except KeyError: # Must Supports + Add;l USCDI
                         my_uscdi_urls.update(targetProfile) #add list to set             
-        # print(f'{my_urls}\n')
-        if addl_uscdi:
-            mydict[obj['url']] = list(my_uscdi_urls)
-        else:
-            mydict[obj['url']] = list(my_urls)
+        # print(f'my_uscdi_urls = {my_uscdi_urls}\n')
+        # if addl_uscdi:
+        #     mydict[obj['url']] = list(my_uscdi_urls)
+        # else:
+        #     mydict[obj['url']] = list(my_urls)
+
+        mydict[obj['url']] = [(i,False) for i in list(my_urls)] + [(i,True) for i in list(my_uscdi_urls)]
 
     ### update profiles derived from other US Core profiles
-    #
+
     #- iterate through and combine lists of profiles from parent profiles.   
     for k,v in derived_map.items():
         if v in mydict.keys():
             # print(k,v,mydict[k],mydict[v])
             mydict[k] = mydict[k] + mydict[v]
-    # pprint(mydict)
-    print('return mydict, type_map, title_map')
+    # pprint(f"mydict={mydict}")
+    # print('return mydict, type_map, title_map')
+    # pprint(f'title_map={title_map}')
     return mydict, type_map, title_map
-
-
-# %% [markdown]
-# ### Create A Dependency Table Using DataFrames ******DISABLED*******
-
-# %% [markdown]
-# #### Map The Url To Types
-# 
-# - fetch US Core profile types from SD - done above
-# - otherwise use the deduce the type from the fhir url  e.g.  uri = http://hl7.org/fhir/StructureDefinition/Observation -> uri.split('/')[-1]
-
-# %% [markdown]
-# #### Create A Markdown Table
-# 
-# - create a dataframe
-#   - split the dict into keys and values
-#   - create DF form a dict of list of keys, key types, values, value-types
-
-# %%
-mydict,type_map,title_map = get_my_dict()
-keys = list(mydict.keys())
-r_types_keys = [type_map[k] for k in keys]
-
-t_types_values = []
-t_profile_values = []
-for v in list(mydict.values()):
-    target_type = []
-    for i,j in enumerate(v):
-        # print(i,j)
-        try:
-            target_type.append(type_map[j])
-        except KeyError:
-            t_types_value = j.split('/')[-1]
-            if t_types_value == 'Resource':
-                target_type.append("Any Resource")
-            else:
-                target_type.append(t_types_value)
-                
-    # print(target_type)
-    t_types_values.append('<br />'.join(target_type))
-    t_profile_values.append('<br />'.join(v))
-
-df = pd.DataFrame({'US Core Profile': keys, 'Resource Type':r_types_keys, 'Target US Core Profile or FHIR Resource': t_profile_values,  'Target Resource Type':t_types_values})
-# my_md_table = df.to_markdown(index=False)
-# display.Markdown(my_md_table)
-# display.Markdown("foo<br />bar")
-# df.to_dict('records')
-
 
 
 # %% [markdown]
 # ### map in the the links to US Core IG
 
 # %%
-def get_references_summary(addl_uscdi=False):
-    mydict,type_map,title_map = get_my_dict(addl_uscdi=addl_uscdi)
+def get_references_summary():
+    
+    mydict,type_map,title_map = get_my_dict()
     keys = list(mydict.keys())
     r_types_keys = [type_map[k] for k in keys]
     # uscore_profile_links
-    uscore_profile_links = [f'<a href="{k}">{title_map[k]}</a>' for k in keys]
+    uscore_profile_links = [f'<a href="{canonical_to_path(k)}">{title_map[k]}</a>' for k in keys]
     # resource_links
     resource_links = [f'<a href="#{k.lower()}">{k}</a>' for k in r_types_keys]
     # target profile links
@@ -200,20 +176,20 @@ def get_references_summary(addl_uscdi=False):
     for v in values:
         p_links=[]
         r_links=[]
-        for t in v:
+        for target, is_uscdi in v:
             try:
-                p_links.append(f'<a href="{t}">{title_map[t]}</a>')
-                r_links.append(f'<a href="#{type_map[t].lower()}">{type_map[t]}</a>')
+                p_links.append(f'<a href="{canonical_to_path(target)}">{title_map[target]}</a>{ "(ADDITIONAL USCDI)" if is_uscdi else ""}')
+                r_links.append(f'<a href="#{type_map[target].lower()}">{type_map[target]}</a>')
             except KeyError:
-                if t == "http://hl7.org/fhir/StructureDefinition/Resource":
-                    p_links.append(f'<a href="#">Any Resource</a>')
+                if target == "http://hl7.org/fhir/StructureDefinition/Resource":
+                    p_links.append(f'<a href="#">Any Resource</a>{ "(ADDITIONAL USCDI)" if is_uscdi else ""}')
                     r_links.append(f'<a href="#">Any Resource</a>')
                 else:
-                    p_links.append(f'<a href="#{t.split("/")[-1].lower()}">{t.split("/")[-1]}</a>')
-                    r_links.append(f'<a href="#{t.split("/")[-1].lower()}">{t.split("/")[-1]}</a>')
+                    p_links.append(f'<a href="#{target.split("/")[-1].lower()}">{target.split("/")[-1]}</a>{ "(ADDITIONAL USCDI)" if is_uscdi else ""}')
+                    r_links.append(f'<a href="#{target.split("/")[-1].lower()}">{target.split("/")[-1]}</a>')
 
         t_profile_links.append('<br />'.join(p_links))
-        t_types_links.append(' <br />'.join(r_links))
+        t_types_links.append('<br />'.join(r_links))
   
 
     #t_types_values
@@ -222,7 +198,7 @@ def get_references_summary(addl_uscdi=False):
     #     for r in references_summary:
     #         print(references_summary[r][i])
     #     print("---")
-    print( "return references_summary")
+    # print( f"return references_summary = {y_dump(references_summary)}")
     return references_summary
 
 
@@ -230,8 +206,7 @@ def get_references_summary(addl_uscdi=False):
 # # create a table in jinja with links etc
 
 # %%
-
-def main(addl_uscdi=False):
+def main():
     from jinja2 import Environment, FileSystemLoader, select_autoescape
     in_path = ''
     in_file = 'test.j2'
@@ -247,8 +222,8 @@ def main(addl_uscdi=False):
     env.filters['markdown'] = markdown
     template = env.get_template(in_file)
 
-    references_summary = get_references_summary(addl_uscdi=addl_uscdi)
-    print(references_summary['US Core Profile'][0])
+    references_summary = get_references_summary()
+    # print(f"summary of references =  {[(r,references_summary['Target US Core Profile or FHIR Resource'][i]) for i,r in enumerate(references_summary['US Core Profile']) if references_summary['Target US Core Profile or FHIR Resource'][i] != '']}")
     rendered = template.render(references_summary=references_summary)
     return (rendered)
 
@@ -257,8 +232,8 @@ if __name__ == '__main__':
     # from IPython.display import display, HTML
     print("main")
     # global addl_uscdi
-    addl_uscdi = False
-    my_table = main(addl_uscdi=addl_uscdi)
+    # addl_uscdi = True
+    my_table = main()
     display(HTML(my_table))
 
 
