@@ -1,9 +1,0 @@
-{
-  "resourceType" : "ValueSet",
-  "id" : "3468454e-240d-4e3d-ab74-9c7a4620334a-9",
-  "url" : "http://hl7.org/fhir/comparison/ValueSet/3468454e-240d-4e3d-ab74-9c7a4620334a-9",
-  "name" : "IntersectionLOINCCodesAndUSCoreSmokingStatusObservationCodes",
-  "title" : "Intersection of LOINC Codes And US Core Smoking Status Observation Codes",
-  "status" : "draft",
-  "date" : "2023-04-20T10:41:48-07:00"
-}

@@ -64,9 +64,9 @@
 				<b> target</b>  {{sp.target | join(',')}}</p>
               {% endif %}         
 			<p>
-				<b> mulitpleOr</b> : {{sp.multipleOr}}   (Conformance Expectation = {{ sp._multipleOr.extension[0].valueCode }})</p>
+				<b> multipleOr</b> : {{sp.multipleOr}}   (Conformance Expectation = {{ sp._multipleOr.extension[0].valueCode }})</p>
 			<p>
-				<b> mulitpleAnd</b> : {{sp.multipleAnd}}  ( Conformance Expectation = {{ sp._multipleAnd.extension[0].valueCode }})</p>
+				<b> multipleAnd</b> : {{sp.multipleAnd}}  ( Conformance Expectation = {{ sp._multipleAnd.extension[0].valueCode }})</p>
     {% if sp.comparator %}
     {% for i in sp.comparator %}
     <p>

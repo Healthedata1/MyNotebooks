@@ -1,11 +1,11 @@
 {
   "resourceType" : "ValueSet",
-  "id" : "7d50f8e1-df2c-4633-9ea1-41eb58201298-11",
-  "url" : "http://hl7.org/fhir/comparison/ValueSet/7d50f8e1-df2c-4633-9ea1-41eb58201298-11",
+  "id" : "284a3245-ebc0-4e62-ae21-7a9f10230a25-11",
+  "url" : "http://hl7.org/fhir/comparison/ValueSet/284a3245-ebc0-4e62-ae21-7a9f10230a25-11",
   "name" : "UnionAll LanguagesAndLanguageCodesWithLanguageAndOptionallyARegionModifier",
   "title" : "Union of null And Language codes with language and optionally a region modifier",
   "status" : "draft",
-  "date" : "2023-04-20T10:42:17-07:00",
+  "date" : "2024-04-11T00:08:44-07:00",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",

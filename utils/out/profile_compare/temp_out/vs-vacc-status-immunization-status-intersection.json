@@ -1,11 +1,11 @@
 {
   "resourceType" : "ValueSet",
-  "id" : "b2468634-ccee-43ed-b954-7437b4aee894-6",
-  "url" : "http://hl7.org/fhir/comparison/ValueSet/b2468634-ccee-43ed-b954-7437b4aee894-6",
+  "id" : "6622611b-a701-40d8-bdbe-7015ae6c120e-6",
+  "url" : "http://hl7.org/fhir/comparison/ValueSet/6622611b-a701-40d8-bdbe-7015ae6c120e-6",
   "name" : "IntersectionArgonaut Immunization StatusAndImmunizationStatusCodes",
   "title" : "Intersection of null And Immunization Status Codes",
   "status" : "draft",
-  "date" : "2023-04-20T10:37:58-07:00",
+  "date" : "2024-04-11T00:05:05-07:00",
   "compose" : {
     "include" : [{
       "concept" : [{

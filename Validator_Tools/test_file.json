@@ -1,88 +1,49 @@
 {
-    "resourceType": "Task",
-    "id": "AdditionalInformationTaskExample",
+    "resourceType": "Immunization",
+    "id": "imm-1",
     "meta": {
         "profile": [
-            "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/profile-task"
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization"
+        ],
+        "extension": [
+            {
+                "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+                "valueString": "Imm 1 Example"
+            },
+            {
+                "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+                "valueMarkdown": "This is a imm 1 example for the *US Core Immunization Profile*."
+            }
         ]
     },
-    "identifier": [
-        {
-            "system": "http://example.org/ITEM_TRACE_NUMBER",
-            "value": "1122334"
-        }
-    ],
-    "status": "requested",
-    "intent": "order",
-    "code": {
+    "status": "completed",
+    "vaccineCode": {
         "coding": [
             {
-                "system": "http://hl7.org/fhir/us/davinci-pas/CodeSystem/PASTempCodes",
-                "code": "attachment-request-code"
-            }
-        ]
-    },
-    "for": {
-        "reference": "Patient/BeneficiaryExample"
-    },
-    "requester": {
-        "identifier": {
-            "system": "http://hl7.org/fhir/sid/us-npi",
-            "value": "789312"
-        }
-    },
-    "owner": {
-        "identifier": {
-            "system": "http://hl7.org/fhir/sid/us-npi",
-            "value": "789312"
-        }
-    },
-    "reasonCode": {
-        "coding": [
+                "system": "http://hl7.org/fhir/sid/cvx",
+                "code": "197",
+                "display": "influenza, high-dose, quadrivalent"
+            },
             {
-                "system": "http://hl7.org/fhir/us/davinci-pas/CodeSystem/PASTempCodes",
-                "code": "priorAuthorization"
+                "system": "http://hl7.org/fhir/sid/ndc",
+                "code": "49281012165",
+                "display": "FLUZONE High-Dose Quadrivalent Northern Hemisphere, 10 SYRINGE, GLASS in 1 PACKAGE (49281-121-65) > .7 mL in 1 SYRINGE, GLASS (49281-121-88) (package)"
             }
-        ]
+        ],
+        "text": "influenza, high-dose, quadrivalent"
     },
-    "reasonReference": {
-        "reference": "Claim/MedicalServicesAuthorizationExample"
+    "patient": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
     },
-    "input": [
-        {
-            "type": {
-                "coding": [
-                    {
-                        "system": "http://hl7.org/fhir/us/davinci-pas/CodeSystem/PASTempCodes",
-                        "code": "payer-url"
-                    }
-                ]
-            },
-            "valueUrl": "http://example.org/payerURL"
-        },
-        {
-            "extension": [
-                {
-                    "url": "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-paLineNumber",
-                    "valueInteger": 1
-                }
-            ],
-            "type": {
-                "coding": [
-                    {
-                        "system": "http://hl7.org/fhir/us/davinci-pas/CodeSystem/PASTempCodes",
-                        "code": "attachments-needed"
-                    }
-                ]
-            },
-            "valueCodeableConcept": {
-                "coding": [
-                    {
-                        "system": "http://loinc.org",
-                        "code": "26443-2"
-                    }
-                ]
-            }
-        }
-    ]
+    "encounter": {
+        "reference": "Encounter/example-1",
+        "display": "Office Visit"
+    },
+    "occurrenceDateTime": "2020-11-19T12:46:57-08:00",
+    "primarySource": false,
+    "location": {
+        "reference": "Location/hospital",
+        "display": "Holy Family Hospital"
+    }
 }

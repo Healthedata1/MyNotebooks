@@ -1,11 +1,11 @@
 {
   "resourceType" : "ValueSet",
-  "id" : "37ec855f-ba31-4714-8114-0881bbad0896-12",
-  "url" : "http://hl7.org/fhir/comparison/ValueSet/37ec855f-ba31-4714-8114-0881bbad0896-12",
+  "id" : "bd5ecd0e-3c0b-43a9-9cbd-2212867b3804-12",
+  "url" : "http://hl7.org/fhir/comparison/ValueSet/bd5ecd0e-3c0b-43a9-9cbd-2212867b3804-12",
   "name" : "Intersection Argonaut ProcedureTypeAndUSCoreProcedureCodes",
   "title" : "Intersection of null And US Core Procedure Codes",
   "status" : "draft",
-  "date" : "2023-04-20T10:40:52-07:00",
+  "date" : "2024-04-11T00:07:31-07:00",
   "compose" : {
     "include" : [{
       
