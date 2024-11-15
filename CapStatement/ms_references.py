@@ -208,6 +208,7 @@ def get_references_summary():
 # %%
 def main():
     from jinja2 import Environment, FileSystemLoader, select_autoescape
+    print(Path.cwd())
     in_path = ''
     in_file = 'test.j2'
     def markdown(text, *args, **kwargs):

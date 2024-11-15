@@ -1,53 +1,14 @@
-    <h3 class="no_toc" id="resource-details">RESTful Capabilities by Resource/Profile:</h3>
-
-    <h4>Summary of RESTful interactions</h4>
-    <table class="grid">
-    <thead>
-    <tr>
-    <th>Resource Type</th>
-    <th>Supported Profiles</th>
-    <th>Supported Searches</th>
-    <th>Supported <code>_includes</code></th>
-            <th>Supported <code>_revincludes</code></th>
-    <th>Supported Operations</th>
-    </tr>
-    </thead>
-    <tbody>
-
-    </tbody>
-    </table>
-
-
-<!-- new table here --->
-
-
-{% for v in my_records %}
-{{ v['US Core Profile'] }}
-
-
-{% endfor %}
-
-------
-
-------
-
-
-
 <h4>Summary of Must Support and Additional USCDI References Between Profiles</h4>
 <ul>
-<li><strong>US Core Profile</strong>: The profile that has a Must Support or Additional USCDI references to other profiles or resources (i.e., Target Profiles).</li>
-<li><strong>Resource Type</strong>: The FHIR resource type of the source profile.</li>
-<li><strong>Target Profile</strong>: The profiles or resources that the US Core Profile has a Must Support or Additional USCDI reference to.</li>
-<li><strong>Target Resource Type</strong>: The FHIR resource type of the Target Profile.</li>
+<li><strong>US Core Profile</strong>: The profile that has {% if addl_uscdi %}Additional USCDI{% else %}<em>Must Support</em>{% endif %} Reference elements</li>
+<li><strong>Target Profile</strong>: The <em>Must Support</em> target profiles or resources</li>
 </ul>
 
     <table class="grid">
     <thead>
     <tr>
     <th>US Core Profile</th>
-    <th>Resource Type</th>
     <th>Target Profile</th>
-    <th>Target Resource Type</th>
     </tr>
     </thead>
     <tbody>
@@ -65,7 +26,4 @@
     </table>
 
 
-{# {{ my_df.to_html() | safe }} #}
-
-<!-- end new table here --->
 

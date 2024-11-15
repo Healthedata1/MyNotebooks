@@ -1,0 +1,85 @@
+{
+    "resourceType": "Questionnaire",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-sdc-questionnaire"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+            "valueCanonical": "http://example.org/cdex-library-example1"
+        }
+    ],
+    "url": "http://example.org/cdex-questionnaire-example1",
+    "version": "2.0.0",
+    "name": "CDEXQuestionnaireExample",
+    "title": "Home Oxygen Therapy Questionnaire (CDex Test Questionnaire)",
+    "status": "draft",
+    "subjectType": [
+        "Patient"
+    ],
+    "date": "2023-05-03",
+    "item": [
+        {
+            "linkId": "1",
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                    "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "RelevantPatientDiagnosis"
+                    }
+                }
+            ],
+            "text": "Relevant Patient Diagnoses (conditions that might be expected to improve with oxygen therapy)",
+            "type": "text",
+            "required": true
+        },
+        {
+            "linkId": "2",
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                    "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "OrderReason"
+                    }
+                }
+            ],
+            "text": "Order Reason",
+            "type": "choice",
+            "required": true,
+            "answerOption": [
+                {
+                    "valueCoding": {
+                        "system": "http://example.org",
+                        "code": "1",
+                        "display": "Initial or original order for certification"
+                    }
+                },
+                {
+                    "valueCoding": {
+                        "system": "http://example.org",
+                        "code": "2",
+                        "display": "Change in status"
+                    }
+                },
+                {
+                    "valueCoding": {
+                        "system": "http://example.org",
+                        "code": "3",
+                        "display": "Revision or change in equipment"
+                    }
+                },
+                {
+                    "valueCoding": {
+                        "system": "http://example.org",
+                        "code": "4",
+                        "display": "Replacement"
+                    }
+                }
+            ]
+        }
+    ]
+}

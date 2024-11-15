@@ -1,0 +1,4 @@
+foo: |
+    This is a block scalar
+    with multiple lines
+    and no indentation

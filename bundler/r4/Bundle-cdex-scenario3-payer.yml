@@ -1,0 +1,150 @@
+resourceType: Bundle
+id: cdex-scenario3-payer
+meta:
+  lastUpdated: '2024-08-13T15:23:03.970275-07:00'
+type: transaction
+timestamp: '2024-08-13T15:23:03.969469-07:00'
+entry:
+- fullUrl: urn:uuid:9b8fae28-59c2-11ef-8fd5-daaf18ab2cbb
+  resource:
+    resourceType: Claim
+    identifier:
+    - system: http://example.org/payer
+      value: trackingid123
+    - system: http://example.org/cdex/payer/claim-ids
+      value: Claim123
+    status: active
+    use: claim
+    patient:
+      valueIdentifier:
+        system: http://example.org/cdex/payer/member-ids
+        value: Member123
+    created: '2023-07-13'
+    insurance:
+    - sequence: 1
+      focal: true
+      identifier:
+        system: http://CedarArmsMedicalCenter.com/claim
+        value: MED-00050
+      coverage:
+        display: coverage-1
+    item:
+    - extension:
+      - url: http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-serviceItemRequestType
+        valueCodeableConcept:
+          coding:
+          - system: https://codesystem.x12.org/005010/1525
+            code: IN
+            display: Initial Medical Services Reservation
+      - url: http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-certificationType
+        valueCodeableConcept:
+          coding:
+          - system: https://codesystem.x12.org/005010/1322
+            code: I
+            display: Initial
+      - url: http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-authorizationNumber
+        valueString: '1122344'
+      - url: http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-administrationReferenceNumber
+        valueString: '33441122'
+      category:
+        coding:
+        - system: https://codesystem.x12.org/005010/1365
+          code: '1'
+          display: Medical Care
+      productOrService:
+        coding:
+        - system: http://www.ama-assn.org/go/cpt
+          code: '99212'
+          display: Established Office Visit
+      servicedDate: '2023-07-10'
+      locationCodeableConcept:
+        coding:
+        - system: https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set
+          code: '11'
+    id: null
+  request:
+    method: POST
+    url: Claim
+- fullUrl: urn:uuid:9b901f66-59c2-11ef-8fd5-daaf18ab2cbb
+  resource:
+    resourceType: Patient
+    meta:
+      profile:
+      - http://hl7.org/fhir/us/davinci-cdex/StructureDefinition/cdex-patient-demographics
+    identifier:
+    - use: usual
+      type:
+        coding:
+        - system: http://hl7.org/fhir/us/davinci-hrex/CodeSystem/hrex-temp
+          code: UMB
+          display: Member Number
+        text: Member Number
+      system: http://example.org/cdex/payer/member-ids
+      value: Member123
+    name:
+    - family: Shaw
+      given:
+      - Amy
+    birthDate: '1987-02-20'
+    id: null
+  request:
+    method: POST
+    url: Patient
+- fullUrl: http://example.org/cdex-questionnaire-example1
+  resource:
+    resourceType: Questionnaire
+    meta:
+      profile:
+      - http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-sdc-questionnaire
+    extension:
+    - url: http://hl7.org/fhir/StructureDefinition/cqf-library
+      valueCanonical: http://example.org/cdex-library-example1
+    url: http://example.org/cdex-questionnaire-example1
+    version: 2.0.0
+    name: CDEXQuestionnaireExample
+    title: Home Oxygen Therapy Questionnaire (CDex Test Questionnaire)
+    status: draft
+    subjectType:
+    - Patient
+    date: '2023-05-03'
+    item:
+    - linkId: '1'
+      extension:
+      - url: http://hl7.org/fhir/StructureDefinition/cqf-expression
+        valueExpression:
+          language: text/cql
+          expression: RelevantPatientDiagnosis
+      text: Relevant Patient Diagnoses (conditions that might be expected to improve
+        with oxygen therapy)
+      type: text
+      required: true
+    - linkId: '2'
+      extension:
+      - url: http://hl7.org/fhir/StructureDefinition/cqf-expression
+        valueExpression:
+          language: text/cql
+          expression: OrderReason
+      text: Order Reason
+      type: choice
+      required: true
+      answerOption:
+      - valueCoding:
+          system: http://example.org
+          code: '1'
+          display: Initial or original order for certification
+      - valueCoding:
+          system: http://example.org
+          code: '2'
+          display: Change in status
+      - valueCoding:
+          system: http://example.org
+          code: '3'
+          display: Revision or change in equipment
+      - valueCoding:
+          system: http://example.org
+          code: '4'
+          display: Replacement
+    id: null
+  request:
+    method: POST
+    url: Questionnaire
