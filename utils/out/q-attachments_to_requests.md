@@ -9,18 +9,18 @@
   -->
 
 | Data Element | CDex $submit-attachment Parameter | CDex Request Attachment Task Profile Element |
-|-------|----|---------|
+|---|----|-----|
 | Tracking ID | TrackingId | Task.identifier |
 | Use | AttachTo | Task.reasonCode |
 | Payer ID | PayerId | Task.requester.identifier |
 | Payer URL | (operation endpoint) | "PayerUrl" Task.input |
 | Organization ID | OrganizationId | PractitionerRole.practitioner.identifier |
 | Provider ID | ProviderId | PractitionerRole.organization.identifier |
-| Line Item(s) | Attachment.LineItem | <span class="bg-success" markdown="1">“AttachmentsNeeded” Task.input.extension</span><!-- new-content --> |
-| <span class="bg-success" markdown="1">Attachment Code<!-- new-content --> | Attachment.Code | <span class="bg-success" markdown="1">“AttachmentsNeeded” Task.input</span><!-- new-content --> |
+| Line Item(s) | Attachment.LineItem | “AttachmentsNeeded” Task.input.extension |
+| Attachment Code | Attachment.Code | “AttachmentsNeeded” Task.input |
 | Date of Service | ServiceDate | “service-date” Task.input |
 | Member ID | MemberId | Patient.identifier |
-| Questionnaire | - | <span class="bg-success" markdown="1">“QuestionnairesNeeded” Task.input</span><!-- new-content --> |
+| Questionnaire | - | “QuestionnairesNeeded” Task.input |
 | QuestionnaireResponse | Attachment.Content | - |
 {:.grid}
 

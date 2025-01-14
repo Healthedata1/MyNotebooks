@@ -218,8 +218,8 @@
     </td>
     <td>
 {% if r.supportedProfile %}{% for i in r.supportedProfile %}
-    {% set base_canonical = i.split('|')[0] %}
-    <a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{purl_map[i]}}{% endif %}">{{pname_map[base_canonical]}}</a>{%- if not loop.last %}, {% endif %}
+    {% set base_canonical = i.split('|')[0] %}  {# since the package supplies both, use the vesionless mapping here so don't version mismatches #}
+    <a href="{% if path_map[base_canonical] %}{{path_map[base_canonical]}}{% else %}{{purl_map[i]}}{% endif %}">{{pname_map[base_canonical]}}</a>{%- if not loop.last %}, {% endif %}
 {%  endfor %}{% else %}-{% endif %}
     </td>
 
@@ -317,7 +317,7 @@
     {% else %} <li>
     {%  endif %}
        {% set base_canonical = i.split('|')[0] %}
-       <a href="{% if path_map[i] %}{{path_map[i]}}{% else %}{{purl_map[i]}}{% endif %}">{{pname_map[base_canonical]}}</a>
+       <a href="{% if path_map[base_canonical] %}{{path_map[base_canonical]}}{% else %}{{purl_map[i]}}{% endif %}">{{pname_map[base_canonical]}}</a>
         </li>
     {%  endfor %}
     </ul>

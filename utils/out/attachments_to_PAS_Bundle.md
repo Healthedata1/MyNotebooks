@@ -8,18 +8,18 @@
   *****************************************************************************************************
   -->
 
-| Data Element | ClaimResponse (from PAS Response Bundle) | PAS Response Bundle |
-|-------|------------|------------|
-| Tracking ID | ClaimResponse.identifier, ClaimResponse.item.commmunicationRequest: CommunicationRequest.identifier | ClaimResponse = Bundle.entry[0].resource, CommunicationRequest = Bundle.entry[n].resource referenced by ClaimResponse.communincationRequest |
-| Use | preauthorization | Fixed to "preauthorization" |
-| Payer ID | ClaimResponse.insurer: Organization.identifier | ClaimResponse = Bundle.entry[0].resource, Organization = Bundle.entry[n].resource referenced by ClaimResponse.insurer |
-| Payer URL | out of band | out of band |
-| Organization ID | ClaimResponse.requester: Organization.identifier, ClaimResponse.requester: PractitionerRole.organization: Organziation.identifier | ClaimResponse = Bundle.entry[0].resource, Organization,PractitionerRole = Bundle.entry[n].resource referenced by ClaimResponse.requester |
-| Provider ID | ClaimResponse.requester: PractitionerRole.practitioner: Practitioner.identifier | ClaimResponse = Bundle.entry[0].resource, PractitionerRole = Bundle.entry[n].resource referenced by ClaimResponse.requester |
-| Line Item(s) | ClaimResponse.item.extension:itemTraceNumber Note: CommunicationRequest.payload.extension:serviceLineNumber references this item | ClaimResponse = Bundle.entry[0].resource |
-| <span class="bg-success" markdown="1">Attachment Code<!-- new-content --> | ClaimResponse.item.commmunicationRequest: CommunicationRequest.payload.extension:contentModifier | ClaimResponse = Bundle.entry[0].resource |
-| Date of Service | ClaimResponse.item.extension:requestedServiceDate | ClaimResponse = Bundle.entry[0].resource |
-| Member ID | ClaimResponse.patient: Patient.identifer | ClaimResponse = Bundle.entry[0].resource, Patient = Bundle.entry[n].resource referenced by ClaimResponse.patient |
+| Data Element | PAS Response Bundle Mapping Description | FHIRPath  |
+|---|-----------------------|-----------------------------------------------------------|
+| Tracking ID | The ClaimResponse's first identifier element | Bundle.entry[0].resource.identifier[0]  |
+| Use | Fixed to "preauthorization" | Fixed to "preauthorization"  |
+| Payer ID | The first identifier element of the Organization referenced by the ClaimResponse's insurer element. | Bundle.entry.where(fullUrl = %context.entry[0].resource.insurer.reference or (resource.resourceType = 'Organization' and resource.id =%context.entry[0].resource.insurer.reference.split('/').last())).resource.identifier[0]  |
+| Payer URL | - | -  |
+| Organization ID | If present, the first identifier element of the Organization referenced by the ClaimResponse's requester element or the first identifier element of the Organization referenced by the organization element of the PractitiionerRole referenced by the ClaimResponse's requester element. | Bundle.entry.where(resource.resourceType = 'Organization' and (fullUrl = %context.entry[0].resource.requester.reference or resource.id =%context.entry[0].resource.requester.reference.split('/').last() or (fullUrl = (%context.entry.where(resource.resourceType = 'PractitionerRole' and (fullUrl = %context.entry[0].resource.requester.reference or resource.id = %context.entry[0].resource.requester.reference.split('/').last())).resource.organization.reference) or resource.id = (%context.entry.where(resource.resourceType = 'PractitionerRole' and (fullUrl = %context.entry[0].resource.requester.reference or resource.id = %context.entry[0].resource.requester.reference.split('/').last())).resource.organization.reference).split('/').last()))).resource.identifier[0] |
+| Provider ID | The first identifier element of the Practitioner referenced by the practitioner element of the PractitionerRole referenced by the ClaimResponse's requester element. | Bundle.entry.where(resource.resourceType = 'Practitioner' and (fullUrl = (%context.entry.where(resource.resourceType = 'PractitionerRole' and (fullUrl = %context.entry[0].resource.requester.reference or resource.id = %context.entry[0].resource.requester.reference.split('/').last())).resource.practitioner.reference) or resource.id = (%context.entry.where(resource.resourceType = 'PractitionerRole' and (fullUrl = %context.entry[0].resource.requester.reference or resource.id = %context.entry[0].resource.requester.reference.split('/').last())).resource.practitioner.reference).split('/').last())).resource.identifier[0] |
+| Line Item(s) | The CommunicationRequest payload element "serviceLineNumber" extension. | Bundle.entry.where(fullUrl = %context.entry[0].resource.communicationRequest.reference or (resource.resourceType = 'CommunicationRequest' and resource.id =%context.entry[0].resource.communicationRequest.reference.split('/').last())).resource.payload.extension.where(url='http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-serviceLineNumber').valuePositiveInt |
+| Attachment Code | The CommunicationRequest payload element "contentModifier" extension. | Bundle.entry.where(fullUrl = %context.entry[0].resource.communicationRequest.reference or (resource.resourceType = 'CommunicationRequest' and resource.id =%context.entry[0].resource.communicationRequest.reference.split('/').last())).resource.payload.extension.where(url='http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-contentModifier').valueCodeableConcept |
+| Date of Service | The ClaimResponse "preAuthPeriod" element's start date. | Bundle.entry[0].resource.preAuthPeriod.start  |
+| Member ID | The member identifier element of the Patient referenced by the ClaimResponse's "patient" element. | Bundle.entry.where(fullUrl = %context.entry[0].resource.patient.reference or (resource.resourceType = 'Patient' and resource.id =%context.entry[0].resource.patient.reference.split('/').last())).resource.identifier.where('MB' in type.coding.code)  |
 {:.grid}
 
 The data element mapping table is available as a [CSV](data-element-mapping.csv) and [Excel](data-element-mapping.xlsx) file.
