@@ -1,0 +1,96 @@
+{
+  "resourceType": "Bundle",
+  "id": "bundle-002",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/profile-pas-response-bundle"
+    ]
+  },
+  "type": "collection",
+  "timestamp": "2025-02-21T13:00:00-08:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:d1e6ee61-bca8-4c8f-9524-f9eff9f7d443",
+      "resource": {
+        "resourceType": "ClaimResponse",
+        "id": "d1e6ee61-bca8-4c8f-9524-f9eff9f7d443",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/profile-claimresponse"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "http://example.org/PATIENT_EVENT_TRACE_NUMBER",
+            "value": "TRACE00002"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+              "code": "institutional"
+            }
+          ]
+        },
+        "use": "preauthorization",
+        "patient": {
+          "reference": "urn:uuid:6994b6d5-012f-4362-baef-411e2337ca09"
+        },
+        "created": "2025-02-20T10:00:00-08:00",
+        "insurer": {
+          "reference": "urn:uuid:da31a0ca-b19d-457c-99d0-1fb2117baec8"
+        },
+        "requestor": {
+          "reference": "urn:uuid:ddfce8b7-7663-4667-989f-e6ae91b63426"
+        },
+        "request": {
+          "reference": "urn:uuid:52a20156-60fd-4f18-93fd-7b5b38f3cb57"
+        },
+        "outcome": "queued",
+        "preAuthPeriod": {
+          "start": "2025-02-21",
+          "end": "2025-03-21"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6994b6d5-012f-4362-baef-411e2337ca09",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "6994b6d5-012f-4362-baef-411e2337ca09",
+        "identifier": [
+          {
+            "system": "http://example.org/member-number",
+            "value": "M00002"
+          }
+        ],
+        "name": [
+          {
+            "family": "Smith",
+            "given": [
+              "John"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:da31a0ca-b19d-457c-99d0-1fb2117baec8",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "da31a0ca-b19d-457c-99d0-1fb2117baec8",
+        "name": "Example Insurance Co"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ddfce8b7-7663-4667-989f-e6ae91b63426",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "ddfce8b7-7663-4667-989f-e6ae91b63426",
+        "name": "Example Clinic"
+      }
+    }
+  ]
+}

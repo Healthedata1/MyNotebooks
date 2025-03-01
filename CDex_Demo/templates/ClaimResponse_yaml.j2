@@ -1,0 +1,110 @@
+resourceType: ClaimResponse
+id: {{row._id}}
+meta:
+    profile:
+        - 'http://hl7.org/fhir/us/davinci-pas/StructureDefinition/profile-claimresponse'
+identifier:
+    - 
+        system: 'http://example.org/payer/PATIENT_EVENT_TRACE_NUMBER'
+        value: {{row._identifier}}
+    - 
+        extension:
+            - 
+                url: 'http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-identifierJurisdiction'
+                valueCodeableConcept:
+                    coding:
+                        - 
+                            system: 'https://www.usps.com/'
+                            code: MA
+            - 
+                url: 'http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-identifierSubDepartment'
+                valueString: '223412'
+        system: 'http://example.org/provider/PATIENT_EVENT_TRACE_NUMBER'
+        value: '222088'
+        assigner:
+            identifier:
+                system: 'http://example.org/USER_ASSIGNED'
+                value: '9012345678'
+    - 
+        system: 'https://prior-auth.davinci.hl7.org/fhir'
+        value: 39885bae-f84c-4eac-8442-a7856f372df4
+status: active
+type:
+    coding:
+        - 
+            system: 'http://terminology.hl7.org/CodeSystem/claim-type'
+            code: institutional
+            display: Institutional
+use: preauthorization
+patient:
+    reference: Patient/SubscriberExample
+created: '2023-09-03T00:31:38+00:00'
+insurer:
+    reference: Organization/InsurerExample
+requestor:
+    reference: PractitionerRole/PractitionerRoleExample
+request:
+    reference: Claim/SurgicalAuthorizationRequestExample
+outcome: queued
+disposition: Pending
+preAuthRef: 39885bae-f84c-4eac-8442-a7856f372df4
+preAuthPeriod:
+    start: '2023-09-03'
+    end: '2023-10-03'
+item:
+    - 
+        extension:
+            - 
+                url: ':http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-itemRequestedServiceDate'
+                valueDateTime: '2023-09-10'
+            - 
+                url: 'http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-itemTraceNumber'
+                valueIdentifier:
+                    system: 'http://example.org/payer/PATIENT_EVENT_LINE_TRACE_NUMBER'
+                    value: '1111111'
+            - 
+                url: 'http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-itemPreAuthIssueDate'
+                valueDate: '2023-09-03'
+            - 
+                url: 'http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-authorizationNumber'
+                valueString: 140bf6e4-066d-4007-8598-ef1b14493dc0
+            - 
+                url: 'http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-itemAuthorizedProvider'
+                extension:
+                    - 
+                        url: provider
+                        valueReference:
+                            reference: Organization/UMOExample
+        itemSequence: 1
+        adjudication:
+            - 
+                extension:
+                    - 
+                        url: 'http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-reviewAction'
+                        extension:
+                            - 
+                                url: 'http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-reviewActionCode'
+                                valueCodeableConcept:
+                                    coding:
+                                        - 
+                                            system: 'https://codesystem.x12.org/005010/306'
+                                            code: '86'
+                                            display: Pended for Follow Up
+                            - 
+                                url: reasonCode
+                                valueCodeableConcept:
+                                    coding:
+                                        - 
+                                            system: 'https://codesystem.x12.org/external/886'
+                                            code: OS
+                                            display: 'Open, Waiting for Supplier Feedback'
+                category:
+                    coding:
+                        - 
+                            system: 'http://terminology.hl7.org/CodeSystem/adjudication'
+                            code: submitted
+communicationRequest:
+    - 
+        reference: CommunicationRequest/39885bae-f84c-4eac-8442-a7856f372df4
+    - 
+        reference: CommunicationRequest/39885bae-f84c-4eac-8442-a7856f372df5

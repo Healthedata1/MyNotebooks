@@ -8,7 +8,7 @@
   *****************************************************************************************************
   -->
 
-| Data Element | PAS Response Bundle Mapping Description | FHIRPath  |
+| Data Element | PAS Response Bundle Mapping to $submit-attachment Description | FHIRPath mapping to $submit-attachment  |
 |---|-----------------------|-----------------------------------------------------------|
 | Tracking ID | The ClaimResponse's first identifier element | Bundle.entry[0].resource.identifier[0]  |
 | Use | Fixed to "preauthorization" | Fixed to "preauthorization"  |

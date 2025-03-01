@@ -1,0 +1,3 @@
+bundle_id,trace_number,claim_type,created_date,patient_member_number,patient_family_name,patient_given_name
+bundle-001,TRACE00001,professional,2025-02-21T12:00:00-08:00,M00001,Doe,Jane
+bundle-002,TRACE00002,institutional,2025-02-20T10:00:00-08:00,M00002,Smith,John

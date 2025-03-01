@@ -20,7 +20,7 @@
 | Attachment Code | Attachment.Code | “AttachmentsNeeded” Task.input |
 | Date of Service | ServiceDate | “service-date” Task.input |
 | Member ID | MemberId | Patient.identifier |
-| Questionnaire | - | “QuestionnairesNeeded” Task.input |
+| Questionnaire | - | “QuestionnairesContext” Task.input |
 | QuestionnaireResponse | Attachment.Content | - |
 {:.grid}
 

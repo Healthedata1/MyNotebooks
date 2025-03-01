@@ -1,0 +1,64 @@
+resourceType: Bundle
+id: "{{ bundle_id }}"
+meta:
+  profile:
+    - http://hl7.org/fhir/us/davinci-pas/StructureDefinition/profile-pas-response-bundle
+type: collection
+timestamp: "{{ timestamp }}"
+entry:
+  - fullUrl: "urn:uuid:{{ claim_response_uuid }}"
+    resource:
+      resourceType: ClaimResponse
+      id: "{{ claim_response_uuid }}"
+      meta:
+        profile:
+          - http://hl7.org/fhir/us/davinci-pas/StructureDefinition/profile-claimresponse
+      identifier:
+        - system: http://example.org/PATIENT_EVENT_TRACE_NUMBER
+          value: "{{ trace_number }}"
+      status: active
+      type:
+        coding:
+          - system: http://terminology.hl7.org/CodeSystem/claim-type
+            code: "{{ claim_type | default('professional') }}"
+      use: preauthorization
+      patient:
+        reference: "urn:uuid:{{ patient_uuid }}"
+      created: "{{ created_date }}"
+      insurer:
+        reference: "urn:uuid:{{ insurer_uuid }}"
+      requestor:
+        reference: "urn:uuid:{{ requestor_uuid }}"
+      request:
+        reference: "urn:uuid:{{ claim_uuid }}"
+      outcome: queued
+      preAuthPeriod:
+        start: "{{ preauth_start_date }}"
+        end: "{{ preauth_end_date }}"
+  {% if include_patient %}
+  - fullUrl: "urn:uuid:{{ patient_uuid }}"
+    resource:
+      resourceType: Patient
+      id: "{{ patient_uuid }}"
+      identifier:
+        - system: http://example.org/member-number
+          value: "{{ patient_member_number }}"
+      name:
+        - family: "{{ patient_family_name }}"
+          given:
+            - "{{ patient_given_name }}"
+  {% endif %}
+  {% if include_insurer %}
+  - fullUrl: "urn:uuid:{{ insurer_uuid }}"
+    resource:
+      resourceType: Organization
+      id: "{{ insurer_uuid }}"
+      name: "{{ insurer_name }}"
+  {% endif %}
+  {% if include_requestor %}
+  - fullUrl: "urn:uuid:{{ requestor_uuid }}"
+    resource:
+      resourceType: Organization
+      id: "{{ requestor_uuid }}"
+      name: "{{ requestor_name }}"
+  {% endif %}
