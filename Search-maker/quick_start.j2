@@ -153,7 +153,7 @@ The following search parameter combinations **SHOULD** be supported:
 {% endfor %}
 
 {% if r_type == "DocumentReference" %}
-  {% raw %}{% include write-and-docref.md %}{% endraw %}
+  {% raw %}{%if include.category == 'clinical-note' %}{% include write-and-docref.md %}{% endif %}{% endraw %}
 {% endif %}
 
 {% if r_type == "Specimen" %}
