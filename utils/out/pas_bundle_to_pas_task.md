@@ -11,6 +11,7 @@
 | PAS Task Profile Element | FHIRPath for mapping from PAS Claim Response Bundle to PAS Task  | PAS Response Bundle Mapping to PAS Task Comments  |
 |--------------|-----------------------------------------------------------|---------------------------------------------------|
 | Task.identifier | Bundle.entry[0].resource.identifier[0]  | Maps to the "Patient Event Trace Number" in X12 278R  |
+| <span class="bg-success" markdown="1">Task.identifier</span><!-- new-content --> | <span class="bg-success" markdown="1">TODO</span><!-- new-content -->  | <span class="bg-success" markdown="1">?</span><!-- new-content -->  |
 | Task.reasonCode ( Fixed to "priorAuthorization") | Fixed to "priorAuthorization"  | Fixed to "priorAuthorization"  |
 | Task.requester.identifier | Bundle.entry.where(fullUrl = %context.entry[0].resource.insurer.reference or (resource.resourceType = 'Organization' and resource.id =%context.entry[0].resource.insurer.reference.split('/').last())).resource.identifier[0]  | FHIRPath for absolute and relative references. Using the FHIRPath function. "resolve()" which is not universally supported and untested: "Bundle.entry[0].resource.insurer.resolve().resource.identifier[0] |
 | "PayerUrl" Task.input (Task.input.where(''payer-url' in type,codining.code)).valueUrl | -  | See the [Endpoint Discovery Strategy](https://hl7.org/fhir/us/davinci-hrex/endpoint-discovery.html) documented in the Da Vinci Health Record Exchange (HRex) Impelementation guide |

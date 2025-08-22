@@ -1,9 +1,0 @@
-{
-  "resourceType" : "ValueSet",
-  "id" : "ac62958b-4b04-4a8d-9edc-e173c4d9833c-6",
-  "url" : "http://hl7.org/fhir/comparison/ValueSet/ac62958b-4b04-4a8d-9edc-e173c4d9833c-6",
-  "name" : "IntersectionObservationStatusAndUSCoreObservationSmokingStatusStatus",
-  "title" : "Intersection of ObservationStatus And US Core Status for Smoking Status Observation",
-  "status" : "active",
-  "date" : "2024-04-11T00:08:20-07:00"
-}

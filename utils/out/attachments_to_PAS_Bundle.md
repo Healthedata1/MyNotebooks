@@ -9,8 +9,9 @@
   -->
 
 | Data Element | PAS Response Bundle Mapping to $submit-attachment Description | FHIRPath mapping to $submit-attachment  |
-|---|-----------------------|-----------------------------------------------------------|
+|---------|-----------------------|-----------------------------------------------------------|
 | Tracking ID | The ClaimResponse's first identifier element | Bundle.entry[0].resource.identifier[0]  |
+| <span class="bg-success" markdown="1">Administrative Reference Number</span><!-- new-content --> | <span class="bg-success" markdown="1">The ClaimResponse item element "AdministrationReferenceNumber" extension</span><!-- new-content --> | <span class="bg-success" markdown="1">TODO</span><!-- new-content -->  |
 | Use | Fixed to "preauthorization" | Fixed to "preauthorization"  |
 | Payer ID | The first identifier element of the Organization referenced by the ClaimResponse's insurer element. | Bundle.entry.where(fullUrl = %context.entry[0].resource.insurer.reference or (resource.resourceType = 'Organization' and resource.id =%context.entry[0].resource.insurer.reference.split('/').last())).resource.identifier[0]  |
 | Payer URL | - | -  |
@@ -18,7 +19,6 @@
 | Provider ID | The first identifier element of the Practitioner referenced by the practitioner element of the PractitionerRole referenced by the ClaimResponse's requester element. | Bundle.entry.where(resource.resourceType = 'Practitioner' and (fullUrl = (%context.entry.where(resource.resourceType = 'PractitionerRole' and (fullUrl = %context.entry[0].resource.requester.reference or resource.id = %context.entry[0].resource.requester.reference.split('/').last())).resource.practitioner.reference) or resource.id = (%context.entry.where(resource.resourceType = 'PractitionerRole' and (fullUrl = %context.entry[0].resource.requester.reference or resource.id = %context.entry[0].resource.requester.reference.split('/').last())).resource.practitioner.reference).split('/').last())).resource.identifier[0] |
 | Line Item(s) | The CommunicationRequest payload element "serviceLineNumber" extension. | Bundle.entry.where(fullUrl = %context.entry[0].resource.communicationRequest.reference or (resource.resourceType = 'CommunicationRequest' and resource.id =%context.entry[0].resource.communicationRequest.reference.split('/').last())).resource.payload.extension.where(url='http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-serviceLineNumber').valuePositiveInt |
 | Attachment Code | The CommunicationRequest payload element "contentModifier" extension. | Bundle.entry.where(fullUrl = %context.entry[0].resource.communicationRequest.reference or (resource.resourceType = 'CommunicationRequest' and resource.id =%context.entry[0].resource.communicationRequest.reference.split('/').last())).resource.payload.extension.where(url='http://hl7.org/fhir/us/davinci-pas/StructureDefinition/extension-contentModifier').valueCodeableConcept |
-| Date of Service | The ClaimResponse "preAuthPeriod" element's start date. | Bundle.entry[0].resource.preAuthPeriod.start  |
 | Member ID | The member identifier element of the Patient referenced by the ClaimResponse's "patient" element. | Bundle.entry.where(fullUrl = %context.entry[0].resource.patient.reference or (resource.resourceType = 'Patient' and resource.id =%context.entry[0].resource.patient.reference.split('/').last())).resource.identifier.where('MB' in type.coding.code)  |
 {:.grid}
 

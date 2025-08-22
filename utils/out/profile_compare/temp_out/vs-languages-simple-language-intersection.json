@@ -1,9 +1,0 @@
-{
-  "resourceType" : "ValueSet",
-  "id" : "284a3245-ebc0-4e62-ae21-7a9f10230a25-12",
-  "url" : "http://hl7.org/fhir/comparison/ValueSet/284a3245-ebc0-4e62-ae21-7a9f10230a25-12",
-  "name" : "IntersectionAll LanguagesAndLanguageCodesWithLanguageAndOptionallyARegionModifier",
-  "title" : "Intersection of null And Language codes with language and optionally a region modifier",
-  "status" : "draft",
-  "date" : "2024-04-11T00:08:44-07:00"
-}

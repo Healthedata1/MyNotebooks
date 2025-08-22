@@ -9,8 +9,9 @@
   -->
 
 | CDex $submit-attachment Parameter | PAS Response Bundle Mapping to $submit-attachment Description | FHIRPath mapping to $submit-attachment  | PAS Response Bundle Mapping to $submit-attachment Comments  |
-|----|-----------------------|-----------------------------------------------------------|---------------------------------------------------|
+|-------|-----------------------|-----------------------------------------------------------|---------------------------------------------------|
 | TrackingId | The ClaimResponse's first identifier element | Bundle.entry[0].resource.identifier[0]  | Maps to the "Patient Event Trace Number" in X12 278R  |
+| <span class="bg-success" markdown="1">AdminRefNumber</span><!-- new-content --> | <span class="bg-success" markdown="1">The ClaimResponse item element "AdministrationReferenceNumber" extension</span><!-- new-content --> | <span class="bg-success" markdown="1">TODO</span><!-- new-content -->  | <span class="bg-success" markdown="1">-</span><!-- new-content -->  |
 | AttachTo | Fixed to "preauthorization" | Fixed to "preauthorization"  | Fixed to "preauthorization"  |
 | PayerId | The first identifier element of the Organization referenced by the ClaimResponse's insurer element. | Bundle.entry.where(fullUrl = %context.entry[0].resource.insurer.reference or (resource.resourceType = 'Organization' and resource.id =%context.entry[0].resource.insurer.reference.split('/').last())).resource.identifier[0]  | FHIRPath for absolute and relative references. Using the FHIRPath function. "resolve()" which is not universally supported and untested: "Bundle.entry[0].resource.insurer.resolve().resource.identifier[0] |
 | (operation endpoint) | - | -  | See the [Endpoint Discovery Strategy](https://hl7.org/fhir/us/davinci-hrex/endpoint-discovery.html) documented in the Da Vinci Health Record Exchange (HRex) Impelementation guide |

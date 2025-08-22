@@ -1,0 +1,1016 @@
+{
+  "resourceType": "Bundle",
+  "id": "Teardown-Argo-R4-R6-Examples",
+  "type": "batch",
+  "timestamp": "2025-08-20T19:49:32.815584+00:00",
+  "entry": [
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Condition/condition-SDOH-example"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Condition/condition-duodenal-ulcer"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Condition/encounter-diagnosis-example1"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Condition/encounter-diagnosis-example2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Condition/health-concern-example"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Device/udi-1"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Device/udi-2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Device/udi-3"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "DeviceAssociation/udi-1"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "DeviceAssociation/udi-2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "DeviceAssociation/udi-3"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "DocumentReference/adi-dnr"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "DocumentReference/discharge-summary"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "DocumentReference/episode-summary"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "DocumentReference/living-will"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "DocumentReference/polst"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Encounter/1036"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Encounter/delivery"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Encounter/example-1"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/10-minute-apgar-color"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/10-minute-apgar-heart-rate"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/10-minute-apgar-muscle-tone"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/10-minute-apgar-reflex-irritability"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/10-minute-apgar-respiratory-effort"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/10-minute-apgar-score"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/10-minute-apgar-score-panel"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/ADI-example"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/AHC-HRSN-item-example-68517-2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/AUDIT-C-item-example-68517-2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/AUDIT-C-item-example-68519-8"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/AUDIT-C-item-example-68520-6"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/AUDIT-C-item-example-75626-2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/AUDIT-C-panel-example-72109-2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/EVS-item-example-68516-4"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/EVS-item-example-89555-7"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/EVS-panel-example-89574-8"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/HVS-item-example-88122-7"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/HVS-item-example-88123-5"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/HVS-item-example-88124-3"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/HVS-panel-example-88121-9"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PHQ9-item-example-44250-9"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PHQ9-item-example-44251-7"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PHQ9-item-example-44252-5"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PHQ9-item-example-44253-3"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PHQ9-item-example-44254-1"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PHQ9-item-example-44255-8"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PHQ9-item-example-44258-2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PHQ9-item-example-44259-0"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PHQ9-item-example-44260-8"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PHQ9-item-example-44261-6"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PHQ9-item-example-69722-7"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PHQ9-panel-example-44249-1"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-54899-0"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-56051-6"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-56799-0"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-63512-8"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-63586-2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-67875-5"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-71802-3"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-76437-3"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-76501-6"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-82589-3"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-93026-3"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-93027-1"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-93028-9"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-93029-7"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-93030-5"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-93033-9"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-93034-7"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-93035-4"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-item-example-93038-8"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-multiselect-item-example-32624-9-answer0"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-multiselect-item-example-32624-9-answer1"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-multiselect-item-example-93031-3-answer0"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-multiselect-item-example-93031-3-answer1"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-panel-example-93025-5"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-panel-example-93039-6"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-panel-example-93040-4"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-panel-example-93041-2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-panel-example-93042-0"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/PRAPARE-panel-example-93043-8"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/TAPS-item-example-75889-6"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/TAPS-item-example-88037-7"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/TAPS-item-example-96842-0"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/TAPS-item-example-96843-8"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/TAPS-item-example-96844-6"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/TAPS-panel-example-96841-2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/alcohol-use-status"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/alcoholic-drinks-per-day"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/at-home-in-vitro-test"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/average-blood-pressure"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/blood-pressure"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/bmi"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/bp-data-absent"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/capillary-refill-time-nail-bed"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/care-experience-preference"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/cbc-erythrocytes"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/cbc-hematocrit"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/cbc-hemoglobin"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/cbc-leukocytes"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/cbc-mch"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/cbc-mchc"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/cbc-mcv"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/cbc-platelets"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/dxa-femur-l-armass-bmd"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/dxa-femur-l-t-score-bmd"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/dxa-femur-l-z-score-bmd"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/dxa-hip-l-armass-bmd"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/dxa-hip-l-t-score-bmd"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/dxa-hip-l-z-score-bmd"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/ekg-impression"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/ekg-lead"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/exercise-per-day"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/exercise-per-week"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/head-circumference"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/heart-rate"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/heart-rate-rhythm"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/height"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/jugular-vein-distension"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/length"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/no-ADI-example"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/observation-occupation"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/observation-occupation-industry-unknown"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/observation-occupation-unknown"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/ofc-percentile"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/oxygen-saturation"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/p-r-interval-ekg-lead"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/pack-years-example"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/pediatric-bmi-example"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/pediatric-wt-example"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/pregnancy-intent"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/pregnancy-status"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/pulse-intensity-palpation"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/q-t-interval-ekg-lead"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/qrs-dur-ekg-lead"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/respiratory-rate"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/satO2-fiO2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/serum-bun"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/serum-calcium"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/serum-chloride"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/serum-co2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/serum-creatinine"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/serum-glucose"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/serum-potassium"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/serum-sodium"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/simple-observation-cognitive-status"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/simple-observation-disability-status"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/simple-observation-functional-status"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/simple-observation-sdoh"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/some-day-smoker"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/substance-use-status"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/temperature"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/treatment-intervention-preference"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/urobilinogen"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/weight"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/xray-chest-findings"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Observation/xray-chest-impression"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Patient/child-example"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Patient/deceased-example"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Patient/example"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Patient/infant-example"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Practitioner/practitioner-1"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Practitioner/practitioner-2"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Practitioner/practitioner-pharmacist"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Specimen/example-serum-lipemic"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Specimen/specimen-example-serum"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Specimen/specimen-example-urine"
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "url": "Specimen/specimen-example-whole-blood"
+      }
+    }
+  ]
+}

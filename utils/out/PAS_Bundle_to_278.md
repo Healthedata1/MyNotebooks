@@ -9,8 +9,9 @@
   -->
 
 | Data Element | X12n 278 Response-v5010 | PAS Response Bundle Mapping to $submit-attachment Description | FHIRPath mapping to $submit-attachment  |
-|---|--------------|-----------------------|-----------------------------------------------------------|
+|---------|--------------|-----------------------|-----------------------------------------------------------|
 | Tracking ID | Loop: 2000E - Patient Event Level or Loop: 2000F Service Level Segment: TRN02 Notes: TRN01 = “1”: Payer Supplied TRN01 = “2” : Provider Supplied (echoed back) | The ClaimResponse's first identifier element | Bundle.entry[0].resource.identifier[0]  |
+| <span class="bg-success" markdown="1">Administrative Reference Number</span><!-- new-content --> | <span class="bg-success" markdown="1">Loop: 2000E - Patient Event Level or Loop: 2000F Service Level:REF02 where REF01 == "NT"</span><!-- new-content --> | <span class="bg-success" markdown="1">The ClaimResponse item element "AdministrationReferenceNumber" extension</span><!-- new-content --> | <span class="bg-success" markdown="1">TODO</span><!-- new-content -->  |
 | Use | Prior Auth | Fixed to "preauthorization" | Fixed to "preauthorization"  |
 | Payer ID | Loop: 2010A Segment: NM109 Notes: NM108 = "PI" | The first identifier element of the Organization referenced by the ClaimResponse's insurer element. | Bundle.entry.where(fullUrl = %context.entry[0].resource.insurer.reference or (resource.resourceType = 'Organization' and resource.id =%context.entry[0].resource.insurer.reference.split('/').last())).resource.identifier[0]  |
 | Payer URL | Loop: 2010A Segment: PER08 Notes: PER07 = "UR" | - | -  |

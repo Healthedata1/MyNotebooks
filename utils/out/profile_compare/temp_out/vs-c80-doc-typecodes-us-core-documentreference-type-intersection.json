@@ -1,9 +1,0 @@
-{
-  "resourceType" : "ValueSet",
-  "id" : "85b349d0-e5ba-4a92-9081-63565d0728bb-12",
-  "url" : "http://hl7.org/fhir/comparison/ValueSet/85b349d0-e5ba-4a92-9081-63565d0728bb-12",
-  "name" : "IntersectionDocumentTypeValueSetAndUSCoreDocumentReferenceType",
-  "title" : "Intersection of Document Type Value Set And US Core DocumentReference Type",
-  "status" : "active",
-  "date" : "2024-04-11T00:03:47-07:00"
-}

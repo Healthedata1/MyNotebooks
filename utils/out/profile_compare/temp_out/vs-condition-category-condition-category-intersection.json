@@ -1,9 +1,0 @@
-{
-  "resourceType" : "ValueSet",
-  "id" : "7e12e251-805d-4651-9890-a4494496fa2c-6",
-  "url" : "http://hl7.org/fhir/comparison/ValueSet/7e12e251-805d-4651-9890-a4494496fa2c-6",
-  "name" : "IntersectionArgonaut Condition Category CodesAndConditionCategoryCodes",
-  "title" : "Intersection of null And Condition Category Codes",
-  "status" : "draft",
-  "date" : "2024-04-11T00:02:08-07:00"
-}

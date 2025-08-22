@@ -9,8 +9,9 @@
   -->
 
 | Data Element | CDex $submit-attachment Parameter | CDex Request Attachment Task Profile Element |
-|---|----|-----|
+|---------|-------|-------|
 | Tracking ID | TrackingId | Task.identifier |
+| <span class="bg-success" markdown="1">Administrative Reference Number</span><!-- new-content --> | <span class="bg-success" markdown="1">AdminRefNumber</span><!-- new-content --> | <span class="bg-success" markdown="1">Task.identifier</span><!-- new-content --> |
 | Use | AttachTo | Task.reasonCode |
 | Payer ID | PayerId | Task.requester.identifier |
 | Payer URL | (operation endpoint) | "PayerUrl" Task.input |
@@ -18,7 +19,6 @@
 | Provider ID | ProviderId | PractitionerRole.organization.identifier |
 | Line Item(s) | Attachment.LineItem | “AttachmentsNeeded” Task.input.extension |
 | Attachment Code | Attachment.Code | “AttachmentsNeeded” Task.input |
-| Date of Service | ServiceDate | “service-date” Task.input |
 | Member ID | MemberId | Patient.identifier |
 | Questionnaire | - | “QuestionnairesContext” Task.input |
 | QuestionnaireResponse | Attachment.Content | - |
