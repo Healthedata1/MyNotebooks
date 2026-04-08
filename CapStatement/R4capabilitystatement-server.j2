@@ -1,4 +1,4 @@
-<div xmlns="http://www.w3.org/1999/xhtml">
+<div xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <!-- {% raw %}
     <h2 id="title">{% if cs.title %}{{cs.title}}{% else %}{{ cs.id | upper }}{% endif %}</h2>
 
@@ -206,7 +206,7 @@
     <th>Supported Profiles</th>
     <th>Supported Searches</th>
     <th>Supported <code>_includes</code></th>
-            <th>Supported <code>_revincludes</code></th>
+    <th>Supported <code>_revincludes</code></th>
     <th>Supported Operations</th>
     </tr>
     </thead>
@@ -281,7 +281,7 @@
             {% for r in ms_references_summary %}
                 <td>
                 {{ms_references_summary[r][i] | safe | default('-' , true) }}
-                </td>          
+                </td>
                 {% endfor %}
             </tr>
         {% endfor %}
