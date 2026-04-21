@@ -1,84 +1,89 @@
-<!DOCTYPE HTML>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <title>Comparison of {{LEFT}} with this {{RIGHT}}</title>
- <link rel="stylesheet" href="fhir.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="fhir.css" type="text/css" />
 </head>
 <body>
 
 <h3>Comparison of {{LEFT}} with {{RIGHT}}</h3>
 
-
 <table class="grid">
-
- <tr>
-  <th width="260"><b>{{LEFT}}</b></td>
-  <th width="260"><b>{{RIGHT}}</b></td>
-  <th width="100"><b>Difference</b></td>
-  <td width="260"><b>Notes</b></td>
- </tr>
- <tr><td colspan="4"><b>Profiles and Extensions</b></td></tr>
+  <tr>
+    <th width="260">{{LEFT}}</th>
+    <th width="260">{{RIGHT}}</th>
+    <th width="100">Difference</th>
+    <th width="260">Notes</th>
+  </tr>
+  <tr><th colspan="4">Profiles and Extensions</th></tr>
 {% for r in profcomp %}
-  
-  {% set lfilename= r[1] %}
-  {% set rfilename= r[2] %}
-  {% set rfilename2= r[3] %}
-  {% set left=lfilename.split('/')[-1] | title %}
-  {% set right=rfilename.split('/')[-1] | title | replace ("Us", "US") %}
-  {% set link = "sd-"+lfilename.split('/')[-1]+"-"+rfilename.split('/')[-1]+".html"%}
-  {% set right2=rfilename2.split('/')[-1] | title | replace ("Us", "US") %}
-  {% set link2 = "sd-"+lfilename.split('/')[-1]+"-"+rfilename2.split('/')[-1]+".html"%}
+  {% set lfilename = r[1] %}
+  {% set rfilename = r[2] %}
+  {% set rfilename2 = r[3] %}
+  {% set left = lfilename.split('/')[-1] | title %}
+  {% set right = rfilename.split('/')[-1] | title | replace("Us", "US") %}
+  {% set link = "sd-" + lfilename.split('/')[-1] + "-" + rfilename.split('/')[-1] + ".html" %}
+  {% set right2 = rfilename2.split('/')[-1] | title | replace("Us", "US") %}
+  {% set link2 = "sd-" + lfilename.split('/')[-1] + "-" + rfilename2.split('/')[-1] + ".html" %}
 
   {% if lfilename and rfilename %}
   <tr style="background-color: #f0b3ff">
     <td>{{left}}</td>
     <td>{{right}}</td>
-    <td>{% if link in sd_complist %}<a href={{link}}>comparison</a>{% else %}No comparison available{% endif %}</td>
+    <td>{% if link in sd_complist %}<a href="{{link}}">comparison</a>{% else %}No comparison available{% endif %}</td>
     <td>{{r.notes}}</td>
-
+  </tr>
   {% elif lfilename and rfilename2 %}
   <tr style="background-color: #f0b3ff">
     <td>{{left}}</td>
     <td>{{right2}}</td>
-    <td>{% if link2 in sd_complist %}<a href={{link2}}>comparison</a>{% else %}No comparison available{% endif %}</td>
+    <td>{% if link2 in sd_complist %}<a href="{{link2}}">comparison</a>{% else %}No comparison available{% endif %}</td>
     <td>{{r.notes}}</td>
-
+  </tr>
   {% elif rfilename and not lfilename %}
-    <tr style="background-color: #ffecb3">
+  <tr style="background-color: #ffecb3">
     <td>{{left}}</td>
     <td>{{right}}</td>
     <td>No {{LEFT}} profile</td>
     <td>{{r.notes}}</td>
-
+  </tr>
   {% elif lfilename and not rfilename %}
-    <tr style="background-color: #ffffb3">
+  <tr style="background-color: #ffffb3">
     <td>{{left}}</td>
     <td>{{right}}</td>
     <td>No {{RIGHT}} profile</td>
     <td>{{r.notes}}</td>
+  </tr>
   {% endif %}
 {% endfor %}
-  </tr>
 </table>
-<hr/>
+
+<hr />
+
 <table class="grid">
- <tr>
-  <th width="260"><b>{{LEFT}}</b></td>
-  <th width="260"><b>{{RIGHT}}</b></td>
-  <th width="100"><b>Difference</b></td>
-  <td width="260"><b>Notes</b></td>
- </tr>
- <tr><td colspan="4"><b>ValueSets</b></td></tr>
-{% for k,v in vs_dict.items() %}  
-  {% set left=v.split(' vs ')[-0] | title %}
-  {% set right=v.split(' vs ')[-1] | title %}
+  <tr>
+    <th width="260">{{LEFT}}</th>
+    <th width="260">{{RIGHT}}</th>
+    <th width="100">Difference</th>
+    <th width="260">Notes</th>
+  </tr>
+  <tr><th colspan="4">ValueSets</th></tr>
+{% for k, v in vs_dict.items() %}
+  {% set left = v.split(' vs ')[0] | title %}
+  {% set right = v.split(' vs ')[-1] | title %}
   <tr style="background-color: #f0b3ff">
     <td>{{left}}</td>
     <td>{{right}}</td>
-    <td><a href={{k}}>comparison</a></td>
+    <td><a href="{{k}}">comparison</a></td>
     <td></td>
+  </tr>
 {% endfor %}
+</table>
+<div id="segment-footer" igtool="footer" class="segment">
+</div>  <!-- /segment-post-footer -->
+
 </body>
 </html>
-
