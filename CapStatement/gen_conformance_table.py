@@ -32,11 +32,12 @@ What it does
    per-mode "Additional Rules and Guidance for X" subsections use a different
    shape -- the verb sits mid-sentence -- so the actor is read from the sentence.
 2. Assigns each rule a stable ID from an append-only registry
-   (input/data/<page>-requirements.csv). IDs are never renumbered: a reworded
-   rule keeps its ID through a close-match lookup, a deleted rule's row is kept
-   and marked retired, and only an unseen rule draws a new number. Sequential
-   numbering at generation time would silently invalidate every tracker or test
-   plan citing an ID.
+   (input/data/<page>_requirements.csv). IDs are never renumbered. A rule keeps
+   its ID when it is reworded or moved to another section, because matching runs
+   on the statement text first -- exactly, then at 75% similarity -- and only a
+   full rewrite draws a new number. A deleted rule's row is kept and marked
+   retired rather than freeing its number. Sequential numbering at generation
+   time would silently invalidate every tracker or test plan citing an ID.
 3. Rewrites the table between the generated markers in the page.
 4. Audits the hand-written quick-reference matrix, which is deliberately NOT
    generated: deciding that a rule is solicited-only is judgment about scope,
@@ -314,35 +315,79 @@ def load_registry(path):
         return list(csv.DictReader(fh))
 
 
+CLOSE_MATCH_CUTOFF = 0.75
+
+
+def text_of(key):
+    """The statement half of a registry key, dropping the section suffix."""
+    return key.split(" :: ")[0]
+
+
 def assign_ids(rules, registry, prefix):
-    """Append-only ID assignment. Exact key, then close match, then a new number."""
+    """Append-only ID assignment, in four passes per statement.
+
+    1. exact key -- same statement text in the same section
+    2. exact statement text in a different section -- a statement that moved
+       keeps its ID, since the section is context, not identity
+    3. close match on the statement text at CLOSE_MATCH_CUTOFF -- a reworded
+       statement keeps its ID
+    4. a new number
+
+    Matching is on the statement text alone from pass 2 on, so an edit to a
+    heading or a move between sections does not mint a new ID. Candidates are
+    always sorted by ID so a tie resolves the same way on every run; where two
+    rows hold the same text in different sections (the PATAST statements, for
+    example) pass 1 keeps them apart, and a match reached by pass 2 or 3 is
+    reported so it can be checked.
+    """
     by_key = {r["key"]: r for r in registry}
+    by_text = {}
+    for r in sorted(registry, key=lambda x: x["id"]):
+        by_text.setdefault(text_of(r["key"]), []).append(r)
     used = set()
     seen_ids = set()
-    report = {"new": [], "reworded": [], "retired": []}
+    report = {"new": [], "moved": [], "reworded": [], "retired": []}
 
     for rule in rules:
+        rule_text_key = text_of(rule.key)
         row = by_key.get(rule.key)
         if row is not None and row["key"] in used:
             row = None
-        if row is None:
-            pool = [
-                r for r in registry
+
+        if row is None:                                      # pass 2
+            same_text = [
+                r for r in by_text.get(rule_text_key, [])
                 if r["actor"] == rule.actor and r["key"] not in used
             ]
+            if same_text:
+                row = same_text[0]
+                report["moved"].append(
+                    (row["id"], row["section"], rule.section))
+
+        if row is None:                                      # pass 3
+            pool = sorted(
+                (r for r in registry
+                 if r["actor"] == rule.actor and r["key"] not in used),
+                key=lambda x: x["id"],
+            )
             match = difflib.get_close_matches(
-                rule.key, [r["key"] for r in pool], n=1, cutoff=0.9
+                rule_text_key, [text_of(r["key"]) for r in pool],
+                n=1, cutoff=CLOSE_MATCH_CUTOFF,
             )
             if match:
-                row = next(r for r in pool if r["key"] == match[0])
-                report["reworded"].append((row["id"], row["requirement"], rule.text))
+                row = next(r for r in pool if text_of(r["key"]) == match[0])
+                report["reworded"].append(
+                    (row["id"], row["requirement"], rule.text))
+
         if row is not None:
             rule.id = row["id"]
+            used.add(row["key"])
+            seen_ids.add(row["id"])
             # The registry keeps both the effective flag and the value the
             # detector produced when the row was written. Equal means nobody
             # touched it, so it is re-seeded from the current detection;
-            # different means a human edited "conditional", and that edit wins
-            # for good. No "manual" bookkeeping column for the author to set.
+            # different means a human edited "conditionality", and that edit
+            # wins for good. No "manual" bookkeeping column to set.
             stored = (row.get("conditionality") or "").strip()
             stored_auto = (row.get("conditionality_auto") or "").strip()
             if stored != stored_auto:
@@ -353,8 +398,6 @@ def assign_ids(rules, registry, prefix):
             m_auto = (row.get("mode_code_auto") or "").strip().upper()
             if m_stored and m_stored != m_auto:
                 rule.mode_code = m_stored
-            used.add(row["key"])
-            seen_ids.add(row["id"])
 
     letter = {"Client": "C", "Server": "S"}
     nums = []
@@ -444,8 +487,10 @@ def render_block(rules, csv_stem):
         "%s.csv columns:" % data_name,
         "- id: stable requirement id, \"WD-<C|S>-<nn>\". Assigned once from this",
         "  append-only csv and never renumbered, so a tracker or test plan can cite",
-        "  it. A reworded statement keeps its id through a close-match lookup; a",
-        "  deleted one keeps its row with status = retired.",
+        "  it. A statement keeps its id when it is reworded or moved to another",
+        "  section: the match is on the statement text first, exactly and then at",
+        "  75% similarity. Only a full rewrite draws a new id. A deleted statement",
+        "  keeps its row with status = retired rather than freeing its number.",
         "- actor: Client or Server. From the \"**Client Requirements**\" or",
         "  \"**Server Requirements**\" block the bullet sits under, or from the",
         "  subject of the sentence in the per-mode sections, which do not use those",
@@ -477,8 +522,10 @@ def render_block(rules, csv_stem):
         "  keeps and reports on every run.",
         "- status: active or retired. Retired rows are kept for their ids only and",
         "  are not published in the table.",
-        "- key: normalized statement text plus section. Used to match a row to its",
-        "  bullet across rewording. Internal to the script.",
+        "- key: normalized statement text plus section, used to match a row to its",
+        "  bullet. The section half only distinguishes two rows holding the same",
+        "  statement text, as the PATAST statements do; every later pass matches on",
+        "  the text half alone. Internal to the script.",
         "",
         "The script retrieves, sorts, and selects the table data.",
         "==============================================================-->",
@@ -693,7 +740,7 @@ def main():
         counts[(r.actor, r.verb)] = counts.get((r.actor, r.verb), 0) + 1
     print(f"{len(rules)} rules: " + ", ".join(
         f"{a} {v} x{n}" for (a, v), n in sorted(counts.items())))
-    for kind in ("new", "reworded", "retired"):
+    for kind in ("new", "moved", "reworded", "retired"):
         for item in report[kind]:
             print(f"  {kind}: {item[0]} {str(item[1])[:70]}")
 
